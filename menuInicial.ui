@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>POS</class>
+ <widget class="QDialog" name="POS">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>837</width>
+    <height>607</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>AlquimiaPastelería</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>logoPasteleria.png</normaloff>logoPasteleria.png</iconset>
+  </property>
+  <widget class="KGradientSelector" name="kgradientselector">
+   <property name="geometry">
+    <rect>
+     <x>-10</x>
+     <y>-10</y>
+     <width>891</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="firstColor">
+    <color>
+     <red>207</red>
+     <green>160</green>
+     <blue>193</blue>
+    </color>
+   </property>
+   <property name="secondColor">
+    <color>
+     <red>192</red>
+     <green>189</green>
+     <blue>199</blue>
+    </color>
+   </property>
+   <property name="firstText">
+    <string/>
+   </property>
+  </widget>
+  <widget class="KColorPatch" name="kcolorpatch">
+   <property name="geometry">
+    <rect>
+     <x>-20</x>
+     <y>-50</y>
+     <width>891</width>
+     <height>681</height>
+    </rect>
+   </property>
+   <property name="color">
+    <color>
+     <red>91</red>
+     <green>75</green>
+     <blue>88</blue>
+    </color>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>421</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>36</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Alquimia Pasteleria</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>480</x>
+     <y>110</y>
+     <width>291</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>36</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <zorder>kcolorpatch</zorder>
+  <zorder>kgradientselector</zorder>
+  <zorder>label</zorder>
+  <zorder>label_2</zorder>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>KColorPatch</class>
+   <extends>QFrame</extends>
+   <header>kcolordialog.h</header>
+  </customwidget>
+  <customwidget>
+   <class>KGradientSelector</class>
+   <extends>QWidget</extends>
+   <header>kselector.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
