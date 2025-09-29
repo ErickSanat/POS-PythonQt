@@ -1,204 +1,147 @@
-CREATE DATABASE PasteleriaAlquimia;
+CREATE DATABASE pasteleria_alquimia;
 
--- Tabla Categorias
-CREATE TABLE Categorias (
-    categoria_id SERIAL PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL,
+\c pasteleria_alquimia;
+
+
+-- TABLA ROLES
+
+CREATE TABLE rol (
+    id_rol SERIAL PRIMARY KEY,
+    nombre VARCHAR(50) UNIQUE NOT NULL CHECK (nombre IN ('admin','empleado'))
+);
+
+
+-- TABLA USUARIOS
+
+CREATE TABLE usuario (
+    id_usuario SERIAL PRIMARY KEY,
+    usuario VARCHAR(50) UNIQUE NOT NULL CHECK (usuario ~ '^[a-zA-Z0-9_]+$'),
+    contrasena VARCHAR(255) NOT NULL CHECK (LENGTH(contrasena) >= 8),
+    id_rol INT NOT NULL REFERENCES rol(id_rol) ON DELETE SET NULL
+);
+
+
+-- TABLA EMPLEADOS
+
+CREATE TABLE empleado (
+    id_empleado SERIAL PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL CHECK (nombre ~ '^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$'),
+    direccion TEXT NOT NULL CHECK (LENGTH(TRIM(direccion)) > 0),
+    telefono VARCHAR(15) NOT NULL CHECK (telefono ~ '^[0-9()+-\s]+$' AND LENGTH(telefono) >= 8),
+    id_usuario INT NOT NULL UNIQUE REFERENCES usuario(id_usuario) ON DELETE SET NULL
+);
+
+
+-- TABLA CLIENTES
+
+CREATE TABLE cliente (
+    id_cliente SERIAL PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL CHECK (nombre ~ '^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$' AND LENGTH(TRIM(nombre)) > 0),
+    telefono VARCHAR(15) CHECK (telefono IS NULL OR (telefono ~ '^[0-9()+-\s]+$' AND LENGTH(telefono) >= 8)),
+    correo VARCHAR(100) CHECK (correo IS NULL OR correo ~* '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$')
+);
+
+
+-- TABLA CATEGORÍAS
+
+CREATE TABLE categoria (
+    id_categoria SERIAL PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL UNIQUE CHECK (nombre ~ '^[A-Za-zÁÉÍÓÚáéíóúÑñ0-9\s]+$' AND LENGTH(TRIM(nombre)) > 0),
+    descripcion TEXT
+);
+
+
+-- TABLA PRODUCTOS
+
+CREATE TABLE producto (
+    id_producto SERIAL PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL CHECK (LENGTH(TRIM(nombre)) > 0),
     descripcion TEXT,
-    imagen_url VARCHAR(255),
-    es_para_venta_diaria BOOLEAN DEFAULT FALSE,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    precio NUMERIC(10,2) NOT NULL CHECK (precio > 0),
+    stock INT NOT NULL DEFAULT 0 CHECK (stock >= 0),
+    id_categoria INT NOT NULL REFERENCES categoria(id_categoria) ON DELETE SET NULL
 );
 
--- Tabla Metodos_Pago
-CREATE TABLE Metodos_Pago (
-    metodo_id SERIAL PRIMARY KEY,
-    nombre VARCHAR(50) NOT NULL,
-    requiere_terminal BOOLEAN DEFAULT FALSE,
-    activo BOOLEAN DEFAULT TRUE,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
+-- TABLA RECETAS
+
+CREATE TABLE receta (
+    id_receta SERIAL PRIMARY KEY,
+    id_producto INT UNIQUE NOT NULL REFERENCES producto(id_producto) ON DELETE CASCADE,
+    descripcion TEXT,
+    instrucciones TEXT NOT NULL CHECK (LENGTH(TRIM(instrucciones)) > 0)
 );
 
--- Tabla Clientes
-CREATE TABLE Clientes (
-    cliente_id SERIAL PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL CHECK (nombre ~ '^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$'),
-    apellido VARCHAR(100) NOT NULL CHECK (apellido ~ '^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$'),
-    telefono VARCHAR(15) CHECK (telefono ~ '^[0-9+\-\s()]{10,15}$'),
-    email VARCHAR(255) CHECK (email ~* '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'),
-    direccion TEXT,
-    fecha_registro DATE DEFAULT CURRENT_DATE,
-    preferencias TEXT,
-    alergias TEXT,
-    puntos_fidelidad INTEGER DEFAULT 0 CHECK (puntos_fidelidad >= 0),
-    fecha_nacimiento DATE CHECK (fecha_nacimiento <= CURRENT_DATE - INTERVAL '1 year'),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
+-- TABLA VENTAS
+
+CREATE TABLE venta (
+    id_venta SERIAL PRIMARY KEY,
+    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    id_usuario INT NOT NULL REFERENCES usuario(id_usuario) ON DELETE SET NULL,
+    id_cliente INT REFERENCES cliente(id_cliente) ON DELETE SET NULL,
+    total NUMERIC(10,2) NOT NULL DEFAULT 0 CHECK (total >= 0)
 );
 
--- Tabla Empleados
-CREATE TABLE Empleados (
-    empleado_id SERIAL PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL CHECK (nombre ~ '^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$'),
-    apellido VARCHAR(100) NOT NULL CHECK (apellido ~ '^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$'),
-    puesto VARCHAR(50) NOT NULL CHECK (puesto IN ('vendedor', 'panadero', 'administrador')),
-    telefono VARCHAR(15) NOT NULL CHECK (telefono ~ '^[0-9+\-\s()]{10,15}$'),
-    email VARCHAR(255) NOT NULL UNIQUE CHECK (email ~* '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'),
-    fecha_contratacion DATE NOT NULL CHECK (fecha_contratacion <= CURRENT_DATE),
-    salario DECIMAL(10,2) NOT NULL CHECK (salario >= 0),
-    activo BOOLEAN DEFAULT TRUE,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
+-- TABLA DETALLE DE VENTA
+
+CREATE TABLE detalle_venta (
+    id_detalle SERIAL PRIMARY KEY,
+    id_venta INT NOT NULL REFERENCES venta(id_venta) ON DELETE CASCADE,
+    id_producto INT NOT NULL REFERENCES producto(id_producto) ON DELETE SET NULL,
+    cantidad INT NOT NULL CHECK (cantidad > 0),
+    precio_unitario NUMERIC(10,2) NOT NULL CHECK (precio_unitario > 0),
+    subtotal NUMERIC(10,2) GENERATED ALWAYS AS (cantidad * precio_unitario) STORED
 );
 
--- Tabla Usuarios
-CREATE TABLE Usuarios (
-    usuario_id SERIAL PRIMARY KEY,
-    empleado_id INTEGER NOT NULL UNIQUE,
-    nombre_usuario VARCHAR(50) NOT NULL UNIQUE CHECK (LENGTH(nombre_usuario) >= 4),
-    contrasena_hash VARCHAR(255) NOT NULL CHECK (LENGTH(contrasena_hash) >= 60),
-    rol VARCHAR(20) NOT NULL CHECK (rol IN ('admin', 'cajero', 'panadero')),
-    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    ultimo_acceso TIMESTAMP,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (empleado_id) REFERENCES Empleados(empleado_id) ON DELETE CASCADE
+
+-- TABLA TIPOS DE PAGO
+
+CREATE TABLE tipo_pago (
+    id_tipo_pago SERIAL PRIMARY KEY,
+    nombre VARCHAR(50) UNIQUE NOT NULL CHECK (nombre ~ '^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$' AND LENGTH(TRIM(nombre)) > 0)
 );
 
--- Tabla Cajas
-CREATE TABLE Cajas (
-    caja_id SERIAL PRIMARY KEY,
-    usuario_id_apertura INTEGER NOT NULL,
-    usuario_id_cierre INTEGER,
+
+-- TABLA PAGOS
+
+CREATE TABLE pago (
+    id_pago SERIAL PRIMARY KEY,
+    id_venta INT NOT NULL REFERENCES venta(id_venta) ON DELETE CASCADE,
+    id_tipo_pago INT NOT NULL REFERENCES tipo_pago(id_tipo_pago) ON DELETE SET NULL,
+    monto NUMERIC(10,2) NOT NULL CHECK (monto > 0)
+);
+
+
+-- TABLA CAJAS
+
+CREATE TABLE caja (
+    id_caja SERIAL PRIMARY KEY,
     fecha_apertura TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     fecha_cierre TIMESTAMP,
-    monto_inicial DECIMAL(10,2) NOT NULL CHECK (monto_inicial >= 0),
-    monto_final DECIMAL(10,2) CHECK (monto_final >= 0),
-    estado VARCHAR(20) DEFAULT 'abierta' CHECK (estado IN ('abierta', 'cerrada')),
-    observaciones TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (usuario_id_apertura) REFERENCES Usuarios(usuario_id),
-    FOREIGN KEY (usuario_id_cierre) REFERENCES Usuarios(usuario_id)
+    monto_inicial NUMERIC(10,2) NOT NULL DEFAULT 0 CHECK (monto_inicial >= 0),
+    monto_final NUMERIC(10,2) CHECK (monto_final IS NULL OR monto_final >= 0),
+    estado VARCHAR(20) DEFAULT 'abierta' CHECK (estado IN ('abierta','cerrada')),
+    id_usuario INT NOT NULL REFERENCES usuario(id_usuario) ON DELETE SET NULL,
+    CHECK (fecha_cierre IS NULL OR fecha_cierre >= fecha_apertura)
 );
 
--- Tabla Productos
-CREATE TABLE Productos (
-    producto_id SERIAL PRIMARY KEY,
-    nombre VARCHAR(200) NOT NULL,
-    descripcion TEXT,
-    precio_venta DECIMAL(10,2) NOT NULL CHECK (precio_venta >= 0),
-    costo_produccion DECIMAL(10,2) CHECK (costo_produccion >= 0),
-    codigo_barras VARCHAR(50) UNIQUE,
-    categoria_id INTEGER NOT NULL,
-    es_percedero BOOLEAN DEFAULT FALSE,
-    tiempo_preparacion INTEGER CHECK (tiempo_preparacion >= 0),
-    imagen_url VARCHAR(255),
-    stock_minimo INTEGER DEFAULT 0 CHECK (stock_minimo >= 0),
-    stock_actual INTEGER DEFAULT 0 CHECK (stock_actual >= 0),
-    activo BOOLEAN DEFAULT TRUE,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (categoria_id) REFERENCES Categorias(categoria_id)
+
+-- TABLA PROMOCIONES
+
+CREATE TABLE promocion (
+    id_promocion SERIAL PRIMARY KEY,
+    dia_semana VARCHAR(15) NOT NULL CHECK (dia_semana IN ('Lunes','Martes','Miércoles','Jueves','Viernes','Sábado','Domingo')),
+    descripcion TEXT
 );
 
--- Tabla Ingredientes
-CREATE TABLE Ingredientes (
-    ingrediente_id SERIAL PRIMARY KEY,
-    nombre VARCHAR(200) NOT NULL,
-    unidad_medida VARCHAR(20) NOT NULL CHECK (unidad_medida IN ('gr', 'kg', 'ml', 'l', 'unidades')),
-    precio_unitario DECIMAL(10,2) NOT NULL CHECK (precio_unitario >= 0),
-    stock_actual DECIMAL(10,3) DEFAULT 0 CHECK (stock_actual >= 0),
-    stock_minimo DECIMAL(10,3) DEFAULT 0 CHECK (stock_minimo >= 0),
-    proveedor_id INTEGER,
-    es_alergeno BOOLEAN DEFAULT FALSE,
-    tipo_alergeno VARCHAR(100),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
 
--- Tabla Recetas
-CREATE TABLE Recetas (
-    receta_id SERIAL PRIMARY KEY,
-    producto_id INTEGER NOT NULL,
-    ingrediente_id INTEGER NOT NULL,
-    cantidad DECIMAL(10,3) NOT NULL CHECK (cantidad > 0),
-    instrucciones TEXT,
-    version_receta VARCHAR(20) DEFAULT '1.0',
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (producto_id) REFERENCES Productos(producto_id) ON DELETE CASCADE,
-    FOREIGN KEY (ingrediente_id) REFERENCES Ingredientes(ingrediente_id) ON DELETE CASCADE,
-    UNIQUE(producto_id, ingrediente_id, version_receta)
-);
+-- TABLA DETALLE PROMOCIÓN (productos en promo)
 
--- Tabla Promociones
-CREATE TABLE Promociones (
-    promocion_id SERIAL PRIMARY KEY,
-    nombre VARCHAR(200) NOT NULL,
-    descripcion TEXT,
-    tipo VARCHAR(20) NOT NULL CHECK (tipo IN ('porcentaje', 'monto_fijo', '2x1', '3x2')),
-    valor DECIMAL(10,2) CHECK (valor >= 0),
-    fecha_inicio DATE NOT NULL,
-    fecha_fin DATE NOT NULL CHECK (fecha_fin >= fecha_inicio),
-    productos_aplicables JSONB,
-    dias_semana VARCHAR(20),
-    activa BOOLEAN DEFAULT TRUE,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+CREATE TABLE detalle_promocion (
+    id_detalle_promocion SERIAL PRIMARY KEY,
+    id_promocion INT NOT NULL REFERENCES promocion(id_promocion) ON DELETE CASCADE,
+    id_producto INT NOT NULL REFERENCES producto(id_producto) ON DELETE CASCADE,
+    UNIQUE(id_promocion, id_producto)
 );
-
--- Tabla Ventas
-CREATE TABLE Ventas (
-    venta_id SERIAL PRIMARY KEY,
-    cliente_id INTEGER,
-    usuario_id INTEGER NOT NULL,
-    fecha_hora TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    subtotal DECIMAL(10,2) NOT NULL CHECK (subtotal >= 0),
-    descuento DECIMAL(10,2) DEFAULT 0 CHECK (descuento >= 0),
-    iva DECIMAL(10,2) NOT NULL CHECK (iva >= 0),
-    total DECIMAL(10,2) NOT NULL CHECK (total >= 0),
-    metodo_pago_id INTEGER NOT NULL,
-    estado VARCHAR(20) DEFAULT 'completada' CHECK (estado IN ('completada', 'cancelada')),
-    notas TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (cliente_id) REFERENCES Clientes(cliente_id) ON DELETE SET NULL,
-    FOREIGN KEY (usuario_id) REFERENCES Usuarios(usuario_id),
-    FOREIGN KEY (metodo_pago_id) REFERENCES Metodos_Pago(metodo_id)
-);
-
--- Tabla Detalles_Venta
-CREATE TABLE Detalles_Venta (
-    detalle_id SERIAL PRIMARY KEY,
-    venta_id INTEGER NOT NULL,
-    producto_id INTEGER NOT NULL,
-    cantidad INTEGER NOT NULL CHECK (cantidad > 0),
-    precio_unitario DECIMAL(10,2) NOT NULL CHECK (precio_unitario >= 0),
-    descuento DECIMAL(10,2) DEFAULT 0 CHECK (descuento >= 0),
-    total_linea DECIMAL(10,2) NOT NULL CHECK (total_linea >= 0),
-    personalizaciones TEXT,
-    es_pedido_especial BOOLEAN DEFAULT FALSE,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (venta_id) REFERENCES Ventas(venta_id) ON DELETE CASCADE,
-    FOREIGN KEY (producto_id) REFERENCES Productos(producto_id)
-);
-
--- Tabla Movimientos_Inventario
-CREATE TABLE Movimientos_Inventario (
-    movimiento_id SERIAL PRIMARY KEY,
-    tipo VARCHAR(20) NOT NULL CHECK (tipo IN ('entrada', 'salida', 'ajuste', 'merma')),
-    ingrediente_id INTEGER NOT NULL,
-    cantidad DECIMAL(10,3) NOT NULL,
-    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    usuario_id INTEGER NOT NULL,
-    motivo TEXT,
-    costo_total DECIMAL(10,2) CHECK (costo_total >= 0),
-    relacion_venta INTEGER,
-    relacion_pedido INTEGER,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (ingrediente_id) REFERENCES Ingredientes(ingrediente_id),
-    FOREIGN KEY (usuario_id) REFERENCES Usuarios(usuario_id),
-    FOREIGN KEY (relacion_venta) REFERENCES Ventas(venta_id) ON DELETE SET NULL
-);
-
--- ageragar proveedor y comrpa a provedores, tablas
