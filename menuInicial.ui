@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1138</width>
-    <height>632</height>
+    <width>1207</width>
+    <height>682</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,15 +18,15 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>../../../../.designer/backup/logoPasteleria.png</normaloff>../../../../.designer/backup/logoPasteleria.png</iconset>
+    <normaloff>../../../../../../.designer/backup/logoPasteleria.png</normaloff>../../../../../../.designer/backup/logoPasteleria.png</iconset>
   </property>
   <widget class="QWidget" name="widget_2" native="true">
    <property name="geometry">
     <rect>
      <x>-20</x>
      <y>0</y>
-     <width>1161</width>
-     <height>631</height>
+     <width>1231</width>
+     <height>691</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -37,7 +37,7 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>1161</width>
+      <width>1231</width>
       <height>61</height>
      </rect>
     </property>
@@ -87,30 +87,16 @@
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap>Iconos/logoPasteleriaMini.xcf</pixmap>
+      <pixmap>../../../../.designer/backup/Iconos/logoPasteleriaMini.xcf</pixmap>
      </property>
      <property name="scaledContents">
       <bool>true</bool>
      </property>
     </widget>
-   </widget>
-   <widget class="QWidget" name="widgetSidebar" native="true">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>60</y>
-      <width>60</width>
-      <height>471</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: #988DBD;
-border: none;</string>
-    </property>
     <widget class="QPushButton" name="btnToggle">
      <property name="geometry">
       <rect>
-       <x>10</x>
+       <x>1140</x>
        <y>10</y>
        <width>41</width>
        <height>31</height>
@@ -141,53 +127,14 @@ QPushButton:hover {
       <string>☰</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_2">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>80</y>
-       <width>81</width>
-       <height>32</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>PushButton</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButton_3">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>120</y>
-       <width>81</width>
-       <height>32</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>PushButton</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButton_4">
-     <property name="geometry">
-      <rect>
-       <x>50</x>
-       <y>260</y>
-       <width>81</width>
-       <height>32</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>PushButton</string>
-     </property>
-    </widget>
    </widget>
    <widget class="QWidget" name="horizontalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>70</x>
+      <x>20</x>
       <y>60</y>
-      <width>1091</width>
-      <height>571</height>
+      <width>1211</width>
+      <height>621</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout" stretch="6,4">
@@ -232,8 +179,8 @@ border-right: 2px solid #867BAA;</string>
          <rect>
           <x>10</x>
           <y>10</y>
-          <width>631</width>
-          <height>541</height>
+          <width>701</width>
+          <height>591</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_left">
@@ -260,6 +207,12 @@ border-right: 2px solid #867BAA;</string>
            <property name="spacing">
             <number>10</number>
            </property>
+           <property name="leftMargin">
+            <number>10</number>
+           </property>
+           <property name="rightMargin">
+            <number>10</number>
+           </property>
            <item>
             <widget class="QLineEdit" name="searchInput">
              <property name="minimumSize">
@@ -271,9 +224,10 @@ border-right: 2px solid #867BAA;</string>
              <property name="styleSheet">
               <string notr="true">QLineEdit {
     padding: 10px;
-    border: 2px solid #bdc3c7;
+    border: 2px solid #867BAA;
     border-radius: 20px;
     font-size: 14px;
+	color: rgb(134, 123, 170);
 }</string>
              </property>
              <property name="placeholderText">
@@ -292,7 +246,7 @@ border-right: 2px solid #867BAA;</string>
              <property name="styleSheet">
               <string notr="true">QComboBox {
     padding: 10px;
-    border: 3px solid #bdc3c7;
+    border: 3px solid #867BAA;
     border-radius: 20px;
 }
 </string>
@@ -320,8 +274,8 @@ border-right: 2px solid #867BAA;</string>
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>611</width>
-              <height>456</height>
+              <width>681</width>
+              <height>506</height>
              </rect>
             </property>
             <widget class="QWidget" name="gridLayoutWidget">
@@ -329,8 +283,8 @@ border-right: 2px solid #867BAA;</string>
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>611</width>
-               <height>451</height>
+               <width>681</width>
+               <height>501</height>
               </rect>
              </property>
              <layout class="QGridLayout" name="productsGridLayout">
@@ -368,8 +322,8 @@ border-right: 2px solid #867BAA;</string>
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>421</width>
-          <height>551</height>
+          <width>481</width>
+          <height>611</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayoutRight" stretch="0,4,4">
@@ -484,8 +438,8 @@ QHeaderView::section {
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>401</width>
-              <height>231</height>
+              <width>461</width>
+              <height>261</height>
              </rect>
             </property>
             <layout class="QGridLayout" name="gridLayout">
@@ -509,7 +463,9 @@ QHeaderView::section {
                <item>
                 <widget class="QLabel" name="subtotalLabel">
                  <property name="styleSheet">
-                  <string notr="true">color: #7f8c8d; font-size: 14px;</string>
+                  <string notr="true">color: #867BAA;
+font-size: 14px;
+color: rgb(134, 123, 170);</string>
                  </property>
                  <property name="text">
                   <string>Subtotal: $0.00</string>
@@ -620,8 +576,12 @@ QPushButton:hover {
              <item row="3" column="0">
               <widget class="QComboBox" name="paymentCombo">
                <property name="styleSheet">
-                <string notr="true">background-color: rgb(189, 177, 226);
-border-left-color: rgb(0, 0, 0);</string>
+                <string notr="true">QComboBox {
+    padding: 10px;
+    border: 3px solid #867BAA;
+    border-radius: 20px;
+}
+</string>
                </property>
                <item>
                 <property name="text">

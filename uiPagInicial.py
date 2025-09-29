@@ -15,16 +15,16 @@ class Ui_POS(object):
     def setupUi(self, POS):
         POS.setObjectName("POS")
         POS.setEnabled(True)
-        POS.resize(1138, 632)
+        POS.resize(1207, 682)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("../../../../.designer/backup/logoPasteleria.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("../../../../../../.designer/backup/logoPasteleria.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         POS.setWindowIcon(icon)
         self.widget_2 = QtWidgets.QWidget(POS)
-        self.widget_2.setGeometry(QtCore.QRect(-20, 0, 1161, 631))
+        self.widget_2.setGeometry(QtCore.QRect(-20, 0, 1231, 691))
         self.widget_2.setStyleSheet("background-color: #CFC3F5;")
         self.widget_2.setObjectName("widget_2")
         self.contrasteWidget = QtWidgets.QWidget(self.widget_2)
-        self.contrasteWidget.setGeometry(QtCore.QRect(0, 0, 1161, 61))
+        self.contrasteWidget.setGeometry(QtCore.QRect(0, 0, 1231, 61))
         self.contrasteWidget.setAutoFillBackground(False)
         self.contrasteWidget.setStyleSheet("background-color: #867BAA")
         self.contrasteWidget.setObjectName("contrasteWidget")
@@ -44,16 +44,11 @@ class Ui_POS(object):
         self.label_2 = QtWidgets.QLabel(self.contrasteWidget)
         self.label_2.setGeometry(QtCore.QRect(20, 10, 51, 41))
         self.label_2.setText("")
-        self.label_2.setPixmap(QtGui.QPixmap("Iconos/logoPasteleriaMini.xcf"))
+        self.label_2.setPixmap(QtGui.QPixmap("../../../../.designer/backup/Iconos/logoPasteleriaMini.xcf"))
         self.label_2.setScaledContents(True)
         self.label_2.setObjectName("label_2")
-        self.widgetSidebar = QtWidgets.QWidget(self.widget_2)
-        self.widgetSidebar.setGeometry(QtCore.QRect(10, 60, 60, 471))
-        self.widgetSidebar.setStyleSheet("background-color: #988DBD;\n"
-"border: none;")
-        self.widgetSidebar.setObjectName("widgetSidebar")
-        self.btnToggle = QtWidgets.QPushButton(self.widgetSidebar)
-        self.btnToggle.setGeometry(QtCore.QRect(10, 10, 41, 31))
+        self.btnToggle = QtWidgets.QPushButton(self.contrasteWidget)
+        self.btnToggle.setGeometry(QtCore.QRect(1140, 10, 41, 31))
         font = QtGui.QFont()
         font.setPointSize(-1)
         font.setBold(True)
@@ -72,17 +67,8 @@ class Ui_POS(object):
 "    background-color: #4a6378;\n"
 "}")
         self.btnToggle.setObjectName("btnToggle")
-        self.pushButton_2 = QtWidgets.QPushButton(self.widgetSidebar)
-        self.pushButton_2.setGeometry(QtCore.QRect(0, 80, 81, 32))
-        self.pushButton_2.setObjectName("pushButton_2")
-        self.pushButton_3 = QtWidgets.QPushButton(self.widgetSidebar)
-        self.pushButton_3.setGeometry(QtCore.QRect(10, 120, 81, 32))
-        self.pushButton_3.setObjectName("pushButton_3")
-        self.pushButton_4 = QtWidgets.QPushButton(self.widgetSidebar)
-        self.pushButton_4.setGeometry(QtCore.QRect(50, 260, 81, 32))
-        self.pushButton_4.setObjectName("pushButton_4")
         self.horizontalLayoutWidget = QtWidgets.QWidget(self.widget_2)
-        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(70, 60, 1091, 571))
+        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(20, 60, 1211, 621))
         self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget)
         self.horizontalLayout.setContentsMargins(5, 5, 5, 5)
@@ -97,7 +83,7 @@ class Ui_POS(object):
         self.frameLeft.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frameLeft.setObjectName("frameLeft")
         self.verticalLayoutWidget = QtWidgets.QWidget(self.frameLeft)
-        self.verticalLayoutWidget.setGeometry(QtCore.QRect(10, 10, 631, 541))
+        self.verticalLayoutWidget.setGeometry(QtCore.QRect(10, 10, 701, 591))
         self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
         self.verticalLayout_left = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout_left.setSizeConstraint(QtWidgets.QLayout.SetDefaultConstraint)
@@ -105,15 +91,17 @@ class Ui_POS(object):
         self.verticalLayout_left.setSpacing(10)
         self.verticalLayout_left.setObjectName("verticalLayout_left")
         self.horizontalLayout_search = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_search.setContentsMargins(10, -1, 10, -1)
         self.horizontalLayout_search.setSpacing(10)
         self.horizontalLayout_search.setObjectName("horizontalLayout_search")
         self.searchInput = QtWidgets.QLineEdit(self.verticalLayoutWidget)
         self.searchInput.setMinimumSize(QtCore.QSize(40, 0))
         self.searchInput.setStyleSheet("QLineEdit {\n"
 "    padding: 10px;\n"
-"    border: 2px solid #bdc3c7;\n"
+"    border: 2px solid #867BAA;\n"
 "    border-radius: 20px;\n"
 "    font-size: 14px;\n"
+"    color: rgb(134, 123, 170);\n"
 "}")
         self.searchInput.setObjectName("searchInput")
         self.horizontalLayout_search.addWidget(self.searchInput)
@@ -121,7 +109,7 @@ class Ui_POS(object):
         self.categoryCombo.setMinimumSize(QtCore.QSize(150, 0))
         self.categoryCombo.setStyleSheet("QComboBox {\n"
 "    padding: 10px;\n"
-"    border: 3px solid #bdc3c7;\n"
+"    border: 3px solid #867BAA;\n"
 "    border-radius: 20px;\n"
 "}\n"
 "")
@@ -135,10 +123,10 @@ class Ui_POS(object):
         self.productsScrollArea.setWidgetResizable(True)
         self.productsScrollArea.setObjectName("productsScrollArea")
         self.scrollContentWidget = QtWidgets.QWidget()
-        self.scrollContentWidget.setGeometry(QtCore.QRect(0, 0, 611, 456))
+        self.scrollContentWidget.setGeometry(QtCore.QRect(0, 0, 681, 506))
         self.scrollContentWidget.setObjectName("scrollContentWidget")
         self.gridLayoutWidget = QtWidgets.QWidget(self.scrollContentWidget)
-        self.gridLayoutWidget.setGeometry(QtCore.QRect(0, 0, 611, 451))
+        self.gridLayoutWidget.setGeometry(QtCore.QRect(0, 0, 681, 501))
         self.gridLayoutWidget.setObjectName("gridLayoutWidget")
         self.productsGridLayout = QtWidgets.QGridLayout(self.gridLayoutWidget)
         self.productsGridLayout.setContentsMargins(0, 0, 0, 0)
@@ -154,7 +142,7 @@ class Ui_POS(object):
         self.frameRigth.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frameRigth.setObjectName("frameRigth")
         self.verticalLayoutWidget_3 = QtWidgets.QWidget(self.frameRigth)
-        self.verticalLayoutWidget_3.setGeometry(QtCore.QRect(0, 0, 421, 551))
+        self.verticalLayoutWidget_3.setGeometry(QtCore.QRect(0, 0, 481, 611))
         self.verticalLayoutWidget_3.setObjectName("verticalLayoutWidget_3")
         self.verticalLayoutRight = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_3)
         self.verticalLayoutRight.setContentsMargins(10, 10, 10, 10)
@@ -213,7 +201,7 @@ class Ui_POS(object):
         self.totalsFrame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.totalsFrame.setObjectName("totalsFrame")
         self.gridLayoutWidget_2 = QtWidgets.QWidget(self.totalsFrame)
-        self.gridLayoutWidget_2.setGeometry(QtCore.QRect(0, 0, 401, 231))
+        self.gridLayoutWidget_2.setGeometry(QtCore.QRect(0, 0, 461, 261))
         self.gridLayoutWidget_2.setObjectName("gridLayoutWidget_2")
         self.gridLayout = QtWidgets.QGridLayout(self.gridLayoutWidget_2)
         self.gridLayout.setContentsMargins(1, 1, 1, 1)
@@ -222,7 +210,9 @@ class Ui_POS(object):
         self.horizontalLayout_discount = QtWidgets.QHBoxLayout()
         self.horizontalLayout_discount.setObjectName("horizontalLayout_discount")
         self.subtotalLabel = QtWidgets.QLabel(self.gridLayoutWidget_2)
-        self.subtotalLabel.setStyleSheet("color: #7f8c8d; font-size: 14px;")
+        self.subtotalLabel.setStyleSheet("color: #867BAA;\n"
+"font-size: 14px;\n"
+"color: rgb(134, 123, 170);")
         self.subtotalLabel.setObjectName("subtotalLabel")
         self.horizontalLayout_discount.addWidget(self.subtotalLabel)
         self.discountPercent = QtWidgets.QDoubleSpinBox(self.gridLayoutWidget_2)
@@ -279,8 +269,12 @@ class Ui_POS(object):
         self.vhorizontalLayoutButtons.addWidget(self.payButton)
         self.gridLayout.addLayout(self.vhorizontalLayoutButtons, 4, 0, 1, 1)
         self.paymentCombo = QtWidgets.QComboBox(self.gridLayoutWidget_2)
-        self.paymentCombo.setStyleSheet("background-color: rgb(189, 177, 226);\n"
-"border-left-color: rgb(0, 0, 0);")
+        self.paymentCombo.setStyleSheet("QComboBox {\n"
+"    padding: 10px;\n"
+"    border: 3px solid #867BAA;\n"
+"    border-radius: 20px;\n"
+"}\n"
+"")
         self.paymentCombo.setObjectName("paymentCombo")
         self.paymentCombo.addItem("")
         self.paymentCombo.addItem("")
@@ -304,9 +298,6 @@ class Ui_POS(object):
         POS.setWindowTitle(_translate("POS", "AlquimiaPastelería"))
         self.tituloLabel.setText(_translate("POS", "Alquimia Pastelería"))
         self.btnToggle.setText(_translate("POS", "☰"))
-        self.pushButton_2.setText(_translate("POS", "PushButton"))
-        self.pushButton_3.setText(_translate("POS", "PushButton"))
-        self.pushButton_4.setText(_translate("POS", "PushButton"))
         self.searchInput.setPlaceholderText(_translate("POS", "Buscar productos..."))
         self.saleTitleLabel.setText(_translate("POS", "Resumen de Venta"))
         item = self.salesTable.horizontalHeaderItem(0)
