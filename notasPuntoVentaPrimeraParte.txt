@@ -1,0 +1,29 @@
+° agregar la tabla de roles solo limitar admin empleado
+
+°en telefono agregar linea de codigo que mando Axel (en todas las tablas donde haya telefono)
+
+°en tabla empleados agregar direccion
+
+°agregar a empleados turno (matutino vespertino)
+
+°En usuarios en rol llamar el ID_rol
+
+°Cajas en estado hacer un check donde solo pueda ser abierta o cerrada
+
+°Agregar el campo turno en Cajas
+
+°Producto agregar restriccion en codigo de barras que sea unica
+
+°Productos error ortografico pedecedero / percedero
+
+°Tabla Ingredientes en atributo provedores_ID falta referencia al Id de los provedores
+
+°Promociones solo manejar promos por dia de la semana, sin descuentos o cosas raras xd
+
+°Ventas despues de usuarioID agregar Caja_ID, cuando esten ingresando productos a la venta poner el estado (atributo) pendiente por defecto
+ despues a pagado
+
+°Reducir los campos de ventas para todos esos datos que se van a ir mostrando aparezcan en detalles de venta, esas dos tablas estan haciendo lo mismo
+ practicamente
+
+°Movimientos solo entrada cuando se hace pan o salida cuando se compra 
