@@ -55,7 +55,7 @@ class Ui_Dialog(object):
 "    font-weight: bold;\n"
 "}\n"
 "QPushButton:hover {\n"
-"    background-color: #4a6378;\n"
+"    background-color: #BDB1E2;\n"
 "}")
         self.btnMenu.setObjectName("btnMenu")
         self.widget = QtWidgets.QWidget(Dialog)
@@ -179,7 +179,7 @@ class Ui_Dialog(object):
 "    font-weight: bold;\n"
 "}\n"
 "QPushButton:hover {\n"
-"    background-color: #229954;\n"
+"    background-color: #BDB1E2;\n"
 "}")
         self.payButton_5.setObjectName("payButton_5")
         self.horizontalLayout_3.addWidget(self.payButton_5)
@@ -193,7 +193,7 @@ class Ui_Dialog(object):
 "    font-weight: bold;\n"
 "}\n"
 "QPushButton:hover {\n"
-"    background-color: #229954;\n"
+"    background-color: #BDB1E2;\n"
 "}")
         self.payButton_3.setObjectName("payButton_3")
         self.horizontalLayout_3.addWidget(self.payButton_3)
@@ -207,7 +207,7 @@ class Ui_Dialog(object):
 "    font-weight: bold;\n"
 "}\n"
 "QPushButton:hover {\n"
-"    background-color: #229954;\n"
+"    background-color: #BDB1E2;\n"
 "}")
         self.payButton_4.setObjectName("payButton_4")
         self.horizontalLayout_3.addWidget(self.payButton_4)
@@ -275,7 +275,7 @@ class Ui_Dialog(object):
 "    font-weight: bold;\n"
 "}\n"
 "QPushButton:hover {\n"
-"    background-color: #229954;\n"
+"    background-color: #BDB1E2;\n"
 "}")
         self.payButton_2.setObjectName("payButton_2")
         self.horizontalLayout.addWidget(self.payButton_2)

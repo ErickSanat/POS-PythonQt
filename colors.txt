@@ -1,0 +1,13 @@
+primer paleta del más claro al más oscuro
+#CFC3F5
+#BDB1E2
+#AB9FD0
+#988DBD
+#867BAA
+
+segunda paleta del más claro al más oscuro
+#FFFFFF
+#EEECF7
+#DED8EF
+#CDC5E7
+#BDB2DF

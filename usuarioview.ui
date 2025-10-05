@@ -100,7 +100,7 @@
     font-weight: bold;
 }
 QPushButton:hover {
-    background-color: #4a6378;
+    background-color: #BDB1E2;
 }</string>
     </property>
     <property name="text">
@@ -366,7 +366,7 @@ QPushButton:hover {
     font-weight: bold;
 }
 QPushButton:hover {
-    background-color: #229954;
+    background-color: #BDB1E2;
 }</string>
              </property>
              <property name="text">
@@ -386,7 +386,7 @@ QPushButton:hover {
     font-weight: bold;
 }
 QPushButton:hover {
-    background-color: #229954;
+    background-color: #BDB1E2;
 }</string>
              </property>
              <property name="text">
@@ -406,7 +406,7 @@ QPushButton:hover {
     font-weight: bold;
 }
 QPushButton:hover {
-    background-color: #229954;
+    background-color: #BDB1E2;
 }</string>
              </property>
              <property name="text">
@@ -539,7 +539,7 @@ QPushButton:hover {
     font-weight: bold;
 }
 QPushButton:hover {
-    background-color: #229954;
+    background-color: #BDB1E2;
 }</string>
            </property>
            <property name="text">

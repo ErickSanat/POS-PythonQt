@@ -5,47 +5,13 @@ from PyQt5.QtGui import QPixmap
 from PyQt5.QtCore import Qt
 
 # Importar la interfaz generada
-from ui_login import Ui_LoginWindow
+from ui_login import Ui_InicioSesion
 
-class LoginWindow(QMainWindow, Ui_LoginWindow):
+class Ui_InicioSesion(QMainWindow, Ui_InicioSesion):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        
-        # Configurar la imagen del logo
-        self.setup_logo()
-        
-        # Conectar señales
-        self.login_button.clicked.connect(self.login)
-        
-    def setup_logo(self):
-        """Configurar la imagen del logo"""
-        logo_path = "logoPasteleria.png"
-        if os.path.exists(logo_path):
-            pixmap = QPixmap(logo_path)
-            if not pixmap.isNull():
-                # Escalar manteniendo aspecto
-                scaled_pixmap = pixmap.scaled(200, 200, Qt.KeepAspectRatio, Qt.SmoothTransformation)
-                self.logo_label.setPixmap(scaled_pixmap)
-                self.logo_label.setAlignment(Qt.AlignCenter)
-            else:
-                self.setup_text_logo()
-        else:
-            self.setup_text_logo()
-    
-    def setup_text_logo(self):
-        """Mostrar texto si no hay imagen"""
-        self.logo_label.setText("ALQUIMIA\nPASTELERÍA")
-        self.logo_label.setAlignment(Qt.AlignCenter)
-        self.logo_label.setStyleSheet("""
-            QLabel {
-                color: #6c757d;
-                font-size: 24px;
-                font-weight: bold;
-                padding: 20px;
-            }
-        """)
-    
+
     def login(self):
         """Manejar el evento de login"""
         username = self.user_input.text().strip()
@@ -76,6 +42,6 @@ if __name__ == "__main__":
     # Establecer estilo global
     app.setStyle('Fusion')
     
-    window = LoginWindow()
+    window = Ui_InicioSesion()
     window.show()
     sys.exit(app.exec_())

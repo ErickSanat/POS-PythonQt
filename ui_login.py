@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'in.ui'
+# Form implementation generated from reading ui file 'inicioSesion.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.9
 #
@@ -11,131 +11,82 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_LoginWindow(object):
-    def setupUi(self, LoginWindow):
-        LoginWindow.setObjectName("LoginWindow")
-        LoginWindow.resize(500, 659)
-        LoginWindow.setStyleSheet("QMainWindow {\n"
-"    background-color: #f8f9fa;\n"
-"}\n"
-"QFrame {\n"
-"    background-color: white;\n"
-"    border-radius: 15px;\n"
-"    border: 2px solid #e9ecef;\n"
-"}\n"
-"QLabel {\n"
-"    color: #333333;\n"
-"}\n"
-"QLineEdit {\n"
-"    padding: 12px;\n"
-"    border: 2px solid #dee2e6;\n"
-"    border-radius: 8px;\n"
+class Ui_InicioSesion(object):
+    def setupUi(self, InicioSesion):
+        InicioSesion.setObjectName("InicioSesion")
+        InicioSesion.resize(400, 301)
+        InicioSesion.setAutoFillBackground(False)
+        self.frame = QtWidgets.QFrame(InicioSesion)
+        self.frame.setGeometry(QtCore.QRect(0, 0, 401, 301))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.frame.sizePolicy().hasHeightForWidth())
+        self.frame.setSizePolicy(sizePolicy)
+        self.frame.setStyleSheet("background-color: rgb(207, 195, 245);")
+        self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame.setObjectName("frame")
+        self.verticalLayoutWidget = QtWidgets.QWidget(self.frame)
+        self.verticalLayoutWidget.setGeometry(QtCore.QRect(100, 20, 211, 251))
+        self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
+        self.verticalLayout.setContentsMargins(10, 10, 10, 10)
+        self.verticalLayout.setSpacing(10)
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.label = QtWidgets.QLabel(self.verticalLayoutWidget)
+        self.label.setStyleSheet("color: rgb(0, 0, 0);")
+        self.label.setObjectName("label")
+        self.verticalLayout.addWidget(self.label)
+        self.user_input = QtWidgets.QLineEdit(self.verticalLayoutWidget)
+        self.user_input.setStyleSheet("QLineEdit {\n"
+"    padding: 10px;\n"
+"    border: 2px solid #867BAA;\n"
+"    border-radius: 20px;\n"
 "    font-size: 14px;\n"
-"    background-color: #ffffff;\n"
-"}\n"
-"QLineEdit:focus {\n"
-"    border-color: #6c757d;\n"
-"}\n"
-"QPushButton {\n"
-"    background-color: #6c757d;\n"
-"    color: white;\n"
+"    color: rgb(134, 123, 170);\n"
+"}")
+        self.user_input.setText("")
+        self.user_input.setObjectName("user_input")
+        self.verticalLayout.addWidget(self.user_input)
+        self.label_2 = QtWidgets.QLabel(self.verticalLayoutWidget)
+        self.label_2.setStyleSheet("color: rgb(0, 0, 0);")
+        self.label_2.setObjectName("label_2")
+        self.verticalLayout.addWidget(self.label_2)
+        self.password_input = QtWidgets.QLineEdit(self.verticalLayoutWidget)
+        self.password_input.setStyleSheet("QLineEdit {\n"
+"    padding: 10px;\n"
+"    border: 2px solid #867BAA;\n"
+"    border-radius: 20px;\n"
+"    font-size: 14px;\n"
+"    color: rgb(134, 123, 170);\n"
+"}")
+        self.password_input.setEchoMode(QtWidgets.QLineEdit.Password)
+        self.password_input.setObjectName("password_input")
+        self.verticalLayout.addWidget(self.password_input)
+        self.payButton_5 = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        self.payButton_5.setStyleSheet("QPushButton {\n"
+"    background-color: #867BAA;\n"
+"    color: black;\n"
+"    padding: 10px;\n"
 "    border: none;\n"
-"    padding: 12px;\n"
-"    border-radius: 8px;\n"
-"    font-size: 16px;\n"
+"    border-radius: 5px;\n"
 "    font-weight: bold;\n"
 "}\n"
 "QPushButton:hover {\n"
-"    background-color: #5a6268;\n"
-"}\n"
-"QPushButton:pressed {\n"
-"    background-color: #545b62;\n"
+"    background-color: #BDB1E2;\n"
 "}")
-        self.centralwidget = QtWidgets.QWidget(LoginWindow)
-        self.centralwidget.setObjectName("centralwidget")
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
-        self.verticalLayout.setContentsMargins(40, 40, 40, 40)
-        self.verticalLayout.setSpacing(20)
-        self.verticalLayout.setObjectName("verticalLayout")
-        self.logo_label = QtWidgets.QLabel(self.centralwidget)
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(20)
-        font.setBold(True)
-        font.setWeight(75)
-        self.logo_label.setFont(font)
-        self.logo_label.setAlignment(QtCore.Qt.AlignCenter)
-        self.logo_label.setObjectName("logo_label")
-        self.verticalLayout.addWidget(self.logo_label)
-        self.title_label = QtWidgets.QLabel(self.centralwidget)
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(18)
-        font.setBold(True)
-        font.setWeight(75)
-        self.title_label.setFont(font)
-        self.title_label.setStyleSheet("color: #495057;")
-        self.title_label.setAlignment(QtCore.Qt.AlignCenter)
-        self.title_label.setObjectName("title_label")
-        self.verticalLayout.addWidget(self.title_label)
-        self.form_frame = QtWidgets.QFrame(self.centralwidget)
-        self.form_frame.setStyleSheet("QFrame {\n"
-"    background-color: white;\n"
-"    padding: 30px;\n"
-"    border-radius: 15px;\n"
-"    border: 2px solid #e9ecef;\n"
-"}")
-        self.form_frame.setObjectName("form_frame")
-        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.form_frame)
-        self.verticalLayout_2.setSpacing(20)
-        self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.user_layout = QtWidgets.QVBoxLayout()
-        self.user_layout.setObjectName("user_layout")
-        self.user_label = QtWidgets.QLabel(self.form_frame)
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(11)
-        self.user_label.setFont(font)
-        self.user_label.setObjectName("user_label")
-        self.user_layout.addWidget(self.user_label)
-        self.user_input = QtWidgets.QLineEdit(self.form_frame)
-        self.user_input.setText("")
-        self.user_input.setObjectName("user_input")
-        self.user_layout.addWidget(self.user_input)
-        self.verticalLayout_2.addLayout(self.user_layout)
-        self.password_layout = QtWidgets.QVBoxLayout()
-        self.password_layout.setObjectName("password_layout")
-        self.password_label = QtWidgets.QLabel(self.form_frame)
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(11)
-        self.password_label.setFont(font)
-        self.password_label.setObjectName("password_label")
-        self.password_layout.addWidget(self.password_label)
-        self.password_input = QtWidgets.QLineEdit(self.form_frame)
-        self.password_input.setEchoMode(QtWidgets.QLineEdit.Password)
-        self.password_input.setObjectName("password_input")
-        self.password_layout.addWidget(self.password_input)
-        self.verticalLayout_2.addLayout(self.password_layout)
-        self.login_button = QtWidgets.QPushButton(self.form_frame)
-        self.login_button.setObjectName("login_button")
-        self.verticalLayout_2.addWidget(self.login_button)
-        self.verticalLayout.addWidget(self.form_frame)
-        spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout.addItem(spacerItem)
-        LoginWindow.setCentralWidget(self.centralwidget)
+        self.payButton_5.setObjectName("payButton_5")
+        self.verticalLayout.addWidget(self.payButton_5)
 
-        self.retranslateUi(LoginWindow)
-        QtCore.QMetaObject.connectSlotsByName(LoginWindow)
+        self.retranslateUi(InicioSesion)
+        QtCore.QMetaObject.connectSlotsByName(InicioSesion)
 
-    def retranslateUi(self, LoginWindow):
+    def retranslateUi(self, InicioSesion):
         _translate = QtCore.QCoreApplication.translate
-        LoginWindow.setWindowTitle(_translate("LoginWindow", "Alquimia Pastelería - Inicio de Sesión"))
-        self.logo_label.setText(_translate("LoginWindow", "ALQUIMIA\n"
-"PASTELERÍA"))
-        self.title_label.setText(_translate("LoginWindow", "Inicio de Sesión"))
-        self.user_label.setText(_translate("LoginWindow", "Usuario:"))
-        self.user_input.setPlaceholderText(_translate("LoginWindow", "Ingrese su usuario"))
-        self.password_label.setText(_translate("LoginWindow", "Contraseña:"))
-        self.password_input.setPlaceholderText(_translate("LoginWindow", "Ingrese su contraseña"))
-        self.login_button.setText(_translate("LoginWindow", "Iniciar Sesión"))
+        InicioSesion.setWindowTitle(_translate("InicioSesion", "Dialog"))
+        self.label.setText(_translate("InicioSesion", "Usuario"))
+        self.user_input.setPlaceholderText(_translate("InicioSesion", "Ingrese su usuario"))
+        self.label_2.setText(_translate("InicioSesion", "Contraseña"))
+        self.password_input.setPlaceholderText(_translate("InicioSesion", "Ingrese su contraseña"))
+        self.payButton_5.setText(_translate("InicioSesion", "Ingresar"))
