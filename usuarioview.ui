@@ -329,8 +329,11 @@ QPushButton:hover {
 	color: rgb(134, 123, 170);
 }</string>
            </property>
+           <property name="text">
+            <string/>
+           </property>
            <property name="placeholderText">
-            <string>Dirección del cliente...</string>
+            <string>Teléfono del cliente...</string>
            </property>
           </widget>
          </item>

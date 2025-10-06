@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'usuarioview.ui'
+# Form implementation generated from reading ui file 'productoview.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.9
 #
@@ -11,54 +11,11 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_Dialog(object):
-    def setupUi(self, Dialog):
-        Dialog.setObjectName("Dialog")
-        Dialog.resize(1201, 680)
-        self.contrasteWidget = QtWidgets.QWidget(Dialog)
-        self.contrasteWidget.setGeometry(QtCore.QRect(0, 0, 1201, 61))
-        self.contrasteWidget.setAutoFillBackground(False)
-        self.contrasteWidget.setStyleSheet("background-color: #867BAA")
-        self.contrasteWidget.setObjectName("contrasteWidget")
-        self.tituloLabel = QtWidgets.QLabel(self.contrasteWidget)
-        self.tituloLabel.setGeometry(QtCore.QRect(110, 10, 361, 41))
-        font = QtGui.QFont()
-        font.setFamily("Noto Serif Display SemiCondensed Black")
-        font.setPointSize(26)
-        font.setBold(True)
-        font.setItalic(True)
-        font.setUnderline(True)
-        font.setWeight(75)
-        font.setStyleStrategy(QtGui.QFont.PreferDefault)
-        self.tituloLabel.setFont(font)
-        self.tituloLabel.setStyleSheet("color: rgb(0, 0, 0);")
-        self.tituloLabel.setObjectName("tituloLabel")
-        self.label_2 = QtWidgets.QLabel(self.contrasteWidget)
-        self.label_2.setGeometry(QtCore.QRect(20, 10, 51, 41))
-        self.label_2.setText("")
-        self.label_2.setPixmap(QtGui.QPixmap("Iconos/logoPasteleriaMini.xcf"))
-        self.label_2.setScaledContents(True)
-        self.label_2.setObjectName("label_2")
-        self.btnMenu = QtWidgets.QPushButton(self.contrasteWidget)
-        self.btnMenu.setGeometry(QtCore.QRect(1120, 10, 41, 31))
-        font = QtGui.QFont()
-        font.setPointSize(-1)
-        font.setBold(True)
-        font.setWeight(75)
-        self.btnMenu.setFont(font)
-        self.btnMenu.setStyleSheet("QPushButton {\n"
-"    background-color: #867BAA;\n"
-"    color: white;\n"
-"    border: none;\n"
-"    border-radius: 5px;\n"
-"    font-size: 18px;\n"
-"    font-weight: bold;\n"
-"}\n"
-"QPushButton:hover {\n"
-"    background-color: #BDB1E2;\n"
-"}")
-        self.btnMenu.setObjectName("btnMenu")
-        self.widget = QtWidgets.QWidget(Dialog)
+class Ui_Form(object):
+    def setupUi(self, Form):
+        Form.setObjectName("Form")
+        Form.resize(1200, 691)
+        self.widget = QtWidgets.QWidget(Form)
         self.widget.setGeometry(QtCore.QRect(0, 0, 1201, 691))
         self.widget.setStyleSheet("background-color: #CFC3F5;")
         self.widget.setObjectName("widget")
@@ -98,7 +55,7 @@ class Ui_Dialog(object):
         self.saleTitleLabel_3.setAlignment(QtCore.Qt.AlignCenter)
         self.saleTitleLabel_3.setObjectName("saleTitleLabel_3")
         self.verticalLayoutWidget_2 = QtWidgets.QWidget(self.frame)
-        self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(10, 90, 271, 311))
+        self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(10, 90, 271, 410))
         self.verticalLayoutWidget_2.setObjectName("verticalLayoutWidget_2")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_2)
         self.verticalLayout.setContentsMargins(10, 10, 10, 10)
@@ -122,6 +79,7 @@ class Ui_Dialog(object):
 "    font-size: 14px;\n"
 "    color: rgb(134, 123, 170);\n"
 "}")
+        self.searchInput_3.setText("")
         self.searchInput_3.setObjectName("searchInput_3")
         self.verticalLayout.addWidget(self.searchInput_3)
         self.label_5 = QtWidgets.QLabel(self.verticalLayoutWidget_2)
@@ -133,17 +91,9 @@ class Ui_Dialog(object):
         self.label_5.setStyleSheet("color: rgb(0, 0, 0);")
         self.label_5.setObjectName("label_5")
         self.verticalLayout.addWidget(self.label_5)
-        self.searchInput_2 = QtWidgets.QLineEdit(self.verticalLayoutWidget_2)
-        self.searchInput_2.setMinimumSize(QtCore.QSize(40, 0))
-        self.searchInput_2.setStyleSheet("QLineEdit {\n"
-"    padding: 10px;\n"
-"    border: 2px solid #867BAA;\n"
-"    border-radius: 20px;\n"
-"    font-size: 14px;\n"
-"    color: rgb(134, 123, 170);\n"
-"}")
-        self.searchInput_2.setObjectName("searchInput_2")
-        self.verticalLayout.addWidget(self.searchInput_2)
+        self.textEdit = QtWidgets.QTextEdit(self.verticalLayoutWidget_2)
+        self.textEdit.setObjectName("textEdit")
+        self.verticalLayout.addWidget(self.textEdit)
         self.label_6 = QtWidgets.QLabel(self.verticalLayoutWidget_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -165,6 +115,27 @@ class Ui_Dialog(object):
         self.searchInput_4.setText("")
         self.searchInput_4.setObjectName("searchInput_4")
         self.verticalLayout.addWidget(self.searchInput_4)
+        self.label_7 = QtWidgets.QLabel(self.verticalLayoutWidget_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_7.sizePolicy().hasHeightForWidth())
+        self.label_7.setSizePolicy(sizePolicy)
+        self.label_7.setStyleSheet("color: rgb(0, 0, 0);")
+        self.label_7.setObjectName("label_7")
+        self.verticalLayout.addWidget(self.label_7)
+        self.searchInput_6 = QtWidgets.QLineEdit(self.verticalLayoutWidget_2)
+        self.searchInput_6.setMinimumSize(QtCore.QSize(40, 0))
+        self.searchInput_6.setStyleSheet("QLineEdit {\n"
+"    padding: 10px;\n"
+"    border: 2px solid #867BAA;\n"
+"    border-radius: 20px;\n"
+"    font-size: 14px;\n"
+"    color: rgb(134, 123, 170);\n"
+"}")
+        self.searchInput_6.setText("")
+        self.searchInput_6.setObjectName("searchInput_6")
+        self.verticalLayout.addWidget(self.searchInput_6)
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_3.setSizeConstraint(QtWidgets.QLayout.SetDefaultConstraint)
         self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
@@ -286,27 +257,69 @@ class Ui_Dialog(object):
         self.verticalLayoutRight_2.addWidget(self.tableView)
         self.horizontalLayout_2.addLayout(self.verticalLayoutRight_2)
         self.horizontalLayout_2.setStretch(1, 3)
-        self.widget.raise_()
-        self.contrasteWidget.raise_()
+        self.contrasteWidget = QtWidgets.QWidget(self.widget)
+        self.contrasteWidget.setGeometry(QtCore.QRect(0, 0, 1201, 61))
+        self.contrasteWidget.setAutoFillBackground(False)
+        self.contrasteWidget.setStyleSheet("background-color: #867BAA")
+        self.contrasteWidget.setObjectName("contrasteWidget")
+        self.tituloLabel = QtWidgets.QLabel(self.contrasteWidget)
+        self.tituloLabel.setGeometry(QtCore.QRect(110, 10, 361, 41))
+        font = QtGui.QFont()
+        font.setFamily("Noto Serif Display SemiCondensed Black")
+        font.setPointSize(26)
+        font.setBold(True)
+        font.setItalic(True)
+        font.setUnderline(True)
+        font.setWeight(75)
+        font.setStyleStrategy(QtGui.QFont.PreferDefault)
+        self.tituloLabel.setFont(font)
+        self.tituloLabel.setStyleSheet("color: rgb(0, 0, 0);")
+        self.tituloLabel.setObjectName("tituloLabel")
+        self.label_2 = QtWidgets.QLabel(self.contrasteWidget)
+        self.label_2.setGeometry(QtCore.QRect(20, 10, 51, 41))
+        self.label_2.setText("")
+        self.label_2.setPixmap(QtGui.QPixmap("Iconos/logoPasteleriaMini.xcf"))
+        self.label_2.setScaledContents(True)
+        self.label_2.setObjectName("label_2")
+        self.btnMenu = QtWidgets.QPushButton(self.contrasteWidget)
+        self.btnMenu.setGeometry(QtCore.QRect(1120, 10, 41, 31))
+        font = QtGui.QFont()
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setWeight(75)
+        self.btnMenu.setFont(font)
+        self.btnMenu.setStyleSheet("QPushButton {\n"
+"    background-color: #867BAA;\n"
+"    color: white;\n"
+"    border: none;\n"
+"    border-radius: 5px;\n"
+"    font-size: 18px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: #BDB1E2;\n"
+"}")
+        self.btnMenu.setObjectName("btnMenu")
 
-        self.retranslateUi(Dialog)
-        QtCore.QMetaObject.connectSlotsByName(Dialog)
+        self.retranslateUi(Form)
+        QtCore.QMetaObject.connectSlotsByName(Form)
 
-    def retranslateUi(self, Dialog):
+    def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.tituloLabel.setText(_translate("Dialog", "Alquimia Pastelería"))
-        self.btnMenu.setText(_translate("Dialog", "☰"))
-        self.saleTitleLabel_3.setText(_translate("Dialog", "Cliente:"))
-        self.label_4.setText(_translate("Dialog", "Nombre:"))
-        self.searchInput_3.setPlaceholderText(_translate("Dialog", "Nombre de cliente..."))
-        self.label_5.setText(_translate("Dialog", "Dirección:"))
-        self.searchInput_2.setPlaceholderText(_translate("Dialog", "Dirección del cliente..."))
-        self.label_6.setText(_translate("Dialog", "Teléfono:"))
-        self.searchInput_4.setPlaceholderText(_translate("Dialog", "Teléfono del cliente..."))
-        self.payButton_5.setText(_translate("Dialog", "Agregar"))
-        self.payButton_3.setText(_translate("Dialog", "Editar"))
-        self.payButton_4.setText(_translate("Dialog", "Elliminar"))
-        self.saleTitleLabel_2.setText(_translate("Dialog", "Encontrar cliente por:"))
-        self.searchInput_5.setPlaceholderText(_translate("Dialog", "Dato..."))
-        self.payButton_2.setText(_translate("Dialog", "Buscar"))
+        Form.setWindowTitle(_translate("Form", "Form"))
+        self.saleTitleLabel_3.setText(_translate("Form", "Producto:"))
+        self.label_4.setText(_translate("Form", "Nombre:"))
+        self.searchInput_3.setPlaceholderText(_translate("Form", "Nombre del producto..."))
+        self.label_5.setText(_translate("Form", "Descripción:"))
+        self.label_6.setText(_translate("Form", "Precio:"))
+        self.searchInput_4.setPlaceholderText(_translate("Form", "Precio del producto..."))
+        self.label_7.setText(_translate("Form", "Stock:"))
+        self.searchInput_6.setPlaceholderText(_translate("Form", "Stock del producto..."))
+        self.payButton_5.setText(_translate("Form", "Agregar"))
+        self.payButton_3.setText(_translate("Form", "Editar"))
+        self.payButton_4.setText(_translate("Form", "Elliminar"))
+        self.saleTitleLabel_2.setText(_translate("Form", "Encontrar producto por:"))
+        self.searchInput_5.setPlaceholderText(_translate("Form", "Dato..."))
+        self.payButton_2.setText(_translate("Form", "Buscar"))
+        self.tituloLabel.setText(_translate("Form", "Alquimia Pastelería"))
+        self.btnMenu.setText(_translate("Form", "☰"))
