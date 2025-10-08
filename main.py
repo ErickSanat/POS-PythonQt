@@ -5,7 +5,7 @@ from PyQt5.QtGui import QPixmap
 from PyQt5.QtCore import Qt
 
 # Importar la interfaz generada
-from ui_login import Ui_InicioSesion
+from app import Ui_InicioSesion
 
 class Ui_InicioSesion(QMainWindow, Ui_InicioSesion):
     def __init__(self):
