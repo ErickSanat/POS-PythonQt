@@ -1,1 +1,1 @@
-from .view.ui_login import Ui_InicioSesion
+from .view import Ui_InicioSesion
