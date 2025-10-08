@@ -7,7 +7,7 @@ from PyQt5.QtCore import Qt
 # Importar la interfaz generada
 from app import Ui_InicioSesion
 
-class Ui_InicioSesion(QMainWindow, Ui_InicioSesion):
+class InicioSesion(QMainWindow, Ui_InicioSesion):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
@@ -42,6 +42,6 @@ if __name__ == "__main__":
     # Establecer estilo global
     app.setStyle('Fusion')
     
-    window = Ui_InicioSesion()
+    window = InicioSesion()
     window.show()
     sys.exit(app.exec_())
