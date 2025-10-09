@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1200</width>
-    <height>691</height>
+    <width>1199</width>
+    <height>690</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -94,7 +94,7 @@
          <enum>QFrame::NoFrame</enum>
         </property>
         <property name="text">
-         <string>Producto:</string>
+         <string>Proveedor:</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -106,7 +106,7 @@
           <x>10</x>
           <y>90</y>
           <width>271</width>
-          <height>410</height>
+          <height>488</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0,0,0,0,0,0">
@@ -162,12 +162,12 @@
             <string/>
            </property>
            <property name="placeholderText">
-            <string>Nombre del producto...</string>
+            <string>Nombre del proveedor...</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="label_5">
+          <widget class="QLabel" name="label_12">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -178,12 +178,34 @@
             <string notr="true">color: rgb(0, 0, 0);</string>
            </property>
            <property name="text">
-            <string>Descripción:</string>
+            <string>Nombre de contacto:</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QTextEdit" name="textEdit"/>
+          <widget class="QLineEdit" name="searchInput_10">
+           <property name="minimumSize">
+            <size>
+             <width>40</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLineEdit {
+    padding: 10px;
+    border: 2px solid #867BAA;
+    border-radius: 20px;
+    font-size: 14px;
+	color: rgb(134, 123, 170);
+}</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="placeholderText">
+            <string>Nombre del contacto...</string>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QLabel" name="label_6">
@@ -197,7 +219,7 @@
             <string notr="true">color: rgb(0, 0, 0);</string>
            </property>
            <property name="text">
-            <string>Precio:</string>
+            <string>Teléfono:</string>
            </property>
           </widget>
          </item>
@@ -222,12 +244,12 @@
             <string/>
            </property>
            <property name="placeholderText">
-            <string>Precio del producto...</string>
+            <string>Teléfono del proveedor...</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="label_7">
+          <widget class="QLabel" name="label_13">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -238,34 +260,12 @@
             <string notr="true">color: rgb(0, 0, 0);</string>
            </property>
            <property name="text">
-            <string>Stock:</string>
+            <string>Dirección:</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="searchInput_6">
-           <property name="minimumSize">
-            <size>
-             <width>40</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QLineEdit {
-    padding: 10px;
-    border: 2px solid #867BAA;
-    border-radius: 20px;
-    font-size: 14px;
-	color: rgb(134, 123, 170);
-}</string>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="placeholderText">
-            <string>Stock del producto...</string>
-           </property>
-          </widget>
+          <widget class="QTextEdit" name="textEdit"/>
          </item>
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -407,7 +407,7 @@ QPushButton:hover {
 }</string>
            </property>
            <property name="text">
-            <string>Encontrar producto por:</string>
+            <string>Encontrar proveedores por:</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -544,7 +544,7 @@ QPushButton:hover {
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap>../../assets/Iconos/logoPasteleriaMini.xcf</pixmap>
+      <pixmap>Iconos/logoPasteleriaMini.xcf</pixmap>
      </property>
      <property name="scaledContents">
       <bool>true</bool>

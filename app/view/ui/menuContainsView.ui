@@ -56,23 +56,6 @@
      <property name="spacing">
       <number>10</number>
      </property>
-     <item row="1" column="2">
-      <widget class="QPushButton" name="pushButton_6">
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normaloff>Iconos/productos.svg</normaloff>Iconos/productos.svg</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>84</width>
-         <height>84</height>
-        </size>
-       </property>
-      </widget>
-     </item>
      <item row="2" column="0">
       <widget class="QPushButton" name="pushButton_3">
        <property name="text">
@@ -80,7 +63,7 @@
        </property>
        <property name="icon">
         <iconset>
-         <normaloff>Iconos/promociones.svg</normaloff>Iconos/promociones.svg</iconset>
+         <normaloff>../../assets/Iconos/promociones.svg</normaloff>../../assets/Iconos/promociones.svg</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -90,65 +73,14 @@
        </property>
       </widget>
      </item>
-     <item row="1" column="0">
-      <widget class="QPushButton" name="pushButton_2">
+     <item row="0" column="0">
+      <widget class="QPushButton" name="pushButton_9">
        <property name="text">
         <string/>
        </property>
        <property name="icon">
         <iconset>
-         <normaloff>Iconos/ventas.svg</normaloff>Iconos/ventas.svg</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>84</width>
-         <height>84</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="2">
-      <widget class="QPushButton" name="pushButton_4">
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normaloff>Iconos/clientes.svg</normaloff>Iconos/clientes.svg</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>84</width>
-         <height>84</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="3">
-      <widget class="QPushButton" name="pushButton_5">
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normaloff>Iconos/provedoores.svg</normaloff>Iconos/provedoores.svg</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>84</width>
-         <height>84</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="3">
-      <widget class="QPushButton" name="pushButton_7">
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normaloff>Iconos/soporte.svg</normaloff>Iconos/soporte.svg</iconset>
+         <normaloff>../../assets/Iconos/inicio.svg</normaloff>../../assets/Iconos/inicio.svg</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -165,7 +97,92 @@
        </property>
        <property name="icon">
         <iconset>
-         <normaloff>Iconos/cerrarSesion.svg</normaloff>Iconos/cerrarSesion.svg</iconset>
+         <normaloff>../../assets/Iconos/cerrarSesion.svg</normaloff>../../assets/Iconos/cerrarSesion.svg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>84</width>
+         <height>84</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="3">
+      <widget class="QPushButton" name="pushButton_5">
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../../assets/Iconos/provedoores.svg</normaloff>../../assets/Iconos/provedoores.svg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>84</width>
+         <height>84</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="2">
+      <widget class="QPushButton" name="pushButton_4">
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../../assets/Iconos/clientes.svg</normaloff>../../assets/Iconos/clientes.svg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>84</width>
+         <height>84</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QPushButton" name="pushButton_2">
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../../assets/Iconos/ventas.svg</normaloff>../../assets/Iconos/ventas.svg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>84</width>
+         <height>84</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="2">
+      <widget class="QPushButton" name="pushButton_6">
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../../assets/Iconos/productos.svg</normaloff>../../assets/Iconos/productos.svg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>84</width>
+         <height>84</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="3">
+      <widget class="QPushButton" name="pushButton_7">
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../../assets/Iconos/recetas.png</normaloff>../../assets/Iconos/recetas.png</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -188,24 +205,7 @@
        </property>
        <property name="icon">
         <iconset>
-         <normaloff>Iconos/empleados.svg</normaloff>Iconos/empleados.svg</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>84</width>
-         <height>84</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="0">
-      <widget class="QPushButton" name="pushButton_9">
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normaloff>Iconos/inicio.svg</normaloff>Iconos/inicio.svg</iconset>
+         <normaloff>../../assets/Iconos/empleados.svg</normaloff>../../assets/Iconos/empleados.svg</iconset>
        </property>
        <property name="iconSize">
         <size>
