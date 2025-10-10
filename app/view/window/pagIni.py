@@ -1,6 +1,6 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow
-from uiPagInicial import Ui_POS
+from ..generated.uiPagInicial import Ui_POS
 
 class TestWindow(QMainWindow, Ui_POS):
     def __init__(self):
