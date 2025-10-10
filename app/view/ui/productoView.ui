@@ -544,7 +544,7 @@ QPushButton:hover {
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap>Iconos/logoPasteleriaMini.xcf</pixmap>
+      <pixmap>../../assets/Iconos/logoPasteleriaMini.xcf</pixmap>
      </property>
      <property name="scaledContents">
       <bool>true</bool>
