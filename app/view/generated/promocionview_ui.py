@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'c:\Users\angel\OneDrive\Documentos\programacion\POS-PythonQt\ui\promocionview.ui'
+# Form implementation generated from reading ui file 'c:\Users\angel\OneDrive\Documentos\programacion\POS-PythonQt\app\view\ui\promocionview.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.11
 #
@@ -282,7 +282,7 @@ class Ui_Form(object):
         self.label_2 = QtWidgets.QLabel(self.contrasteWidget)
         self.label_2.setGeometry(QtCore.QRect(20, 10, 51, 41))
         self.label_2.setText("")
-        self.label_2.setPixmap(QtGui.QPixmap("c:\\Users\\angel\\OneDrive\\Documentos\\programacion\\POS-PythonQt\\ui\\Iconos/logoPasteleriaMini.xcf"))
+        self.label_2.setPixmap(QtGui.QPixmap("c:\\Users\\angel\\OneDrive\\Documentos\\programacion\\POS-PythonQt\\app\\view\\ui\\Iconos/logoPasteleriaMini.xcf"))
         self.label_2.setScaledContents(True)
         self.label_2.setObjectName("label_2")
         self.btnMenu = QtWidgets.QPushButton(self.contrasteWidget)
