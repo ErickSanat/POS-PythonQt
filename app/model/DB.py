@@ -1,9 +1,12 @@
 from psycopg2 import connect
+from dotenv import load_dotenv
+import os
 
 class DBConnection():
-    database="pasteleria_alquimia"
-    user="postgres"
-    password="passwd"
+    load_dotenv()
+    database=os.getenv("DB_NAME") or "pasteleria_alquimia"
+    user=os.getenv("DB_USER") or "postgres"
+    password=os.getenv("DB_PASS") or "passwd"
     host="localhost"
     port="5432"
     @staticmethod
