@@ -1,6 +1,6 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow
-from uiPagEmpleado import Ui_Form
+from .PuntoDeVenta.app.view.generated.uiPagEmpleado import Ui_Form
 
 class EmpWindow(QMainWindow, Ui_Form):
     def __init__(self):
