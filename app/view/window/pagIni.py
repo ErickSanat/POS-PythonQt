@@ -1,8 +1,5 @@
 import sys
-from PyQt5.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout,
-                             QHBoxLayout, QPushButton, QTabWidget, QLabel,
-                             QFrame)
-from PyQt5.QtCore import Qt, QPropertyAnimation, QEasingCurve, QPoint
+from PyQt5.QtWidgets import (QApplication, QMainWindow)
 from ..generated.menuInicialView_ui import Ui_POS
 
 
@@ -34,15 +31,15 @@ class InicioWindow(QMainWindow, Ui_POS):
         """Conectar los botones del menú flotante a sus funciones"""
         # Conectar cada botón a su función correspondiente
         buttons = {
-            self.pushButton_9: self.menuInicio,  # Inicio
-            self.pushButton_2: self.menuVentas,  # Ventas
-            self.pushButton_3: self.menuPromociones,  # Promociones
-            self.pushButton_4: self.menuClientes,  # Clientes
-            self.pushButton_5: self.menuProveedores,  # Proveedores
-            self.pushButton_6: self.menuProductos,  # Productos
-            self.pushButton_7: self.menuRecetas,  # Recetas
-            self.pushButton: self.menuEmpleados,  # Empleados
-            self.pushButton_8: self.menuCerrarSesion  # Cerrar sesión
+            self.btnMenuInicio: self.menuInicio,  # Inicio
+            self.btnVentas: self.menuVentas,  # Ventas
+            self.btnPromociones: self.menuPromociones,  # Promociones
+            self.btnClientes: self.menuClientes,  # Clientes
+            self.btnProveedores: self.menuProveedores,  # Proveedores
+            self.btnProductos: self.menuProductos,  # Productos
+            self.btnRecetas: self.menuRecetas,  # Recetas
+            self.btnEmpleados: self.menuEmpleados,  # Empleados
+            self.btnCerrarSesion: self.menuCerrarSesion  # Cerrar sesión
         }
 
         for button, function in buttons.items():
