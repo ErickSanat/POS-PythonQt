@@ -1,6 +1,6 @@
 from .view import (
     Ui_POS,
-    TestWindow,
+    InicioWindow,
     Ui_InicioSesion,
     InicioSesion
 )
