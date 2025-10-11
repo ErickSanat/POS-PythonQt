@@ -72,6 +72,16 @@ CREATE TABLE receta (
     instrucciones TEXT NOT NULL CHECK (LENGTH(TRIM(instrucciones)) > 0)
 );
 
+-- TABLA PROVEEDORES
+
+CREATE TABLE proveedor (
+    id_proveedor SERIAL PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL CHECK (nombre ~ '^[A-Za-zÁÉÍÓÚáéíóúÑñ0-9\s]+$' AND LENGTH(TRIM(nombre)) > 0),
+    nombre_contacto VARCHAR(100) CHECK (nombre_contacto IS NULL OR nombre_contacto ~ '^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$'),
+    telefono VARCHAR(15) NOT NULL CHECK (telefono ~ '^[0-9()+-\s]+$' AND LENGTH(telefono) >= 8),
+    direccion TEXT CHECK (direccion IS NULL OR LENGTH(TRIM(direccion)) > 0),
+    activo BOOLEAN DEFAULT TRUE
+);
 
 -- TABLA VENTAS
 
