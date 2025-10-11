@@ -5,7 +5,6 @@ from app import InicioSesion
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     
-    # Establecer estilo global
     app.setStyle('Fusion')
     
     window = InicioSesion()
