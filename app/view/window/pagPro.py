@@ -1,6 +1,6 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow
-from uiPagProducto import Ui_Form
+from ..generated.uiPagProducto import Ui_Form
 
 class ProWindow(QMainWindow, Ui_Form):
     def __init__(self):
