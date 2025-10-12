@@ -26,9 +26,3 @@ class InicioSesion(QMainWindow, Ui_InicioSesion):
             self.lanzarPagIni()
         else:
             QMessageBox.critical(self, "Error", "Usuario o contraseña incorrectos.")
-
-    def openMainWindow(self):
-
-        self.hide()
-        self.mainWindow = InicioWindow()
-        self.mainWindow.show()

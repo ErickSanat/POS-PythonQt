@@ -1,12 +1,22 @@
 import sys
 from PyQt5.QtWidgets import (QApplication, QMainWindow)
+from PyQt5.QtGui import QIcon
 from ..generated.menuInicialView_ui import Ui_POS
+from .pagUser import UserWindow
 
 
 class InicioWindow(QMainWindow, Ui_POS):
     def __init__(self):
         super().__init__()
-        self.setupUi(self)
+        try:
+            self.setupUi(self)
+        except Exception as e:
+            print(f"Advertencia al cargar la UI: {e}")
+            # Continuar sin el ícono problemático
+            self.setupUi(self)
+        
+        # Intentar establecer un ícono por defecto o ninguno
+        self.setWindowIcon(QIcon())
 
         # Configurar el menú flotante
         self.setupFloatingMenu()
@@ -18,6 +28,11 @@ class InicioWindow(QMainWindow, Ui_POS):
 
     def setupFloatingMenu(self):
         """Configurar las propiedades del menú flotante"""
+        # Verificar que el frameFlotante existe antes de usarlo
+        if not hasattr(self, 'frameFlotante'):
+            print("Advertencia: frameFlotante no existe")
+            return
+            
         # Ocultar inicialmente el menú
         self.frameFlotante.hide()
 
@@ -29,24 +44,31 @@ class InicioWindow(QMainWindow, Ui_POS):
 
     def connectMenuButtons(self):
         """Conectar los botones del menú flotante a sus funciones"""
-        # Conectar cada botón a su función correspondiente
-        buttons = {
-            self.btnMenuInicio: self.menuInicio,  # Inicio
-            self.btnVentas: self.menuVentas,  # Ventas
-            self.btnPromociones: self.menuPromociones,  # Promociones
-            self.btnClientes: self.menuClientes,  # Clientes
-            self.btnProveedores: self.menuProveedores,  # Proveedores
-            self.btnProductos: self.menuProductos,  # Productos
-            self.btnRecetas: self.menuRecetas,  # Recetas
-            self.btnEmpleados: self.menuEmpleados,  # Empleados
-            self.btnCerrarSesion: self.menuCerrarSesion  # Cerrar sesión
+        # Verificar que todos los botones existen antes de conectarlos
+        button_mappings = {
+            'btnMenuInicio': self.menuInicio,
+            'btnVentas': self.menuVentas,
+            'btnPromociones': self.menuPromociones,
+            'btnClientes': self.menuClientes,
+            'btnProveedores': self.menuProveedores,
+            'btnProductos': self.menuProductos,
+            'btnRecetas': self.menuRecetas,
+            'btnEmpleados': self.menuEmpleados,
+            'btnCerrarSesion': self.menuCerrarSesion
         }
 
-        for button, function in buttons.items():
-            button.clicked.connect(function)
+        for button_name, function in button_mappings.items():
+            if hasattr(self, button_name):
+                button = getattr(self, button_name)
+                button.clicked.connect(function)
+            else:
+                print(f"Advertencia: Botón {button_name} no encontrado")
 
     def toggleFloatingMenu(self):
         """Mostrar u ocultar el menú flotante"""
+        if not hasattr(self, 'frameFlotante'):
+            return
+            
         if self.frameFlotante.isVisible():
             self.hideFloatingMenu()
         else:
@@ -54,6 +76,9 @@ class InicioWindow(QMainWindow, Ui_POS):
 
     def showFloatingMenu(self):
         """Mostrar el menú flotante con animación"""
+        if not hasattr(self, 'frameFlotante') or not hasattr(self, 'btnMenu'):
+            return
+            
         # Posicionar el menú debajo del botón
         buttonPos = self.btnMenu.pos()
         menuX = buttonPos.x() - self.frameFlotante.width() + self.btnMenu.width()
@@ -65,11 +90,13 @@ class InicioWindow(QMainWindow, Ui_POS):
 
     def hideFloatingMenu(self):
         """Ocultar el menú flotante"""
-        self.frameFlotante.hide()
+        if hasattr(self, 'frameFlotante'):
+            self.frameFlotante.hide()
 
     def mousePressEvent(self, event):
         """Ocultar el menú flotante al hacer clic fuera de él"""
-        if (self.frameFlotante.isVisible() and
+        if (hasattr(self, 'frameFlotante') and hasattr(self, 'btnMenu') and
+                self.frameFlotante.isVisible() and
                 not self.frameFlotante.geometry().contains(event.globalPos()) and
                 not self.btnMenu.geometry().contains(self.btnMenu.mapFromGlobal(event.globalPos()))):
             self.hideFloatingMenu()
@@ -89,7 +116,8 @@ class InicioWindow(QMainWindow, Ui_POS):
         self.hideFloatingMenu()
 
     def menuClientes(self):
-        print("Menú: Clientes")
+        self.pagUser = UserWindow()
+        self.pagUser.show()
         self.hideFloatingMenu()
 
     def menuProveedores(self):
@@ -111,8 +139,7 @@ class InicioWindow(QMainWindow, Ui_POS):
     def menuCerrarSesion(self):
         print("Menú: Cerrar sesión")
         self.hideFloatingMenu()
-        # Aquí puedes agregar la lógica para cerrar sesión
-        # self.close()
+        QApplication.quit()
 
     def testFunction(self):
         print("¡El botón funciona!")
