@@ -99,6 +99,7 @@ class MenuFlotante:
             from app.view.window.pagIni import InicioWindow
             self.pagInicio = InicioWindow()
             self.pagInicio.show()
+            self.window().hide()
         except ImportError as e:
             print(f"Error al importar InicioWindow: {e}")
         self.hideFloatingMenu()
@@ -112,6 +113,11 @@ class MenuFlotante:
         self.hideFloatingMenu()
 
     def menuClientes(self):
+        if hasattr(self, 'pagUser'):
+            self.pagUser.show()
+            self.window().hide()
+            self.hideFloatingMenu()
+            return
         try:
             from app.view.window.pagUser import UserWindow
             self.pagUser = UserWindow()
