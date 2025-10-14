@@ -1,3 +1,4 @@
+-- Active: 1756079140609@@127.0.0.1@5432@pasteleria_alquimia
 CREATE DATABASE pasteleria_alquimia;
 
 \c pasteleria_alquimia;

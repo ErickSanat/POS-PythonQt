@@ -1,11 +1,14 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow
-from ..generated.uiPagProducto import Ui_Form
+from ..generated.productoview_ui import Ui_Form
+from app.utils.menuFlotante import MenuFlotante
 
-class ProWindow(QMainWindow, Ui_Form):
+class ProWindow(QMainWindow, Ui_Form, MenuFlotante):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+
+        self.setupFloatingMenu()
 
         print("Ventana cargada correctamente")
 

@@ -131,16 +131,40 @@ class MenuFlotante:
         print("Menú: Proveedores")
         self.hideFloatingMenu()
 
+
     def menuProductos(self):
-        print("Menú: Productos")
+        if hasattr(self, 'pagPro'):
+            self.pagPro.show()
+            self.window().hide()
+            self.hideFloatingMenu()
+            return
+        try:
+            from app.view.window.pagPro import ProWindow
+            self.pagPro = ProWindow()
+            self.pagPro.show()
+            self.window().hide()
+        except ImportError as e:
+            print(f"Error al importar ProWindow: {e}")
         self.hideFloatingMenu()
+
 
     def menuRecetas(self):
         print("Menú: Recetas")
         self.hideFloatingMenu()
 
     def menuEmpleados(self):
-        print("Menú: Empleados")
+        if hasattr(self, 'pagEmp'):
+            self.pagEmp.show()
+            self.window().hide()
+            self.hideFloatingMenu()
+            return
+        try:
+            from app.view.window.pagEmp import EmpWindow
+            self.pagEmp = EmpWindow()
+            self.pagEmp.show()
+            self.window().hide()
+        except ImportError as e:
+            print(f"Error al importar EmpWindow: {e}")
         self.hideFloatingMenu()
 
     def menuCerrarSesion(self):

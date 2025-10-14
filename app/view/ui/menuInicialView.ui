@@ -194,7 +194,7 @@ border-right: 2px solid #867BAA;</string>
                <x>0</x>
                <y>0</y>
                <width>681</width>
-               <height>499</height>
+               <height>506</height>
               </rect>
              </property>
              <widget class="QWidget" name="gridLayoutWidget">
