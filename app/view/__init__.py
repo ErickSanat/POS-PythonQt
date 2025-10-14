@@ -1,5 +1,5 @@
 from .generated.inicioSesionview_ui import Ui_InicioSesion
-from .generated.uiPagInicial import Ui_POS
+from .generated.menuInicialView_ui import Ui_POS
 from .window.pagEmp import EmpWindow
 from .window.pagIni import InicioWindow
 from .window.pagInicioSesion import InicioSesion

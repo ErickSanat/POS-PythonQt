@@ -1,6 +1,6 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow
-from ..generated.uiPagEmpleado import Ui_Form
+from ..generated.empleadoView_ui import Ui_Form
 from app.utils.menuFlotante import MenuFlotante
 
 class EmpWindow(QMainWindow, Ui_Form, MenuFlotante):
