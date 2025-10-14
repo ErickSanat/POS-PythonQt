@@ -1,11 +1,14 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow
-from .PuntoDeVenta.app.view.generated.uiPagEmpleado import Ui_Form
+from ..generated.uiPagEmpleado import Ui_Form
+from app.utils.menuFlotante import MenuFlotante
 
-class EmpWindow(QMainWindow, Ui_Form):
+class EmpWindow(QMainWindow, Ui_Form, MenuFlotante):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+
+        self.setupFloatingMenu()
 
         print("Ventana cargada correctamente")
 
