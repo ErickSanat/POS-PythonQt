@@ -105,11 +105,35 @@ class MenuFlotante:
         self.hideFloatingMenu()
 
     def menuVentas(self):
-        print("Menú: Ventas")
+        if hasattr(self, 'pagVen'):
+            self.pagVen.show()
+            self.window().hide()
+            self.hideFloatingMenu()
+            return
+        try:
+            from app.view.window.pagVen import VenWindow
+            self.pagVen = VenWindow()
+            self.pagVen.show()
+            self.window().hide()
+            self.hideFloatingMenu()
+        except ImportError as e:
+            print(f"Error al importar VenWindow: {e}")
         self.hideFloatingMenu()
 
     def menuPromociones(self):
-        print("Menú: Promociones")
+        if hasattr(self, 'pagProm'):
+            self.pagProm.show()
+            self.window().hide()
+            self.hideFloatingMenu()
+            return
+        try:
+            from app.view.window.pagProm import PromWindow
+            self.pagProm = PromWindow()
+            self.pagProm.show()
+            self.window().hide()
+            self.hideFloatingMenu()
+        except ImportError as e:
+            print(f"Error al importar PromWindow: {e}")
         self.hideFloatingMenu()
 
     def menuClientes(self):
@@ -128,7 +152,19 @@ class MenuFlotante:
         self.hideFloatingMenu()
 
     def menuProveedores(self):
-        print("Menú: Proveedores")
+        if hasattr(self, 'pagProv'):
+            self.pagProv.show()
+            self.window().hide()
+            self.hideFloatingMenu()
+            return
+        try:
+            from app.view.window.pagProv import ProvWindow
+            self.pagProv = ProvWindow()
+            self.pagProv.show()
+            self.window().hide()
+            self.hideFloatingMenu()
+        except ImportError as e:
+            print(f"Error al importar ProvWindow: {e}")
         self.hideFloatingMenu()
 
 
@@ -149,7 +185,18 @@ class MenuFlotante:
 
 
     def menuRecetas(self):
-        print("Menú: Recetas")
+        if hasattr(self, 'pagRec'):
+            self.pagRec.show()
+            self.window.hide()
+            self.hideFloatingMenu()
+            return
+        try:
+            from app.view.window.pagRec import RecWindow
+            self.pagRec = RecWindow()
+            self.pagRec.show()
+            self.window().hide()
+        except ImportError as e:
+            print(f"Error al importar RecWindow: {e}")
         self.hideFloatingMenu()
 
     def menuEmpleados(self):
