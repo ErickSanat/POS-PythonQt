@@ -100,6 +100,7 @@ class MenuFlotante:
             self.pagInicio = InicioWindow()
             self.pagInicio.show()
             self.window().hide()
+            self.hideFloatingMenu()
         except ImportError as e:
             print(f"Error al importar InicioWindow: {e}")
         self.hideFloatingMenu()
@@ -147,6 +148,7 @@ class MenuFlotante:
             self.pagUser = UserWindow()
             self.pagUser.show()
             self.window().hide()
+            self.hideFloatingMenu()
         except ImportError as e:
             print(f"Error al importar UserWindow: {e}")
         self.hideFloatingMenu()
@@ -179,6 +181,7 @@ class MenuFlotante:
             self.pagPro = ProWindow()
             self.pagPro.show()
             self.window().hide()
+            self.hideFloatingMenu()
         except ImportError as e:
             print(f"Error al importar ProWindow: {e}")
         self.hideFloatingMenu()
@@ -195,6 +198,7 @@ class MenuFlotante:
             self.pagRec = RecWindow()
             self.pagRec.show()
             self.window().hide()
+            self.hideFloatingMenu()
         except ImportError as e:
             print(f"Error al importar RecWindow: {e}")
         self.hideFloatingMenu()
@@ -210,6 +214,7 @@ class MenuFlotante:
             self.pagEmp = EmpWindow()
             self.pagEmp.show()
             self.window().hide()
+            self.hideFloatingMenu()
         except ImportError as e:
             print(f"Error al importar EmpWindow: {e}")
         self.hideFloatingMenu()
