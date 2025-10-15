@@ -1,4 +1,4 @@
-class Poveedor:
+class Proveedor:
     def __init__(
         self,
         id_proveedor: int=None,
@@ -14,3 +14,13 @@ class Poveedor:
         self.telefono = telefono
         self.direccion = direccion
         self.activo = activo
+    
+    def __repr__(self):
+        return f"""
+    id_proveedor: {self.id_proveedor}
+    nombre: {self.nombre}
+    nombre_contacto: {self.nombre_contacto}
+    telefono: {self.telefono}
+    direccion: {self.direccion}
+    activo: {self.activo}
+"""

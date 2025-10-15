@@ -10,3 +10,11 @@ class Cliente:
         self.nombre = nombre
         self.telefono = telefono
         self.correo = correo
+    
+    def __repr__(self):
+        return f"""
+    id: {self.id_cliente}
+    nombre: {self.nombre}
+    telefono: {self.telefono}
+    correo: {self.correo}
+"""

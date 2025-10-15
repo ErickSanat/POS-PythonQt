@@ -6,3 +6,9 @@ class TipoPago:
     ):
         self.id_tipo_pago = id_tipo_pago
         self.nombre = nombre
+    
+    def __repr__(self):
+        return f"""
+    id_tipo_pago: {self.id_tipo_pago}
+    nombre: {self.nombre}
+"""

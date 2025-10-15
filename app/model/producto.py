@@ -1,4 +1,4 @@
-from categoria import Categoria
+from .categoria import Categoria
 class Producto:
     def __init__(
         self,
@@ -15,3 +15,13 @@ class Producto:
         self.precio = precio
         self.stock = stock
         self.categoria = categoria
+    
+    def __repr__(self):
+        return f"""
+    id: {self.id_producto}
+    nombre: {self.nombre}
+    descripcion: {self.descripcion}
+    precio: {self.precio}
+    stock: {self.stock}
+    categoria: [{self.categoria}]
+"""

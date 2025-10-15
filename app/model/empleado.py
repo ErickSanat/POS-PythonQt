@@ -1,4 +1,4 @@
-from usuario import Usuario
+from .usuario import Usuario
 
 class Empelado:
     def __init__(
@@ -14,3 +14,12 @@ class Empelado:
         self.direccion = direccion
         self.telefono = telefono
         self.usuario = usuario
+    
+    def __repr__(self):
+        return f"""
+    id_empleado: {self.id_empleado}
+    nombre: {self.nombre}
+    direccion: {self.direccion}
+    telefono: {self.telefono}
+    usuario: [{self.usuario}]
+"""

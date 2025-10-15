@@ -1,4 +1,4 @@
-from rol import Rol
+from .rol import Rol
 class Usuario:
     def __init__(
         self, 
@@ -12,3 +12,10 @@ class Usuario:
         self.contrasena = contrasena
         self.rol = rol
     
+    def __repr__(self):
+        return f"""
+    id_usuario: {self.id_usuario}
+    usuario: {self.usuario}
+    contrasena: {self.contrasena}
+    rol: [{self.rol}]
+"""

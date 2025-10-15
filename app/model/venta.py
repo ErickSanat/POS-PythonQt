@@ -1,5 +1,5 @@
-from usuario import Usuario
-from cliente import Cliente
+from .usuario import Usuario
+from .cliente import Cliente
 from datetime import datetime
 class Venta:
     def __init__(
@@ -15,3 +15,12 @@ class Venta:
         self.usuario  = usuario 
         self.cliente = cliente
         self.total = total
+    
+    def __repr__(self):
+        return f"""
+    id_venta: {self.id_venta}
+    fecha: {self.fecha}
+    usuario: [{self.usuario}]
+    cliente: [{self.cliente}]
+    total: {self.total}
+"""

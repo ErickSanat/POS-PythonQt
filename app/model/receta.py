@@ -1,4 +1,4 @@
-from producto import Producto
+from .producto import Producto
 
 class Receta:
     def __init__(
@@ -12,3 +12,11 @@ class Receta:
         self.producto = producto
         self.descripcion = descripcion
         self.instrucciones = instrucciones
+        
+    def __repr__(self):
+        return f"""
+    id: {self.id_receta}
+    producto: [{self.producto}]
+    descripcion: {self.descripcion}
+    instrucciones: {self.instrucciones}
+"""

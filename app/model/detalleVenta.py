@@ -1,5 +1,5 @@
-from venta import Venta
-from producto import Producto
+from .venta import Venta
+from .producto import Producto
 
 class DetalleVenta:
     def __init__(
@@ -15,3 +15,12 @@ class DetalleVenta:
         self.producto = producto
         self.cantidad = cantidad
         self.subtotal = subtotal
+    
+    def __repr__(self):
+        return f"""
+    id_detalle: {self.id_detalle}
+    venta: [{self.venta}]
+    producto: [{self.producto}]
+    cantidad: {self.cantidad}
+    subtotal: {self.subtotal}
+"""
