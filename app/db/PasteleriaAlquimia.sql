@@ -42,6 +42,20 @@ CREATE TABLE cliente (
     correo VARCHAR(100) CHECK (correo IS NULL OR correo ~* '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$')
 );
 
+-- POSIBLE SOLUCION
+CREATE TABLE cliente (
+    id_cliente SERIAL PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL CHECK (
+        nombre ~ '^[A-Za-zÁÉÍÓÚáéíóúÑñ\\s]+$' AND LENGTH(TRIM(nombre)) > 0
+    ),
+    telefono VARCHAR(15) CHECK (
+        telefono IS NULL OR (telefono ~ '^[0-9()+\\-\\s]+$' AND LENGTH(telefono) >= 8)
+    ),
+    correo VARCHAR(100) CHECK (
+        correo IS NULL OR correo ~* '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$'
+    )
+);
+
 
 -- TABLA CATEGORÍAS
 
