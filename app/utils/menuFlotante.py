@@ -220,7 +220,18 @@ class MenuFlotante:
         self.hideFloatingMenu()
 
     def menuCerrarSesion(self):
-        print("Menú: Cerrar sesión")
+        if hasattr(self, 'pagIni'):
+            self.pagIni.show()
+            self.window().hide()
+            self.hideFloatingMenu()
+            return
+        try:
+            from app.view.window.pagInicioSesion import InicioSesion
+            self.pagIni = InicioSesion()
+            self.pagIni.show()
+            self.window().hide()
+            self.hideFloatingMenu()
+        except ImportError as e:
+            print(f"Error al importar InicioWindow: {e}")
         self.hideFloatingMenu()
-        QApplication.quit()
 
