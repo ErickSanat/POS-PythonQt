@@ -3,8 +3,7 @@ from ..model import Producto
 from .categoriaDAO import CategoriaDAO
 
 class ProductoDAO:
-    @staticmethod
-    def productos() -> list[Producto]:
+    def productos(self) -> list[Producto]:
         productos: list[Producto] = []
         conn = DBConnection.connection()
         cur = conn.cursor()
@@ -17,7 +16,7 @@ class ProductoDAO:
                 producto[2],
                 producto[3],
                 producto[4],
-                CategoriaDAO.categoria(producto[5])
+                CategoriaDAO().categoria(producto[5])
                 )
                 for producto in resultado
             )
@@ -25,8 +24,7 @@ class ProductoDAO:
         conn.close()
         return productos
     
-    @staticmethod
-    def producto(id_producto: int) -> Producto:
+    def producto(self, id_producto: int) -> Producto:
         conn = DBConnection.connection()
         cur = conn.cursor()
         cur.execute(f"SELECT * FROM producto WHERE id_producto = {id_producto}")
@@ -39,5 +37,5 @@ class ProductoDAO:
                 resultado[2],
                 resultado[3],
                 resultado[4],
-                CategoriaDAO.categoria(resultado[5])
+                CategoriaDAO().categoria(resultado[5])
             )

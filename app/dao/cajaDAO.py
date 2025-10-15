@@ -3,8 +3,7 @@ from ..model import Caja
 from .usuarioDAO import UsuarioDAO
 
 class CajaDAO:
-    @staticmethod
-    def cajas() -> list[Caja]:
+    def cajas(self) -> list[Caja]:
         cajas: list[Caja] = []
         conn = DBConnection.connection()
         cur = conn.cursor()
@@ -18,7 +17,7 @@ class CajaDAO:
                 caja[3],
                 caja[4],
                 caja[5],
-                UsuarioDAO.usuario(caja[6])
+                UsuarioDAO().usuario(caja[6])
                 )
                 for caja in resultado
             )
@@ -26,8 +25,7 @@ class CajaDAO:
         conn.close()
         return cajas
     
-    @staticmethod
-    def caja(id_caja: int) -> Caja:
+    def caja(self, id_caja: int) -> Caja:
         conn = DBConnection.connection()
         cur = conn.cursor()
         cur.execute(f"SELECT * FROM caja WHERE id_caja = {id_caja}")
@@ -40,5 +38,5 @@ class CajaDAO:
                     resultado[3],
                     resultado[4],
                     resultado[5],
-                    UsuarioDAO.usuario(resultado[6])
+                    UsuarioDAO().usuario(resultado[6])
                     )

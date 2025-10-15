@@ -2,8 +2,7 @@ from .DB import DBConnection
 from ..model import Cliente
 
 class ClienteDAO:
-    @staticmethod
-    def clientes() -> list[Cliente]:
+    def clientes(self) -> list[Cliente]:
         clientes: list[Cliente] = []
         conn = DBConnection.connection()
         cur = conn.cursor()
@@ -22,8 +21,7 @@ class ClienteDAO:
         conn.close()
         return clientes
     
-    @staticmethod
-    def cliente(id_cliente: int) -> Cliente:
+    def cliente(self, id_cliente: int) -> Cliente:
         conn = DBConnection.connection()
         cur = conn.cursor()
         cur.execute(f"SELECT * FROM cliente WHERE id_cliente = {id_cliente}")

@@ -3,8 +3,7 @@ from ..model import Receta
 from .productoDAO import ProductoDAO
 
 class RecetaDAO:
-    @staticmethod
-    def recetas():
+    def recetas(self):
         recetas: list[Receta] = []
         conn = DBConnection.connection()
         cur = conn.cursor()
@@ -13,7 +12,7 @@ class RecetaDAO:
         recetas.extend(
             Receta(
                 receta[0],
-                ProductoDAO.producto(receta[1]),
+                ProductoDAO().producto(receta[1]),
                 receta[2],
                 receta[3]
                 )
@@ -23,12 +22,16 @@ class RecetaDAO:
         conn.close()
         return recetas
     
-    @staticmethod
-    def receta(id_receta: int):
+    def receta(self, id_receta: int):
         conn = DBConnection.connection()
         cur = conn.cursor()
         cur.execute(f"SELECT * FROM receta WHERE id_receta = {id_receta}")
         resultado = cur.fetchone()
         cur.close()
         conn.close()
-        return Receta(resultado[0], resultado[1], resultado[2], resultado[3])
+        return Receta(
+            resultado[0],
+            ProductoDAO().producto(resultado[1]),
+            resultado[2],
+            resultado[3]
+        )

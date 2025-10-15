@@ -4,8 +4,7 @@ from .ventaDAO import VentaDAO
 from .tipoPagoDAO import TipoPagoDAO
 
 class PagoDAO:
-    @staticmethod
-    def pagos() -> list[Pago]:
+    def pagos(self) -> list[Pago]:
         pagos: list[Pago] = []
         conn = DBConnection.connection()
         cur = conn.cursor()
@@ -14,8 +13,8 @@ class PagoDAO:
         pagos.extend(
             Pago(
                 pago[0],
-                VentaDAO.venta(pago[1]),
-                TipoPagoDAO.tipoPago(pago[2]),
+                VentaDAO().venta(pago[1]),
+                TipoPagoDAO().tipoPago(pago[2]),
                 pago[3]
                 )
                 for pago in resultado
@@ -24,8 +23,7 @@ class PagoDAO:
         conn.close()
         return pagos
     
-    @staticmethod
-    def pago(id_pago: int) -> Pago:
+    def pago(self, id_pago: int) -> Pago:
         conn = DBConnection.connection()
         cur = conn.cursor()
         cur.execute(f"SELECT * FROM pago WHERE id_pago = {id_pago}")
@@ -34,7 +32,7 @@ class PagoDAO:
         conn.close()
         return Pago(
                 resultado[0],
-                VentaDAO.venta(resultado[1]),
-                TipoPagoDAO.tipoPago(resultado[2]),
+                VentaDAO().venta(resultado[1]),
+                TipoPagoDAO().tipoPago(resultado[2]),
                 resultado[3]
             )

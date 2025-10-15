@@ -3,8 +3,7 @@ from ..model import Empelado
 from .usuarioDAO import UsuarioDAO
 
 class EmpleadoDAO:
-    @staticmethod
-    def empleados() -> list[Empelado]:
+    def empleados(self) -> list[Empelado]:
         empleados: list[Empelado] = []
         conn = DBConnection.connection()
         cur = conn.cursor()
@@ -16,7 +15,7 @@ class EmpleadoDAO:
                 empleado[1],
                 empleado[2],
                 empleado[3],
-                UsuarioDAO.usuario(empleado[4])
+                UsuarioDAO().usuario(empleado[4])
                 )
                 for empleado in resultado
             )
@@ -24,8 +23,7 @@ class EmpleadoDAO:
         conn.close()
         return empleados
     
-    @staticmethod
-    def empleado(id_empleado: int) -> Empelado:
+    def empleado(self, id_empleado: int) -> Empelado:
         conn = DBConnection.connection()
         cur = conn.cursor()
         cur.execute(f"SELECT * FROM empleado WHERE id_empleado = {id_empleado}")
@@ -37,5 +35,5 @@ class EmpleadoDAO:
             resultado[1],
             resultado[2],
             resultado[3],
-            UsuarioDAO.usuario(resultado[4])
+            UsuarioDAO().usuario(resultado[4])
         )

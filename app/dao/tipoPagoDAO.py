@@ -2,8 +2,7 @@ from .DB import DBConnection
 from ..model import TipoPago
 
 class TipoPagoDAO:
-    @staticmethod
-    def tiposPago() -> list[TipoPago]:
+    def tiposPago(self) -> list[TipoPago]:
         tiposPago: list[TipoPago] = []
         conn = DBConnection.connection()
         cur = conn.cursor()
@@ -20,8 +19,7 @@ class TipoPagoDAO:
         conn.close()
         return tiposPago
     
-    @staticmethod
-    def tipoPago(id_tipo_pago: int) -> TipoPago:
+    def tipoPago(self, id_tipo_pago: int) -> TipoPago:
         conn = DBConnection.connection()
         cur = conn.cursor()
         cur.execute(f"SELECT * FROM tipo_pago WHERE id_tipo_pago = {id_tipo_pago}")

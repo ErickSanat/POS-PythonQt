@@ -3,8 +3,7 @@ from ..model import DetallePromocion
 from .productoDAO import ProductoDAO
 
 class DetallePromocionDAO:
-    @staticmethod
-    def detallesPromocion() -> list[DetallePromocion]:
+    def detallesPromocion(self) -> list[DetallePromocion]:
         detallesPromocion: list[DetallePromocion] = []
         conn = DBConnection.connection()
         cur = conn.cursor()
@@ -14,7 +13,7 @@ class DetallePromocionDAO:
             DetallePromocion(
                 detallePromocion[0],
                 detallePromocion[1],
-                ProductoDAO.producto(detallePromocion[2])
+                ProductoDAO().producto(detallePromocion[2])
                 )
                 for detallePromocion in resultado
             )
@@ -22,8 +21,7 @@ class DetallePromocionDAO:
         conn.close()
         return detallesPromocion
     
-    @staticmethod
-    def detallePromocion(id_detalle_promocion: int) -> DetallePromocion:
+    def detallePromocion(self,id_detalle_promocion: int) -> DetallePromocion:
         conn = DBConnection.connection()
         cur = conn.cursor()
         cur.execute(f"SELECT * FROM detalle_promocion WHERE id_detalle_promocion = {id_detalle_promocion}")
@@ -33,5 +31,5 @@ class DetallePromocionDAO:
         return DetallePromocion(
                 resultado[0],
                 resultado[1],
-                ProductoDAO.producto(resultado[2])
+                ProductoDAO().producto(resultado[2])
             )

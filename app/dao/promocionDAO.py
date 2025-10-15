@@ -2,8 +2,7 @@ from .DB import DBConnection
 from ..model import Promocion
 
 class PromocionDAO:
-    @staticmethod
-    def promociones() -> list[Promocion]:
+    def promociones(self) -> list[Promocion]:
         promociones: list[Promocion] = []
         conn = DBConnection.connection()
         cur = conn.cursor()
@@ -21,8 +20,7 @@ class PromocionDAO:
         conn.close()
         return promociones
     
-    @staticmethod
-    def promocion(id_promocion: int) -> Promocion:
+    def promocion(self, id_promocion: int) -> Promocion:
         conn = DBConnection.connection()
         cur = conn.cursor()
         cur.execute(f"SELECT * FROM promocion WHERE id_promocion = {id_promocion}")

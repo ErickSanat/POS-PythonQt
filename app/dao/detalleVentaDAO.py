@@ -4,8 +4,7 @@ from .ventaDAO import VentaDAO
 from .productoDAO import ProductoDAO
 
 class DetalleVentaDAO:
-    @staticmethod
-    def detallesVenta() -> list[DetalleVenta]:
+    def detallesVenta(self) -> list[DetalleVenta]:
         detalleVentas: list[DetalleVenta] = []
         conn = DBConnection.connection()
         cur = conn.cursor()
@@ -14,8 +13,8 @@ class DetalleVentaDAO:
         detalleVentas.extend(
             DetalleVenta(
                 detalleVenta[0],
-                VentaDAO.venta(detalleVenta[1]),
-                ProductoDAO.producto(detalleVenta[2]),
+                VentaDAO().venta(detalleVenta[1]),
+                ProductoDAO().producto(detalleVenta[2]),
                 detalleVenta[3],
                 detalleVenta[4]
                 )
@@ -25,8 +24,7 @@ class DetalleVentaDAO:
         conn.close()
         return detalleVentas
     
-    @staticmethod
-    def detalleVenta(id_detalle: int) -> DetalleVenta:
+    def detalleVenta(self, id_detalle: int) -> DetalleVenta:
         conn = DBConnection.connection()
         cur = conn.cursor()
         cur.execute(f"SELECT * FROM detalle_venta WHERE id_detalle = {id_detalle}")
@@ -35,8 +33,8 @@ class DetalleVentaDAO:
         conn.close()
         return DetalleVenta(
                 resultado[0],
-                VentaDAO.venta(resultado[1]),
-                ProductoDAO.producto(resultado[2]),
+                VentaDAO().venta(resultado[1]),
+                ProductoDAO().producto(resultado[2]),
                 resultado[3],
                 resultado[4]
             )

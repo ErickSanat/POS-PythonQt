@@ -2,8 +2,7 @@ from .DB import DBConnection
 from ..model import Categoria
 
 class CategoriaDAO:
-    @staticmethod
-    def categorias() -> list[Categoria]:
+    def categorias(self) -> list[Categoria]:
         categorias: list[Categoria] = []
         conn = DBConnection.connection()
         cur = conn.cursor()
@@ -21,8 +20,7 @@ class CategoriaDAO:
         conn.close()
         return categorias
     
-    @staticmethod
-    def categoria(id_categoria: int) -> Categoria:
+    def categoria(self, id_categoria: int) -> Categoria:
         conn = DBConnection.connection()
         cur = conn.cursor()
         cur.execute(f"SELECT * FROM categoria WHERE id_categoria = {id_categoria}")

@@ -2,8 +2,7 @@ from .DB import DBConnection
 from ..model import Rol
 
 class RolDAO:
-    @staticmethod
-    def roles() -> list[Rol]:
+    def roles(self) -> list[Rol]:
         roles: list[Rol] = []
         conn = DBConnection.connection()
         cur = conn.cursor()
@@ -20,8 +19,7 @@ class RolDAO:
         conn.close()
         return roles
     
-    @staticmethod
-    def rol(id_rol: int) -> Rol:
+    def rol(self, id_rol: int) -> Rol:
         conn = DBConnection.connection()
         cur = conn.cursor()
         cur.execute(f"SELECT * FROM rol WHERE id_rol = {id_rol}")
