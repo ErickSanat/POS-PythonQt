@@ -579,25 +579,17 @@ QPushButton:hover {
        <bool>false</bool>
       </property>
      </widget>
-    </widget>
-    <widget class="QPushButton" name="btnMenu">
-     <property name="geometry">
-      <rect>
-       <x>1130</x>
-       <y>10</y>
-       <width>41</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>-1</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QPushButton {
+     <widget class="QPushButton" name="btnCerrarSesion">
+      <property name="geometry">
+       <rect>
+        <x>1180</x>
+        <y>10</y>
+        <width>41</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
     background-color: #867BAA;
     color: white;
     border: none;
@@ -608,10 +600,54 @@ QPushButton:hover {
 QPushButton:hover {
     background-color: #BDB1E2;
 }</string>
-     </property>
-     <property name="text">
-      <string>☰</string>
-     </property>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../../assets/Iconos/cerrarSesion.svg</normaloff>../../assets/Iconos/cerrarSesion.svg</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>28</width>
+        <height>28</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnMenu">
+      <property name="geometry">
+       <rect>
+        <x>1100</x>
+        <y>10</y>
+        <width>41</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>-1</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color: #867BAA;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+}
+QPushButton:hover {
+    background-color: #BDB1E2;
+}</string>
+      </property>
+      <property name="text">
+       <string>☰</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QFrame" name="frameFlotante">
      <property name="enabled">
@@ -624,6 +660,12 @@ QPushButton:hover {
        <width>0</width>
        <height>0</height>
       </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <horstretch>100</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
      </property>
      <property name="minimumSize">
       <size>
@@ -764,23 +806,6 @@ QPushButton:hover {
          </property>
         </widget>
        </item>
-       <item row="2" column="3">
-        <widget class="QPushButton" name="btnCerrarSesion">
-         <property name="text">
-          <string/>
-         </property>
-         <property name="icon">
-          <iconset>
-           <normaloff>../../assets/Iconos/cerrarSesion.svg</normaloff>../../assets/Iconos/cerrarSesion.svg</iconset>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>84</width>
-           <height>84</height>
-          </size>
-         </property>
-        </widget>
-       </item>
        <item row="0" column="3">
         <widget class="QPushButton" name="btnProveedores">
          <property name="text">
@@ -832,7 +857,7 @@ QPushButton:hover {
          </property>
         </widget>
        </item>
-       <item row="3" column="0">
+       <item row="2" column="3">
         <widget class="QPushButton" name="btnUsuario">
          <property name="text">
           <string/>
@@ -854,7 +879,6 @@ QPushButton:hover {
     </widget>
     <zorder>barraSuperior</zorder>
     <zorder>horizontalLayoutWidget</zorder>
-    <zorder>btnMenu</zorder>
     <zorder>frameFlotante</zorder>
    </widget>
   </widget>
