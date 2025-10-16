@@ -11,12 +11,9 @@ class InicioSesion(QMainWindow, Ui_InicioSesion):
         self.btnIngresar.clicked.connect(self.login)
         self.lineContrasena.returnPressed.connect(self.login)
         
-    def lanzarPagIni(self):
+    def lanzarPagIni(self, empleado: Empleado):
         self.hide()
-        self.pagIni = InicioWindow(
-            Empleado(1, "jose el admin", "aki mismo", 4568542348, 
-                    Usuario(1, "admin", "admin", Rol(1, "empleado")))
-        )
+        self.pagIni = InicioWindow(empleado)
         self.pagIni.show()
 
     def login(self):
@@ -28,6 +25,12 @@ class InicioSesion(QMainWindow, Ui_InicioSesion):
             return
 
         if username == "admin" and password == "admin":
-            self.lanzarPagIni()
+            empleado = Empleado(1, "jose el admin", "aki mismo", 4568542348, 
+                    Usuario(1, "admin", "admin", Rol(1, "admin")))
+            self.lanzarPagIni(empleado)
+        elif username == "empleado" and password == "empleado":
+            empleado = Empleado(1, "jose el admin", "aki mismo", 4568542348, 
+                    Usuario(1, "admin", "admin", Rol(1, "empleado")))
+            self.lanzarPagIni(empleado)
         else:
             QMessageBox.critical(self, "Error", "Usuario o contraseña incorrectos.")
