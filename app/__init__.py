@@ -6,5 +6,6 @@ from .view import (
     InicioSesion,
     ProWindow,
     PromWindow,
-    UserWindow
+    CliWindow,
+    UsuWindow
 )
