@@ -23,7 +23,10 @@ class CajaDAO:
             )
         cur.close()
         conn.close()
-        return cajas
+        if cajas is not None:
+            return cajas
+        else:
+            raise TypeError("No existen el cajas")
     
     def caja(self, id_caja: int) -> Caja:
         conn = DBConnection.connection()
@@ -32,11 +35,15 @@ class CajaDAO:
         resultado = cur.fetchone()
         cur.close()
         conn.close()
-        return Caja(resultado[0],
-                    resultado[1],
-                    resultado[2],
-                    resultado[3],
-                    resultado[4],
-                    resultado[5],
-                    UsuarioDAO().usuario(resultado[6])
-                    )
+        if resultado is not None:
+            return Caja(
+                resultado[0],
+                resultado[1],
+                resultado[2],
+                resultado[3],
+                resultado[4],
+                resultado[5],
+                UsuarioDAO().usuario(resultado[6])
+            )
+        else:
+            raise TypeError("No existe la caja")

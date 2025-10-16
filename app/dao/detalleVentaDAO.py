@@ -22,7 +22,10 @@ class DetalleVentaDAO:
             )
         cur.close()
         conn.close()
-        return detalleVentas
+        if detalleVentas is not None:
+            return detalleVentas
+        else:
+            raise TypeError("No existen detalles")
     
     def detalleVenta(self, id_detalle: int) -> DetalleVenta:
         conn = DBConnection.connection()
@@ -31,10 +34,13 @@ class DetalleVentaDAO:
         resultado = cur.fetchone()
         cur.close()
         conn.close()
-        return DetalleVenta(
+        if resultado is not None:
+            return DetalleVenta(
                 resultado[0],
                 VentaDAO().venta(resultado[1]),
                 ProductoDAO().producto(resultado[2]),
                 resultado[3],
                 resultado[4]
             )
+        else:
+            raise TypeError("No existe el detalle")

@@ -18,7 +18,10 @@ class PromocionDAO:
             )
         cur.close()
         conn.close()
-        return promociones
+        if promociones is not None:
+            return promociones
+        else:
+            raise TypeError("No existen promociones")
     
     def promocion(self, id_promocion: int) -> Promocion:
         conn = DBConnection.connection()
@@ -27,4 +30,7 @@ class PromocionDAO:
         resultado = cur.fetchone()
         cur.close()
         conn.close()
-        return Promocion(resultado[0], resultado[1], resultado[2])
+        if resultado is not None:
+            return Promocion(resultado[0], resultado[1], resultado[2])
+        else:
+            raise TypeError("No existe la promocion")

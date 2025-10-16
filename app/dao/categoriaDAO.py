@@ -18,7 +18,10 @@ class CategoriaDAO:
             )
         cur.close()
         conn.close()
-        return categorias
+        if categorias is not None:
+            return categorias
+        else:
+            raise TypeError("No existen categorias")
     
     def categoria(self, id_categoria: int) -> Categoria:
         conn = DBConnection.connection()
@@ -27,4 +30,7 @@ class CategoriaDAO:
         resultado = cur.fetchone()
         cur.close()
         conn.close()
-        return Categoria(resultado[0], resultado[1], resultado[2])
+        if resultado is not None:
+            return Categoria(resultado[0], resultado[1], resultado[2])
+        else:
+            raise TypeError("No existe la categoria")

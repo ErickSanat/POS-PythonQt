@@ -1,4 +1,5 @@
 from .DB import DBConnection
+from ..utils import cerrarCommit, cerrarConn
 from ..model import Rol
 
 class RolDAO:
@@ -15,15 +16,19 @@ class RolDAO:
                 )
                 for rol in resultado
             )
-        cur.close()
-        conn.close()
-        return roles
+        cerrarConn(cur, conn)
+        if roles is not None:
+            return roles
+        else:
+            raise TypeError("No existen roles")
     
     def rol(self, id_rol: int) -> Rol:
         conn = DBConnection.connection()
         cur = conn.cursor()
         cur.execute(f"SELECT * FROM rol WHERE id_rol = {id_rol}")
         resultado = cur.fetchone()
-        cur.close()
-        conn.close()
-        return Rol(resultado[0], resultado[1])
+        cerrarConn(cur, conn)
+        if resultado is not None:
+            return Rol(resultado[0], resultado[1])
+        else:
+            raise TypeError("No existe el rol")

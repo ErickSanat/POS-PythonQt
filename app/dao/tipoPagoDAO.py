@@ -17,7 +17,10 @@ class TipoPagoDAO:
             )
         cur.close()
         conn.close()
-        return tiposPago
+        if tiposPago is not None:
+            return tiposPago
+        else:
+            raise TypeError("No existen tipos de pago")
     
     def tipoPago(self, id_tipo_pago: int) -> TipoPago:
         conn = DBConnection.connection()
@@ -26,4 +29,7 @@ class TipoPagoDAO:
         resultado = cur.fetchone()
         cur.close()
         conn.close()
-        return TipoPago(resultado[0], resultado[1])
+        if resultado is not None:
+            return TipoPago(resultado[0], resultado[1])
+        else:
+            raise TypeError("No existe el tipo de pago")

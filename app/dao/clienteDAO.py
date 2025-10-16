@@ -19,7 +19,10 @@ class ClienteDAO:
             )
         cur.close()
         conn.close()
-        return clientes
+        if clientes is not None:
+            return clientes
+        else:
+            raise TypeError("No existen clientes")
     
     def cliente(self, id_cliente: int) -> Cliente:
         conn = DBConnection.connection()
@@ -28,4 +31,7 @@ class ClienteDAO:
         resultado = cur.fetchone()
         cur.close()
         conn.close()
-        return Cliente(resultado[0], resultado[1], resultado[2], resultado[3])
+        if resultado is not None:
+            return Cliente(resultado[0], resultado[1], resultado[2], resultado[3])
+        else:
+            raise TypeError("No existe el cliente")
