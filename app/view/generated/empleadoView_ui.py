@@ -263,25 +263,6 @@ class Ui_Form(object):
         self.tituloInicial.setFont(font)
         self.tituloInicial.setStyleSheet("color: rgb(0, 0, 0);")
         self.tituloInicial.setObjectName("tituloInicial")
-        self.btnMenu = QtWidgets.QPushButton(self.barraSuperior)
-        self.btnMenu.setGeometry(QtCore.QRect(1120, 10, 41, 31))
-        font = QtGui.QFont()
-        font.setPointSize(-1)
-        font.setBold(True)
-        font.setWeight(75)
-        self.btnMenu.setFont(font)
-        self.btnMenu.setStyleSheet("QPushButton {\n"
-"    background-color: #867BAA;\n"
-"    color: white;\n"
-"    border: none;\n"
-"    border-radius: 5px;\n"
-"    font-size: 18px;\n"
-"    font-weight: bold;\n"
-"}\n"
-"QPushButton:hover {\n"
-"    background-color: #BDB1E2;\n"
-"}")
-        self.btnMenu.setObjectName("btnMenu")
         self.logo = QtWidgets.QLabel(self.barraSuperior)
         self.logo.setGeometry(QtCore.QRect(0, 0, 101, 61))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Maximum)
@@ -299,9 +280,52 @@ class Ui_Form(object):
         self.logo.setIndent(-1)
         self.logo.setOpenExternalLinks(False)
         self.logo.setObjectName("logo")
+        self.btnCerrarSesion = QtWidgets.QPushButton(self.barraSuperior)
+        self.btnCerrarSesion.setGeometry(QtCore.QRect(1150, 10, 41, 31))
+        self.btnCerrarSesion.setStyleSheet("QPushButton {\n"
+"    background-color: #867BAA;\n"
+"    color: white;\n"
+"    border: none;\n"
+"    border-radius: 5px;\n"
+"    font-size: 18px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: #BDB1E2;\n"
+"}")
+        self.btnCerrarSesion.setText("")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/cerrarSesion.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.btnCerrarSesion.setIcon(icon)
+        self.btnCerrarSesion.setIconSize(QtCore.QSize(28, 28))
+        self.btnCerrarSesion.setObjectName("btnCerrarSesion")
+        self.btnMenu = QtWidgets.QPushButton(self.barraSuperior)
+        self.btnMenu.setGeometry(QtCore.QRect(1070, 10, 41, 31))
+        font = QtGui.QFont()
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setWeight(75)
+        self.btnMenu.setFont(font)
+        self.btnMenu.setStyleSheet("QPushButton {\n"
+"    background-color: #867BAA;\n"
+"    color: white;\n"
+"    border: none;\n"
+"    border-radius: 5px;\n"
+"    font-size: 18px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: #BDB1E2;\n"
+"}")
+        self.btnMenu.setObjectName("btnMenu")
         self.frameFlotante = QtWidgets.QFrame(self.widget)
         self.frameFlotante.setEnabled(True)
         self.frameFlotante.setGeometry(QtCore.QRect(0, 0, 0, 0))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(100)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.frameFlotante.sizePolicy().hasHeightForWidth())
+        self.frameFlotante.setSizePolicy(sizePolicy)
         self.frameFlotante.setMinimumSize(QtCore.QSize(0, 0))
         self.frameFlotante.setMaximumSize(QtCore.QSize(0, 0))
         self.frameFlotante.setStyleSheet("background-color: rgb(171, 159, 208);\n"
@@ -324,52 +348,44 @@ class Ui_Form(object):
         sizePolicy.setHeightForWidth(self.btnEmpleados.sizePolicy().hasHeightForWidth())
         self.btnEmpleados.setSizePolicy(sizePolicy)
         self.btnEmpleados.setText("")
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/empleados.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.btnEmpleados.setIcon(icon)
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/empleados.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.btnEmpleados.setIcon(icon1)
         self.btnEmpleados.setIconSize(QtCore.QSize(84, 84))
         self.btnEmpleados.setObjectName("btnEmpleados")
         self.gridLayout_2.addWidget(self.btnEmpleados, 2, 2, 1, 1)
         self.btnRecetas = QtWidgets.QPushButton(self.gridLayoutWidget_3)
         self.btnRecetas.setText("")
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/recetas.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.btnRecetas.setIcon(icon1)
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/recetas.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.btnRecetas.setIcon(icon2)
         self.btnRecetas.setIconSize(QtCore.QSize(84, 84))
         self.btnRecetas.setObjectName("btnRecetas")
         self.gridLayout_2.addWidget(self.btnRecetas, 1, 3, 1, 1)
         self.btnProductos = QtWidgets.QPushButton(self.gridLayoutWidget_3)
         self.btnProductos.setText("")
-        icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/productos.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.btnProductos.setIcon(icon2)
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/productos.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.btnProductos.setIcon(icon3)
         self.btnProductos.setIconSize(QtCore.QSize(84, 84))
         self.btnProductos.setObjectName("btnProductos")
         self.gridLayout_2.addWidget(self.btnProductos, 1, 2, 1, 1)
         self.btnMenuInicio = QtWidgets.QPushButton(self.gridLayoutWidget_3)
         self.btnMenuInicio.setText("")
-        icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/inicio.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.btnMenuInicio.setIcon(icon3)
+        icon4 = QtGui.QIcon()
+        icon4.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/inicio.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.btnMenuInicio.setIcon(icon4)
         self.btnMenuInicio.setIconSize(QtCore.QSize(84, 84))
         self.btnMenuInicio.setObjectName("btnMenuInicio")
         self.gridLayout_2.addWidget(self.btnMenuInicio, 0, 0, 1, 1)
         self.btnPromociones = QtWidgets.QPushButton(self.gridLayoutWidget_3)
         self.btnPromociones.setText("")
-        icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/promociones.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.btnPromociones.setIcon(icon4)
+        icon5 = QtGui.QIcon()
+        icon5.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/promociones.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.btnPromociones.setIcon(icon5)
         self.btnPromociones.setIconSize(QtCore.QSize(84, 84))
         self.btnPromociones.setObjectName("btnPromociones")
         self.gridLayout_2.addWidget(self.btnPromociones, 2, 0, 1, 1)
-        self.btnCerrarSesion = QtWidgets.QPushButton(self.gridLayoutWidget_3)
-        self.btnCerrarSesion.setText("")
-        icon5 = QtGui.QIcon()
-        icon5.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/cerrarSesion.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.btnCerrarSesion.setIcon(icon5)
-        self.btnCerrarSesion.setIconSize(QtCore.QSize(84, 84))
-        self.btnCerrarSesion.setObjectName("btnCerrarSesion")
-        self.gridLayout_2.addWidget(self.btnCerrarSesion, 2, 3, 1, 1)
         self.btnProveedores = QtWidgets.QPushButton(self.gridLayoutWidget_3)
         self.btnProveedores.setText("")
         icon6 = QtGui.QIcon()
@@ -401,7 +417,7 @@ class Ui_Form(object):
         self.btnUsuario.setIcon(icon9)
         self.btnUsuario.setIconSize(QtCore.QSize(84, 84))
         self.btnUsuario.setObjectName("btnUsuario")
-        self.gridLayout_2.addWidget(self.btnUsuario, 3, 0, 1, 1)
+        self.gridLayout_2.addWidget(self.btnUsuario, 2, 3, 1, 1)
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)

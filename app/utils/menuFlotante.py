@@ -14,7 +14,7 @@ class MenuFlotante:
         self.frameFlotante.hide()
 
         # Configurar tamaño y posición inicial
-        self.frameFlotante.setFixedSize(331, 381)
+        self.frameFlotante.setFixedSize(331, 351)
 
         # Conectar los botones del menú flotante
         self.connectMenuButtons()
