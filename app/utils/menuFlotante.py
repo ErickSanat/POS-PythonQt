@@ -14,7 +14,7 @@ class MenuFlotante:
         self.frameFlotante.hide()
 
         # Configurar tamaño y posición inicial
-        self.frameFlotante.setFixedSize(331, 321)
+        self.frameFlotante.setFixedSize(331, 351)
 
         # Conectar los botones del menú flotante
         self.connectMenuButtons()
@@ -37,7 +37,8 @@ class MenuFlotante:
             'btnProductos': self.menuProductos,
             'btnRecetas': self.menuRecetas,
             'btnEmpleados': self.menuEmpleados,
-            'btnCerrarSesion': self.menuCerrarSesion
+            'btnCerrarSesion': self.menuCerrarSesion,
+            'btnUsuario': self.menuUsuario
         }
         
         for button_name, function in button_mappings.items():
@@ -144,9 +145,9 @@ class MenuFlotante:
             self.hideFloatingMenu()
             return
         try:
-            from app.view.window.pagUser import UserWindow
-            self.pagUser = UserWindow()
-            self.pagUser.show()
+            from app.view.window.pagClie import CliWindow
+            self.pagClie = CliWindow()
+            self.pagClie.show()
             self.window().hide()
             self.hideFloatingMenu()
         except ImportError as e:
@@ -233,5 +234,21 @@ class MenuFlotante:
             self.hideFloatingMenu()
         except ImportError as e:
             print(f"Error al importar InicioWindow: {e}")
+        self.hideFloatingMenu()
+
+    def menuUsuario(self):
+        if  hasattr(self, 'pagUsu'):
+            self.pagUsu.show()
+            self.window().hide()
+            self.hideFloatingMenu()
+            return
+        try:
+            from app.view.window.pagUsu import UsuWindow
+            self.pagUsu = UsuWindow()
+            self.pagUsu.show()
+            self.window().hide()
+            self.hideFloatingMenu()
+        except ImportError as e:
+            print(f"Error al importar UsuarioWindow: {e}")
         self.hideFloatingMenu()
 
