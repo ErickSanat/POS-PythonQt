@@ -34,13 +34,13 @@ class Ui_Form(object):
         self.horizontalLayout.setContentsMargins(10, 10, 10, 10)
         self.horizontalLayout.setSpacing(10)
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.saleTitleLabel_2 = QtWidgets.QLabel(self.horizontalLayoutWidget_2)
+        self.tituloVenta = QtWidgets.QLabel(self.horizontalLayoutWidget_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.saleTitleLabel_2.sizePolicy().hasHeightForWidth())
-        self.saleTitleLabel_2.setSizePolicy(sizePolicy)
-        self.saleTitleLabel_2.setStyleSheet("QLabel {\n"
+        sizePolicy.setHeightForWidth(self.tituloVenta.sizePolicy().hasHeightForWidth())
+        self.tituloVenta.setSizePolicy(sizePolicy)
+        self.tituloVenta.setStyleSheet("QLabel {\n"
 "    color: #000000;\n"
 "    font-size: 18px;\n"
 "    font-weight: bold;\n"
@@ -49,37 +49,37 @@ class Ui_Form(object):
 "    border-radius: 5px;\n"
 "    border: 1px solid #bdc3c7;\n"
 "}")
-        self.saleTitleLabel_2.setAlignment(QtCore.Qt.AlignCenter)
-        self.saleTitleLabel_2.setObjectName("saleTitleLabel_2")
-        self.horizontalLayout.addWidget(self.saleTitleLabel_2)
-        self.categoryCombo = QtWidgets.QComboBox(self.horizontalLayoutWidget_2)
+        self.tituloVenta.setAlignment(QtCore.Qt.AlignCenter)
+        self.tituloVenta.setObjectName("tituloVenta")
+        self.horizontalLayout.addWidget(self.tituloVenta)
+        self.comboCategorias = QtWidgets.QComboBox(self.horizontalLayoutWidget_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.categoryCombo.sizePolicy().hasHeightForWidth())
-        self.categoryCombo.setSizePolicy(sizePolicy)
-        self.categoryCombo.setMinimumSize(QtCore.QSize(150, 0))
-        self.categoryCombo.setStyleSheet("QComboBox {\n"
+        sizePolicy.setHeightForWidth(self.comboCategorias.sizePolicy().hasHeightForWidth())
+        self.comboCategorias.setSizePolicy(sizePolicy)
+        self.comboCategorias.setMinimumSize(QtCore.QSize(150, 0))
+        self.comboCategorias.setStyleSheet("QComboBox {\n"
 "    padding: 10px;\n"
 "    border: 3px solid #867BAA;\n"
 "    border-radius: 20px;\n"
 "}\n"
 "")
-        self.categoryCombo.setObjectName("categoryCombo")
-        self.horizontalLayout.addWidget(self.categoryCombo)
-        self.searchInput_5 = QtWidgets.QLineEdit(self.horizontalLayoutWidget_2)
-        self.searchInput_5.setMinimumSize(QtCore.QSize(40, 0))
-        self.searchInput_5.setStyleSheet("QLineEdit {\n"
+        self.comboCategorias.setObjectName("comboCategorias")
+        self.horizontalLayout.addWidget(self.comboCategorias)
+        self.lineDato = QtWidgets.QLineEdit(self.horizontalLayoutWidget_2)
+        self.lineDato.setMinimumSize(QtCore.QSize(40, 0))
+        self.lineDato.setStyleSheet("QLineEdit {\n"
 "    padding: 10px;\n"
 "    border: 2px solid #867BAA;\n"
 "    border-radius: 20px;\n"
 "    font-size: 14px;\n"
 "    color: rgb(134, 123, 170);\n"
 "}")
-        self.searchInput_5.setObjectName("searchInput_5")
-        self.horizontalLayout.addWidget(self.searchInput_5)
-        self.payButton_2 = QtWidgets.QPushButton(self.horizontalLayoutWidget_2)
-        self.payButton_2.setStyleSheet("QPushButton {\n"
+        self.lineDato.setObjectName("lineDato")
+        self.horizontalLayout.addWidget(self.lineDato)
+        self.btnBuscar = QtWidgets.QPushButton(self.horizontalLayoutWidget_2)
+        self.btnBuscar.setStyleSheet("QPushButton {\n"
 "    background-color: #867BAA;\n"
 "    color: black;\n"
 "    padding: 10px;\n"
@@ -90,8 +90,8 @@ class Ui_Form(object):
 "QPushButton:hover {\n"
 "    background-color: #BDB1E2;\n"
 "}")
-        self.payButton_2.setObjectName("payButton_2")
-        self.horizontalLayout.addWidget(self.payButton_2)
+        self.btnBuscar.setObjectName("btnBuscar")
+        self.horizontalLayout.addWidget(self.btnBuscar)
         self.verticalLayoutRight_2.addLayout(self.horizontalLayout)
         self.tableView = QtWidgets.QTableView(self.horizontalLayoutWidget_2)
         self.tableView.setObjectName("tableView")
@@ -101,9 +101,9 @@ class Ui_Form(object):
         self.horizontalLayout_3.setContentsMargins(1024, 0, 0, 0)
         self.horizontalLayout_3.setSpacing(0)
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        self.payButton_4 = QtWidgets.QPushButton(self.horizontalLayoutWidget_2)
-        self.payButton_4.setMaximumSize(QtCore.QSize(150, 16777215))
-        self.payButton_4.setStyleSheet("QPushButton {\n"
+        self.btnGenerarExcel = QtWidgets.QPushButton(self.horizontalLayoutWidget_2)
+        self.btnGenerarExcel.setMaximumSize(QtCore.QSize(150, 16777215))
+        self.btnGenerarExcel.setStyleSheet("QPushButton {\n"
 "    background-color: #867BAA;\n"
 "    color: black;\n"
 "    padding: 10px;\n"
@@ -114,18 +114,18 @@ class Ui_Form(object):
 "QPushButton:hover {\n"
 "    background-color: #BDB1E2;\n"
 "}")
-        self.payButton_4.setObjectName("payButton_4")
-        self.horizontalLayout_3.addWidget(self.payButton_4)
+        self.btnGenerarExcel.setObjectName("btnGenerarExcel")
+        self.horizontalLayout_3.addWidget(self.btnGenerarExcel)
         self.verticalLayoutRight_2.addLayout(self.horizontalLayout_3)
         self.horizontalLayout_2.addLayout(self.verticalLayoutRight_2)
         self.horizontalLayout_2.setStretch(0, 3)
-        self.contrasteWidget = QtWidgets.QWidget(self.widget)
-        self.contrasteWidget.setGeometry(QtCore.QRect(0, 0, 1201, 61))
-        self.contrasteWidget.setAutoFillBackground(False)
-        self.contrasteWidget.setStyleSheet("background-color: #867BAA")
-        self.contrasteWidget.setObjectName("contrasteWidget")
-        self.tituloLabel = QtWidgets.QLabel(self.contrasteWidget)
-        self.tituloLabel.setGeometry(QtCore.QRect(110, 10, 361, 41))
+        self.barraSuperior = QtWidgets.QWidget(self.widget)
+        self.barraSuperior.setGeometry(QtCore.QRect(0, 0, 1201, 61))
+        self.barraSuperior.setAutoFillBackground(False)
+        self.barraSuperior.setStyleSheet("background-color: #867BAA")
+        self.barraSuperior.setObjectName("barraSuperior")
+        self.tituloInicial = QtWidgets.QLabel(self.barraSuperior)
+        self.tituloInicial.setGeometry(QtCore.QRect(110, 10, 361, 41))
         font = QtGui.QFont()
         font.setFamily("Noto Serif Display SemiCondensed Black")
         font.setPointSize(26)
@@ -134,16 +134,16 @@ class Ui_Form(object):
         font.setUnderline(True)
         font.setWeight(75)
         font.setStyleStrategy(QtGui.QFont.PreferDefault)
-        self.tituloLabel.setFont(font)
-        self.tituloLabel.setStyleSheet("color: rgb(0, 0, 0);")
-        self.tituloLabel.setObjectName("tituloLabel")
-        self.label_2 = QtWidgets.QLabel(self.contrasteWidget)
+        self.tituloInicial.setFont(font)
+        self.tituloInicial.setStyleSheet("color: rgb(0, 0, 0);")
+        self.tituloInicial.setObjectName("tituloInicial")
+        self.label_2 = QtWidgets.QLabel(self.barraSuperior)
         self.label_2.setGeometry(QtCore.QRect(20, 10, 51, 41))
         self.label_2.setText("")
         self.label_2.setPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/logoPasteleriaMini.xcf"))
         self.label_2.setScaledContents(True)
         self.label_2.setObjectName("label_2")
-        self.btnMenu = QtWidgets.QPushButton(self.contrasteWidget)
+        self.btnMenu = QtWidgets.QPushButton(self.barraSuperior)
         self.btnMenu.setGeometry(QtCore.QRect(1120, 10, 41, 31))
         font = QtGui.QFont()
         font.setPointSize(-1)
@@ -162,6 +162,23 @@ class Ui_Form(object):
 "    background-color: #BDB1E2;\n"
 "}")
         self.btnMenu.setObjectName("btnMenu")
+        self.logo = QtWidgets.QLabel(self.barraSuperior)
+        self.logo.setGeometry(QtCore.QRect(0, 0, 101, 61))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Maximum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.logo.sizePolicy().hasHeightForWidth())
+        self.logo.setSizePolicy(sizePolicy)
+        self.logo.setFrameShape(QtWidgets.QFrame.NoFrame)
+        self.logo.setText("")
+        self.logo.setTextFormat(QtCore.Qt.AutoText)
+        self.logo.setPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/logo.png"))
+        self.logo.setScaledContents(True)
+        self.logo.setAlignment(QtCore.Qt.AlignCenter)
+        self.logo.setWordWrap(False)
+        self.logo.setIndent(-1)
+        self.logo.setOpenExternalLinks(False)
+        self.logo.setObjectName("logo")
         self.frameFlotante = QtWidgets.QFrame(self.widget)
         self.frameFlotante.setGeometry(QtCore.QRect(1210, 410, 0, 0))
         self.frameFlotante.setMinimumSize(QtCore.QSize(0, 0))
@@ -263,9 +280,9 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
-        self.saleTitleLabel_2.setText(_translate("Form", "Venta:"))
-        self.searchInput_5.setPlaceholderText(_translate("Form", "Dato..."))
-        self.payButton_2.setText(_translate("Form", "Buscar"))
-        self.payButton_4.setText(_translate("Form", "Descargar excel"))
-        self.tituloLabel.setText(_translate("Form", "Alquimia Pastelería"))
+        self.tituloVenta.setText(_translate("Form", "Venta:"))
+        self.lineDato.setPlaceholderText(_translate("Form", "Dato..."))
+        self.btnBuscar.setText(_translate("Form", "Buscar"))
+        self.btnGenerarExcel.setText(_translate("Form", "Descargar excel"))
+        self.tituloInicial.setText(_translate("Form", "Alquimia Pastelería"))
         self.btnMenu.setText(_translate("Form", "☰"))

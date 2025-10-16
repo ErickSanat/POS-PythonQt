@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import QMainWindow, QMessageBox
-from ..generated.inicioSesionview_ui import Ui_InicioSesion
+from ..generated.inicioSesionView_ui import Ui_InicioSesion
 from .pagIni import InicioWindow
 
 

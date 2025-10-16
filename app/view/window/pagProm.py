@@ -1,6 +1,6 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow
-from ..generated.promocionview_ui import Ui_Form
+from ..generated.promocionView_ui import Ui_Form
 from app.utils.menuFlotante import MenuFlotante
 
 class PromWindow(QMainWindow, Ui_Form, MenuFlotante):

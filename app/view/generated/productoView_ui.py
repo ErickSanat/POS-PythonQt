@@ -35,14 +35,14 @@ class Ui_Form(object):
         self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame.setObjectName("frame")
-        self.saleTitleLabel_3 = QtWidgets.QLabel(self.frame)
-        self.saleTitleLabel_3.setGeometry(QtCore.QRect(30, 20, 228, 44))
+        self.tituloProducto = QtWidgets.QLabel(self.frame)
+        self.tituloProducto.setGeometry(QtCore.QRect(30, 20, 228, 44))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.saleTitleLabel_3.sizePolicy().hasHeightForWidth())
-        self.saleTitleLabel_3.setSizePolicy(sizePolicy)
-        self.saleTitleLabel_3.setStyleSheet("QLabel {\n"
+        sizePolicy.setHeightForWidth(self.tituloProducto.sizePolicy().hasHeightForWidth())
+        self.tituloProducto.setSizePolicy(sizePolicy)
+        self.tituloProducto.setStyleSheet("QLabel {\n"
 "    color: #000000;\n"
 "    font-size: 18px;\n"
 "    font-weight: bold;\n"
@@ -51,11 +51,11 @@ class Ui_Form(object):
 "    border-radius: 5px;\n"
 "    border: 1px solid #bdc3c7;\n"
 "}")
-        self.saleTitleLabel_3.setFrameShape(QtWidgets.QFrame.NoFrame)
-        self.saleTitleLabel_3.setAlignment(QtCore.Qt.AlignCenter)
-        self.saleTitleLabel_3.setObjectName("saleTitleLabel_3")
+        self.tituloProducto.setFrameShape(QtWidgets.QFrame.NoFrame)
+        self.tituloProducto.setAlignment(QtCore.Qt.AlignCenter)
+        self.tituloProducto.setObjectName("tituloProducto")
         self.verticalLayoutWidget_2 = QtWidgets.QWidget(self.frame)
-        self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(10, 90, 271, 410))
+        self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(10, 90, 271, 455))
         self.verticalLayoutWidget_2.setObjectName("verticalLayoutWidget_2")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_2)
         self.verticalLayout.setContentsMargins(10, 10, 10, 10)
@@ -70,18 +70,18 @@ class Ui_Form(object):
         self.label_4.setStyleSheet("color: rgb(0, 0, 0);")
         self.label_4.setObjectName("label_4")
         self.verticalLayout.addWidget(self.label_4)
-        self.searchInput_3 = QtWidgets.QLineEdit(self.verticalLayoutWidget_2)
-        self.searchInput_3.setMinimumSize(QtCore.QSize(40, 0))
-        self.searchInput_3.setStyleSheet("QLineEdit {\n"
+        self.nombre = QtWidgets.QLineEdit(self.verticalLayoutWidget_2)
+        self.nombre.setMinimumSize(QtCore.QSize(40, 0))
+        self.nombre.setStyleSheet("QLineEdit {\n"
 "    padding: 10px;\n"
 "    border: 2px solid #867BAA;\n"
 "    border-radius: 20px;\n"
 "    font-size: 14px;\n"
 "    color: rgb(134, 123, 170);\n"
 "}")
-        self.searchInput_3.setText("")
-        self.searchInput_3.setObjectName("searchInput_3")
-        self.verticalLayout.addWidget(self.searchInput_3)
+        self.nombre.setText("")
+        self.nombre.setObjectName("nombre")
+        self.verticalLayout.addWidget(self.nombre)
         self.label_5 = QtWidgets.QLabel(self.verticalLayoutWidget_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -91,9 +91,9 @@ class Ui_Form(object):
         self.label_5.setStyleSheet("color: rgb(0, 0, 0);")
         self.label_5.setObjectName("label_5")
         self.verticalLayout.addWidget(self.label_5)
-        self.textEdit = QtWidgets.QTextEdit(self.verticalLayoutWidget_2)
-        self.textEdit.setObjectName("textEdit")
-        self.verticalLayout.addWidget(self.textEdit)
+        self.descripcion = QtWidgets.QTextEdit(self.verticalLayoutWidget_2)
+        self.descripcion.setObjectName("descripcion")
+        self.verticalLayout.addWidget(self.descripcion)
         self.label_6 = QtWidgets.QLabel(self.verticalLayoutWidget_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -103,18 +103,18 @@ class Ui_Form(object):
         self.label_6.setStyleSheet("color: rgb(0, 0, 0);")
         self.label_6.setObjectName("label_6")
         self.verticalLayout.addWidget(self.label_6)
-        self.searchInput_4 = QtWidgets.QLineEdit(self.verticalLayoutWidget_2)
-        self.searchInput_4.setMinimumSize(QtCore.QSize(40, 0))
-        self.searchInput_4.setStyleSheet("QLineEdit {\n"
+        self.precio = QtWidgets.QLineEdit(self.verticalLayoutWidget_2)
+        self.precio.setMinimumSize(QtCore.QSize(40, 0))
+        self.precio.setStyleSheet("QLineEdit {\n"
 "    padding: 10px;\n"
 "    border: 2px solid #867BAA;\n"
 "    border-radius: 20px;\n"
 "    font-size: 14px;\n"
 "    color: rgb(134, 123, 170);\n"
 "}")
-        self.searchInput_4.setText("")
-        self.searchInput_4.setObjectName("searchInput_4")
-        self.verticalLayout.addWidget(self.searchInput_4)
+        self.precio.setText("")
+        self.precio.setObjectName("precio")
+        self.verticalLayout.addWidget(self.precio)
         self.label_7 = QtWidgets.QLabel(self.verticalLayoutWidget_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -124,25 +124,66 @@ class Ui_Form(object):
         self.label_7.setStyleSheet("color: rgb(0, 0, 0);")
         self.label_7.setObjectName("label_7")
         self.verticalLayout.addWidget(self.label_7)
-        self.searchInput_6 = QtWidgets.QLineEdit(self.verticalLayoutWidget_2)
-        self.searchInput_6.setMinimumSize(QtCore.QSize(40, 0))
-        self.searchInput_6.setStyleSheet("QLineEdit {\n"
+        self.stock = QtWidgets.QLineEdit(self.verticalLayoutWidget_2)
+        self.stock.setMinimumSize(QtCore.QSize(40, 0))
+        self.stock.setStyleSheet("QLineEdit {\n"
 "    padding: 10px;\n"
 "    border: 2px solid #867BAA;\n"
 "    border-radius: 20px;\n"
 "    font-size: 14px;\n"
 "    color: rgb(134, 123, 170);\n"
 "}")
-        self.searchInput_6.setText("")
-        self.searchInput_6.setObjectName("searchInput_6")
-        self.verticalLayout.addWidget(self.searchInput_6)
+        self.stock.setText("")
+        self.stock.setObjectName("stock")
+        self.verticalLayout.addWidget(self.stock)
+        self.label_8 = QtWidgets.QLabel(self.verticalLayoutWidget_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_8.sizePolicy().hasHeightForWidth())
+        self.label_8.setSizePolicy(sizePolicy)
+        self.label_8.setStyleSheet("color: rgb(0, 0, 0);")
+        self.label_8.setObjectName("label_8")
+        self.verticalLayout.addWidget(self.label_8)
+        self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_4.setContentsMargins(1, 1, 1, 1)
+        self.horizontalLayout_4.setSpacing(2)
+        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
+        self.btnImagen = QtWidgets.QPushButton(self.verticalLayoutWidget_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.btnImagen.sizePolicy().hasHeightForWidth())
+        self.btnImagen.setSizePolicy(sizePolicy)
+        self.btnImagen.setStyleSheet("QPushButton {\n"
+"    background-color: #867BAA;\n"
+"    color: black;\n"
+"    padding: 10px;\n"
+"    border: none;\n"
+"    border-radius: 5px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: #BDB1E2;\n"
+"}")
+        self.btnImagen.setObjectName("btnImagen")
+        self.horizontalLayout_4.addWidget(self.btnImagen)
+        self.rutaImagen = QtWidgets.QLineEdit(self.verticalLayoutWidget_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.rutaImagen.sizePolicy().hasHeightForWidth())
+        self.rutaImagen.setSizePolicy(sizePolicy)
+        self.rutaImagen.setObjectName("rutaImagen")
+        self.horizontalLayout_4.addWidget(self.rutaImagen)
+        self.verticalLayout.addLayout(self.horizontalLayout_4)
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_3.setSizeConstraint(QtWidgets.QLayout.SetDefaultConstraint)
         self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_3.setSpacing(10)
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        self.payButton_5 = QtWidgets.QPushButton(self.verticalLayoutWidget_2)
-        self.payButton_5.setStyleSheet("QPushButton {\n"
+        self.btnAgregar = QtWidgets.QPushButton(self.verticalLayoutWidget_2)
+        self.btnAgregar.setStyleSheet("QPushButton {\n"
 "    background-color: #867BAA;\n"
 "    color: black;\n"
 "    padding: 10px;\n"
@@ -153,10 +194,10 @@ class Ui_Form(object):
 "QPushButton:hover {\n"
 "    background-color: #BDB1E2;\n"
 "}")
-        self.payButton_5.setObjectName("payButton_5")
-        self.horizontalLayout_3.addWidget(self.payButton_5)
-        self.payButton_3 = QtWidgets.QPushButton(self.verticalLayoutWidget_2)
-        self.payButton_3.setStyleSheet("QPushButton {\n"
+        self.btnAgregar.setObjectName("btnAgregar")
+        self.horizontalLayout_3.addWidget(self.btnAgregar)
+        self.btnEditar = QtWidgets.QPushButton(self.verticalLayoutWidget_2)
+        self.btnEditar.setStyleSheet("QPushButton {\n"
 "    background-color: #867BAA;\n"
 "    color: black;\n"
 "    padding: 10px;\n"
@@ -167,10 +208,10 @@ class Ui_Form(object):
 "QPushButton:hover {\n"
 "    background-color: #BDB1E2;\n"
 "}")
-        self.payButton_3.setObjectName("payButton_3")
-        self.horizontalLayout_3.addWidget(self.payButton_3)
-        self.payButton_4 = QtWidgets.QPushButton(self.verticalLayoutWidget_2)
-        self.payButton_4.setStyleSheet("QPushButton {\n"
+        self.btnEditar.setObjectName("btnEditar")
+        self.horizontalLayout_3.addWidget(self.btnEditar)
+        self.btnEliminar = QtWidgets.QPushButton(self.verticalLayoutWidget_2)
+        self.btnEliminar.setStyleSheet("QPushButton {\n"
 "    background-color: #867BAA;\n"
 "    color: black;\n"
 "    padding: 10px;\n"
@@ -181,8 +222,8 @@ class Ui_Form(object):
 "QPushButton:hover {\n"
 "    background-color: #BDB1E2;\n"
 "}")
-        self.payButton_4.setObjectName("payButton_4")
-        self.horizontalLayout_3.addWidget(self.payButton_4)
+        self.btnEliminar.setObjectName("btnEliminar")
+        self.horizontalLayout_3.addWidget(self.btnEliminar)
         self.verticalLayout.addLayout(self.horizontalLayout_3)
         self.horizontalLayout_2.addWidget(self.frame)
         self.verticalLayoutRight_2 = QtWidgets.QVBoxLayout()
@@ -193,13 +234,13 @@ class Ui_Form(object):
         self.horizontalLayout.setContentsMargins(10, 10, 10, 10)
         self.horizontalLayout.setSpacing(10)
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.saleTitleLabel_2 = QtWidgets.QLabel(self.horizontalLayoutWidget_2)
+        self.labelEncontrar = QtWidgets.QLabel(self.horizontalLayoutWidget_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.saleTitleLabel_2.sizePolicy().hasHeightForWidth())
-        self.saleTitleLabel_2.setSizePolicy(sizePolicy)
-        self.saleTitleLabel_2.setStyleSheet("QLabel {\n"
+        sizePolicy.setHeightForWidth(self.labelEncontrar.sizePolicy().hasHeightForWidth())
+        self.labelEncontrar.setSizePolicy(sizePolicy)
+        self.labelEncontrar.setStyleSheet("QLabel {\n"
 "    color: #000000;\n"
 "    font-size: 18px;\n"
 "    font-weight: bold;\n"
@@ -208,37 +249,37 @@ class Ui_Form(object):
 "    border-radius: 5px;\n"
 "    border: 1px solid #bdc3c7;\n"
 "}")
-        self.saleTitleLabel_2.setAlignment(QtCore.Qt.AlignCenter)
-        self.saleTitleLabel_2.setObjectName("saleTitleLabel_2")
-        self.horizontalLayout.addWidget(self.saleTitleLabel_2)
-        self.categoryCombo = QtWidgets.QComboBox(self.horizontalLayoutWidget_2)
+        self.labelEncontrar.setAlignment(QtCore.Qt.AlignCenter)
+        self.labelEncontrar.setObjectName("labelEncontrar")
+        self.horizontalLayout.addWidget(self.labelEncontrar)
+        self.comboCategorias = QtWidgets.QComboBox(self.horizontalLayoutWidget_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.categoryCombo.sizePolicy().hasHeightForWidth())
-        self.categoryCombo.setSizePolicy(sizePolicy)
-        self.categoryCombo.setMinimumSize(QtCore.QSize(150, 0))
-        self.categoryCombo.setStyleSheet("QComboBox {\n"
+        sizePolicy.setHeightForWidth(self.comboCategorias.sizePolicy().hasHeightForWidth())
+        self.comboCategorias.setSizePolicy(sizePolicy)
+        self.comboCategorias.setMinimumSize(QtCore.QSize(150, 0))
+        self.comboCategorias.setStyleSheet("QComboBox {\n"
 "    padding: 10px;\n"
 "    border: 3px solid #867BAA;\n"
 "    border-radius: 20px;\n"
 "}\n"
 "")
-        self.categoryCombo.setObjectName("categoryCombo")
-        self.horizontalLayout.addWidget(self.categoryCombo)
-        self.searchInput_5 = QtWidgets.QLineEdit(self.horizontalLayoutWidget_2)
-        self.searchInput_5.setMinimumSize(QtCore.QSize(40, 0))
-        self.searchInput_5.setStyleSheet("QLineEdit {\n"
+        self.comboCategorias.setObjectName("comboCategorias")
+        self.horizontalLayout.addWidget(self.comboCategorias)
+        self.lineDato = QtWidgets.QLineEdit(self.horizontalLayoutWidget_2)
+        self.lineDato.setMinimumSize(QtCore.QSize(40, 0))
+        self.lineDato.setStyleSheet("QLineEdit {\n"
 "    padding: 10px;\n"
 "    border: 2px solid #867BAA;\n"
 "    border-radius: 20px;\n"
 "    font-size: 14px;\n"
 "    color: rgb(134, 123, 170);\n"
 "}")
-        self.searchInput_5.setObjectName("searchInput_5")
-        self.horizontalLayout.addWidget(self.searchInput_5)
-        self.payButton_2 = QtWidgets.QPushButton(self.horizontalLayoutWidget_2)
-        self.payButton_2.setStyleSheet("QPushButton {\n"
+        self.lineDato.setObjectName("lineDato")
+        self.horizontalLayout.addWidget(self.lineDato)
+        self.btnBuscar = QtWidgets.QPushButton(self.horizontalLayoutWidget_2)
+        self.btnBuscar.setStyleSheet("QPushButton {\n"
 "    background-color: #867BAA;\n"
 "    color: black;\n"
 "    padding: 10px;\n"
@@ -249,21 +290,21 @@ class Ui_Form(object):
 "QPushButton:hover {\n"
 "    background-color: #BDB1E2;\n"
 "}")
-        self.payButton_2.setObjectName("payButton_2")
-        self.horizontalLayout.addWidget(self.payButton_2)
+        self.btnBuscar.setObjectName("btnBuscar")
+        self.horizontalLayout.addWidget(self.btnBuscar)
         self.verticalLayoutRight_2.addLayout(self.horizontalLayout)
         self.tableView = QtWidgets.QTableView(self.horizontalLayoutWidget_2)
         self.tableView.setObjectName("tableView")
         self.verticalLayoutRight_2.addWidget(self.tableView)
         self.horizontalLayout_2.addLayout(self.verticalLayoutRight_2)
         self.horizontalLayout_2.setStretch(1, 3)
-        self.contrasteWidget = QtWidgets.QWidget(self.widget)
-        self.contrasteWidget.setGeometry(QtCore.QRect(0, 0, 1201, 61))
-        self.contrasteWidget.setAutoFillBackground(False)
-        self.contrasteWidget.setStyleSheet("background-color: #867BAA")
-        self.contrasteWidget.setObjectName("contrasteWidget")
-        self.tituloLabel = QtWidgets.QLabel(self.contrasteWidget)
-        self.tituloLabel.setGeometry(QtCore.QRect(110, 10, 361, 41))
+        self.barraSuperior = QtWidgets.QWidget(self.widget)
+        self.barraSuperior.setGeometry(QtCore.QRect(0, 0, 1201, 61))
+        self.barraSuperior.setAutoFillBackground(False)
+        self.barraSuperior.setStyleSheet("background-color: #867BAA")
+        self.barraSuperior.setObjectName("barraSuperior")
+        self.tituloInicial = QtWidgets.QLabel(self.barraSuperior)
+        self.tituloInicial.setGeometry(QtCore.QRect(110, 10, 361, 41))
         font = QtGui.QFont()
         font.setFamily("Noto Serif Display SemiCondensed Black")
         font.setPointSize(26)
@@ -272,16 +313,27 @@ class Ui_Form(object):
         font.setUnderline(True)
         font.setWeight(75)
         font.setStyleStrategy(QtGui.QFont.PreferDefault)
-        self.tituloLabel.setFont(font)
-        self.tituloLabel.setStyleSheet("color: rgb(0, 0, 0);")
-        self.tituloLabel.setObjectName("tituloLabel")
-        self.label_2 = QtWidgets.QLabel(self.contrasteWidget)
-        self.label_2.setGeometry(QtCore.QRect(20, 10, 51, 41))
-        self.label_2.setText("")
-        self.label_2.setPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/logoPasteleriaMini.xcf"))
-        self.label_2.setScaledContents(True)
-        self.label_2.setObjectName("label_2")
-        self.btnMenu = QtWidgets.QPushButton(self.contrasteWidget)
+        self.tituloInicial.setFont(font)
+        self.tituloInicial.setStyleSheet("color: rgb(0, 0, 0);")
+        self.tituloInicial.setObjectName("tituloInicial")
+        self.logo = QtWidgets.QLabel(self.barraSuperior)
+        self.logo.setGeometry(QtCore.QRect(0, 0, 101, 61))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Maximum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.logo.sizePolicy().hasHeightForWidth())
+        self.logo.setSizePolicy(sizePolicy)
+        self.logo.setFrameShape(QtWidgets.QFrame.NoFrame)
+        self.logo.setText("")
+        self.logo.setTextFormat(QtCore.Qt.AutoText)
+        self.logo.setPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/logo.png"))
+        self.logo.setScaledContents(True)
+        self.logo.setAlignment(QtCore.Qt.AlignCenter)
+        self.logo.setWordWrap(False)
+        self.logo.setIndent(-1)
+        self.logo.setOpenExternalLinks(False)
+        self.logo.setObjectName("logo")
+        self.btnMenu = QtWidgets.QPushButton(self.barraSuperior)
         self.btnMenu.setGeometry(QtCore.QRect(1120, 10, 41, 31))
         font = QtGui.QFont()
         font.setPointSize(-1)
@@ -401,19 +453,21 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
-        self.saleTitleLabel_3.setText(_translate("Form", "Producto:"))
+        self.tituloProducto.setText(_translate("Form", "Producto:"))
         self.label_4.setText(_translate("Form", "Nombre:"))
-        self.searchInput_3.setPlaceholderText(_translate("Form", "Nombre del producto..."))
+        self.nombre.setPlaceholderText(_translate("Form", "Nombre del producto..."))
         self.label_5.setText(_translate("Form", "Descripción:"))
         self.label_6.setText(_translate("Form", "Precio:"))
-        self.searchInput_4.setPlaceholderText(_translate("Form", "Precio del producto..."))
+        self.precio.setPlaceholderText(_translate("Form", "Precio del producto..."))
         self.label_7.setText(_translate("Form", "Stock:"))
-        self.searchInput_6.setPlaceholderText(_translate("Form", "Stock del producto..."))
-        self.payButton_5.setText(_translate("Form", "Agregar"))
-        self.payButton_3.setText(_translate("Form", "Editar"))
-        self.payButton_4.setText(_translate("Form", "Elliminar"))
-        self.saleTitleLabel_2.setText(_translate("Form", "Encontrar producto por:"))
-        self.searchInput_5.setPlaceholderText(_translate("Form", "Dato..."))
-        self.payButton_2.setText(_translate("Form", "Buscar"))
-        self.tituloLabel.setText(_translate("Form", "Alquimia Pastelería"))
+        self.stock.setPlaceholderText(_translate("Form", "Stock del producto..."))
+        self.label_8.setText(_translate("Form", "Imagen:"))
+        self.btnImagen.setText(_translate("Form", ". . ."))
+        self.btnAgregar.setText(_translate("Form", "Agregar"))
+        self.btnEditar.setText(_translate("Form", "Editar"))
+        self.btnEliminar.setText(_translate("Form", "Elliminar"))
+        self.labelEncontrar.setText(_translate("Form", "Encontrar producto por:"))
+        self.lineDato.setPlaceholderText(_translate("Form", "Dato..."))
+        self.btnBuscar.setText(_translate("Form", "Buscar"))
+        self.tituloInicial.setText(_translate("Form", "Alquimia Pastelería"))
         self.btnMenu.setText(_translate("Form", "☰"))
