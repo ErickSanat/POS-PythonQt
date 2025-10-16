@@ -603,10 +603,13 @@ QPushButton:hover {
     </widget>
    </widget>
    <widget class="QFrame" name="frameFlotante">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
-      <x>860</x>
-      <y>40</y>
+      <x>0</x>
+      <y>0</y>
       <width>0</width>
       <height>0</height>
      </rect>
@@ -640,7 +643,7 @@ QPushButton:hover {
        <x>0</x>
        <y>0</y>
        <width>331</width>
-       <height>321</height>
+       <height>386</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
@@ -659,14 +662,54 @@ QPushButton:hover {
       <property name="spacing">
        <number>10</number>
       </property>
-      <item row="2" column="0">
-       <widget class="QPushButton" name="btnPromociones">
+      <item row="2" column="2">
+       <widget class="QPushButton" name="btnEmpleados">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="text">
          <string/>
         </property>
         <property name="icon">
          <iconset>
-          <normaloff>../../assets/Iconos/promociones.svg</normaloff>../../assets/Iconos/promociones.svg</iconset>
+          <normaloff>../../assets/Iconos/empleados.svg</normaloff>../../assets/Iconos/empleados.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>84</width>
+          <height>84</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <widget class="QPushButton" name="btnRecetas">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../../assets/Iconos/recetas.png</normaloff>../../assets/Iconos/recetas.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>84</width>
+          <height>84</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QPushButton" name="btnProductos">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../../assets/Iconos/productos.svg</normaloff>../../assets/Iconos/productos.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -684,6 +727,23 @@ QPushButton:hover {
         <property name="icon">
          <iconset>
           <normaloff>../../assets/Iconos/inicio.svg</normaloff>../../assets/Iconos/inicio.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>84</width>
+          <height>84</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QPushButton" name="btnPromociones">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../../assets/Iconos/promociones.svg</normaloff>../../assets/Iconos/promociones.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -761,54 +821,14 @@ QPushButton:hover {
         </property>
        </widget>
       </item>
-      <item row="1" column="2">
-       <widget class="QPushButton" name="btnProductos">
+      <item row="3" column="0">
+       <widget class="QPushButton" name="btnUsuario">
         <property name="text">
          <string/>
         </property>
         <property name="icon">
          <iconset>
-          <normaloff>../../assets/Iconos/productos.svg</normaloff>../../assets/Iconos/productos.svg</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>84</width>
-          <height>84</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="3">
-       <widget class="QPushButton" name="btnRecetas">
-        <property name="text">
-         <string/>
-        </property>
-        <property name="icon">
-         <iconset>
-          <normaloff>../../assets/Iconos/recetas.png</normaloff>../../assets/Iconos/recetas.png</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>84</width>
-          <height>84</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="2">
-       <widget class="QPushButton" name="btnEmpleados">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="icon">
-         <iconset>
-          <normaloff>../../assets/Iconos/empleados.svg</normaloff>../../assets/Iconos/empleados.svg</iconset>
+          <normaloff>../../assets/Iconos/Usuario.svg</normaloff>../../assets/Iconos/Usuario.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
