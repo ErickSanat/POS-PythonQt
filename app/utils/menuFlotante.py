@@ -29,6 +29,14 @@ class MenuFlotante:
     def connectMenuButtons(self):
         """Conectar los botones del menú flotante a sus funciones"""
         # Verificar que todos los botones existen antes de conectarlos
+        bloqueados = {
+            'btnVentas': self.menuVentas,
+            'btnProveedores': self.menuProveedores,
+            'btnProductos': self.menuProductos,
+            'btnRecetas': self.menuRecetas,
+            'btnEmpleados': self.menuEmpleados,
+            'btnUsuario': self.menuUsuario
+        }
         button_mappings = {
             'btnMenuInicio': self.menuInicio,
             'btnPromociones': self.menuPromociones,
@@ -36,19 +44,23 @@ class MenuFlotante:
             'btnCerrarSesion': self.menuCerrarSesion
         }
         if self.empleado.usuario.rol.nombre == "admin":
-            button_mappings |= {
-                'btnVentas': self.menuVentas,
-                'btnProveedores': self.menuProveedores,
-                'btnProductos': self.menuProductos,
-                'btnRecetas': self.menuRecetas,
-                'btnEmpleados': self.menuEmpleados,
-                'btnUsuario': self.menuUsuario
-            }
+            button_mappings |= bloqueados
+            bloqueados = {}
         
-        for button_name, function in button_mappings.items():
+        for button_name, function in (button_mappings | bloqueados).items():
             if hasattr(self, button_name):
                 button = getattr(self, button_name)
-                button.clicked.connect(function)
+                if bloqueados.get(button_name) is not None:
+                    button.setStyleSheet("QPushButton {\n"
+                    "    background-color: #d6d6d6;\n"
+                    "    color: white;\n"
+                    "    border: none;\n"
+                    "    border-radius: 5px;\n"
+                    "    font-size: 18px;\n"
+                    "    font-weight: bold;\n"
+                    "}")
+                else:
+                    button.clicked.connect(function)
             else:
                 print(f"Advertencia: Botón {button_name} no encontrado")
 
@@ -224,22 +236,6 @@ class MenuFlotante:
             print(f"Error al importar EmpWindow: {e}")
         self.hideFloatingMenu()
 
-    def menuCerrarSesion(self):
-        if hasattr(self, 'pagIni'):
-            self.pagIni.show()
-            self.window().hide()
-            self.hideFloatingMenu()
-            return
-        try:
-            from app.view.window.pagInicioSesion import InicioSesion
-            self.pagIni = InicioSesion(self.empleado)
-            self.pagIni.show()
-            self.window().hide()
-            self.hideFloatingMenu()
-        except ImportError as e:
-            print(f"Error al importar InicioWindow: {e}")
-        self.hideFloatingMenu()
-
     def menuUsuario(self):
         if  hasattr(self, 'pagUsu'):
             self.pagUsu.show()
@@ -256,3 +252,18 @@ class MenuFlotante:
             print(f"Error al importar UsuarioWindow: {e}")
         self.hideFloatingMenu()
 
+    def menuCerrarSesion(self):
+        if hasattr(self, 'pagIni'):
+            self.pagIni.show()
+            self.window().hide()
+            self.hideFloatingMenu()
+            return
+        try:
+            from app.view.window.pagInicioSesion import InicioSesion
+            self.pagIni = InicioSesion()
+            self.pagIni.show()
+            self.window().hide()
+            self.hideFloatingMenu()
+        except ImportError as e:
+            print(f"Error al importar InicioWindow: {e}")
+        self.hideFloatingMenu()
