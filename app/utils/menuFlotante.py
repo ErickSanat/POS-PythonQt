@@ -1,9 +1,9 @@
-from PyQt5.QtWidgets import QApplication
+from ..model import Empleado
 
 class MenuFlotante:
     """Mixin para manejar menú flotante que ya existe en la UI"""
     
-    def setupFloatingMenu(self):
+    def setupFloatingMenu(self, empleado: Empleado):
         """Configurar las propiedades del menú flotante"""
         # Verificar que el frameFlotante existe antes de usarlo
         if not hasattr(self, 'frameFlotante'):
@@ -16,6 +16,7 @@ class MenuFlotante:
         # Configurar tamaño y posición inicial
         self.frameFlotante.setFixedSize(331, 351)
 
+        self.empleado = empleado
         # Conectar los botones del menú flotante
         self.connectMenuButtons()
         
@@ -30,16 +31,19 @@ class MenuFlotante:
         # Verificar que todos los botones existen antes de conectarlos
         button_mappings = {
             'btnMenuInicio': self.menuInicio,
-            'btnVentas': self.menuVentas,
             'btnPromociones': self.menuPromociones,
             'btnClientes': self.menuClientes,
-            'btnProveedores': self.menuProveedores,
-            'btnProductos': self.menuProductos,
-            'btnRecetas': self.menuRecetas,
-            'btnEmpleados': self.menuEmpleados,
-            'btnCerrarSesion': self.menuCerrarSesion,
-            'btnUsuario': self.menuUsuario
+            'btnCerrarSesion': self.menuCerrarSesion
         }
+        if self.empleado.usuario.rol.nombre == "admin":
+            button_mappings |= {
+                'btnVentas': self.menuVentas,
+                'btnProveedores': self.menuProveedores,
+                'btnProductos': self.menuProductos,
+                'btnRecetas': self.menuRecetas,
+                'btnEmpleados': self.menuEmpleados,
+                'btnUsuario': self.menuUsuario
+            }
         
         for button_name, function in button_mappings.items():
             if hasattr(self, button_name):
@@ -98,7 +102,7 @@ class MenuFlotante:
             return
         try:
             from app.view.window.pagIni import InicioWindow
-            self.pagInicio = InicioWindow()
+            self.pagInicio = InicioWindow(self.empleado)
             self.pagInicio.show()
             self.window().hide()
             self.hideFloatingMenu()
@@ -114,7 +118,7 @@ class MenuFlotante:
             return
         try:
             from app.view.window.pagVen import VenWindow
-            self.pagVen = VenWindow()
+            self.pagVen = VenWindow(self.empleado)
             self.pagVen.show()
             self.window().hide()
             self.hideFloatingMenu()
@@ -130,7 +134,7 @@ class MenuFlotante:
             return
         try:
             from app.view.window.pagProm import PromWindow
-            self.pagProm = PromWindow()
+            self.pagProm = PromWindow(self.empleado)
             self.pagProm.show()
             self.window().hide()
             self.hideFloatingMenu()
@@ -146,7 +150,7 @@ class MenuFlotante:
             return
         try:
             from app.view.window.pagClie import CliWindow
-            self.pagClie = CliWindow()
+            self.pagClie = CliWindow(self.empleado)
             self.pagClie.show()
             self.window().hide()
             self.hideFloatingMenu()
@@ -162,7 +166,7 @@ class MenuFlotante:
             return
         try:
             from app.view.window.pagProv import ProvWindow
-            self.pagProv = ProvWindow()
+            self.pagProv = ProvWindow(self.empleado)
             self.pagProv.show()
             self.window().hide()
             self.hideFloatingMenu()
@@ -179,7 +183,7 @@ class MenuFlotante:
             return
         try:
             from app.view.window.pagPro import ProWindow
-            self.pagPro = ProWindow()
+            self.pagPro = ProWindow(self.empleado)
             self.pagPro.show()
             self.window().hide()
             self.hideFloatingMenu()
@@ -196,7 +200,7 @@ class MenuFlotante:
             return
         try:
             from app.view.window.pagRec import RecWindow
-            self.pagRec = RecWindow()
+            self.pagRec = RecWindow(self.empleado)
             self.pagRec.show()
             self.window().hide()
             self.hideFloatingMenu()
@@ -212,7 +216,7 @@ class MenuFlotante:
             return
         try:
             from app.view.window.pagEmp import EmpWindow
-            self.pagEmp = EmpWindow()
+            self.pagEmp = EmpWindow(self.empleado)
             self.pagEmp.show()
             self.window().hide()
             self.hideFloatingMenu()
@@ -228,7 +232,7 @@ class MenuFlotante:
             return
         try:
             from app.view.window.pagInicioSesion import InicioSesion
-            self.pagIni = InicioSesion()
+            self.pagIni = InicioSesion(self.empleado)
             self.pagIni.show()
             self.window().hide()
             self.hideFloatingMenu()
@@ -244,7 +248,7 @@ class MenuFlotante:
             return
         try:
             from app.view.window.pagUsu import UsuWindow
-            self.pagUsu = UsuWindow()
+            self.pagUsu = UsuWindow(self.empleado)
             self.pagUsu.show()
             self.window().hide()
             self.hideFloatingMenu()
