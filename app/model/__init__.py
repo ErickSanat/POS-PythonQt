@@ -3,7 +3,7 @@ from .categoria import Categoria
 from .cliente import Cliente
 from .detallePromocion import DetallePromocion
 from .detalleVenta import DetalleVenta
-from .empleado import Empelado
+from .empleado import Empleado
 from .pago import Pago
 from .producto import Producto
 from .promocion import Promocion

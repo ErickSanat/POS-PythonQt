@@ -14,9 +14,12 @@ class Receta:
         self.instrucciones = instrucciones
         
     def __repr__(self):
-        return f"""
-    id: {self.id_receta}
-    producto: [{self.producto}]
-    descripcion: {self.descripcion}
-    instrucciones: {self.instrucciones}
-"""
+        from json import dumps, loads
+        return dumps(
+            {
+                "id_receta": self.id_receta,
+                "producto": loads(repr(self.producto)),
+                "descripcion": self.descripcion,
+                "instrucciones": self.instrucciones
+            }, indent=4
+        )

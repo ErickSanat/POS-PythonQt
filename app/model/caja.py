@@ -21,12 +21,15 @@ class Caja:
         self.usuario = usuario
     
     def __repr__(self):
-        return f"""
-    id_caja: {self.id_caja}
-    fecha_apertura: {self.fecha_apertura}
-    fecha_cierre: {self.fecha_cierre}
-    monto_inicial: {self.monto_inicial}
-    monto_final: {self.monto_final}
-    estado: {self.estado}
-    usuario: [{self.usuario}]
-"""
+        from json import dumps, loads
+        return dumps(
+            {
+                "id_caja": self.id_caja,
+                "fecha_apertura": self.fecha_apertura.isoformat(),
+                "fecha_cierre": self.fecha_cierre.isoformat(),
+                "monto_inicial": float(self.monto_inicial),
+                "monto_final": float(self.monto_final),
+                "estado": self.estado,
+                "usuario": loads(repr(self.usuario))
+            }, indent=4
+        )

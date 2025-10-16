@@ -12,8 +12,11 @@ class DetallePromocion:
         self.producto = producto
     
     def __repr__(self):
-        return f"""
-    id_detalle_promocion: {self.id_detalle_promocion}
-    promocion: {self.promocion}
-    producto: [{self.producto}]
-"""
+        from json import dumps, loads
+        return dumps(
+            {
+                "id_detalle_promocion": self.id_detalle_promocion,
+                "promocion": loads(repr(self.promocion)),
+                "producto": loads(repr(self.producto))
+            }, indent=4
+        )

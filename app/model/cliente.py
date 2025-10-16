@@ -12,9 +12,12 @@ class Cliente:
         self.correo = correo
     
     def __repr__(self):
-        return f"""
-    id: {self.id_cliente}
-    nombre: {self.nombre}
-    telefono: {self.telefono}
-    correo: {self.correo}
-"""
+        from json import dumps
+        return dumps(
+            {
+                "id_cliente": self.id_cliente,
+                "nombre": self.nombre,
+                "telefono": self.telefono,
+                "correo": self.correo
+            }, indent=4
+        )

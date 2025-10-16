@@ -8,7 +8,10 @@ class TipoPago:
         self.nombre = nombre
     
     def __repr__(self):
-        return f"""
-    id_tipo_pago: {self.id_tipo_pago}
-    nombre: {self.nombre}
-"""
+        from json import dumps
+        return dumps(
+            {
+                "id_tipo_pago": self.id_tipo_pago,
+                "nombre": self.nombre
+            }, indent=4
+        )

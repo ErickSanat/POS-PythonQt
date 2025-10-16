@@ -17,11 +17,14 @@ class Producto:
         self.categoria = categoria
     
     def __repr__(self):
-        return f"""
-    id: {self.id_producto}
-    nombre: {self.nombre}
-    descripcion: {self.descripcion}
-    precio: {self.precio}
-    stock: {self.stock}
-    categoria: [{self.categoria}]
-"""
+        from json import dumps, loads
+        return dumps(
+            {
+                "id_producto": self.id_producto,
+                "nombre": self.nombre,
+                "descripcion": self.descripcion,
+                "precio": float(self.precio),
+                "stock": self.stock,
+                "categoria": loads(repr(self.categoria))
+            }, indent=4
+        )

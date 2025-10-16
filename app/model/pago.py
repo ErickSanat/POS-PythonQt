@@ -15,9 +15,12 @@ class Pago:
         self.monto = monto
     
     def __repr__(self):
-        return f"""
-    id_pago: {self.id_pago}
-    venta: [{self.venta}]
-    tipo_pago: [{self.tipo_pago}]
-    monto: {self.monto}
-"""
+        from json import dumps, loads
+        return dumps(
+            {
+                "id_pago": self.id_pago,
+                "venta": loads(repr(self.venta)),
+                "tipo_pago": loads(repr(self.tipo_pago)),
+                "monto": float(self.monto)
+            }, indent=4
+        )

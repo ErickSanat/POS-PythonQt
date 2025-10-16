@@ -17,10 +17,13 @@ class Venta:
         self.total = total
     
     def __repr__(self):
-        return f"""
-    id_venta: {self.id_venta}
-    fecha: {self.fecha}
-    usuario: [{self.usuario}]
-    cliente: [{self.cliente}]
-    total: {self.total}
-"""
+        from json import dumps, loads
+        return dumps(
+            {
+                "id_venta": self.id_venta,
+                "fecha": self.fecha.isoformat(),
+                "usuario": loads(repr(self.usuario)),
+                "cliente": loads(repr(self.cliente)),
+                "total": float(self.total),
+            }, indent=4
+        )
