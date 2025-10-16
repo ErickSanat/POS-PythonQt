@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QApplication, QMainWindow
 from ..generated.clienteView_ui import Ui_Dialog
 from app.utils.menuFlotante import MenuFlotante
 
-class UserWindow(QMainWindow, Ui_Dialog, MenuFlotante):
+class CliWindow(QMainWindow, Ui_Dialog, MenuFlotante):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
@@ -15,6 +15,6 @@ class UserWindow(QMainWindow, Ui_Dialog, MenuFlotante):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    window = UserWindow()
+    window = CliWindow()
     window.show()
     sys.exit(app.exec_())
