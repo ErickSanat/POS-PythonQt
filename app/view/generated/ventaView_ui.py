@@ -214,90 +214,199 @@ class Ui_Form(object):
         self.frameFlotante.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frameFlotante.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frameFlotante.setObjectName("frameFlotante")
-        self.gridLayoutWidget_3 = QtWidgets.QWidget(self.frameFlotante)
-        self.gridLayoutWidget_3.setGeometry(QtCore.QRect(0, 0, 331, 386))
-        self.gridLayoutWidget_3.setObjectName("gridLayoutWidget_3")
-        self.gridLayout_2 = QtWidgets.QGridLayout(self.gridLayoutWidget_3)
-        self.gridLayout_2.setContentsMargins(10, 10, 10, 10)
-        self.gridLayout_2.setSpacing(10)
-        self.gridLayout_2.setObjectName("gridLayout_2")
-        self.btnEmpleados = QtWidgets.QPushButton(self.gridLayoutWidget_3)
+        self.gridLayoutWidget_4 = QtWidgets.QWidget(self.frameFlotante)
+        self.gridLayoutWidget_4.setGeometry(QtCore.QRect(0, 0, 331, 386))
+        self.gridLayoutWidget_4.setObjectName("gridLayoutWidget_4")
+        self.gridLayout_3 = QtWidgets.QGridLayout(self.gridLayoutWidget_4)
+        self.gridLayout_3.setSizeConstraint(QtWidgets.QLayout.SetFixedSize)
+        self.gridLayout_3.setContentsMargins(10, 10, 10, 10)
+        self.gridLayout_3.setSpacing(10)
+        self.gridLayout_3.setObjectName("gridLayout_3")
+        self.btnEmpleados = QtWidgets.QPushButton(self.gridLayoutWidget_4)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.btnEmpleados.sizePolicy().hasHeightForWidth())
         self.btnEmpleados.setSizePolicy(sizePolicy)
+        self.btnEmpleados.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.btnEmpleados.setStyleSheet("QPushButton {\n"
+"    background-color: #BDB2DF;\n"
+"    color: white;\n"
+"    border: none;\n"
+"    border-radius: 5px;\n"
+"    font-size: 18px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: #CFC3F5;\n"
+"}")
         self.btnEmpleados.setText("")
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/empleados.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnEmpleados.setIcon(icon1)
         self.btnEmpleados.setIconSize(QtCore.QSize(84, 84))
         self.btnEmpleados.setObjectName("btnEmpleados")
-        self.gridLayout_2.addWidget(self.btnEmpleados, 2, 2, 1, 1)
-        self.btnRecetas = QtWidgets.QPushButton(self.gridLayoutWidget_3)
+        self.gridLayout_3.addWidget(self.btnEmpleados, 2, 2, 1, 1)
+        self.btnRecetas = QtWidgets.QPushButton(self.gridLayoutWidget_4)
+        self.btnRecetas.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.btnRecetas.setStyleSheet("QPushButton {\n"
+"    background-color: #BDB2DF;\n"
+"    color: white;\n"
+"    border: none;\n"
+"    border-radius: 5px;\n"
+"    font-size: 18px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: #CFC3F5;\n"
+"}")
         self.btnRecetas.setText("")
         icon2 = QtGui.QIcon()
         icon2.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/recetas.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnRecetas.setIcon(icon2)
         self.btnRecetas.setIconSize(QtCore.QSize(84, 84))
         self.btnRecetas.setObjectName("btnRecetas")
-        self.gridLayout_2.addWidget(self.btnRecetas, 1, 3, 1, 1)
-        self.btnProductos = QtWidgets.QPushButton(self.gridLayoutWidget_3)
+        self.gridLayout_3.addWidget(self.btnRecetas, 1, 3, 1, 1)
+        self.btnProductos = QtWidgets.QPushButton(self.gridLayoutWidget_4)
+        self.btnProductos.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.btnProductos.setStyleSheet("QPushButton {\n"
+"    background-color: #BDB2DF;\n"
+"    color: white;\n"
+"    border: none;\n"
+"    border-radius: 5px;\n"
+"    font-size: 18px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: #CFC3F5;\n"
+"}")
         self.btnProductos.setText("")
         icon3 = QtGui.QIcon()
         icon3.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/productos.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnProductos.setIcon(icon3)
         self.btnProductos.setIconSize(QtCore.QSize(84, 84))
         self.btnProductos.setObjectName("btnProductos")
-        self.gridLayout_2.addWidget(self.btnProductos, 1, 2, 1, 1)
-        self.btnMenuInicio = QtWidgets.QPushButton(self.gridLayoutWidget_3)
+        self.gridLayout_3.addWidget(self.btnProductos, 1, 2, 1, 1)
+        self.btnMenuInicio = QtWidgets.QPushButton(self.gridLayoutWidget_4)
+        self.btnMenuInicio.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.btnMenuInicio.setStyleSheet("QPushButton {\n"
+"    background-color: #BDB2DF;\n"
+"    color: white;\n"
+"    border: none;\n"
+"    border-radius: 5px;\n"
+"    font-size: 18px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: #CFC3F5;\n"
+"}")
         self.btnMenuInicio.setText("")
         icon4 = QtGui.QIcon()
         icon4.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/inicio.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnMenuInicio.setIcon(icon4)
         self.btnMenuInicio.setIconSize(QtCore.QSize(84, 84))
         self.btnMenuInicio.setObjectName("btnMenuInicio")
-        self.gridLayout_2.addWidget(self.btnMenuInicio, 0, 0, 1, 1)
-        self.btnPromociones = QtWidgets.QPushButton(self.gridLayoutWidget_3)
+        self.gridLayout_3.addWidget(self.btnMenuInicio, 0, 0, 1, 1)
+        self.btnPromociones = QtWidgets.QPushButton(self.gridLayoutWidget_4)
+        self.btnPromociones.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.btnPromociones.setStyleSheet("QPushButton {\n"
+"    background-color: #BDB2DF;\n"
+"    color: white;\n"
+"    border: none;\n"
+"    border-radius: 5px;\n"
+"    font-size: 18px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: #CFC3F5;\n"
+"}")
         self.btnPromociones.setText("")
         icon5 = QtGui.QIcon()
         icon5.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/promociones.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnPromociones.setIcon(icon5)
         self.btnPromociones.setIconSize(QtCore.QSize(84, 84))
         self.btnPromociones.setObjectName("btnPromociones")
-        self.gridLayout_2.addWidget(self.btnPromociones, 2, 0, 1, 1)
-        self.btnProveedores = QtWidgets.QPushButton(self.gridLayoutWidget_3)
+        self.gridLayout_3.addWidget(self.btnPromociones, 2, 0, 1, 1)
+        self.btnProveedores = QtWidgets.QPushButton(self.gridLayoutWidget_4)
+        self.btnProveedores.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.btnProveedores.setStyleSheet("QPushButton {\n"
+"    background-color: #BDB2DF;\n"
+"    color: white;\n"
+"    border: none;\n"
+"    border-radius: 5px;\n"
+"    font-size: 18px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: #CFC3F5;\n"
+"}")
         self.btnProveedores.setText("")
         icon6 = QtGui.QIcon()
         icon6.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/provedoores.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnProveedores.setIcon(icon6)
         self.btnProveedores.setIconSize(QtCore.QSize(84, 84))
         self.btnProveedores.setObjectName("btnProveedores")
-        self.gridLayout_2.addWidget(self.btnProveedores, 0, 3, 1, 1)
-        self.btnClientes = QtWidgets.QPushButton(self.gridLayoutWidget_3)
+        self.gridLayout_3.addWidget(self.btnProveedores, 0, 3, 1, 1)
+        self.btnClientes = QtWidgets.QPushButton(self.gridLayoutWidget_4)
+        self.btnClientes.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.btnClientes.setStyleSheet("QPushButton {\n"
+"    background-color: #BDB2DF;\n"
+"    color: white;\n"
+"    border: none;\n"
+"    border-radius: 5px;\n"
+"    font-size: 18px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: #CFC3F5;\n"
+"}")
         self.btnClientes.setText("")
         icon7 = QtGui.QIcon()
         icon7.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/clientes.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnClientes.setIcon(icon7)
         self.btnClientes.setIconSize(QtCore.QSize(84, 84))
         self.btnClientes.setObjectName("btnClientes")
-        self.gridLayout_2.addWidget(self.btnClientes, 0, 2, 1, 1)
-        self.btnVentas = QtWidgets.QPushButton(self.gridLayoutWidget_3)
+        self.gridLayout_3.addWidget(self.btnClientes, 0, 2, 1, 1)
+        self.btnVentas = QtWidgets.QPushButton(self.gridLayoutWidget_4)
+        self.btnVentas.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.btnVentas.setStyleSheet("QPushButton {\n"
+"    background-color: #BDB2DF;\n"
+"    color: white;\n"
+"    border: none;\n"
+"    border-radius: 5px;\n"
+"    font-size: 18px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: #CFC3F5;\n"
+"}")
         self.btnVentas.setText("")
         icon8 = QtGui.QIcon()
         icon8.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/ventas.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnVentas.setIcon(icon8)
         self.btnVentas.setIconSize(QtCore.QSize(84, 84))
         self.btnVentas.setObjectName("btnVentas")
-        self.gridLayout_2.addWidget(self.btnVentas, 1, 0, 1, 1)
-        self.btnUsuario = QtWidgets.QPushButton(self.gridLayoutWidget_3)
+        self.gridLayout_3.addWidget(self.btnVentas, 1, 0, 1, 1)
+        self.btnUsuario = QtWidgets.QPushButton(self.gridLayoutWidget_4)
+        self.btnUsuario.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.btnUsuario.setStyleSheet("QPushButton {\n"
+"    background-color: #BDB2DF;\n"
+"    color: white;\n"
+"    border: none;\n"
+"    border-radius: 5px;\n"
+"    font-size: 18px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: #CFC3F5;\n"
+"}")
         self.btnUsuario.setText("")
         icon9 = QtGui.QIcon()
         icon9.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/Usuario.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnUsuario.setIcon(icon9)
         self.btnUsuario.setIconSize(QtCore.QSize(84, 84))
         self.btnUsuario.setObjectName("btnUsuario")
-        self.gridLayout_2.addWidget(self.btnUsuario, 2, 3, 1, 1)
+        self.gridLayout_3.addWidget(self.btnUsuario, 2, 3, 1, 1)
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
