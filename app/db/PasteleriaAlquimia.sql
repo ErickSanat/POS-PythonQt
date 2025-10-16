@@ -1,11 +1,9 @@
 -- Active: 1756079140609@@127.0.0.1@5432@pasteleria_alquimia
-CREATE DATABASE pasteleria_alquimia;
 
 \c pasteleria_alquimia;
 
 
 -- TABLA ROLES
-
 CREATE TABLE rol (
     id_rol SERIAL PRIMARY KEY,
     nombre VARCHAR(50) UNIQUE NOT NULL CHECK (nombre IN ('admin','empleado'))
@@ -13,52 +11,34 @@ CREATE TABLE rol (
 
 
 -- TABLA USUARIOS
-
 CREATE TABLE usuario (
     id_usuario SERIAL PRIMARY KEY,
     usuario VARCHAR(50) UNIQUE NOT NULL CHECK (usuario ~ '^[a-zA-Z0-9_]+$'),
     contrasena VARCHAR(255) NOT NULL CHECK (LENGTH(contrasena) >= 8),
-    id_rol INT NOT NULL REFERENCES rol(id_rol) ON DELETE SET NULL
+    id_rol INT REFERENCES rol(id_rol) ON DELETE SET NULL
 );
 
 
 -- TABLA EMPLEADOS
-
 CREATE TABLE empleado (
     id_empleado SERIAL PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL CHECK (nombre ~ '^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$'),
     direccion TEXT NOT NULL CHECK (LENGTH(TRIM(direccion)) > 0),
-    telefono VARCHAR(15) NOT NULL CHECK (telefono ~ '^[0-9()+-\s]+$' AND LENGTH(telefono) >= 8),
-    id_usuario INT NOT NULL UNIQUE REFERENCES usuario(id_usuario) ON DELETE SET NULL
+    telefono INT NOT NULL CHECK (telefono > 0),
+    id_usuario INT UNIQUE REFERENCES usuario(id_usuario) ON DELETE SET NULL
 );
 
 
 -- TABLA CLIENTES
-
 CREATE TABLE cliente (
     id_cliente SERIAL PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL CHECK (nombre ~ '^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$' AND LENGTH(TRIM(nombre)) > 0),
-    telefono VARCHAR(15) CHECK (telefono IS NULL OR (telefono ~ '^[0-9()+-\s]+$' AND LENGTH(telefono) >= 8)),
+    telefono INT CHECK (telefono IS NULL OR telefono > 0),
     correo VARCHAR(100) CHECK (correo IS NULL OR correo ~* '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$')
-);
-
--- POSIBLE SOLUCION
-CREATE TABLE cliente (
-    id_cliente SERIAL PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL CHECK (
-        nombre ~ '^[A-Za-zÁÉÍÓÚáéíóúÑñ\\s]+$' AND LENGTH(TRIM(nombre)) > 0
-    ),
-    telefono VARCHAR(15) CHECK (
-        telefono IS NULL OR (telefono ~ '^[0-9()+\\-\\s]+$' AND LENGTH(telefono) >= 8)
-    ),
-    correo VARCHAR(100) CHECK (
-        correo IS NULL OR correo ~* '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$'
-    )
 );
 
 
 -- TABLA CATEGORÍAS
-
 CREATE TABLE categoria (
     id_categoria SERIAL PRIMARY KEY,
     nombre VARCHAR(50) NOT NULL UNIQUE CHECK (nombre ~ '^[A-Za-zÁÉÍÓÚáéíóúÑñ0-9\s]+$' AND LENGTH(TRIM(nombre)) > 0),
@@ -67,80 +47,73 @@ CREATE TABLE categoria (
 
 
 -- TABLA PRODUCTOS
-
 CREATE TABLE producto (
     id_producto SERIAL PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL CHECK (LENGTH(TRIM(nombre)) > 0),
     descripcion TEXT,
     precio NUMERIC(10,2) NOT NULL CHECK (precio > 0),
     stock INT NOT NULL DEFAULT 0 CHECK (stock >= 0),
-    id_categoria INT NOT NULL REFERENCES categoria(id_categoria) ON DELETE SET NULL
+    id_categoria INT REFERENCES categoria(id_categoria) ON DELETE SET NULL
 );
 
 
 -- TABLA RECETAS
-
 CREATE TABLE receta (
     id_receta SERIAL PRIMARY KEY,
-    id_producto INT UNIQUE NOT NULL REFERENCES producto(id_producto) ON DELETE CASCADE,
+    id_producto INT UNIQUE REFERENCES producto(id_producto) ON DELETE CASCADE,
     descripcion TEXT,
     instrucciones TEXT NOT NULL CHECK (LENGTH(TRIM(instrucciones)) > 0)
 );
 
--- TABLA PROVEEDORES
 
+-- TABLA PROVEEDORES
 CREATE TABLE proveedor (
     id_proveedor SERIAL PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL CHECK (nombre ~ '^[A-Za-zÁÉÍÓÚáéíóúÑñ0-9\s]+$' AND LENGTH(TRIM(nombre)) > 0),
     nombre_contacto VARCHAR(100) CHECK (nombre_contacto IS NULL OR nombre_contacto ~ '^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$'),
-    telefono VARCHAR(15) NOT NULL CHECK (telefono ~ '^[0-9()+-\s]+$' AND LENGTH(telefono) >= 8),
+    telefono INT NOT NULL CHECK (telefono > 0),
     direccion TEXT CHECK (direccion IS NULL OR LENGTH(TRIM(direccion)) > 0),
     activo BOOLEAN DEFAULT TRUE
 );
 
--- TABLA VENTAS
 
+-- TABLA VENTAS
 CREATE TABLE venta (
     id_venta SERIAL PRIMARY KEY,
     fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    id_usuario INT NOT NULL REFERENCES usuario(id_usuario) ON DELETE SET NULL,
+    id_usuario INT REFERENCES usuario(id_usuario) ON DELETE SET NULL,
     id_cliente INT REFERENCES cliente(id_cliente) ON DELETE SET NULL,
     total NUMERIC(10,2) NOT NULL DEFAULT 0 CHECK (total >= 0)
 );
 
 
 -- TABLA DETALLE DE VENTA
-
 CREATE TABLE detalle_venta (
     id_detalle SERIAL PRIMARY KEY,
-    id_venta INT NOT NULL REFERENCES venta(id_venta) ON DELETE CASCADE,
-    id_producto INT NOT NULL REFERENCES producto(id_producto) ON DELETE SET NULL,
+    id_venta INT REFERENCES venta(id_venta) ON DELETE CASCADE,
+    id_producto INT REFERENCES producto(id_producto) ON DELETE SET NULL,
     cantidad INT NOT NULL CHECK (cantidad > 0),
-    precio_unitario NUMERIC(10,2) NOT NULL CHECK (precio_unitario > 0),
-    subtotal NUMERIC(10,2) GENERATED ALWAYS AS (cantidad * precio_unitario) STORED
+    subtotal NUMERIC(10,2) NOT NULL CHECK (subtotal >= 0)
 );
 
 
 -- TABLA TIPOS DE PAGO
-
 CREATE TABLE tipo_pago (
     id_tipo_pago SERIAL PRIMARY KEY,
-    nombre VARCHAR(50) UNIQUE NOT NULL CHECK (nombre ~ '^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$' AND LENGTH(TRIM(nombre)) > 0)
+    nombre VARCHAR(50) UNIQUE NOT NULL CHECK (nombre IN ('efectivo','transferencia','tarjeta'))
 );
 
 
 -- TABLA PAGOS
-
 CREATE TABLE pago (
     id_pago SERIAL PRIMARY KEY,
-    id_venta INT NOT NULL REFERENCES venta(id_venta) ON DELETE CASCADE,
-    id_tipo_pago INT NOT NULL REFERENCES tipo_pago(id_tipo_pago) ON DELETE SET NULL,
+    id_venta INT REFERENCES venta(id_venta) ON DELETE CASCADE,
+    id_tipo_pago INT REFERENCES tipo_pago(id_tipo_pago) ON DELETE SET NULL,
     monto NUMERIC(10,2) NOT NULL CHECK (monto > 0)
 );
 
 
 -- TABLA CAJAS
-
 CREATE TABLE caja (
     id_caja SERIAL PRIMARY KEY,
     fecha_apertura TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -148,13 +121,12 @@ CREATE TABLE caja (
     monto_inicial NUMERIC(10,2) NOT NULL DEFAULT 0 CHECK (monto_inicial >= 0),
     monto_final NUMERIC(10,2) CHECK (monto_final IS NULL OR monto_final >= 0),
     estado VARCHAR(20) DEFAULT 'abierta' CHECK (estado IN ('abierta','cerrada')),
-    id_usuario INT NOT NULL REFERENCES usuario(id_usuario) ON DELETE SET NULL,
+    id_usuario INT REFERENCES usuario(id_usuario) ON DELETE SET NULL,
     CHECK (fecha_cierre IS NULL OR fecha_cierre >= fecha_apertura)
 );
 
 
 -- TABLA PROMOCIONES
-
 CREATE TABLE promocion (
     id_promocion SERIAL PRIMARY KEY,
     dia_semana VARCHAR(15) NOT NULL CHECK (dia_semana IN ('Lunes','Martes','Miércoles','Jueves','Viernes','Sábado','Domingo')),
@@ -162,11 +134,10 @@ CREATE TABLE promocion (
 );
 
 
--- TABLA DETALLE PROMOCIÓN (productos en promo)
-
+-- TABLA DETALLE PROMOCIÓN
 CREATE TABLE detalle_promocion (
     id_detalle_promocion SERIAL PRIMARY KEY,
-    id_promocion INT NOT NULL REFERENCES promocion(id_promocion) ON DELETE CASCADE,
-    id_producto INT NOT NULL REFERENCES producto(id_producto) ON DELETE CASCADE,
+    id_promocion INT REFERENCES promocion(id_promocion) ON DELETE CASCADE,
+    id_producto INT REFERENCES producto(id_producto) ON DELETE CASCADE,
     UNIQUE(id_promocion, id_producto)
 );
