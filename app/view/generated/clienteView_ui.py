@@ -342,6 +342,7 @@ class Ui_Dialog(object):
         self.gridLayoutWidget_4.setGeometry(QtCore.QRect(0, 0, 331, 386))
         self.gridLayoutWidget_4.setObjectName("gridLayoutWidget_4")
         self.gridLayout_3 = QtWidgets.QGridLayout(self.gridLayoutWidget_4)
+        self.gridLayout_3.setSizeConstraint(QtWidgets.QLayout.SetFixedSize)
         self.gridLayout_3.setContentsMargins(10, 10, 10, 10)
         self.gridLayout_3.setSpacing(10)
         self.gridLayout_3.setObjectName("gridLayout_3")
@@ -351,6 +352,18 @@ class Ui_Dialog(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.btnEmpleados.sizePolicy().hasHeightForWidth())
         self.btnEmpleados.setSizePolicy(sizePolicy)
+        self.btnEmpleados.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.btnEmpleados.setStyleSheet("QPushButton {\n"
+"    background-color: #BDB2DF;\n"
+"    color: white;\n"
+"    border: none;\n"
+"    border-radius: 5px;\n"
+"    font-size: 18px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: #CFC3F5;\n"
+"}")
         self.btnEmpleados.setText("")
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/empleados.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -359,6 +372,18 @@ class Ui_Dialog(object):
         self.btnEmpleados.setObjectName("btnEmpleados")
         self.gridLayout_3.addWidget(self.btnEmpleados, 2, 2, 1, 1)
         self.btnRecetas = QtWidgets.QPushButton(self.gridLayoutWidget_4)
+        self.btnRecetas.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.btnRecetas.setStyleSheet("QPushButton {\n"
+"    background-color: #BDB2DF;\n"
+"    color: white;\n"
+"    border: none;\n"
+"    border-radius: 5px;\n"
+"    font-size: 18px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: #CFC3F5;\n"
+"}")
         self.btnRecetas.setText("")
         icon2 = QtGui.QIcon()
         icon2.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/recetas.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -367,6 +392,18 @@ class Ui_Dialog(object):
         self.btnRecetas.setObjectName("btnRecetas")
         self.gridLayout_3.addWidget(self.btnRecetas, 1, 3, 1, 1)
         self.btnProductos = QtWidgets.QPushButton(self.gridLayoutWidget_4)
+        self.btnProductos.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.btnProductos.setStyleSheet("QPushButton {\n"
+"    background-color: #BDB2DF;\n"
+"    color: white;\n"
+"    border: none;\n"
+"    border-radius: 5px;\n"
+"    font-size: 18px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: #CFC3F5;\n"
+"}")
         self.btnProductos.setText("")
         icon3 = QtGui.QIcon()
         icon3.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/productos.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -375,6 +412,18 @@ class Ui_Dialog(object):
         self.btnProductos.setObjectName("btnProductos")
         self.gridLayout_3.addWidget(self.btnProductos, 1, 2, 1, 1)
         self.btnMenuInicio = QtWidgets.QPushButton(self.gridLayoutWidget_4)
+        self.btnMenuInicio.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.btnMenuInicio.setStyleSheet("QPushButton {\n"
+"    background-color: #BDB2DF;\n"
+"    color: white;\n"
+"    border: none;\n"
+"    border-radius: 5px;\n"
+"    font-size: 18px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: #CFC3F5;\n"
+"}")
         self.btnMenuInicio.setText("")
         icon4 = QtGui.QIcon()
         icon4.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/inicio.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -383,6 +432,18 @@ class Ui_Dialog(object):
         self.btnMenuInicio.setObjectName("btnMenuInicio")
         self.gridLayout_3.addWidget(self.btnMenuInicio, 0, 0, 1, 1)
         self.btnPromociones = QtWidgets.QPushButton(self.gridLayoutWidget_4)
+        self.btnPromociones.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.btnPromociones.setStyleSheet("QPushButton {\n"
+"    background-color: #BDB2DF;\n"
+"    color: white;\n"
+"    border: none;\n"
+"    border-radius: 5px;\n"
+"    font-size: 18px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: #CFC3F5;\n"
+"}")
         self.btnPromociones.setText("")
         icon5 = QtGui.QIcon()
         icon5.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/promociones.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -391,6 +452,18 @@ class Ui_Dialog(object):
         self.btnPromociones.setObjectName("btnPromociones")
         self.gridLayout_3.addWidget(self.btnPromociones, 2, 0, 1, 1)
         self.btnProveedores = QtWidgets.QPushButton(self.gridLayoutWidget_4)
+        self.btnProveedores.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.btnProveedores.setStyleSheet("QPushButton {\n"
+"    background-color: #BDB2DF;\n"
+"    color: white;\n"
+"    border: none;\n"
+"    border-radius: 5px;\n"
+"    font-size: 18px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: #CFC3F5;\n"
+"}")
         self.btnProveedores.setText("")
         icon6 = QtGui.QIcon()
         icon6.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/provedoores.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -399,6 +472,18 @@ class Ui_Dialog(object):
         self.btnProveedores.setObjectName("btnProveedores")
         self.gridLayout_3.addWidget(self.btnProveedores, 0, 3, 1, 1)
         self.btnClientes = QtWidgets.QPushButton(self.gridLayoutWidget_4)
+        self.btnClientes.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.btnClientes.setStyleSheet("QPushButton {\n"
+"    background-color: #BDB2DF;\n"
+"    color: white;\n"
+"    border: none;\n"
+"    border-radius: 5px;\n"
+"    font-size: 18px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: #CFC3F5;\n"
+"}")
         self.btnClientes.setText("")
         icon7 = QtGui.QIcon()
         icon7.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/clientes.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -407,6 +492,18 @@ class Ui_Dialog(object):
         self.btnClientes.setObjectName("btnClientes")
         self.gridLayout_3.addWidget(self.btnClientes, 0, 2, 1, 1)
         self.btnVentas = QtWidgets.QPushButton(self.gridLayoutWidget_4)
+        self.btnVentas.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.btnVentas.setStyleSheet("QPushButton {\n"
+"    background-color: #BDB2DF;\n"
+"    color: white;\n"
+"    border: none;\n"
+"    border-radius: 5px;\n"
+"    font-size: 18px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: #CFC3F5;\n"
+"}")
         self.btnVentas.setText("")
         icon8 = QtGui.QIcon()
         icon8.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/ventas.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -415,6 +512,18 @@ class Ui_Dialog(object):
         self.btnVentas.setObjectName("btnVentas")
         self.gridLayout_3.addWidget(self.btnVentas, 1, 0, 1, 1)
         self.btnUsuario = QtWidgets.QPushButton(self.gridLayoutWidget_4)
+        self.btnUsuario.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.btnUsuario.setStyleSheet("QPushButton {\n"
+"    background-color: #BDB2DF;\n"
+"    color: white;\n"
+"    border: none;\n"
+"    border-radius: 5px;\n"
+"    font-size: 18px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: #CFC3F5;\n"
+"}")
         self.btnUsuario.setText("")
         icon9 = QtGui.QIcon()
         icon9.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/Usuario.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)

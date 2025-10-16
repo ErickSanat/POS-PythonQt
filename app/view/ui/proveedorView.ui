@@ -704,7 +704,7 @@ QPushButton:hover {
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QWidget" name="gridLayoutWidget_3">
+    <widget class="QWidget" name="gridLayoutWidget_4">
      <property name="geometry">
       <rect>
        <x>0</x>
@@ -713,7 +713,10 @@ QPushButton:hover {
        <height>386</height>
       </rect>
      </property>
-     <layout class="QGridLayout" name="gridLayout_2">
+     <layout class="QGridLayout" name="gridLayout_3">
+      <property name="sizeConstraint">
+       <enum>QLayout::SetFixedSize</enum>
+      </property>
       <property name="leftMargin">
        <number>10</number>
       </property>
@@ -737,6 +740,22 @@ QPushButton:hover {
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background-color: #BDB2DF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+}
+QPushButton:hover {
+    background-color: #CFC3F5;
+}</string>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -754,6 +773,22 @@ QPushButton:hover {
       </item>
       <item row="1" column="3">
        <widget class="QPushButton" name="btnRecetas">
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background-color: #BDB2DF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+}
+QPushButton:hover {
+    background-color: #CFC3F5;
+}</string>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -771,6 +806,22 @@ QPushButton:hover {
       </item>
       <item row="1" column="2">
        <widget class="QPushButton" name="btnProductos">
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background-color: #BDB2DF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+}
+QPushButton:hover {
+    background-color: #CFC3F5;
+}</string>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -788,6 +839,22 @@ QPushButton:hover {
       </item>
       <item row="0" column="0">
        <widget class="QPushButton" name="btnMenuInicio">
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background-color: #BDB2DF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+}
+QPushButton:hover {
+    background-color: #CFC3F5;
+}</string>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -805,6 +872,22 @@ QPushButton:hover {
       </item>
       <item row="2" column="0">
        <widget class="QPushButton" name="btnPromociones">
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background-color: #BDB2DF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+}
+QPushButton:hover {
+    background-color: #CFC3F5;
+}</string>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -822,6 +905,22 @@ QPushButton:hover {
       </item>
       <item row="0" column="3">
        <widget class="QPushButton" name="btnProveedores">
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background-color: #BDB2DF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+}
+QPushButton:hover {
+    background-color: #CFC3F5;
+}</string>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -839,6 +938,22 @@ QPushButton:hover {
       </item>
       <item row="0" column="2">
        <widget class="QPushButton" name="btnClientes">
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background-color: #BDB2DF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+}
+QPushButton:hover {
+    background-color: #CFC3F5;
+}</string>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -856,6 +971,22 @@ QPushButton:hover {
       </item>
       <item row="1" column="0">
        <widget class="QPushButton" name="btnVentas">
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background-color: #BDB2DF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+}
+QPushButton:hover {
+    background-color: #CFC3F5;
+}</string>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -873,6 +1004,22 @@ QPushButton:hover {
       </item>
       <item row="2" column="3">
        <widget class="QPushButton" name="btnUsuario">
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background-color: #BDB2DF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+}
+QPushButton:hover {
+    background-color: #CFC3F5;
+}</string>
+        </property>
         <property name="text">
          <string/>
         </property>
