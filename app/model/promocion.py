@@ -20,8 +20,11 @@ class Promocion:
         self.descripción = descripción
     
     def __repr__(self):
-        return f"""
-    id_promocion: {self.id_promocion}
-    dia_semana: {self.dia_semana}
-    descripción: {self.descripción}
-"""
+        from json import dumps
+        return dumps(
+            {
+                "id_promocion": self.id_promocion,
+                "dia_semana": self.dia_semana,
+                "descripción": self.descripción
+            }, indent=4
+        )

@@ -17,10 +17,13 @@ class DetalleVenta:
         self.subtotal = subtotal
     
     def __repr__(self):
-        return f"""
-    id_detalle: {self.id_detalle}
-    venta: [{self.venta}]
-    producto: [{self.producto}]
-    cantidad: {self.cantidad}
-    subtotal: {self.subtotal}
-"""
+        from json import dumps, loads
+        return dumps(
+            {
+                "id_detalle": self.id_detalle,
+                "venta": loads(repr(self.venta)),
+                "producto": loads(repr(self.producto)),
+                "cantidad": self.cantidad,
+                "subtotal": float(self.subtotal)
+            }, indent=4
+        )

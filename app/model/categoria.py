@@ -10,8 +10,11 @@ class Categoria:
         self.descripcion = descripcion
     
     def __repr__(self):
-        return f"""
-    id: {self.id_categoria}
-    nombre: {self.nombre}
-    descripcion: {self.descripcion}
-"""
+        from json import dumps
+        return dumps(
+            {
+                "id_categoria": self.id_categoria,
+                "nombre": self.nombre,
+                "descripcion": self.descripcion
+            }, indent=4
+        )

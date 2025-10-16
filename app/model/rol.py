@@ -8,7 +8,10 @@ class Rol:
         self.nombre = nombre
         
     def __repr__(self):
-        return f"""
-    id: {self.id_rol}
-    nombre: {self.nombre}
-"""
+        from json import dumps
+        return dumps(
+            {
+                "id_rol": self.id_rol,
+                "nombre": self.nombre
+            }, indent=4
+        )

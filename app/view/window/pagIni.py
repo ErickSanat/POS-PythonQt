@@ -2,7 +2,7 @@ import sys
 from PyQt5.QtWidgets import (QApplication, QMainWindow)
 from PyQt5.QtGui import QIcon
 from ..generated.menuInicialView_ui import Ui_POS
-from app.utils.menuFlotante import MenuFlotante
+from app.utils import MenuFlotante
 
 class InicioWindow(QMainWindow, Ui_POS, MenuFlotante):
     def __init__(self):
@@ -21,9 +21,3 @@ class InicioWindow(QMainWindow, Ui_POS, MenuFlotante):
         print("Ventana cargada correctamente")
         # Intentar establecer un ícono por defecto o ninguno
         self.setWindowIcon(QIcon())
-
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    window = InicioWindow()
-    window.show()
-    sys.exit(app.exec_())

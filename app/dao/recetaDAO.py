@@ -20,7 +20,10 @@ class RecetaDAO:
             )
         cur.close()
         conn.close()
-        return recetas
+        if recetas is not None:
+            return recetas
+        else:
+            raise TypeError("No existen recetas")
     
     def receta(self, id_receta: int):
         conn = DBConnection.connection()
@@ -29,9 +32,12 @@ class RecetaDAO:
         resultado = cur.fetchone()
         cur.close()
         conn.close()
-        return Receta(
-            resultado[0],
-            ProductoDAO().producto(resultado[1]),
-            resultado[2],
-            resultado[3]
-        )
+        if resultado is not None:
+            return Receta(
+                resultado[0],
+                ProductoDAO().producto(resultado[1]),
+                resultado[2],
+                resultado[3]
+            )
+        else:
+            raise TypeError("No existe la receta")

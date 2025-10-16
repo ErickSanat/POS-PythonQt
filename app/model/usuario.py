@@ -13,9 +13,12 @@ class Usuario:
         self.rol = rol
     
     def __repr__(self):
-        return f"""
-    id_usuario: {self.id_usuario}
-    usuario: {self.usuario}
-    contrasena: {self.contrasena}
-    rol: [{self.rol}]
-"""
+        from json import dumps, loads
+        return dumps(
+            {
+                "id_usuario": self.id_usuario,
+                "usuario": self.usuario,
+                "contrasena": self.contrasena,
+                "rol": loads(repr(self.rol))
+            }, indent=4
+        )

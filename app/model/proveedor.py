@@ -16,11 +16,14 @@ class Proveedor:
         self.activo = activo
     
     def __repr__(self):
-        return f"""
-    id_proveedor: {self.id_proveedor}
-    nombre: {self.nombre}
-    nombre_contacto: {self.nombre_contacto}
-    telefono: {self.telefono}
-    direccion: {self.direccion}
-    activo: {self.activo}
-"""
+        from json import dumps
+        return dumps(
+            {
+                "id_proveedor": self.id_proveedor,
+                "nombre": self.nombre,
+                "nombre_contacto": self.nombre_contacto,
+                "telefono": self.telefono,
+                "direccion": self.direccion,
+                "activo": self.activo
+            }, indent=4
+        )

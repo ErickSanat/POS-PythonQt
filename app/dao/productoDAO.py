@@ -22,7 +22,10 @@ class ProductoDAO:
             )
         cur.close()
         conn.close()
-        return productos
+        if productos is not None:
+            return productos
+        else:
+            raise TypeError("No existen productos")
     
     def producto(self, id_producto: int) -> Producto:
         conn = DBConnection.connection()
@@ -31,11 +34,35 @@ class ProductoDAO:
         resultado = cur.fetchone()
         cur.close()
         conn.close()
-        return Producto(
-                resultado[0],
-                resultado[1],
-                resultado[2],
-                resultado[3],
-                resultado[4],
-                CategoriaDAO().categoria(resultado[5])
+        if resultado is not None:
+            return Producto(
+                    resultado[0],
+                    resultado[1],
+                    resultado[2],
+                    resultado[3],
+                    resultado[4],
+                    CategoriaDAO().categoria(resultado[5])
+                )
+        else:
+            raise TypeError("No existe el producto")
+    
+    def setProducto(self, producto: Producto):
+        conn = DBConnection.connection()
+        cur = conn.cursor()
+        cur.execute(
+            "INSERT INTO producto ("
+                + "nombre,"
+                + "descripcion"
+                + "precio"
+                + "stock"
+                + "id_categoria"
+            +") VALUES ("
+                + f"{producto.nombre})"
+                + f"{producto.descripcion})"
+                + f"{producto.precio})"
+                + f"{producto.stock})"
+                + f"{producto.categoria.id_categoria})"
             )
+        conn.commit()
+        cur.close()
+        conn.close()

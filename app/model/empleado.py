@@ -1,6 +1,6 @@
 from .usuario import Usuario
 
-class Empelado:
+class Empleado:
     def __init__(
         self,
         id_empleado: int=None,
@@ -16,10 +16,13 @@ class Empelado:
         self.usuario = usuario
     
     def __repr__(self):
-        return f"""
-    id_empleado: {self.id_empleado}
-    nombre: {self.nombre}
-    direccion: {self.direccion}
-    telefono: {self.telefono}
-    usuario: [{self.usuario}]
-"""
+        from json import dumps, loads
+        return dumps(
+            {
+                "id_empleado": self.id_empleado,
+                "nombre": self.nombre,
+                "direccion": self.direccion,
+                "telefono": self.telefono,
+                "usuario": loads(repr(self.usuario))
+            }, indent=4
+        )

@@ -22,7 +22,10 @@ class VentaDAO:
             )
         cur.close()
         conn.close()
-        return ventas
+        if ventas is not None:
+            return ventas
+        else:
+            raise TypeError("No existen ventas")
     
     def venta(self, id_venta: int) -> Venta:
         conn = DBConnection.connection()
@@ -31,10 +34,13 @@ class VentaDAO:
         resultado = cur.fetchone()
         cur.close()
         conn.close()
-        return Venta(
+        if resultado is not None:
+            return Venta(
                 resultado[0],
                 resultado[1],
                 UsuarioDAO().usuario(resultado[2]),
                 ClienteDAO().cliente(resultado[3]),
                 resultado[4]
             )
+        else:
+            raise TypeError("No existe la venta")

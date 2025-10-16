@@ -8,7 +8,8 @@ class InicioSesion(QMainWindow, Ui_InicioSesion):
         super().__init__()
         self.setupUi(self)
         self.btnIngresar.clicked.connect(self.login)
-
+        self.lineContrasena.returnPressed.connect(self.login)
+        
     def lanzarPagIni(self):
         self.hide()
         self.pagIni = InicioWindow()

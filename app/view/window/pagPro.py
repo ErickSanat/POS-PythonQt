@@ -1,7 +1,7 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from ..generated.productoView_ui import Ui_Form
-from app.utils.menuFlotante import MenuFlotante
+from app.utils import MenuFlotante
 
 class ProWindow(QMainWindow, Ui_Form, MenuFlotante):
     def __init__(self):
@@ -11,9 +11,3 @@ class ProWindow(QMainWindow, Ui_Form, MenuFlotante):
         self.setupFloatingMenu()
 
         print("Ventana cargada correctamente")
-
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    window = ProWindow()
-    window.show()
-    sys.exit(app.exec_())
