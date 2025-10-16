@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QMainWindow, QMessageBox
 from ..generated.inicioSesionView_ui import Ui_InicioSesion
 from .pagIni import InicioWindow
+from app.model import Empleado, Usuario, Rol
 
 
 class InicioSesion(QMainWindow, Ui_InicioSesion):
@@ -12,7 +13,10 @@ class InicioSesion(QMainWindow, Ui_InicioSesion):
         
     def lanzarPagIni(self):
         self.hide()
-        self.pagIni = InicioWindow()
+        self.pagIni = InicioWindow(
+            Empleado(1, "jose el admin", "aki mismo", 4568542348, 
+                    Usuario(1, "admin", "admin", Rol(1, "empleado")))
+        )
         self.pagIni.show()
 
     def login(self):

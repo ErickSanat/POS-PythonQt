@@ -3,11 +3,11 @@ from PyQt5.QtWidgets import (QApplication, QMainWindow)
 from PyQt5.QtGui import QIcon
 from ..generated.menuInicialView_ui import Ui_POS
 from app.utils import MenuFlotante
+from app.model import Empleado
 
 class InicioWindow(QMainWindow, Ui_POS, MenuFlotante):
-    def __init__(self):
+    def __init__(self, empleado: Empleado):
         super().__init__()
-        
         try:
             self.setupUi(self)
         except Exception as e:
@@ -16,7 +16,7 @@ class InicioWindow(QMainWindow, Ui_POS, MenuFlotante):
             self.setupUi(self)
         
         # ✅ CONFIGURAR EL MENÚ FLOTANTE DESPUÉS DE setupUi
-        self.setupFloatingMenu()
+        self.setupFloatingMenu(empleado)
         
         print("Ventana cargada correctamente")
         # Intentar establecer un ícono por defecto o ninguno
