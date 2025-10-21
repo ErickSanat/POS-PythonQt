@@ -331,7 +331,7 @@ QPushButton:hover {
          </item>
         </layout>
        </widget>
-       <widget class="QLabel" name="labelUsuario_2">
+       <widget class="QLabel" name="labelInformacion">
         <property name="geometry">
          <rect>
           <x>20</x>
