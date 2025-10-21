@@ -1,6 +1,6 @@
 from .DB import DBConnection
 from ..utils import cerrarCommit, cerrarConn
-from ..model import Empleado
+from ..model import Empleado, Usuario
 from .usuarioDAO import UsuarioDAO
 
 class EmpleadoDAO:
@@ -86,3 +86,23 @@ class EmpleadoDAO:
                 + f"id_empleado={id_empleado}"
             )
         cerrarCommit(cur, conn)
+        
+    def buscarPorUsuario(self, usuario: Usuario) -> Empleado:
+        conn = DBConnection.connection()
+        cur = conn.cursor()
+        cur.execute(
+            "SELECT * FROM empleado "
+            + f"WHERE id_usuario = {usuario.id_usuario}"
+        )
+        resultado = cur.fetchone()
+        cerrarConn(cur, conn)
+        if resultado is not None:
+            return Empleado(
+                resultado[0],
+                resultado[1],
+                resultado[2],
+                resultado[3],
+                usuario
+            )
+        else:
+            raise TypeError("No existe el empleado")

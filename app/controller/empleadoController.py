@@ -1,4 +1,4 @@
-from ..model import Empleado
+from ..model import Empleado, Usuario
 from ..dao import EmpleadoDAO
 
 class EmpleadoController:
@@ -25,3 +25,9 @@ class EmpleadoController:
     
     def deleteEmpleado(self, id_empleado: int):
         self.empleadoDAO.deleteEmpleado(id_empleado)
+        
+    def buscarPorUsuario(self, usuario: Usuario) -> Empleado:
+        try:
+            return self.empleadoDAO.buscarPorUsuario(usuario)
+        except Exception as e:
+            raise e

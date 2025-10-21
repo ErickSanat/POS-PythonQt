@@ -30,8 +30,7 @@ class UsuarioDAO:
         cur = conn.cursor()
         cur.execute(f"SELECT * FROM usuario WHERE id_usuario = {id_usuario}")
         resultado = cur.fetchone()
-        cur.close()
-        conn.close()
+        cerrarConn()
         if resultado is not None:
             return Usuario(
                 resultado[0],
@@ -42,6 +41,21 @@ class UsuarioDAO:
         else:
             raise TypeError("No existe el usuario")
     
+    def usuarioExistente(self, usuario: Usuario) -> Usuario | bool:
+        conn = DBConnection.connection()
+        cur = conn.cursor()
+        cur.execute(
+            "SELECT * FROM usuario "
+            +"WHERE "
+                + f"usuario = '{usuario.usuario}'"
+        )
+        resultado = cur.fetchone()
+        cerrarConn(cur, conn)
+        if resultado is not None:
+            return Usuario(resultado[0], resultado[1], resultado[2], RolDAO().rol(resultado[3]))
+        else:
+            return False
+        
     def addUsuario(self, usuario: Usuario):
         conn = DBConnection.connection()
         cur = conn.cursor()

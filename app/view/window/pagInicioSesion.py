@@ -2,6 +2,7 @@ from PyQt5.QtWidgets import QMainWindow, QMessageBox
 from ..generated.inicioSesionView_ui import Ui_InicioSesion
 from .pagIni import InicioWindow
 from app.model import Empleado, Usuario, Rol
+from app.controller import UsuarioController, EmpleadoController
 
 
 class InicioSesion(QMainWindow, Ui_InicioSesion):
@@ -10,6 +11,8 @@ class InicioSesion(QMainWindow, Ui_InicioSesion):
         self.setupUi(self)
         self.btnIngresar.clicked.connect(self.login)
         self.lineContrasena.returnPressed.connect(self.login)
+        self.usuarioController = UsuarioController()
+        self.empleadoController = EmpleadoController()
         
     def lanzarPagIni(self, empleado: Empleado):
         self.hide()
@@ -17,20 +20,23 @@ class InicioSesion(QMainWindow, Ui_InicioSesion):
         self.pagIni.show()
 
     def login(self):
-        username = self.lineNombre.text().strip()
-        password = self.lineContrasena.text().strip()
+        usuario = Usuario(
+            usuario=self.lineNombre.text().strip(),
+            contrasena=self.lineContrasena.text().strip()
+        )
 
-        if not username or not password:
+        if not usuario.usuario or not usuario.contrasena:
             QMessageBox.warning(self, "Error", "Por favor, complete todos los campos.")
             return
 
-        if username == "admin" and password == "admin":
-            empleado = Empleado(1, "jose el admin", "aki mismo", 4568542348, 
-                    Usuario(1, "admin", "admin", Rol(1, "admin")))
+        if usuario.usuario == "admin" and usuario.contrasena == "admin":
+            empleado = Empleado(usuario=Usuario(rol=Rol(nombre="admin")))
             self.lanzarPagIni(empleado)
-        elif username == "empleado" and password == "empleado":
-            empleado = Empleado(1, "jose el admin", "aki mismo", 4568542348, 
-                    Usuario(1, "admin", "admin", Rol(1, "empleado")))
+        elif usuario.usuario == "empleado" and usuario.contrasena == "empleado":
+            empleado = Empleado(usuario=Usuario(rol=Rol(nombre="empleado")))
+            self.lanzarPagIni(empleado)
+        elif usuario := self.usuarioController.logIn(usuario):
+            empleado = self.empleadoController.buscarPorUsuario(usuario)
             self.lanzarPagIni(empleado)
         else:
             QMessageBox.critical(self, "Error", "Usuario o contraseña incorrectos.")
