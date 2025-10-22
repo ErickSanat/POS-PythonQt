@@ -42,6 +42,27 @@ class EmpleadoDAO:
             )
         else:
             raise TypeError("No existe el empleado")
+
+    def empleadoExistente(self, empleado: Empleado) -> Empleado | bool:
+        conn = DBConnection.connection()
+        cur = conn.cursor()
+        cur.execute(
+            "SELECT * FROM empleado "
+            +"WHERE "
+                + f"id_empleado = {empleado.id_empleado}"
+        )
+        resultado = cur.fetchone()
+        cerrarConn(cur, conn)
+        if resultado is not None:
+            return Empleado(
+                resultado[0],
+                resultado[1],
+                resultado[2],
+                resultado[3],
+                UsuarioDAO().usuario(resultado[4])
+            )
+        else:
+            return False
     
     def addEmpleado(self, empleado: Empleado):
         conn = DBConnection.connection()
@@ -86,7 +107,7 @@ class EmpleadoDAO:
                 + f"id_empleado={id_empleado}"
             )
         cerrarCommit(cur, conn)
-        
+
     def buscarPorUsuario(self, usuario: Usuario) -> Empleado:
         conn = DBConnection.connection()
         cur = conn.cursor()
@@ -106,15 +127,20 @@ class EmpleadoDAO:
             )
         else:
             raise TypeError("No existe el empleado")
+
     def buscarEmpleados(self, columna: str, aBuscar: str) -> list[Empleado]:
+        if not aBuscar:
+            raise TypeError("falta texto")
         empleados: list[Empleado] = []
         conn = DBConnection.connection()
         cur = conn.cursor()
 
         cur.execute(
-            "SELECT * FROM empleado "
-            + f"WHERE {columna} LIKE '%{aBuscar}%'"
-        )
+            "SELECT * "
+            + "FROM empleado "
+            +"JOIN usuario "
+            +"ON empleado.id_usuario = usuario.id_usuario "
+            + f"WHERE CAST({columna} AS TEXT) LIKE '%{aBuscar}%'")
         resultado = cur.fetchall()
         empleados.extend(
             Empleado(
@@ -128,7 +154,7 @@ class EmpleadoDAO:
         )
         cerrarConn(cur, conn)
 
-        if empleados:
+        if empleados is not None:
             return empleados
         else:
             raise TypeError("No existen empleados")

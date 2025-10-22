@@ -286,7 +286,7 @@ class Ui_Form(object):
         self.tableView.setObjectName("tableView")
         self.tableView.horizontalHeader().setVisible(True)
         self.tableView.horizontalHeader().setCascadingSectionResizes(False)
-        self.tableView.horizontalHeader().setDefaultSectionSize(220)
+        self.tableView.horizontalHeader().setDefaultSectionSize(165)
         self.tableView.horizontalHeader().setMinimumSectionSize(100)
         self.tableView.horizontalHeader().setSortIndicatorShown(False)
         self.tableView.horizontalHeader().setStretchLastSection(False)

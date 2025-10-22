@@ -1,3 +1,5 @@
+from PyQt5.QtCore import QAbstractTableModel
+
 from ..model import Empleado, Usuario
 from ..dao import EmpleadoDAO
 
@@ -25,6 +27,12 @@ class EmpleadoController:
     
     def deleteEmpleado(self, id_empleado: int):
         self.empleadoDAO.deleteEmpleado(id_empleado)
+
+    def buscar(self, columna: str, aBuscar: str) -> list[Empleado]:
+        try:
+            return self.empleadoDAO.buscarEmpleados(columna, aBuscar)
+        except Exception as e:
+            raise e
         
     def buscarPorUsuario(self, usuario: Usuario) -> Empleado:
         try:

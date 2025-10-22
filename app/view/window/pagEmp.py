@@ -68,8 +68,17 @@ class EmpWindow(QMainWindow, Ui_Form, MenuFlotante):
         self.setupUi(self)
         self.empleadoController = EmpleadoController()
         self.usuarioController = UsuarioController()
+        self.empleado = Empleado()
+        self.empleados = None
+        usuariosUsados = []
         # Llenar combobox de usuarios
+        for empleado in self.empleadoController.empleados():
+            usuariosUsados.append(empleado.usuario.id_usuario)
+        usuariosDisponibles = []
         for usuario in self.usuarioController.usuarios():
+            if usuario.id_usuario not in usuariosUsados:
+                usuariosDisponibles.append(usuario)
+        for usuario in usuariosDisponibles:
             self.comboUsuario.addItem(usuario.usuario, usuario.id_usuario)
 
         # Llenar el combo de categorías de búsqueda
@@ -100,6 +109,8 @@ class EmpWindow(QMainWindow, Ui_Form, MenuFlotante):
         self.mostrarTabla()
 
     def handleAgregarBtn(self):
+        if self.lineNombreEmpleado.text().strip() or self.lineDireccionEmpleado.text().strip() or self.lineTelefonoEmpleado.text().strip() == "":
+            return
         empleado = Empleado(
             nombre=self.lineNombreEmpleado.text().strip(),
             direccion=self.lineDireccionEmpleado.text().strip(),
@@ -112,49 +123,46 @@ class EmpWindow(QMainWindow, Ui_Form, MenuFlotante):
         self.mostrarTabla()
 
     def handleEditarBtn(self):
-        try:
-            empleadoModificado = Empleado(
-                id_empleado=self.empleado.id_empleado,
-                nombre=self.lineNombreEmpleado.text().strip(),
-                direccion=self.lineDireccionEmpleado.text().strip(),
-                telefono=int(self.lineTelefono.text().strip()),
-                usuario=Usuario(self.comboUsuario.currentData())
-            )
-            self.empleadoController.updateEmpleado(empleadoModificado)
-            self.labelInformacion.setText("Empleado actualizado exitosamente")
-            self.limpiarCampos()
-            self.mostrarTabla()
-        except Exception as e:
-            self.labelInformacion.setText(f"Error al actualizar empleado: {str(e)}")
+        if self.empleado.id_empleado is None:
+            return
+        empleadoModificado = Empleado(
+            id_empleado=self.empleado.id_empleado,
+            nombre=self.lineNombreEmpleado.text().strip(),
+            direccion=self.lineDireccionEmpleado.text().strip(),
+            telefono=int(self.lineTelefonoEmpleado.text().strip()),
+            usuario=Usuario(self.comboUsuario.currentData())
+        )
+        self.empleadoController.updateEmpleado(empleadoModificado)
+        self.labelInformacion.setText("Empleado Actualizado Exitosamente")
+        self.limpiarCampos()
+        self.mostrarTabla()
 
     def handleBorrarBtn(self):
-        try:
-            self.empleadoController.deleteEmpleado(self.empleado.id_empleado)
-            self.labelInformacion.setText("Empleado eliminado exitosamente")
-            self.limpiarCampos()
-            self.mostrarTabla()
-        except Exception as e:
-            self.labelInformacion.setText(f"Error al eliminar empleado: {str(e)}")
+        if self.empleado.id_empleado is None:
+            return
+        self.empleadoController.deleteEmpleado(self.empleado.id_empleado)
+        self.labelInformacion.setText("Empleado Eliminado Exitosamente")
+        self.limpiarCampos()
+        self.mostrarTabla()
 
     def handelBuscarBtn(self):
         columna = self.comboCategorias.currentData()
         aBuscar = self.lineDato.text().strip()
         try:
-            empleados = self.empleadoController.buscar(columna, aBuscar)
+            self.empleados = self.empleadoController.buscar(columna, aBuscar)
         except Exception:
-            empleados = None
+            self.empleados = None
         self.lineDato.clear()
-        self._table_model.setEmpleados(empleados)
+        self.mostrarTabla()
 
     def mostrarTabla(self):
         """Cargar y mostrar los empleados en la tabla"""
         try:
-            empleados = self.empleadoController.empleados()
+            empleados = self.empleados or self.empleadoController.empleados()
             self._table_model.setEmpleados(empleados)
             self.empleados = None
         except Exception as e:
             print(f"Error al cargar empleados: {e}")
-            self.labelInformacion.setText(f"Error al cargar empleados: {e}")
 
     def handleDobleClic(self, index: QModelIndex):
         datos = []
@@ -162,14 +170,17 @@ class EmpWindow(QMainWindow, Ui_Form, MenuFlotante):
             self._table_model.index(index.row(), nColumna, index).data()
             for nColumna in range(self._table_model.columnCount())
         )
-
-        # Llenar los campos con los datos del empleado seleccionado
+        self.empleado = Empleado(
+            id_empleado=int(datos[0]),
+            nombre=datos[1],
+            direccion=datos[2],
+            telefono=int(datos[3]),
+            usuario=self.usuarioController.porNombre(datos[4])
+        )
         self.lineNombreEmpleado.setText(self.empleado.nombre)
         self.lineDireccionEmpleado.setText(self.empleado.direccion)
-        self.lineTelefono.setText(str(self.empleado.telefono))
+        self.lineTelefonoEmpleado.setText(str(self.empleado.telefono))
         self.comboUsuario.setCurrentText(self.empleado.usuario.usuario)
-        if self.empleado.usuario:
-            self.comboUsuario.setCurrentText(self.empleado.usuario.usuario)
 
     def limpiarCampos(self):
         self.lineNombreEmpleado.clear()
