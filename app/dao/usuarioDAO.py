@@ -108,7 +108,7 @@ class UsuarioDAO:
             + "FROM usuario "
             + "JOIN rol "
             + "ON usuario.id_rol = rol.id_rol "
-            + f"WHERE {columna} LIKE '%{aBuscar}%'")
+            + f"WHERE CAST({columna} AS TEXT) LIKE '%{aBuscar}%'")
         resultado = cur.fetchall()
         usuarios.extend(
             Usuario(
