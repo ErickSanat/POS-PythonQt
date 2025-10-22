@@ -24,7 +24,7 @@ CREATE TABLE empleado (
     id_empleado SERIAL PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL CHECK (nombre ~ '^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$'),
     direccion TEXT NOT NULL CHECK (LENGTH(TRIM(direccion)) > 0),
-    telefono INT NOT NULL CHECK (telefono > 0),
+    telefono BIGINT NOT NULL CHECK (telefono > 0),
     id_usuario INT UNIQUE REFERENCES usuario(id_usuario) ON DELETE SET NULL
 );
 
@@ -33,7 +33,7 @@ CREATE TABLE empleado (
 CREATE TABLE cliente (
     id_cliente SERIAL PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL CHECK (nombre ~ '^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$' AND LENGTH(TRIM(nombre)) > 0),
-    telefono INT CHECK (telefono IS NULL OR telefono > 0),
+    telefono BIGINT CHECK (telefono IS NULL OR telefono > 0),
     correo VARCHAR(100) CHECK (correo IS NULL OR correo ~* '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$')
 );
 
@@ -71,7 +71,7 @@ CREATE TABLE proveedor (
     id_proveedor SERIAL PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL CHECK (nombre ~ '^[A-Za-zÁÉÍÓÚáéíóúÑñ0-9\s]+$' AND LENGTH(TRIM(nombre)) > 0),
     nombre_contacto VARCHAR(100) CHECK (nombre_contacto IS NULL OR nombre_contacto ~ '^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$'),
-    telefono INT NOT NULL CHECK (telefono > 0),
+    telefono BIGINT NOT NULL CHECK (telefono > 0),
     direccion TEXT CHECK (direccion IS NULL OR LENGTH(TRIM(direccion)) > 0),
     activo BOOLEAN DEFAULT TRUE
 );
