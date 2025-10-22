@@ -64,11 +64,19 @@ class UsuarioTableModel(QAbstractTableModel):
 class UsuWindow(QMainWindow, Ui_Dialog, MenuFlotante):
     def __init__(self, empleado: Empleado):
         super().__init__()
+        self.usuario = Usuario()
+        self.usuarios = None
         self.setupUi(self)
         self.usuarioController = UsuarioController()
         self.rolController = RolController()
         for rol in self.rolController.roles():
             self.comboRol.addItem(rol.nombre, rol.id_rol)
+            
+        # ToDo: meter esto a un for para ahorrar espacio
+        self.comboCategorias.addItem("ID", "id_usuario")
+        self.comboCategorias.addItem("Nombre", "usuario")
+        self.comboCategorias.addItem("Contraseña", "contrasena")
+        self.comboCategorias.addItem("Rol", "nombre")
 
         # Configurar el modelo para la tabla
         self._table_model = UsuarioTableModel()
@@ -78,13 +86,18 @@ class UsuWindow(QMainWindow, Ui_Dialog, MenuFlotante):
         self.tableView.horizontalHeader().setStretchLastSection(True)
         self.tableView.setAlternatingRowColors(True)
         self.tableView.setSelectionBehavior(self.tableView.SelectRows)
+        self.tableView.doubleClicked.connect(self.handleDobleClic)
         
-        self.btnAgregar.clicked.connect(self.handleAgregarbtn)
+        self.btnAgregar.clicked.connect(self.handleAgregarBtn)
+        self.btnEditar.clicked.connect(self.handleEditarBtn)
+        self.btnEliminar.clicked.connect(self.handleBorrarBtn)
+        self.btnBuscar.clicked.connect(self.handelBuscarBtn)
+        
         # Configurar el menú flotante
         self.setupFloatingMenu(empleado)
         self.mostrarTabla()
     
-    def handleAgregarbtn(self):
+    def handleAgregarBtn(self):
         usuario = Usuario(
             usuario=self.lineNombreEmpleado.text().strip(), 
             contrasena=self.lineContrasena.text().strip(),
@@ -97,11 +110,57 @@ class UsuWindow(QMainWindow, Ui_Dialog, MenuFlotante):
         
         self.mostrarTabla()
 
+    def handleEditarBtn(self):
+        usuarioModificado = Usuario(
+            self.usuario.id_usuario,
+            self.lineNombreEmpleado.text().strip(),
+            self.lineContrasena.text().strip(),
+            Rol(self.comboRol.currentData(), self.comboRol.currentText())
+        )
+        self.usuarioController.updateUsuario(usuarioModificado)
+        self.labelInformacion.setText("Usuario Actualizado Exitosamente")
+        self.lineNombreEmpleado.clear()
+        self.lineContrasena.clear()
+        self.mostrarTabla()
+    
+    def handleBorrarBtn(self):
+        self.usuarioController.deleteUsuario(self.usuario.id_usuario)
+        self.labelInformacion.setText("Usuario Eliminado Exitosamente")
+        self.lineNombreEmpleado.clear()
+        self.lineContrasena.clear()
+        self.mostrarTabla()
+    
+    def handelBuscarBtn(self):
+        columna = self.comboCategorias.currentData()
+        aBuscar = self.lineDato.text().strip()
+        try:
+            self.usuarios = self.usuarioController.buscar(columna, aBuscar)
+        except Exception:
+            self.usuarios = None
+        self.lineDato.clear()
+        self.mostrarTabla()
+    
     def mostrarTabla(self):
         """Cargar y mostrar los usuarios en la tabla"""
         try:
-            usuarios = self.usuarioController.usuarios()
+            usuarios = self.usuarios or self.usuarioController.usuarios()
             self._table_model.setUsuarios(usuarios)
+            self.usuarios = None
         except Exception as e:
             print(f"Error al cargar usuarios: {e}")
     
+    def handleDobleClic(self, index: QModelIndex):
+        datos = []
+        datos.extend(
+            self._table_model.index(index.row(), nColumna, index).data()
+            for nColumna in range(self._table_model.columnCount())
+        )
+        self.usuario = Usuario(
+            datos[0],
+            datos[1],
+            datos[2],
+            self.rolController.porNombre(datos[3])
+        )
+        self.lineNombreEmpleado.setText(self.usuario.usuario)
+        self.lineContrasena.setText(self.usuario.contrasena)
+        self.comboRol.setCurrentText(self.usuario.rol.nombre)

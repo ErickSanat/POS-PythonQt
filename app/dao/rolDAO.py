@@ -32,3 +32,14 @@ class RolDAO:
             return Rol(resultado[0], resultado[1])
         else:
             raise TypeError("No existe el rol")
+    
+    def porNombre(self, nombre: str) -> Rol:
+        conn = DBConnection.connection()
+        cur = conn.cursor()
+        cur.execute(f"SELECT * FROM rol WHERE nombre = '{nombre}'")
+        resultado = cur.fetchone()
+        cerrarConn(cur, conn)
+        if resultado is not None:
+            return Rol(resultado[0], resultado[1])
+        else:
+            raise TypeError("No existe el rol")

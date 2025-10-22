@@ -11,3 +11,5 @@ class RolController:
     def rol(self, id_rol: int) -> Rol:
         return self.rolDAO.rol(id_rol)
     
+    def porNombre(self, nombre: str) -> Rol:
+        return self.rolDAO.porNombre(nombre)

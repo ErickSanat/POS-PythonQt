@@ -30,7 +30,7 @@ class UsuarioDAO:
         cur = conn.cursor()
         cur.execute(f"SELECT * FROM usuario WHERE id_usuario = {id_usuario}")
         resultado = cur.fetchone()
-        cerrarConn()
+        cerrarConn(cur, conn)
         if resultado is not None:
             return Usuario(
                 resultado[0],
@@ -96,3 +96,31 @@ class UsuarioDAO:
                 + f"id_usuario={id_usuario}"
             )
         cerrarCommit(cur, conn)
+    
+    def buscarUsuarios(self, columna: str, aBuscar: str) -> list[Usuario]:
+        if not aBuscar:
+            raise TypeError("falta texto")
+        usuarios: list[Usuario] = []
+        conn = DBConnection.connection()
+        cur = conn.cursor()
+        cur.execute(
+            "SELECT * "
+            + "FROM usuario "
+            + "JOIN rol "
+            + "ON usuario.id_rol = rol.id_rol "
+            + f"WHERE {columna} LIKE '%{aBuscar}%'")
+        resultado = cur.fetchall()
+        usuarios.extend(
+            Usuario(
+                usuario[0],
+                usuario[1],
+                usuario[2],
+                RolDAO().rol(usuario[3])
+                )
+                for usuario in resultado
+            )
+        cerrarConn(cur, conn)
+        if usuarios is not None:
+            return usuarios
+        else:
+            raise TypeError("No existen usuarios")
