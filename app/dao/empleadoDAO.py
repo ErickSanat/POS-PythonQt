@@ -1,6 +1,6 @@
 from .DB import DBConnection
 from ..utils import cerrarCommit, cerrarConn
-from ..model import Empleado, Usuario
+from ..model import Empleado, Usuario, empleado
 from .usuarioDAO import UsuarioDAO
 
 class EmpleadoDAO:
@@ -55,7 +55,7 @@ class EmpleadoDAO:
             +") VALUES ("
                 + f"'{empleado.nombre}',"
                 + f"'{empleado.direccion}',"
-                + f"{empleado.telefono}),"
+                + f"{empleado.telefono},"
                 + f"{empleado.usuario.id_usuario})"
         )
         cerrarCommit(cur, conn)
@@ -106,3 +106,29 @@ class EmpleadoDAO:
             )
         else:
             raise TypeError("No existe el empleado")
+    def buscarEmpleados(self, columna: str, aBuscar: str) -> list[Empleado]:
+        empleados: list[Empleado] = []
+        conn = DBConnection.connection()
+        cur = conn.cursor()
+
+        cur.execute(
+            "SELECT * FROM empleado "
+            + f"WHERE {columna} LIKE '%{aBuscar}%'"
+        )
+        resultado = cur.fetchall()
+        empleados.extend(
+            Empleado(
+                empleado[0],
+                empleado[1],
+                empleado[2],
+                empleado[3],
+                UsuarioDAO().usuario(empleado[4])
+            )
+            for empleado in resultado
+        )
+        cerrarConn(cur, conn)
+
+        if empleados:
+            return empleados
+        else:
+            raise TypeError("No existen empleados")
