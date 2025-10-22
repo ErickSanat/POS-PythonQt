@@ -96,6 +96,22 @@ class UsuarioDAO:
                 + f"id_usuario={id_usuario}"
             )
         cerrarCommit(cur, conn)
+
+    def porNombre(self, nombre: str) -> Usuario:
+        conn = DBConnection.connection()
+        cur = conn.cursor()
+        cur.execute(f"SELECT * FROM usuario WHERE usuario = '{nombre}'")
+        resultado = cur.fetchone()
+        cerrarConn(cur,conn)
+        if resultado is not None:
+            return Usuario(
+                resultado[0],
+                resultado[1],
+                resultado[2],
+                RolDAO().rol(resultado[3])
+            )
+        else:
+            raise TypeError(f"No existe el usuario con nombre ' {nombre}'")
     
     def buscarUsuarios(self, columna: str, aBuscar: str) -> list[Usuario]:
         if not aBuscar:

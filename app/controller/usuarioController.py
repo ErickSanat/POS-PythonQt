@@ -52,3 +52,6 @@ class UsuarioController:
     def jacheado(self, contrasena: str) -> str:
         self.jacheo.update(contrasena.encode('utf-8'))
         return self.jacheo.hexdigest()
+
+    def porNombre(self, nombre: str) -> Usuario:
+        return self.usuarioDAO.porNombre(nombre)
