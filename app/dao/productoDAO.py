@@ -17,7 +17,7 @@ class ProductoDAO:
                 producto[2],
                 producto[3],
                 producto[4],
-                resultado[5],
+                producto[5],
                 CategoriaDAO().categoria(producto[6])
                 )
                 for producto in resultado
