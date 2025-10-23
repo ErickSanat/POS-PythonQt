@@ -4,3 +4,4 @@ from .empleadoController import EmpleadoController
 from .usuarioController import UsuarioController
 from .categoriaController import CategoriaController
 from .proveedorController import ProveedorController
+from .clienteController import ClienteController
