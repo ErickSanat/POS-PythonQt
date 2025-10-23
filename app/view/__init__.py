@@ -7,3 +7,4 @@ from .window.pagPro import ProWindow
 from .window.pagProm import PromWindow
 from .window.pagClie import CliWindow
 from .window.pagUsu import UsuWindow
+
