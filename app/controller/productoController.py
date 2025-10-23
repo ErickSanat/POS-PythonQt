@@ -9,13 +9,13 @@ class ProductoController:
         try:
             return self.productoDAO.productos()
         except Exception as e:
-            return e
+            raise e
     
     def producto(self, id_producto:int) -> Producto:
         try:
             return self.productoDAO.producto(id_producto)
         except Exception as e:
-            return e
+            raise e
     def addProducto(self, producto: Producto) -> str:
         if not self.productoDAO.productoExistente(producto):
             self.productoDAO.addProducto(producto)
