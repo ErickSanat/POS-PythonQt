@@ -1,7 +1,7 @@
--- Active: 1756079140609@@127.0.0.1@5432@pasteleria_alquimia
+-- Active: 1760498661977@@127.0.0.1@5432@pasteleria_alquimia
 
 \c pasteleria_alquimia;
-
+CREATE DATABASE pasteleria_alquimia;
 
 -- TABLA ROLES
 CREATE TABLE rol (
@@ -53,6 +53,7 @@ CREATE TABLE producto (
     descripcion TEXT,
     precio NUMERIC(10,2) NOT NULL CHECK (precio > 0),
     stock INT NOT NULL DEFAULT 0 CHECK (stock >= 0),
+    imagen VARCHAR(100) DEFAULT NULL,
     id_categoria INT REFERENCES categoria(id_categoria) ON DELETE SET NULL
 );
 
