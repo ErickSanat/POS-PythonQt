@@ -68,7 +68,7 @@
         <property name="geometry">
          <rect>
           <x>30</x>
-          <y>20</y>
+          <y>10</y>
           <width>228</width>
           <height>44</height>
          </rect>
@@ -104,12 +104,12 @@
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>90</y>
+          <y>60</y>
           <width>271</width>
-          <height>530</height>
+          <height>561</height>
          </rect>
         </property>
-        <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0,0,0,0,0,0,0,0,0,0">
+        <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0">
          <property name="spacing">
           <number>10</number>
          </property>
@@ -459,6 +459,22 @@ QPushButton:hover {
             </widget>
            </item>
           </layout>
+         </item>
+         <item>
+          <widget class="QLabel" name="labelInformacion">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
          </item>
         </layout>
        </widget>
