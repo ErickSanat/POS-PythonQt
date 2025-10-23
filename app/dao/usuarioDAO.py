@@ -111,7 +111,7 @@ class UsuarioDAO:
                 RolDAO().rol(resultado[3])
             )
         else:
-            raise TypeError(f"No existe el usuario con nombre ' {nombre}'")
+            raise TypeError(f"No existe el usuario con nombre '{nombre}'")
     
     def buscarUsuarios(self, columna: str, aBuscar: str) -> list[Usuario]:
         if not aBuscar:

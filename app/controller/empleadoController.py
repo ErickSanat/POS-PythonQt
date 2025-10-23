@@ -11,13 +11,13 @@ class EmpleadoController:
         try:
             return self.empleadoDAO.empleados()
         except Exception as e:
-            return e
+            raise e
     
     def empleado(self, id_empleado) -> Empleado:
         try:
             return self.empleadoDAO.empleado(id_empleado)
         except Exception as e:
-            return e
+            raise e
     
     def addEmpleado(self, empleado: Empleado):
         self.empleadoDAO.addEmpleado(empleado)
