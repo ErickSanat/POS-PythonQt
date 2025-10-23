@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>1211</width>
-    <height>682</height>
+    <height>681</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -194,7 +194,7 @@ border-right: 2px solid #867BAA;</string>
                <x>0</x>
                <y>0</y>
                <width>681</width>
-               <height>499</height>
+               <height>506</height>
               </rect>
              </property>
              <widget class="QWidget" name="gridLayoutWidget">
@@ -618,7 +618,7 @@ QPushButton:hover {
      <widget class="QPushButton" name="btnMenu">
       <property name="geometry">
        <rect>
-        <x>1100</x>
+        <x>1080</x>
         <y>10</y>
         <width>41</width>
         <height>31</height>
@@ -646,6 +646,51 @@ QPushButton:hover {
       </property>
       <property name="text">
        <string>☰</string>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>28</width>
+        <height>28</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnMenuInicio">
+      <property name="geometry">
+       <rect>
+        <x>1130</x>
+        <y>10</y>
+        <width>41</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color: #867BAA;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+}
+QPushButton:hover {
+    background-color: #BDB1E2;
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../../assets/Iconos/inicio.svg</normaloff>../../assets/Iconos/inicio.svg</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>28</width>
+        <height>28</height>
+       </size>
       </property>
      </widget>
     </widget>
@@ -827,7 +872,7 @@ QPushButton:hover {
        </widget>
       </item>
       <item row="0" column="0">
-       <widget class="QPushButton" name="btnMenuInicio">
+       <widget class="QPushButton" name="btnCategorias">
         <property name="cursor">
          <cursorShape>PointingHandCursor</cursorShape>
         </property>
@@ -849,7 +894,7 @@ QPushButton:hover {
         </property>
         <property name="icon">
          <iconset>
-          <normaloff>../../assets/Iconos/inicio.svg</normaloff>../../assets/Iconos/inicio.svg</iconset>
+          <normaloff>../../assets/Iconos/categorias.svg</normaloff>../../assets/Iconos/categorias.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -1014,7 +1059,7 @@ QPushButton:hover {
         </property>
         <property name="icon">
          <iconset>
-          <normaloff>../../assets/Iconos/Usuario.svg</normaloff>../../assets/Iconos/Usuario.svg</iconset>
+          <normaloff>../../assets/Iconos/usuarios.svg</normaloff>../../assets/Iconos/usuarios.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
