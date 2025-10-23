@@ -35,7 +35,8 @@ class MenuFlotante:
             'btnProductos': self.menuProductos,
             'btnRecetas': self.menuRecetas,
             'btnEmpleados': self.menuEmpleados,
-            'btnUsuario': self.menuUsuario
+            'btnUsuario': self.menuUsuario,
+            'btnCategoria': self.menuCategoria
         }
         button_mappings = {
             'btnMenuInicio': self.menuInicio,
@@ -121,6 +122,24 @@ class MenuFlotante:
         except ImportError as e:
             print(f"Error al importar InicioWindow: {e}")
         self.hideFloatingMenu()
+
+    def menuCategoria(self):
+        if hasattr(self, 'pagCat'):
+            self.pagCat.show()
+            self.window().hide()
+            self.hideFloatingMenu()
+            return
+        try:
+            from app.view.window.pagCat import CatWindow
+            self.pagCat = CatWindow(self.empleado)
+            self.pagCat.show()
+            self.window().hide()
+            self.hideFloatingMenu()
+        except ImportError as e:
+            print(f"Error al importar CatWindow: {e}")
+        self.hideFloatingMenu()
+
+
 
     def menuVentas(self):
         if hasattr(self, 'pagVen'):
