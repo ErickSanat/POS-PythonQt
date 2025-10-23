@@ -64,7 +64,7 @@ class ProductoDAO:
                 + f"'{producto.nombre}',"
                 + f"'{producto.descripcion}',"
                 + f"{producto.precio},"
-                + f"{producto.stock}),"
+                + f"{producto.stock},"
                 + f"'{producto.imagen}',"
                 + f"{producto.categoria.id_categoria})"
             )
@@ -137,7 +137,7 @@ class ProductoDAO:
         cur.execute(
             "SELECT * FROM producto "
             +"WHERE "
-                + f"producto = '{producto.nombre}'"
+                + f"nombre = '{producto.nombre}'"
         )
         resultado = cur.fetchone()
         cerrarConn(cur, conn)
