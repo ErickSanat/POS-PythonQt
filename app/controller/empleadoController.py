@@ -1,5 +1,3 @@
-from PyQt5.QtCore import QAbstractTableModel
-
 from ..model import Empleado, Usuario
 from ..dao import EmpleadoDAO
 
