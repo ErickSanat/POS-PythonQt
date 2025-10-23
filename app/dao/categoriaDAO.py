@@ -1,5 +1,6 @@
 from .DB import DBConnection
 from ..model import Categoria
+from ..utils import cerrarConn, cerrarCommit
 
 class CategoriaDAO:
     def categorias(self) -> list[Categoria]:
@@ -30,6 +31,17 @@ class CategoriaDAO:
         resultado = cur.fetchone()
         cur.close()
         conn.close()
+        if resultado is not None:
+            return Categoria(resultado[0], resultado[1], resultado[2])
+        else:
+            raise TypeError("No existe la categoria")
+    
+    def porNombre(self, nombre: str) -> Categoria:
+        conn = DBConnection.connection()
+        cur = conn.cursor()
+        cur.execute(f"SELECT * FROM categoria WHERE nombre = '{nombre}'")
+        resultado = cur.fetchone()
+        cerrarConn(cur, conn)
         if resultado is not None:
             return Categoria(resultado[0], resultado[1], resultado[2])
         else:
