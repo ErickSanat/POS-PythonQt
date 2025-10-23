@@ -109,7 +109,7 @@
           <height>488</height>
          </rect>
         </property>
-        <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0,0,0,0,0,0">
+        <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0,0,0,0,0,0,0,0,0">
          <property name="spacing">
           <number>10</number>
          </property>
@@ -208,7 +208,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="label_6">
+          <widget class="QLabel" name="labelTelefono">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -245,6 +245,46 @@
            </property>
            <property name="placeholderText">
             <string>Teléfono del proveedor...</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="labelActivo">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string>Activo:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comboActivo">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>150</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QComboBox {
+    padding: 10px;
+    border: 3px solid #867BAA;
+    border-radius: 20px;
+}
+</string>
            </property>
           </widget>
          </item>
@@ -348,6 +388,22 @@ QPushButton:hover {
             </widget>
            </item>
           </layout>
+         </item>
+         <item>
+          <widget class="QLabel" name="labelInformacion">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
          </item>
         </layout>
        </widget>
@@ -515,7 +571,7 @@ QPushButton:hover {
           <bool>false</bool>
          </attribute>
          <attribute name="horizontalHeaderDefaultSectionSize">
-          <number>220</number>
+          <number>140</number>
          </attribute>
          <attribute name="horizontalHeaderMinimumSectionSize">
           <number>100</number>
