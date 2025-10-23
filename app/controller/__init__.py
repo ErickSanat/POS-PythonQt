@@ -3,3 +3,4 @@ from .rolController import RolController
 from .empleadoController import EmpleadoController
 from .usuarioController import UsuarioController
 from .proveedorController import ProveedorController
+from .clienteController import ClienteController

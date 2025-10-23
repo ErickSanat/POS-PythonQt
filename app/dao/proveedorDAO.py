@@ -142,3 +142,33 @@ class ProveedorDAO:
             return proveedores
         else:
             raise TypeError("No existen proveedores")
+
+    def buscarProveedor(self, columna: str, aBuscar: str):
+        if not aBuscar:
+            raise TypeError("falta texto")
+        proveedores: list[Proveedor] = []
+        conn = DBConnection.connection()
+        cur = conn.cursor()
+        cur.execute(
+            "SELECT * "
+            + "FROM proveedor "
+            +"WHERE "
+                + f"CAST({columna} AS TEXT) LIKE '%{aBuscar}%'")
+        resultado = cur.fetchone()
+        proveedores.extend(
+            Proveedor(
+                proveedor[0],
+                proveedor[1],
+                proveedor[2],
+                proveedor[3],
+                proveedor[4],
+                proveedor[5]
+            )
+            for proveedor in resultado
+        )
+        print(proveedores)
+        cerrarConn(cur, conn)
+        if proveedores is not None:
+            return proveedores
+        else:
+            raise TypeError("No existe el proveedor")

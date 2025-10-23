@@ -155,7 +155,9 @@ class ProvWindow(QMainWindow, Ui_Form, MenuFlotante):
         aBuscar = self.lineDato.text().strip()
         try:
             self.proveedores = self.proveedorController.buscar(columna, aBuscar)
-        except Exception:
+        except Exception as e:
+            print(f"Error al buscar: {e}")
+            self.labelInformacion.setText("Error al buscar")
             self.proveedores = None
         self.lineDato.clear()
         self.mostrarTabla()
