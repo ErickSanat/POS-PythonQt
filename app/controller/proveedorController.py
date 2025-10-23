@@ -28,6 +28,6 @@ class ProveedorController:
 
     def buscar(self, columna: str, aBuscar: str) -> list[Proveedor]:
         try:
-            return self.proveedorDAO.buscarProveedor(columna, aBuscar)
+            return self.proveedorDAO.buscarProveedores(columna, aBuscar)
         except Exception as e:
             raise e

@@ -143,7 +143,7 @@ class ProveedorDAO:
         else:
             raise TypeError("No existen proveedores")
 
-    def buscarProveedor(self, columna: str, aBuscar: str):
+    def buscarProveedores(self, columna: str, aBuscar: str) -> list[Proveedor]:
         if not aBuscar:
             raise TypeError("falta texto")
         proveedores: list[Proveedor] = []
@@ -152,9 +152,9 @@ class ProveedorDAO:
         cur.execute(
             "SELECT * "
             + "FROM proveedor "
-            +"WHERE "
+            + "WHERE "
                 + f"CAST({columna} AS TEXT) LIKE '%{aBuscar}%'")
-        resultado = cur.fetchone()
+        resultado = cur.fetchall()
         proveedores.extend(
             Proveedor(
                 proveedor[0],
@@ -166,7 +166,6 @@ class ProveedorDAO:
             )
             for proveedor in resultado
         )
-        print(proveedores)
         cerrarConn(cur, conn)
         if proveedores is not None:
             return proveedores
