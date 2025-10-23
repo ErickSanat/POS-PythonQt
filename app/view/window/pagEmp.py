@@ -70,16 +70,8 @@ class EmpWindow(QMainWindow, Ui_Form, MenuFlotante):
         self.usuarioController = UsuarioController()
         self.empleado = Empleado()
         self.empleados = None
-        usuariosUsados = []
         # Llenar combobox de usuarios
-        for empleado in self.empleadoController.empleados():
-            usuariosUsados.append(empleado.usuario.id_usuario)
-        usuariosDisponibles = []
-        for usuario in self.usuarioController.usuarios():
-            if usuario.id_usuario not in usuariosUsados:
-                usuariosDisponibles.append(usuario)
-        for usuario in usuariosDisponibles:
-            self.comboUsuario.addItem(usuario.usuario, usuario.id_usuario)
+        self.rellenarCombobox()
 
         # Llenar el combo de categorías de búsqueda
         self.comboCategorias.addItem("ID", "id_empleado")
@@ -121,6 +113,7 @@ class EmpWindow(QMainWindow, Ui_Form, MenuFlotante):
         self.labelInformacion.setText(mensaje)
         self.limpiarCampos()
         self.mostrarTabla()
+        self.rellenarCombobox()
 
     def handleEditarBtn(self):
         if self.empleado.id_empleado is None:
@@ -136,6 +129,7 @@ class EmpWindow(QMainWindow, Ui_Form, MenuFlotante):
         self.labelInformacion.setText("Empleado Actualizado Exitosamente")
         self.limpiarCampos()
         self.mostrarTabla()
+        self.rellenarCombobox()
 
     def handleBorrarBtn(self):
         if self.empleado.id_empleado is None:
@@ -144,6 +138,7 @@ class EmpWindow(QMainWindow, Ui_Form, MenuFlotante):
         self.labelInformacion.setText("Empleado Eliminado Exitosamente")
         self.limpiarCampos()
         self.mostrarTabla()
+        self.rellenarCombobox()
 
     def handelBuscarBtn(self):
         columna = self.comboCategorias.currentData()
@@ -180,6 +175,7 @@ class EmpWindow(QMainWindow, Ui_Form, MenuFlotante):
         self.lineNombreEmpleado.setText(self.empleado.nombre)
         self.lineDireccionEmpleado.setText(self.empleado.direccion)
         self.lineTelefonoEmpleado.setText(str(self.empleado.telefono))
+        self.comboUsuario.addItem(self.empleado.usuario.usuario, self.empleado.usuario.id_usuario)
         self.comboUsuario.setCurrentText(self.empleado.usuario.usuario)
 
     def limpiarCampos(self):
@@ -187,3 +183,18 @@ class EmpWindow(QMainWindow, Ui_Form, MenuFlotante):
         self.lineDireccionEmpleado.clear()
         self.lineTelefonoEmpleado.clear()
         self.comboUsuario.setCurrentIndex(0)
+    
+    def rellenarCombobox(self):
+        self.comboUsuario.clear()
+        usuariosDisponibles = []
+        usuariosUsados = [
+            empleado.usuario.id_usuario
+            for empleado in self.empleadoController.empleados()
+        ]
+        usuariosDisponibles.extend(
+            usuario
+            for usuario in self.usuarioController.usuarios()
+            if usuario.id_usuario not in usuariosUsados
+        )
+        for usuario in usuariosDisponibles:
+            self.comboUsuario.addItem(usuario.usuario, usuario.id_usuario)
