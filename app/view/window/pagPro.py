@@ -10,7 +10,7 @@ from app.controller import ProductoController, CategoriaController
 
 class ProductoTableModel(QAbstractTableModel):
     """Modelo para mostrar una lista de objetos Producto en un QTableView"""
-    def __init__(self, productos: list = None, parent=None):
+    def __init__(self, productos: list[Producto] = None, parent=None):
         super().__init__(parent)
         self._productos = productos or []
         # Ajusta columnas según atributos reales de tu modelo Producto
@@ -21,7 +21,7 @@ class ProductoTableModel(QAbstractTableModel):
             ("precio", "Precio"),
             ("stock", "Stock"),
             ("imagen", "Imagen"),
-            ("id_categoria", "Categoria")
+            ("categoria", "Categoria")
         ]
 
     def rowCount(self, parent=QModelIndex()):
@@ -31,12 +31,15 @@ class ProductoTableModel(QAbstractTableModel):
         return len(self._columns)
 
     def data(self, index, role=Qt.DisplayRole):
-        if not index.isValid():
+        if not index.isValid() or role != Qt.DisplayRole:
             return QVariant()
 
         producto = self._productos[index.row()]
         attr, _header = self._columns[index.column()]
-
+        
+        if attr == "categoria":
+            categoria = getattr(producto, "categoria", None)
+            return categoria.nombre if categoria else ""
         # Columna imagen: devolver icono en DecorationRole, texto en DisplayRole
         if attr == "imagen":
             img_val = getattr(producto, "imagen", None)
@@ -48,23 +51,13 @@ class ProductoTableModel(QAbstractTableModel):
                     return QVariant()
                 # escalar y devolver icono
                 return QIcon(pix.scaled(64, 64, Qt.KeepAspectRatio, Qt.SmoothTransformation))
-            # opcional: mostrar nombre de archivo o vacio en DisplayRole
-            if role == Qt.DisplayRole:
-                if isinstance(img_val, str):
-                    return img_val.split("/")[-1].split("\\")[-1]
-                return ""
+            
             return QVariant()
 
-        # Soportar atributos que pueden faltar o ser objetos
-        val = getattr(producto, attr, "")
-        # Si el atributo es un objeto (ej. categoria.nombre), conviértelo a string
-        if val is None:
-            return ""
-        if isinstance(val, (int, float, str, bool)):
-            return str(val)
-        # Si es un objeto con 'nombre'
-        nombre = getattr(val, "nombre", None)
-        return str(nombre) if nombre is not None else str(val)
+        # Obtener valor del atributo
+        valor = getattr(producto, attr, "")
+        return str(valor) if valor is not None else ""
+        
 
     def headerData(self, section, orientation, role=Qt.DisplayRole):
         if role != Qt.DisplayRole:
@@ -190,13 +183,13 @@ class ProWindow(QMainWindow, Ui_Form, MenuFlotante):
 
     def mostrarTabla(self):
         """Carga productos desde el controller y los muestra en el TableView"""
-        productos = []
         try:
-            productos = self.productoController.productos()
-        except Exception:
-            productos = []
+            productos = self.productos or self.productoController.productos()
+            self._table_model.setProductos(productos)
+            self.productos = None
+        except Exception as e:
+            print(f"Error al cargar productos: {e}")
             
-        self._table_model.setProductos(productos)
     
     def handleDobleClic(self, index: QModelIndex):
         datos = []
