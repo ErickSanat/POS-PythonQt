@@ -109,7 +109,7 @@ class EmpWindow(QMainWindow, Ui_Form, MenuFlotante):
         self.mostrarTabla()
 
     def handleAgregarBtn(self):
-        if self.lineNombreEmpleado.text().strip() or self.lineDireccionEmpleado.text().strip() or self.lineTelefonoEmpleado.text().strip() == "":
+        if self.lineNombreEmpleado.text().strip() == "" or self.lineDireccionEmpleado.text().strip() == "" or self.lineTelefonoEmpleado.text().strip() == "":
             return
         empleado = Empleado(
             nombre=self.lineNombreEmpleado.text().strip(),

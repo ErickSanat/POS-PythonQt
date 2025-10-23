@@ -98,7 +98,7 @@ class UsuWindow(QMainWindow, Ui_Dialog, MenuFlotante):
         self.mostrarTabla()
     
     def handleAgregarBtn(self):
-        if self.lineNombreEmpleado.text().strip() or self.lineContrasena.text().strip() == "":
+        if self.lineNombreEmpleado.text().strip() == "" or self.lineContrasena.text().strip() == "":
             return
         usuario = Usuario(
             usuario=self.lineNombreEmpleado.text().strip(), 
