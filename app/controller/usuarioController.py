@@ -21,8 +21,7 @@ class UsuarioController:
     
     def addUsuario(self, usuario: Usuario) -> str:
         if not self.usuarioDAO.usuarioExistente(usuario):
-            self.jacheo.update(usuario.contrasena.encode('utf-8'))
-            usuario.contrasena = self.jacheo.hexdigest()
+            usuario.contrasena = self.jacheado(usuario.contrasena)
             self.usuarioDAO.addUsuario(usuario)
             return "Añadido exitosamente"
         else:
