@@ -1,5 +1,5 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow
+from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog
 from PyQt5.QtCore import Qt, QAbstractTableModel, QModelIndex, QVariant
 from PyQt5.QtGui import QPixmap, QIcon
 from PyQt5.QtCore import QSize
@@ -7,6 +7,7 @@ from ..generated.productoView_ui import Ui_Form
 from app.utils import MenuFlotante
 from app.model import Empleado, Producto, Categoria
 from app.controller import ProductoController, CategoriaController
+import os, shutil
 
 class ProductoTableModel(QAbstractTableModel):
     """Modelo para mostrar una lista de objetos Producto en un QTableView"""
@@ -31,32 +32,49 @@ class ProductoTableModel(QAbstractTableModel):
         return len(self._columns)
 
     def data(self, index, role=Qt.DisplayRole):
-        if not index.isValid() or role != Qt.DisplayRole:
+        if not index.isValid():
             return QVariant()
 
         producto = self._productos[index.row()]
         attr, _header = self._columns[index.column()]
-        
+
+        # Manejo especial para la columna "categoria"
         if attr == "categoria":
-            categoria = getattr(producto, "categoria", None)
-            return categoria.nombre if categoria else ""
-        # Columna imagen: devolver icono en DecorationRole, texto en DisplayRole
+            if role == Qt.DisplayRole:
+                categoria = getattr(producto, "categoria", None)
+                return categoria.nombre if categoria else ""
+            return QVariant()
+
+        # Manejo especial para la columna "imagen"
         if attr == "imagen":
             img_val = getattr(producto, "imagen", None)
+
+            # DecorationRole: mostrar el icono/imagen
             if role == Qt.DecorationRole:
-                if img_val is None or img_val == "":
+                if not img_val:
                     return QVariant()
-                pix = QPixmap(img_val)
+
+                pix = QPixmap()
+                try:
+                    pix.load(img_val)
+                except Exception as e:
+                    print(f"Error cargando imagen: {e}")
+                    return QVariant()
+
                 if pix.isNull():
                     return QVariant()
-                # escalar y devolver icono
+
+                # Escalar y devolver como icono
                 return QIcon(pix.scaled(64, 64, Qt.KeepAspectRatio, Qt.SmoothTransformation))
             
             return QVariant()
 
-        # Obtener valor del atributo
-        valor = getattr(producto, attr, "")
-        return str(valor) if valor is not None else ""
+        # Para el resto de columnas normales
+        if role == Qt.DisplayRole:
+            valor = getattr(producto, attr, "")
+            return str(valor) if valor is not None else ""
+        
+        return QVariant()
         
 
     def headerData(self, section, orientation, role=Qt.DisplayRole):
@@ -86,6 +104,7 @@ class ProWindow(QMainWindow, Ui_Form, MenuFlotante):
         
         self.producto = Producto()
         self.productos = None
+        self.archivo = None
         
         self._table_model = ProductoTableModel([])
         # Asegúrate que en tu UI el widget se llame 'tableView'; si no, cambia el nombre
@@ -105,12 +124,30 @@ class ProWindow(QMainWindow, Ui_Form, MenuFlotante):
         for categoria in self.categoriaController.categorias():
             self.comboCategoria.addItem(categoria.nombre, categoria.id_categoria)
         
+        # ToDo: meter esto a un for para ahorrar espacio
+        self.comboCategorias.addItem("ID", "id_producto")
+        self.comboCategorias.addItem("Nombre", "nombre")
+        self.comboCategorias.addItem("Descripcion", "descripcion")
+        self.comboCategorias.addItem("Precio", "precio")
+        self.comboCategorias.addItem("Stock", "stock")
+        # ToDo: agregar filtro de imagen
+        # self.comboCategorias.addItem("Imagen", "imagen")
+        self.comboCategorias.addItem("Categoria", "nombre")
+        
         self.setupFloatingMenu(empleado)
         self.mostrarTabla()
+        
+        # Configurar apariencia de la tabla
+        self.tableView.horizontalHeader().setStretchLastSection(True)
+        self.tableView.setAlternatingRowColors(True)
+        self.tableView.setSelectionBehavior(self.tableView.SelectRows)
+        self.tableView.doubleClicked.connect(self.handleDobleClic)
         
         self.btnAgregar.clicked.connect(self.handleAgregarBtn)
         self.btnEditar.clicked.connect(self.handleEditarBtn)
         self.btnEliminar.clicked.connect(self.handleBorrarBtn)
+        self.btnBuscar.clicked.connect(self.handelBuscarBtn)
+        self.btnImagen.clicked.connect(self.handleImagenBtn)
     
     def handleAgregarBtn(self):
         if "" in [
@@ -129,13 +166,17 @@ class ProWindow(QMainWindow, Ui_Form, MenuFlotante):
             imagen=self.rutaImagen.text().strip(),
             categoria=Categoria(self.comboCategoria.currentData(), self.comboCategoria.currentText())
         )
+        # Copiar imagen
+        shutil.copy(self.archivo, producto.imagen)
         mensaje = self.productoController.addProducto(producto)
+        
         self.labelInformacion.setText(mensaje)
         self.lineNombre.clear()
         self.descripcion.clear()
         self.linePrecio.clear()
         self.lineStock.clear()
         self.rutaImagen.clear()
+        self.archivo = None
         self.mostrarTabla()
 
     def handleEditarBtn(self):
@@ -150,6 +191,11 @@ class ProWindow(QMainWindow, Ui_Form, MenuFlotante):
             self.rutaImagen.text().strip(),
             Categoria(self.comboCategoria.currentData(), self.comboCategoria.currentText())
         )
+        # Cambiar imagen
+        if self.producto.imagen != productoModificado.imagen:
+            os.remove(self.producto.imagen)
+            shutil.copy(self.archivo, productoModificado.imagen)
+        
         self.productoController.updateProducto(productoModificado)
         self.labelInformacion.setText("Producto Actualizado Exitosamente")
         self.lineNombre.clear()
@@ -157,18 +203,22 @@ class ProWindow(QMainWindow, Ui_Form, MenuFlotante):
         self.linePrecio.clear()
         self.lineStock.clear()
         self.rutaImagen.clear()
+        self.archivo = None
         self.mostrarTabla()
     
     def handleBorrarBtn(self):
         if self.producto.id_producto is None:
             return
         self.productoController.deleteProducto(self.producto.id_producto)
+        os.remove(self.producto.imagen)
+        
         self.labelInformacion.setText("Producto Eliminado Exitosamente")
         self.lineNombre.clear()
         self.descripcion.clear()
         self.linePrecio.clear()
         self.lineStock.clear()
         self.rutaImagen.clear()
+        self.archivo = None
         self.mostrarTabla()
     
     def handelBuscarBtn(self):
@@ -203,7 +253,7 @@ class ProWindow(QMainWindow, Ui_Form, MenuFlotante):
             datos[2],
             datos[3],
             datos[4],
-            datos[5],
+            self.productoController.producto(datos[0]).imagen,
             self.categoriaController.porNombre(datos[6])
         )
         self.lineNombre.setText(self.producto.nombre)
@@ -213,3 +263,14 @@ class ProWindow(QMainWindow, Ui_Form, MenuFlotante):
         self.rutaImagen.setText(self.producto.imagen)
         self.comboCategoria.setCurrentText(self.producto.categoria.nombre)
 
+    def handleImagenBtn(self):
+        archivo, _ = QFileDialog.getOpenFileName(self, "Abrir imagen", "", "Imágenes (*.png *.jpg *.jpeg *.bmp)")
+        if archivo:
+
+            carpeta_destino = "app/assets/productos"
+            os.makedirs(carpeta_destino, exist_ok=True)
+            nombre_archivo = os.path.basename(archivo)
+            ruta_destino = os.path.join(carpeta_destino, f"{self.lineNombre.text().strip().replace(" ", "_")}_{nombre_archivo}")
+            
+            self.archivo = archivo
+            self.rutaImagen.setText(ruta_destino)
