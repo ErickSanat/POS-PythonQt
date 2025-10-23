@@ -1,7 +1,7 @@
--- Active: 1756079140609@@127.0.0.1@5432@pasteleria_alquimia
+-- Active: 1760498661977@@127.0.0.1@5432@pasteleria_alquimia
 
 \c pasteleria_alquimia;
-
+CREATE DATABASE pasteleria_alquimia;
 
 -- TABLA ROLES
 CREATE TABLE rol (
