@@ -36,7 +36,7 @@ class MenuFlotante:
             'btnRecetas': self.menuRecetas,
             'btnEmpleados': self.menuEmpleados,
             'btnUsuario': self.menuUsuario,
-            'btnCategoria': self.menuCategoria
+            'btnCategorias': self.menuCategoria
         }
         button_mappings = {
             'btnMenuInicio': self.menuInicio,

@@ -9,3 +9,5 @@ class CatWindow(QMainWindow, Ui_Form, MenuFlotante):
     def __init__(self,empleado: Empleado):
         super().__init__()
         self.setupUi(self)
+
+        self.setupFloatingMenu(empleado)
