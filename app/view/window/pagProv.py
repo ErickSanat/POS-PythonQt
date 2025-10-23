@@ -107,7 +107,7 @@ class ProvWindow(QMainWindow, Ui_Form, MenuFlotante):
             self.lineNombre.text().strip(),
             self.lineNombreContacto.text().strip(),
             self.lineTelefono.text().strip(),
-            self.txtDireccion.get_text().strip()
+            self.txtDireccion.toPlainText().strip()
         ]:
             print("No se puede agregar un proveedor sin datos")
             return
@@ -115,8 +115,8 @@ class ProvWindow(QMainWindow, Ui_Form, MenuFlotante):
             nombre=self.lineNombre.text().strip(),
             nombre_contacto=self.lineNombreContacto.text().strip(),
             telefono=self.lineTelefono.text().strip(),
-            direccion=self.txtDireccion.text().strip(),
-            activo=self.comboActivo.currentText()
+            direccion=self.txtDireccion.toPlainText().strip(),
+            activo=self.comboActivo.currentData()
         )
         mensaje = self.proveedorController.addProveedor(proveedor)
         self.labelInformacion.setText(mensaje)
@@ -129,11 +129,11 @@ class ProvWindow(QMainWindow, Ui_Form, MenuFlotante):
             return
         proveedorModificado = Proveedor(
             id_proveedor=self.proveedor.id_proveedor,
-            nombre=self.lineNombreProveedor.text().strip(),
+            nombre=self.lineNombre.text().strip(),
             nombre_contacto=self.lineNombreContacto.text().strip(),
             telefono=self.lineTelefono.text().strip(),
-            direccion=self.txtDireccion.text().strip(),
-            activo=self.comboActivo.currentText()
+            direccion=self.txtDireccion.toPlainText().strip(),
+            activo=self.comboActivo.currentData()
         )
         mensaje = self.proveedorController.updateProveedor(proveedorModificado)
         self.labelInformacion.setText(mensaje)
@@ -172,7 +172,7 @@ class ProvWindow(QMainWindow, Ui_Form, MenuFlotante):
     def handleDobleClic(self, index: QModelIndex):
         datos = []
         datos.extend(
-            self._table_model.index(insex.row(), nColumna, index).data()
+            self._table_model.index(index.row(), nColumna, index).data()
             for nColumna in range(self._table_model.columnCount())
         )
         self.proveedor = Proveedor(
@@ -183,19 +183,19 @@ class ProvWindow(QMainWindow, Ui_Form, MenuFlotante):
             direccion=datos[4],
             activo=bool(datos[5])
         )
-        self.lineNombreProveedor.setText(self.proveedor.nombre)
+        self.lineNombre.setText(self.proveedor.nombre)
         self.lineNombreContacto.setText(self.proveedor.nombre_contacto)
         self.lineTelefono.setText(str(self.proveedor.telefono))
-        self.lineDireccion.setText(self.proveedor.direccion)
+        self.txtDireccion.setText(self.proveedor.direccion)
         self.comboActivo.setCurrentText("Activo" if self.proveedor.activo else "Inactivo")
 
     def limpiarCampos(self):
-        self.lineNombreProveedor.clear()
+        self.lineNombre.clear()
         self.lineNombreContacto.clear()
         self.lineTelefono.clear()
-        self.lineDireccion.clear()
+        self.txtDireccion.clear()
 
     def rellenarCombobox(self):
         self.comboActivo.clear()
-        self.comboActivo.addItem("Activo", "Activo")
-        self.comboActivo.addItem("Inactivo", "Inactivo")
+        self.comboActivo.addItem("Activo", "true")
+        self.comboActivo.addItem("Inactivo", "false")
