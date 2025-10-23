@@ -279,7 +279,7 @@
             <string notr="true">color: rgb(0, 0, 0);</string>
            </property>
            <property name="text">
-            <string>Stock:</string>
+            <string>Categoria:</string>
            </property>
           </widget>
          </item>
@@ -610,7 +610,14 @@ QPushButton:hover {
         </layout>
        </item>
        <item>
-        <widget class="QTableView" name="tableView"/>
+        <widget class="QTableView" name="tableView">
+         <attribute name="horizontalHeaderDefaultSectionSize">
+          <number>130</number>
+         </attribute>
+         <attribute name="horizontalHeaderMinimumSectionSize">
+          <number>100</number>
+         </attribute>
+        </widget>
        </item>
       </layout>
      </item>
