@@ -74,6 +74,7 @@ class CliWindow(QMainWindow, Ui_Dialog, MenuFlotante):
         self.comboCategorias.addItem("Teléfono", "telefono")
         self.comboCategorias.addItem("Correo", "correo")
 
+
         # Configurar el modelo para la tabla
         self._table_model = ClienteTableModel()
         self.tableView.setModel(self._table_model)
@@ -88,62 +89,89 @@ class CliWindow(QMainWindow, Ui_Dialog, MenuFlotante):
         self.btnAgregar.clicked.connect(self.handleAgregarBtn)
         self.btnEditar.clicked.connect(self.handleEditarBtn)
         self.btnEliminar.clicked.connect(self.handleBorrarBtn)
-        self.btnBuscar.clicked.connect(self.handelBuscarBtn)
+        self.btnBuscar.clicked.connect(self.handleBuscarBtn)
 
         # Configurar el menú flotante
         self.setupFloatingMenu(empleado)
         self.mostrarTabla()
 
-        def handleAgregarBtn(self):
-            if "" in [
-                self.lineNombre.text().strip(),
-                self.lineTelefono.text().strip(),
-                self.lineCorreo.text().strip()
-            ]:
-                print("No se puede agregar un cliente sin datos")
-                return
-            cliente = Cliente(
-                nombre=self.lineNombre.text().strip(),
-                telefono=self.lineTelefono.text().strip(),
-                correo=self.lineCorreo.text().strip(),
-            )
-            mensaje = self.clienteController.addCliente(cliente)
-            self.labelInformacion.setText(mensaje)
-            self.limpiarCampos()
-            self.mostrarTabla()
+    def handleAgregarBtn(self):
+         if "" in [
+            self.lineNombre.text().strip(),
+            self.lineTelefono.text().strip(),
+            self.lineCorreo.text().strip()
+         ]:
+             print("No se puede agregar un cliente sin datos")
+             return
+         cliente = Cliente(
+             nombre=self.lineNombre.text().strip(),
+             telefono=self.lineTelefono.text().strip(),
+             correo=self.lineCorreo.text().strip(),
+         )
+         mensaje = self.clienteController.addCliente(cliente)
+         self.labelInformacion.setText(mensaje)
+         self.limpiarCampos()
+         self.mostrarTabla()
 
-        def handleEditarBtn(self):
-            if self.cliente.id_cliente is None:
-                return
-            clienteModificado = Cliente(
-                id_cliente=self.cliente.id_cliente,
-                nombre=self.lineNombre.text().strip(),
-                telefono=self.lineTelefono.text().strip(),
-                correo=self.lineCorreo.text().strip(),
-            )
-            mensaje = self.clienteController.updateCliente(clienteModificado)
-            self.labelInformacion.setText(mensaje)
-            self.limpiarCampos()
-            self.mostrarTabla()
+    def handleEditarBtn(self):
+        if self.cliente.id_cliente is None:
+            return
+        clienteModificado = Cliente(
+            id_cliente=self.cliente.id_cliente,
+            nombre=self.lineNombre.text().strip(),
+            telefono=self.lineTelefono.text().strip(),
+            correo=self.lineCorreo.text().strip(),
+        )
+        mensaje = self.clienteController.updateCliente(clienteModificado)
+        self.labelInformacion.setText(mensaje)
+        self.limpiarCampos()
+        self.mostrarTabla()
 
-        def handleBorrarBtn(self):
-            if self.cliente.id_cliente is None:
-                return
-            mensaje = self.clienteController.deleteCliente(self.cliente.id_cliente)
-            self.labelInformacion.setText(mensaje)
-            self.limpiarCampos()
-            self.mostrarTabla()
+    def handleBorrarBtn(self):
+        if self.cliente.id_cliente is None:
+            return
+        mensaje = self.clienteController.deleteCliente(self.cliente.id_cliente)
+        self.labelInformacion.setText(mensaje)
+        self.limpiarCampos()
+        self.mostrarTabla()
 
-        def handelBuscarBtn(self):
-            columna = self.comboCategorias.currentData()
-            aBuscar = self.lineDato.text().strip()
-            try:
-                self.clientes = self.clienteController.buscar(columna, aBuscar)
-            except Exception:
-                self.labelInformacion.setText("Error al buscar")
-                self.clientes = None
-                return
-            self.lineDato.clear()
-            self.mostrarTabla()
+    def handleBuscarBtn(self):
+        columna = self.comboCategorias.currentData()
+        aBuscar = self.lineDato.text().strip()
+        try:
+            self.clientes = self.clienteController.buscar(columna, aBuscar)
+        except Exception as e:
+            self.labelInformacion.setText("Error al buscar")
+            self.clientes = None
+        self.lineDato.clear()
+        self.mostrarTabla()
 
+    def handleDobleClic(self, index: QModelIndex):
+        datos = []
+        datos.extend(
+            self._table_model.index(index.row(), nColumna, index).data()
+            for nColumna in range(self._table_model.columnCount())
+        )
+        self.cliente = Cliente(
+            id_cliente=datos[0],
+            nombre=datos[1],
+            telefono=datos[2],
+            correo=datos[3]
+        )
+        self.lineNombre.setText(self.cliente.nombre)
+        self.lineTelefono.setText(str(self.cliente.telefono))
+        self.lineCorreo.setText(self.cliente.correo)
 
+    def mostrarTabla(self):
+        """Cargar y mostrar los clientes en la tabla"""
+        try:
+            clientes = self.clientes or self.clienteController.clientes()
+            self._table_model.setClientes(clientes)
+            self.clientes = None
+        except Exception as e:
+            print(f"Error al cargar clientes: {e}")
+
+    def limpiarCampos(self):
+        self.lineNombre.clear()
+        self.lineTelefono.clear()
+        self.lineCorreo.clear()

@@ -164,44 +164,6 @@
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="labelDireccion">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">color: rgb(0, 0, 0);</string>
-           </property>
-           <property name="text">
-            <string>Dirección:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineDireccion">
-           <property name="minimumSize">
-            <size>
-             <width>40</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QLineEdit {
-    padding: 10px;
-    border: 2px solid #867BAA;
-    border-radius: 20px;
-    font-size: 14px;
-	color: rgb(134, 123, 170);
-}</string>
-           </property>
-           <property name="placeholderText">
-            <string>Dirección del cliente...</string>
-           </property>
-          </widget>
-         </item>
-         <item>
           <widget class="QLabel" name="labelTelefono">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -239,6 +201,44 @@
            </property>
            <property name="placeholderText">
             <string>Teléfono del cliente...</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="labelDireccion">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string>Correo:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineCorreo">
+           <property name="minimumSize">
+            <size>
+             <width>40</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLineEdit {
+    padding: 10px;
+    border: 2px solid #867BAA;
+    border-radius: 20px;
+    font-size: 14px;
+	color: rgb(134, 123, 170);
+}</string>
+           </property>
+           <property name="placeholderText">
+            <string>Dirección del cliente...</string>
            </property>
           </widget>
          </item>
@@ -505,11 +505,11 @@ QPushButton:hover {
          <attribute name="horizontalHeaderCascadingSectionResizes">
           <bool>false</bool>
          </attribute>
-         <attribute name="horizontalHeaderMinimumSectionSize">
-          <number>100</number>
-         </attribute>
          <attribute name="horizontalHeaderDefaultSectionSize">
           <number>220</number>
+         </attribute>
+         <attribute name="horizontalHeaderMinimumSectionSize">
+          <number>100</number>
          </attribute>
          <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
           <bool>false</bool>
@@ -520,10 +520,10 @@ QPushButton:hover {
          <attribute name="verticalHeaderCascadingSectionResizes">
           <bool>true</bool>
          </attribute>
-         <attribute name="verticalHeaderMinimumSectionSize">
+         <attribute name="verticalHeaderDefaultSectionSize">
           <number>30</number>
          </attribute>
-         <attribute name="verticalHeaderDefaultSectionSize">
+         <attribute name="verticalHeaderMinimumSectionSize">
           <number>30</number>
          </attribute>
          <attribute name="verticalHeaderShowSortIndicator" stdset="0">

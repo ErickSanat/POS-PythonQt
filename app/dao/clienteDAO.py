@@ -1,6 +1,6 @@
 from .DB import DBConnection
 from ..model import Cliente, cliente
-from ..utils import cerrarConn
+from ..utils import cerrarConn, cerrarCommit
 
 
 class ClienteDAO:
@@ -41,7 +41,7 @@ class ClienteDAO:
     def clienteExistente(self, cliente: Cliente) -> Cliente | bool:
         conn = DBConnection.connection()
         cur = conn.cursor()
-        cur.execute(f"SELECT * FROM cliente WHERE id_cliente = {cliente.id_cliente}")
+        cur.execute(f"SELECT * FROM cliente WHERE nombre = '{cliente.nombre}'")
         resultado = cur.fetchone()
         cerrarConn(cur, conn)
         if resultado is not None:
@@ -52,16 +52,17 @@ class ClienteDAO:
     def addCliente(self, cliente: Cliente):
         conn = DBConnection.connection()
         cur = conn.cursor()
-        cur.execute("INSERT INTO cliente ("
-            + "nombre,"
-            + "telefono,"
-            + "correo"
+        cur.execute(
+            "INSERT INTO cliente ("
+                + "nombre,"
+                + "telefono,"
+                + "correo"
             + ") VALUES ("
-            + f"'{cliente.nombre}',"
-            + f"{cliente.telefono},"
-            + f"{cliente.correo})"
+                + f"'{cliente.nombre}',"
+                + f"{cliente.telefono},"
+                + f"'{cliente.correo}')"
         )
-        cerrarConn(cur, conn)
+        cerrarCommit(cur, conn)
 
     def updateCliente(self, cliente: Cliente):
         conn = DBConnection.connection()
@@ -71,11 +72,11 @@ class ClienteDAO:
             + "SET "
                 + f"nombre='{cliente.nombre}', "
                 + f"telefono={cliente.telefono}, "
-                + f"correo='{cliente.correo}', "
+                + f"correo='{cliente.correo}' "
             +"WHERE "
             + f"id_cliente={cliente.id_cliente}"
         )
-        cerrarConn(cur, conn)
+        cerrarCommit(cur, conn)
 
     def deleteCliente(self, id_cliente: int):
         conn = DBConnection.connection()
@@ -87,7 +88,7 @@ class ClienteDAO:
             +"WHERE "
             + f"id_cliente={id_cliente}"
         )
-        cerrarConn(cur, conn)
+        cerrarCommit(cur, conn)
 
     def porNombre(self, nombre: str) -> Cliente:
         conn = DBConnection.connection()
