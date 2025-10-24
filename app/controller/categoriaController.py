@@ -13,3 +13,18 @@ class CategoriaController:
     
     def porNombre(self, nombre: str) -> Categoria:
         return self.rolDAO.porNombre(nombre)
+
+    def addCategoria(self, categoria: Categoria):
+        self.rolDAO.addCategoria(categoria)
+
+    def updateCategoria(self, categoria: Categoria):
+        self.rolDAO.updateCategoria(categoria)
+
+    def deleteCategoria(self, id_categoria: int):
+        self.rolDAO.deleteCategoria(id_categoria)
+
+    def buscar(self, columna: str, aBuscar: str) -> list[Categoria]:
+        try:
+            return self.rolDAO.buscarCategorias(columna, aBuscar)
+        except Exception as e:
+            raise e
