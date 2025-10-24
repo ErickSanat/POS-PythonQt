@@ -193,7 +193,8 @@ class ProWindow(QMainWindow, Ui_Form, MenuFlotante):
         )
         # Cambiar imagen
         if self.producto.imagen != productoModificado.imagen:
-            os.remove(self.producto.imagen)
+            if os.path.isfile(self.producto.imagen):
+                os.remove(self.producto.imagen)
             shutil.copy(self.archivo, productoModificado.imagen)
         
         self.productoController.updateProducto(productoModificado)
@@ -210,7 +211,8 @@ class ProWindow(QMainWindow, Ui_Form, MenuFlotante):
         if self.producto.id_producto is None:
             return
         self.productoController.deleteProducto(self.producto.id_producto)
-        os.remove(self.producto.imagen)
+        if os.path.isfile(self.producto.imagen):
+            os.remove(self.producto.imagen)
         
         self.labelInformacion.setText("Producto Eliminado Exitosamente")
         self.lineNombre.clear()
