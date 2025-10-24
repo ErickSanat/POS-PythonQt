@@ -105,7 +105,7 @@
          <rect>
           <x>10</x>
           <y>90</y>
-          <width>297</width>
+          <width>281</width>
           <height>369</height>
          </rect>
         </property>
@@ -455,10 +455,10 @@ QPushButton:hover {
           <bool>false</bool>
          </attribute>
          <attribute name="horizontalHeaderDefaultSectionSize">
-          <number>165</number>
+          <number>220</number>
          </attribute>
          <attribute name="horizontalHeaderMinimumSectionSize">
-          <number>100</number>
+          <number>150</number>
          </attribute>
          <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
           <bool>false</bool>

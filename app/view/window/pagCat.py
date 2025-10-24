@@ -3,7 +3,8 @@ from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5.QtCore import Qt, QAbstractTableModel, QModelIndex, QVariant
 from ..generated.categoriaView_ui import Ui_Form
 from app.utils import MenuFlotante
-from app.model import Empleado
+from app.model import Empleado, Categoria
+from app.controller import CategoriaController
 
 class CategoriaTableModel(QAbstractTableModel):
     """Modelo para mostrar una lista de objetos Categoria en un QTableView"""
@@ -24,16 +25,11 @@ class CategoriaTableModel(QAbstractTableModel):
         return len(self._colums)
 
     def data(self, index, role=Qt.DisplayRole):
-        if not index.isValid():
+        if not index.isValid() or role != Qt.DisplayRole:
             return QVariant()
 
         categoria_obj = self._categorias[index.row()]
         attr, _header = self._colums[index.column()]
-
-        # Manejar atributo compuesto (usuario.usuario)
-        if attr == "categoria":
-            usuario = getattr(empleado_obj, "categoria", None)
-            return usuario.usuario if usuario else ""
 
         # Obtener el valor del atributo
         valor = getattr(categoria_obj, attr, "")
@@ -86,7 +82,7 @@ class CatWindow(QMainWindow, Ui_Form, MenuFlotante):
         self.btnAgregar.clicked.connect(self.handleAgregarBtn)
         self.btnEditar.clicked.connect(self.handleEditarBtn)
         self.btnEliminar.clicked.connect(self.handleBorrarBtn)
-        self.btnBuscar.clicked.connect(self.handelBuscarBtn)
+        self.btnBuscar.clicked.connect(self.handleBuscarBtn)
 
         # Configurar el menú flotante
         self.setupFloatingMenu(empleado)
@@ -95,12 +91,12 @@ class CatWindow(QMainWindow, Ui_Form, MenuFlotante):
     def handleAgregarBtn(self):
         if "" in [
             self.lineNombre.text().strip(),
-            self.lineDescripcion.toPlainText().strip()
+            self.txtDescripcion.toPlainText().strip()
         ]:
             return
         categoria = Categoria(
             nombre=self.lineNombre.text().strip(),
-            descripcion=self.lineDescripcion.toPlainText().strip()
+            descripcion=self.txtDescripcion.toPlainText().strip()
         )
         mensaje = self.categoriaController.addCategoria(categoria)
         self.labelInformacion.setText(mensaje)
@@ -113,7 +109,7 @@ class CatWindow(QMainWindow, Ui_Form, MenuFlotante):
         categoriaModificado = Categoria(
             id_categoria=self.categoria.id_categoria,
             nombre=self.lineNombre.text().strip(),
-            descripcion=self.lineDescripcion.toPlainText().strip()
+            descripcion=self.txtDescripcion.toPlainText().strip()
         )
         mensaje = self.categoriaController.updateCategoria(categoriaModificado)
         self.labelInformacion.setText(mensaje)
@@ -128,7 +124,7 @@ class CatWindow(QMainWindow, Ui_Form, MenuFlotante):
         self.limpiarCampos()
         self.mostrarTabla()
 
-    def handelBuscarBtn(self):
+    def handleBuscarBtn(self):
         columna = self.comboCategorias.currentData()
         aBuscar = self.lineDato.text().strip()
         try:
@@ -147,7 +143,7 @@ class CatWindow(QMainWindow, Ui_Form, MenuFlotante):
         except Exception as e:
             print(f"Error al cargar categorias: {e}")
 
-    def hangleDobleClic(self, index: QModelIndex):
+    def handleDobleClic(self, index: QModelIndex):
         datos = []
         datos.extend(
             self._table_model.index(index.row(), nColumna, index).data()
@@ -159,9 +155,9 @@ class CatWindow(QMainWindow, Ui_Form, MenuFlotante):
             descripcion=datos[2]
         )
         self.lineNombre.setText(self.categoria.nombre)
-        self.lineDescripcion.setText(self.categoria.descripcion)
+        self.txtDescripcion.setText(self.categoria.descripcion)
 
     def limpiarCampos(self):
         self.lineNombre.clear()
-        self.lineDescripcion.clear()
+        self.txtDescripcion.clear()
 
