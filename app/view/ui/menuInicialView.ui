@@ -175,42 +175,43 @@ border-right: 2px solid #867BAA;</string>
            </layout>
           </item>
           <item>
-           <widget class="QScrollArea" name="productsScrollArea">
-            <property name="autoFillBackground">
-             <bool>true</bool>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QScrollArea { border: none; }</string>
-            </property>
-            <property name="horizontalScrollBarPolicy">
-             <enum>Qt::ScrollBarAlwaysOn</enum>
-            </property>
+           <widget class="QScrollArea" name="scrollArea">
             <property name="widgetResizable">
              <bool>true</bool>
             </property>
-            <widget class="QWidget" name="scrollContentWidget">
+            <widget class="QWidget" name="scrollAreaProductos">
              <property name="geometry">
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>681</width>
-               <height>506</height>
+               <width>679</width>
+               <height>514</height>
               </rect>
              </property>
-             <widget class="QWidget" name="gridLayoutWidget">
+             <widget class="QWidget" name="widgetContenedorProductos" native="true">
               <property name="geometry">
                <rect>
                 <x>0</x>
                 <y>0</y>
                 <width>681</width>
-                <height>501</height>
+                <height>511</height>
                </rect>
               </property>
-              <layout class="QGridLayout" name="gridLayoutProductos">
-               <property name="spacing">
-                <number>15</number>
+              <widget class="QWidget" name="gridLayoutWidget">
+               <property name="geometry">
+                <rect>
+                 <x>0</x>
+                 <y>0</y>
+                 <width>681</width>
+                 <height>511</height>
+                </rect>
                </property>
-              </layout>
+               <layout class="QGridLayout" name="gridLayoutProductos" rowstretch="0" columnstretch="0" rowminimumheight="0" columnminimumwidth="0">
+                <property name="spacing">
+                 <number>15</number>
+                </property>
+               </layout>
+              </widget>
              </widget>
             </widget>
            </widget>
