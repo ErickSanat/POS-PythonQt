@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'app/view/ui/recetaView.ui'
+# Form implementation generated from reading ui file '.\app\view\ui\recetaView.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.11
 #
@@ -19,6 +19,205 @@ class Ui_Form(object):
         self.widget.setGeometry(QtCore.QRect(0, 0, 1201, 691))
         self.widget.setStyleSheet("background-color: #CFC3F5;")
         self.widget.setObjectName("widget")
+        self.horizontalLayoutWidget_2 = QtWidgets.QWidget(self.widget)
+        self.horizontalLayoutWidget_2.setGeometry(QtCore.QRect(0, 60, 1201, 621))
+        self.horizontalLayoutWidget_2.setObjectName("horizontalLayoutWidget_2")
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget_2)
+        self.horizontalLayout_2.setContentsMargins(3, 3, 3, 3)
+        self.horizontalLayout_2.setSpacing(6)
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.frame = QtWidgets.QFrame(self.horizontalLayoutWidget_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(1)
+        sizePolicy.setVerticalStretch(1)
+        sizePolicy.setHeightForWidth(self.frame.sizePolicy().hasHeightForWidth())
+        self.frame.setSizePolicy(sizePolicy)
+        self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame.setObjectName("frame")
+        self.tituloProducto = QtWidgets.QLabel(self.frame)
+        self.tituloProducto.setGeometry(QtCore.QRect(30, 10, 228, 44))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.tituloProducto.sizePolicy().hasHeightForWidth())
+        self.tituloProducto.setSizePolicy(sizePolicy)
+        self.tituloProducto.setStyleSheet("QLabel {\n"
+"    color: #000000;\n"
+"    font-size: 18px;\n"
+"    font-weight: bold;\n"
+"    padding: 10px;\n"
+"    background-color: #867BAA;\n"
+"    border-radius: 5px;\n"
+"    border: 1px solid #bdc3c7;\n"
+"}")
+        self.tituloProducto.setFrameShape(QtWidgets.QFrame.NoFrame)
+        self.tituloProducto.setAlignment(QtCore.Qt.AlignCenter)
+        self.tituloProducto.setObjectName("tituloProducto")
+        self.verticalLayoutWidget_2 = QtWidgets.QWidget(self.frame)
+        self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(10, 60, 271, 584))
+        self.verticalLayoutWidget_2.setObjectName("verticalLayoutWidget_2")
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_2)
+        self.verticalLayout.setContentsMargins(10, 10, 10, 10)
+        self.verticalLayout.setSpacing(10)
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.label_5 = QtWidgets.QLabel(self.verticalLayoutWidget_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_5.sizePolicy().hasHeightForWidth())
+        self.label_5.setSizePolicy(sizePolicy)
+        self.label_5.setStyleSheet("color: rgb(0, 0, 0);")
+        self.label_5.setObjectName("label_5")
+        self.verticalLayout.addWidget(self.label_5)
+        self.descripcion = QtWidgets.QTextEdit(self.verticalLayoutWidget_2)
+        self.descripcion.setObjectName("descripcion")
+        self.verticalLayout.addWidget(self.descripcion)
+        self.label_6 = QtWidgets.QLabel(self.verticalLayoutWidget_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_6.sizePolicy().hasHeightForWidth())
+        self.label_6.setSizePolicy(sizePolicy)
+        self.label_6.setStyleSheet("color: rgb(0, 0, 0);")
+        self.label_6.setObjectName("label_6")
+        self.verticalLayout.addWidget(self.label_6)
+        self.instrucciones = QtWidgets.QTextEdit(self.verticalLayoutWidget_2)
+        self.instrucciones.setObjectName("instrucciones")
+        self.verticalLayout.addWidget(self.instrucciones)
+        self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_3.setSizeConstraint(QtWidgets.QLayout.SetDefaultConstraint)
+        self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_3.setSpacing(10)
+        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
+        self.btnAgregar = QtWidgets.QPushButton(self.verticalLayoutWidget_2)
+        self.btnAgregar.setStyleSheet("QPushButton {\n"
+"    background-color: #867BAA;\n"
+"    color: black;\n"
+"    padding: 10px;\n"
+"    border: none;\n"
+"    border-radius: 5px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: #BDB1E2;\n"
+"}")
+        self.btnAgregar.setObjectName("btnAgregar")
+        self.horizontalLayout_3.addWidget(self.btnAgregar)
+        self.btnEditar = QtWidgets.QPushButton(self.verticalLayoutWidget_2)
+        self.btnEditar.setStyleSheet("QPushButton {\n"
+"    background-color: #867BAA;\n"
+"    color: black;\n"
+"    padding: 10px;\n"
+"    border: none;\n"
+"    border-radius: 5px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: #BDB1E2;\n"
+"}")
+        self.btnEditar.setObjectName("btnEditar")
+        self.horizontalLayout_3.addWidget(self.btnEditar)
+        self.btnEliminar = QtWidgets.QPushButton(self.verticalLayoutWidget_2)
+        self.btnEliminar.setStyleSheet("QPushButton {\n"
+"    background-color: #867BAA;\n"
+"    color: black;\n"
+"    padding: 10px;\n"
+"    border: none;\n"
+"    border-radius: 5px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: #BDB1E2;\n"
+"}")
+        self.btnEliminar.setObjectName("btnEliminar")
+        self.horizontalLayout_3.addWidget(self.btnEliminar)
+        self.verticalLayout.addLayout(self.horizontalLayout_3)
+        self.labelInformacion = QtWidgets.QLabel(self.verticalLayoutWidget_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.labelInformacion.sizePolicy().hasHeightForWidth())
+        self.labelInformacion.setSizePolicy(sizePolicy)
+        self.labelInformacion.setStyleSheet("color: rgb(0, 0, 0);")
+        self.labelInformacion.setText("")
+        self.labelInformacion.setObjectName("labelInformacion")
+        self.verticalLayout.addWidget(self.labelInformacion)
+        self.horizontalLayout_2.addWidget(self.frame)
+        self.verticalLayoutRight_2 = QtWidgets.QVBoxLayout()
+        self.verticalLayoutRight_2.setContentsMargins(10, 10, 10, 10)
+        self.verticalLayoutRight_2.setSpacing(10)
+        self.verticalLayoutRight_2.setObjectName("verticalLayoutRight_2")
+        self.horizontalLayout = QtWidgets.QHBoxLayout()
+        self.horizontalLayout.setContentsMargins(10, 10, 10, 10)
+        self.horizontalLayout.setSpacing(10)
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.labelEncontrar = QtWidgets.QLabel(self.horizontalLayoutWidget_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.labelEncontrar.sizePolicy().hasHeightForWidth())
+        self.labelEncontrar.setSizePolicy(sizePolicy)
+        self.labelEncontrar.setStyleSheet("QLabel {\n"
+"    color: #000000;\n"
+"    font-size: 18px;\n"
+"    font-weight: bold;\n"
+"    padding: 10px;\n"
+"    background-color: #867BAA;\n"
+"    border-radius: 5px;\n"
+"    border: 1px solid #bdc3c7;\n"
+"}")
+        self.labelEncontrar.setAlignment(QtCore.Qt.AlignCenter)
+        self.labelEncontrar.setObjectName("labelEncontrar")
+        self.horizontalLayout.addWidget(self.labelEncontrar)
+        self.comboCategorias = QtWidgets.QComboBox(self.horizontalLayoutWidget_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.comboCategorias.sizePolicy().hasHeightForWidth())
+        self.comboCategorias.setSizePolicy(sizePolicy)
+        self.comboCategorias.setMinimumSize(QtCore.QSize(150, 0))
+        self.comboCategorias.setStyleSheet("QComboBox {\n"
+"    padding: 10px;\n"
+"    border: 3px solid #867BAA;\n"
+"    border-radius: 20px;\n"
+"}\n"
+"")
+        self.comboCategorias.setObjectName("comboCategorias")
+        self.horizontalLayout.addWidget(self.comboCategorias)
+        self.lineDato = QtWidgets.QLineEdit(self.horizontalLayoutWidget_2)
+        self.lineDato.setMinimumSize(QtCore.QSize(40, 0))
+        self.lineDato.setStyleSheet("QLineEdit {\n"
+"    padding: 10px;\n"
+"    border: 2px solid #867BAA;\n"
+"    border-radius: 20px;\n"
+"    font-size: 14px;\n"
+"    color: rgb(134, 123, 170);\n"
+"}")
+        self.lineDato.setObjectName("lineDato")
+        self.horizontalLayout.addWidget(self.lineDato)
+        self.btnBuscar = QtWidgets.QPushButton(self.horizontalLayoutWidget_2)
+        self.btnBuscar.setStyleSheet("QPushButton {\n"
+"    background-color: #867BAA;\n"
+"    color: black;\n"
+"    padding: 10px;\n"
+"    border: none;\n"
+"    border-radius: 5px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: #BDB1E2;\n"
+"}")
+        self.btnBuscar.setObjectName("btnBuscar")
+        self.horizontalLayout.addWidget(self.btnBuscar)
+        self.verticalLayoutRight_2.addLayout(self.horizontalLayout)
+        self.tableView = QtWidgets.QTableView(self.horizontalLayoutWidget_2)
+        self.tableView.setObjectName("tableView")
+        self.tableView.horizontalHeader().setDefaultSectionSize(130)
+        self.tableView.horizontalHeader().setMinimumSectionSize(100)
+        self.verticalLayoutRight_2.addWidget(self.tableView)
+        self.horizontalLayout_2.addLayout(self.verticalLayoutRight_2)
+        self.horizontalLayout_2.setStretch(1, 3)
         self.barraSuperior = QtWidgets.QWidget(self.widget)
         self.barraSuperior.setGeometry(QtCore.QRect(0, 0, 1201, 61))
         self.barraSuperior.setAutoFillBackground(False)
@@ -37,12 +236,6 @@ class Ui_Form(object):
         self.tituloInicial.setFont(font)
         self.tituloInicial.setStyleSheet("color: rgb(0, 0, 0);")
         self.tituloInicial.setObjectName("tituloInicial")
-        self.label_2 = QtWidgets.QLabel(self.barraSuperior)
-        self.label_2.setGeometry(QtCore.QRect(20, 10, 51, 41))
-        self.label_2.setText("")
-        self.label_2.setPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/logoPasteleriaMini.xcf"))
-        self.label_2.setScaledContents(True)
-        self.label_2.setObjectName("label_2")
         self.logo = QtWidgets.QLabel(self.barraSuperior)
         self.logo.setGeometry(QtCore.QRect(0, 0, 101, 61))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Maximum)
@@ -53,7 +246,7 @@ class Ui_Form(object):
         self.logo.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.logo.setText("")
         self.logo.setTextFormat(QtCore.Qt.AutoText)
-        self.logo.setPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/logo.png"))
+        self.logo.setPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/logo.png"))
         self.logo.setScaledContents(True)
         self.logo.setAlignment(QtCore.Qt.AlignCenter)
         self.logo.setWordWrap(False)
@@ -96,7 +289,7 @@ class Ui_Form(object):
 "}")
         self.btnMenuInicio.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/inicio.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/inicio.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnMenuInicio.setIcon(icon)
         self.btnMenuInicio.setIconSize(QtCore.QSize(28, 28))
         self.btnMenuInicio.setObjectName("btnMenuInicio")
@@ -115,114 +308,10 @@ class Ui_Form(object):
 "}")
         self.btnCerrarSesion.setText("")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/cerrarSesion.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/cerrarSesion.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnCerrarSesion.setIcon(icon1)
         self.btnCerrarSesion.setIconSize(QtCore.QSize(28, 28))
         self.btnCerrarSesion.setObjectName("btnCerrarSesion")
-        self.layoutWidget_2 = QtWidgets.QWidget(self.widget)
-        self.layoutWidget_2.setGeometry(QtCore.QRect(0, 60, 1201, 631))
-        self.layoutWidget_2.setObjectName("layoutWidget_2")
-        self.verticalLayoutRight_3 = QtWidgets.QVBoxLayout(self.layoutWidget_2)
-        self.verticalLayoutRight_3.setContentsMargins(10, 10, 10, 10)
-        self.verticalLayoutRight_3.setSpacing(10)
-        self.verticalLayoutRight_3.setObjectName("verticalLayoutRight_3")
-        self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_3.setContentsMargins(10, 10, 10, 10)
-        self.horizontalLayout_3.setSpacing(10)
-        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        self.labelEncontrar = QtWidgets.QLabel(self.layoutWidget_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.labelEncontrar.sizePolicy().hasHeightForWidth())
-        self.labelEncontrar.setSizePolicy(sizePolicy)
-        self.labelEncontrar.setStyleSheet("QLabel {\n"
-"    color: #000000;\n"
-"    font-size: 18px;\n"
-"    font-weight: bold;\n"
-"    padding: 10px;\n"
-"    background-color: #867BAA;\n"
-"    border-radius: 5px;\n"
-"    border: 1px solid #bdc3c7;\n"
-"}")
-        self.labelEncontrar.setAlignment(QtCore.Qt.AlignCenter)
-        self.labelEncontrar.setObjectName("labelEncontrar")
-        self.horizontalLayout_3.addWidget(self.labelEncontrar)
-        self.comboCategorias = QtWidgets.QComboBox(self.layoutWidget_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.comboCategorias.sizePolicy().hasHeightForWidth())
-        self.comboCategorias.setSizePolicy(sizePolicy)
-        self.comboCategorias.setMinimumSize(QtCore.QSize(150, 0))
-        self.comboCategorias.setStyleSheet("QComboBox {\n"
-"    padding: 10px;\n"
-"    border: 3px solid #867BAA;\n"
-"    border-radius: 20px;\n"
-"}\n"
-"")
-        self.comboCategorias.setObjectName("comboCategorias")
-        self.horizontalLayout_3.addWidget(self.comboCategorias)
-        self.lineDato = QtWidgets.QLineEdit(self.layoutWidget_2)
-        self.lineDato.setMinimumSize(QtCore.QSize(40, 0))
-        self.lineDato.setStyleSheet("QLineEdit {\n"
-"    padding: 10px;\n"
-"    border: 2px solid #867BAA;\n"
-"    border-radius: 20px;\n"
-"    font-size: 14px;\n"
-"    color: rgb(134, 123, 170);\n"
-"}")
-        self.lineDato.setObjectName("lineDato")
-        self.horizontalLayout_3.addWidget(self.lineDato)
-        self.btnBuscar = QtWidgets.QPushButton(self.layoutWidget_2)
-        self.btnBuscar.setStyleSheet("QPushButton {\n"
-"    background-color: #867BAA;\n"
-"    color: black;\n"
-"    padding: 10px;\n"
-"    border: none;\n"
-"    border-radius: 5px;\n"
-"    font-weight: bold;\n"
-"}\n"
-"QPushButton:hover {\n"
-"    background-color: #BDB1E2;\n"
-"}")
-        self.btnBuscar.setObjectName("btnBuscar")
-        self.horizontalLayout_3.addWidget(self.btnBuscar)
-        self.verticalLayoutRight_3.addLayout(self.horizontalLayout_3)
-        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_2.setContentsMargins(10, 10, 10, 10)
-        self.horizontalLayout_2.setSpacing(10)
-        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.labelInstrucciones = QtWidgets.QLabel(self.layoutWidget_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.labelInstrucciones.sizePolicy().hasHeightForWidth())
-        self.labelInstrucciones.setSizePolicy(sizePolicy)
-        self.labelInstrucciones.setStyleSheet("color: rgb(0, 0, 0);")
-        self.labelInstrucciones.setObjectName("labelInstrucciones")
-        self.horizontalLayout_2.addWidget(self.labelInstrucciones)
-        self.labelDescripcion = QtWidgets.QLabel(self.layoutWidget_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.labelDescripcion.sizePolicy().hasHeightForWidth())
-        self.labelDescripcion.setSizePolicy(sizePolicy)
-        self.labelDescripcion.setStyleSheet("color: rgb(0, 0, 0);")
-        self.labelDescripcion.setObjectName("labelDescripcion")
-        self.horizontalLayout_2.addWidget(self.labelDescripcion)
-        self.verticalLayoutRight_3.addLayout(self.horizontalLayout_2)
-        self.horizontalLayout = QtWidgets.QHBoxLayout()
-        self.horizontalLayout.setContentsMargins(10, 10, 10, 10)
-        self.horizontalLayout.setSpacing(10)
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        self.txtInstrucciones = QtWidgets.QTextEdit(self.layoutWidget_2)
-        self.txtInstrucciones.setObjectName("txtInstrucciones")
-        self.horizontalLayout.addWidget(self.txtInstrucciones)
-        self.txtDescripcion = QtWidgets.QTextEdit(self.layoutWidget_2)
-        self.txtDescripcion.setObjectName("txtDescripcion")
-        self.horizontalLayout.addWidget(self.txtDescripcion)
-        self.verticalLayoutRight_3.addLayout(self.horizontalLayout)
         self.frameFlotante = QtWidgets.QFrame(Form)
         self.frameFlotante.setEnabled(True)
         self.frameFlotante.setGeometry(QtCore.QRect(0, 0, 0, 0))
@@ -267,7 +356,7 @@ class Ui_Form(object):
 "}")
         self.btnEmpleados.setText("")
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/empleados.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon2.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/empleados.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnEmpleados.setIcon(icon2)
         self.btnEmpleados.setIconSize(QtCore.QSize(84, 84))
         self.btnEmpleados.setObjectName("btnEmpleados")
@@ -287,7 +376,7 @@ class Ui_Form(object):
 "}")
         self.btnRecetas.setText("")
         icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/recetas.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon3.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/recetas.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnRecetas.setIcon(icon3)
         self.btnRecetas.setIconSize(QtCore.QSize(84, 84))
         self.btnRecetas.setObjectName("btnRecetas")
@@ -307,7 +396,7 @@ class Ui_Form(object):
 "}")
         self.btnProductos.setText("")
         icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/productos.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon4.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/productos.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnProductos.setIcon(icon4)
         self.btnProductos.setIconSize(QtCore.QSize(84, 84))
         self.btnProductos.setObjectName("btnProductos")
@@ -327,7 +416,7 @@ class Ui_Form(object):
 "}")
         self.btnCategorias.setText("")
         icon5 = QtGui.QIcon()
-        icon5.addPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/categorias.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon5.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/categorias.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnCategorias.setIcon(icon5)
         self.btnCategorias.setIconSize(QtCore.QSize(84, 84))
         self.btnCategorias.setObjectName("btnCategorias")
@@ -347,7 +436,7 @@ class Ui_Form(object):
 "}")
         self.btnPromociones.setText("")
         icon6 = QtGui.QIcon()
-        icon6.addPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/promociones.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon6.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/promociones.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnPromociones.setIcon(icon6)
         self.btnPromociones.setIconSize(QtCore.QSize(84, 84))
         self.btnPromociones.setObjectName("btnPromociones")
@@ -367,7 +456,7 @@ class Ui_Form(object):
 "}")
         self.btnProveedores.setText("")
         icon7 = QtGui.QIcon()
-        icon7.addPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/provedoores.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon7.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/provedoores.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnProveedores.setIcon(icon7)
         self.btnProveedores.setIconSize(QtCore.QSize(84, 84))
         self.btnProveedores.setObjectName("btnProveedores")
@@ -387,7 +476,7 @@ class Ui_Form(object):
 "}")
         self.btnClientes.setText("")
         icon8 = QtGui.QIcon()
-        icon8.addPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/clientes.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon8.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/clientes.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnClientes.setIcon(icon8)
         self.btnClientes.setIconSize(QtCore.QSize(84, 84))
         self.btnClientes.setObjectName("btnClientes")
@@ -407,7 +496,7 @@ class Ui_Form(object):
 "}")
         self.btnVentas.setText("")
         icon9 = QtGui.QIcon()
-        icon9.addPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/ventas.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon9.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/ventas.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnVentas.setIcon(icon9)
         self.btnVentas.setIconSize(QtCore.QSize(84, 84))
         self.btnVentas.setObjectName("btnVentas")
@@ -427,7 +516,7 @@ class Ui_Form(object):
 "}")
         self.btnUsuario.setText("")
         icon10 = QtGui.QIcon()
-        icon10.addPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/usuarios.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon10.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/usuarios.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnUsuario.setIcon(icon10)
         self.btnUsuario.setIconSize(QtCore.QSize(84, 84))
         self.btnUsuario.setObjectName("btnUsuario")
@@ -439,10 +528,14 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
-        self.tituloInicial.setText(_translate("Form", "Alquimia Pastelería"))
-        self.btnMenu.setText(_translate("Form", "☰"))
+        self.tituloProducto.setText(_translate("Form", "Receta:"))
+        self.label_5.setText(_translate("Form", "Descripción:"))
+        self.label_6.setText(_translate("Form", "Instrucciones:"))
+        self.btnAgregar.setText(_translate("Form", "Agregar"))
+        self.btnEditar.setText(_translate("Form", "Editar"))
+        self.btnEliminar.setText(_translate("Form", "Elliminar"))
         self.labelEncontrar.setText(_translate("Form", "Encontrar receta por:"))
         self.lineDato.setPlaceholderText(_translate("Form", "Dato..."))
         self.btnBuscar.setText(_translate("Form", "Buscar"))
-        self.labelInstrucciones.setText(_translate("Form", "Instrucciones:"))
-        self.labelDescripcion.setText(_translate("Form", "Descripción:"))
+        self.tituloInicial.setText(_translate("Form", "Alquimia Pastelería"))
+        self.btnMenu.setText(_translate("Form", "☰"))
