@@ -1,5 +1,4 @@
-import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QLabel, QVBoxLayout, QToolButton, QSizePolicy
+from PyQt5.QtWidgets import QMainWindow, QWidget, QVBoxLayout, QToolButton, QSizePolicy, QSpacerItem
 from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5.QtCore import Qt, QSize
 
@@ -36,7 +35,7 @@ class InicioWindow(QMainWindow, Ui_POS, MenuFlotante):
             self.scrollAreaWidgetContents.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
         
         # Llenar el grid con productos
-        columnas = 6
+        columnas = 5
         productos = self.productoController.productos()
         
         for indice, producto in enumerate(productos):
@@ -46,7 +45,6 @@ class InicioWindow(QMainWindow, Ui_POS, MenuFlotante):
             self.gridLayoutProductos.addWidget(widget_producto, fila, columna)
         
         # Agregar spacer al final para empujar el contenido hacia arriba
-        from PyQt5.QtWidgets import QSpacerItem
         filas_totales = (len(productos) + columnas - 1) // columnas
         spacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
         self.gridLayoutProductos.addItem(spacer, filas_totales, 0, 1, columnas)
@@ -65,15 +63,17 @@ class ProductoWidget(QWidget):
         super().__init__()
         
         # Establecer política de tamaño fija para evitar expansión descontrolada
-        self.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
-        self.setFixedSize(120, 120)
+        # self.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        self.setFixedSize(120, 135)
         
         boton = QToolButton()
-        boton.setText(producto.nombre)
+        boton.setText(
+            f"{producto.nombre}"
+            + f"\n Stock: {producto.stock}")
         boton.setIcon(QIcon(producto.imagen))
         boton.setIconSize(QSize(80, 80))
         boton.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
-        boton.setMaximumSize(120, 120)
+        boton.setMinimumSize(120, 135)
         boton.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
         
         boton.setStyleSheet("""
@@ -83,7 +83,7 @@ class ProductoWidget(QWidget):
         padding-top: 5px;
         padding-bottom: 5px;
         background-color: #f9f9f9;
-        font-size: 12px;
+        font-size: 16px;
         qproperty-iconSize: 80px;
     }
     QToolButton:hover {
