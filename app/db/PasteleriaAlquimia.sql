@@ -84,6 +84,7 @@ CREATE TABLE venta (
     id_empleado INT REFERENCES empleado(id_empleado) ON DELETE SET NULL,
     id_cliente INT REFERENCES cliente(id_cliente) ON DELETE SET NULL,
     id_promocion INT REFERENCES promocion(id_promocion) ON DELETE SET NULL,
+    id_pago INT REFERENCES pago(id_pago) ON DELETE SET NULL,
     total NUMERIC(10,2) NOT NULL DEFAULT 0 CHECK (total >= 0)
 );
 
@@ -105,7 +106,6 @@ CREATE TABLE tipo_pago (
 -- TABLA PAGOS
 CREATE TABLE pago (
     id_pago SERIAL PRIMARY KEY,
-    id_venta INT REFERENCES venta(id_venta) ON DELETE CASCADE,
     id_tipo_pago INT REFERENCES tipo_pago(id_tipo_pago) ON DELETE SET NULL,
     cantidad NUMERIC(10,2) NOT NULL CHECK (cantidad >= 0)
 );

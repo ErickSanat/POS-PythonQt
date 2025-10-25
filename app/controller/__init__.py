@@ -6,3 +6,4 @@ from .categoriaController import CategoriaController
 from .proveedorController import ProveedorController
 from .clienteController import ClienteController
 from .recetaController import RecetaController
+from .promocionController import PromocionController

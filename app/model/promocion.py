@@ -1,30 +1,24 @@
-DIAS = [
-    'Lunes',
-    'Martes',
-    'Miércoles',
-    'Jueves',
-    'Viernes',
-    'Sábado',
-    'Domingo'
-]
 class Promocion:
     def __init__(
         self,
         # checar si se puede meter enum
         id_promocion: int=None,
-        dia_semana: str=None, 
-        descripción: str=None
+        nombre: str=None,
+        porcentaje: int=None,
+        descripcion: str=None
     ):
         self.id_promocion = id_promocion
-        self.dia_semana = dia_semana
-        self.descripción = descripción
+        self.nombre = nombre
+        self.porcentaje = porcentaje
+        self.descripcion = descripcion
     
     def __repr__(self):
         from json import dumps
         return dumps(
             {
                 "id_promocion": self.id_promocion,
-                "dia_semana": self.dia_semana,
-                "descripción": self.descripción
+                "nombre": self.nombre,
+                "porcentaje": self.porcentaje,
+                "descripcion": self.descripcion
             }, indent=4
         )
