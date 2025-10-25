@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import (
     QMainWindow, QWidget, QVBoxLayout, QToolButton, QSizePolicy,
-    QSpacerItem, QHBoxLayout, QPushButton
+    QSpacerItem, QHBoxLayout, QPushButton, QLabel
 )
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import Qt, QAbstractTableModel, QSize, QModelIndex, QVariant
@@ -47,13 +47,13 @@ class DetalleVentaTableModel(QAbstractTableModel):
         if attr == "precio":
             if role == Qt.DisplayRole:
                 producto = getattr(detalleVenta, "producto", None)
-                return str(producto.precio) if producto else ""
+                return str(producto.precio) if producto else "0"
             return QVariant()
 
         if attr == "subtotal":
             if role == Qt.DisplayRole:
-                producto = getattr(detalleVenta, "producto", None)
-                return str(producto.precio * detalleVenta.cantidad) if producto else ""
+                subtotal = getattr(detalleVenta, "subtotal", None)
+                return str(subtotal) if subtotal else "0"
             return QVariant()
 
         if role == Qt.DisplayRole:
@@ -131,9 +131,12 @@ class InicioWindow(QMainWindow, Ui_POS, MenuFlotante):
         # Configurar modelo y TableView
         self._table_model = DetalleVentaTableModel()
         self.tableView.setModel(self._table_model)
+        # reinstalar widgets en la columna "cantidad" cada vez que el modelo se resetee
+        self._table_model.modelReset.connect(self.handleCantidadBtns)
         self.tableView.horizontalHeader().setStretchLastSection(True)
         self.tableView.setAlternatingRowColors(True)
         self.tableView.setSelectionBehavior(self.tableView.SelectRows)
+        self.tableView.doubleClicked.connect(self.handleDobleClic)
 
         # Menú flotante
         self.setupFloatingMenu(empleado)
@@ -154,7 +157,9 @@ class InicioWindow(QMainWindow, Ui_POS, MenuFlotante):
 
         for detalleVenta in self.detalleVentas:
             if producto.id_producto == detalleVenta.producto.id_producto:
-                detalleVenta.cantidad += cantidad
+                if detalleVenta.cantidad < producto.stock:
+                    detalleVenta.cantidad += cantidad
+                    detalleVenta.subtotal = detalleVenta.cantidad * detalleVenta.producto.precio
                 self.mostrarTabla()
                 return
 
@@ -172,11 +177,82 @@ class InicioWindow(QMainWindow, Ui_POS, MenuFlotante):
     def mostrarTabla(self):
         """Actualizar tabla con self.detalleVentas"""
         try:
-            detalleVenta = self.detalleVentas or self.detalleVentaController.detalleVenta()
-            self._table_model.setDetalleVentas(detalleVenta)
+            self._table_model.setDetalleVentas(self.detalleVentas)
+            # asegurar instalación de los widgets en la columna 'cantidad'
+            self.handleCantidadBtns()
         except Exception as e:
             print(f"Error al cargar detalleVenta: {e}")
 
+    def handleCantidadBtns(self):
+        """Instala en cada fila el widget [-] [valor] [+] en la columna 'cantidad'."""
+        col_cantidad = 2  # según _columns en DetalleVentaTableModel
+        row_count = self._table_model.rowCount()
+        if row_count == 0:
+            return
+
+        for row in range(row_count):
+            idx = self._table_model.index(row, col_cantidad)
+            # crear contenedor horizontal
+            w = QWidget()
+            h = QHBoxLayout(w)
+            h.setContentsMargins(2, 2, 2, 2)
+            h.setSpacing(4)
+
+            # botón izquierdo "-"
+            btnRestar = QPushButton("-")
+            btnRestar.setFixedWidth(28)
+            btnRestar.setProperty("row", row)
+            btnRestar.clicked.connect(lambda _=None, r=row: self.handleRestarBtn(r))
+
+            # label central que muestra el valor
+            valor = self._table_model.data(idx, Qt.DisplayRole)
+            val = QLabel(str(valor))
+            val.setProperty("row", row)
+            val.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+            val.setAlignment(Qt.AlignCenter)
+
+            # botón derecho "+"
+            btnSumar = QPushButton("+")
+            btnSumar.setFixedWidth(28)
+            btnSumar.setProperty("row", row)
+            btnSumar.clicked.connect(lambda _=None, r=row: self.handleAgregarBtn(r))
+
+            h.addWidget(btnRestar)
+            h.addWidget(val)
+            h.addWidget(btnSumar)
+
+            # instalar widget en la vista (reemplaza la celda)
+            self.tableView.setIndexWidget(idx, w)
+
+    def handleRestarBtn(self, row: int):
+        """Acción ejemplo para botón izquierdo: decrementar cantidad."""
+        try:
+            detalle = self.detalleVentas[row]
+            if detalle.cantidad > 1:
+                detalle.cantidad -= 1
+                detalle.subtotal = detalle.producto.precio * detalle.cantidad
+            else:
+                self.detalleVentas.remove(detalle)
+            
+            self.mostrarTabla()
+        except Exception as e:
+            print(f"Error en handleRestarBtn: {e}")
+
+    def handleAgregarBtn(self, row: int):
+        """Acción ejemplo para botón derecho: incrementar cantidad."""
+        try:
+            detalle = self.detalleVentas[row]
+            if detalle.cantidad < detalle.producto.stock:
+                detalle.cantidad += 1
+            detalle.subtotal = detalle.producto.precio * detalle.cantidad
+            self.mostrarTabla()
+        except Exception as e:
+            print(f"Error en handleAgregarBtn: {e}")
+
+    def handleDobleClic(self, index: QModelIndex):
+        detalle = self.detalleVentas[index.row()]
+        self.detalleVentas.remove(detalle)
+        self.mostrarTabla()
 
 class ProductoWidget(QWidget):
     """Widget-botón para producto: sigue siendo clickable y su contenido queda pegado abajo."""
