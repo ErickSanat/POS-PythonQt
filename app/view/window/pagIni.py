@@ -7,8 +7,8 @@ from PyQt5.QtCore import Qt, QAbstractTableModel, QSize, QModelIndex, QVariant
 
 from ..generated.menuInicialView_ui import Ui_POS
 from app.utils import MenuFlotante
-from app.model import Empleado, Producto, DetalleVenta, Venta
-from app.controller import ProductoController
+from app.model import Empleado, Producto, DetalleVenta, Venta, Cliente
+from app.controller import ProductoController, ClienteController
 
 from datetime import datetime
 
@@ -84,6 +84,7 @@ class InicioWindow(QMainWindow, Ui_POS, MenuFlotante):
     def __init__(self, empleado: Empleado):
         super().__init__()
         self.productoController = ProductoController()
+        self.clienteController = ClienteController()
         self.detalleVentas: list[DetalleVenta] = []
         self.venta = None
         self.empleado = empleado
@@ -141,6 +142,7 @@ class InicioWindow(QMainWindow, Ui_POS, MenuFlotante):
         # Menú flotante
         self.setupFloatingMenu(empleado)
 
+        self.rellenarComboClientes()
         print("Ventana cargada correctamente")
         self.setWindowIcon(QIcon())
 
@@ -253,6 +255,11 @@ class InicioWindow(QMainWindow, Ui_POS, MenuFlotante):
         detalle = self.detalleVentas[index.row()]
         self.detalleVentas.remove(detalle)
         self.mostrarTabla()
+
+    def rellenarComboClientes(self):
+        self.comboClientes.clear()
+        for cliente in self.clienteController.clientes():
+            self.comboClientes.addItem(cliente.nombre, cliente.id_cliente)
 
 class ProductoWidget(QWidget):
     """Widget-botón para producto: sigue siendo clickable y su contenido queda pegado abajo."""
