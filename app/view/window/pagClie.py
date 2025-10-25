@@ -175,3 +175,4 @@ class CliWindow(QMainWindow, Ui_Dialog, MenuFlotante):
         self.lineNombre.clear()
         self.lineTelefono.clear()
         self.lineCorreo.clear()
+        self.cliente = Cliente()

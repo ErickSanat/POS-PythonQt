@@ -160,4 +160,5 @@ class CatWindow(QMainWindow, Ui_Form, MenuFlotante):
     def limpiarCampos(self):
         self.lineNombre.clear()
         self.txtDescripcion.clear()
+        self.categoria = Categoria()
 

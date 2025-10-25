@@ -107,7 +107,7 @@ class UsuWindow(QMainWindow, Ui_Dialog, MenuFlotante):
         )
         mensaje = self.usuarioController.addUsuario(usuario)
         self.labelInformacion.setText(mensaje)
-        self.lineNombreEmpleado.clear()
+        self.limpiarCampos()
         self.lineContrasena.clear()
         
         self.mostrarTabla()
@@ -123,8 +123,7 @@ class UsuWindow(QMainWindow, Ui_Dialog, MenuFlotante):
         )
         self.usuarioController.updateUsuario(usuarioModificado)
         self.labelInformacion.setText("Usuario Actualizado Exitosamente")
-        self.lineNombreEmpleado.clear()
-        self.lineContrasena.clear()
+        self.limpiarCampos()
         self.mostrarTabla()
     
     def handleBorrarBtn(self):
@@ -132,8 +131,7 @@ class UsuWindow(QMainWindow, Ui_Dialog, MenuFlotante):
             return
         self.usuarioController.deleteUsuario(self.usuario.id_usuario)
         self.labelInformacion.setText("Usuario Eliminado Exitosamente")
-        self.lineNombreEmpleado.clear()
-        self.lineContrasena.clear()
+        self.limpiarCampos()
         self.mostrarTabla()
     
     def handelBuscarBtn(self):
@@ -170,3 +168,8 @@ class UsuWindow(QMainWindow, Ui_Dialog, MenuFlotante):
         self.lineNombreEmpleado.setText(self.usuario.usuario)
         self.lineContrasena.setText(self.usuario.contrasena)
         self.comboRol.setCurrentText(self.usuario.rol.nombre)
+
+    def limpiarCampos(self):
+        self.lineNombreEmpleado.clear()
+        self.lineContrasena.clear()
+        self.usuario = Usuario()

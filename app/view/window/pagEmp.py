@@ -183,6 +183,7 @@ class EmpWindow(QMainWindow, Ui_Form, MenuFlotante):
         self.lineDireccionEmpleado.clear()
         self.lineTelefonoEmpleado.clear()
         self.comboUsuario.setCurrentIndex(0)
+        self.empleado = Empleado()
     
     def rellenarCombobox(self):
         self.comboUsuario.clear()

@@ -171,11 +171,7 @@ class ProWindow(QMainWindow, Ui_Form, MenuFlotante):
         mensaje = self.productoController.addProducto(producto)
         
         self.labelInformacion.setText(mensaje)
-        self.lineNombre.clear()
-        self.descripcion.clear()
-        self.linePrecio.clear()
-        self.lineStock.clear()
-        self.rutaImagen.clear()
+        self.limpiarCampos()
         self.archivo = None
         self.mostrarTabla()
 
@@ -199,11 +195,7 @@ class ProWindow(QMainWindow, Ui_Form, MenuFlotante):
         
         self.productoController.updateProducto(productoModificado)
         self.labelInformacion.setText("Producto Actualizado Exitosamente")
-        self.lineNombre.clear()
-        self.descripcion.clear()
-        self.linePrecio.clear()
-        self.lineStock.clear()
-        self.rutaImagen.clear()
+        self.limpiarCampos()
         self.archivo = None
         self.mostrarTabla()
     
@@ -215,11 +207,7 @@ class ProWindow(QMainWindow, Ui_Form, MenuFlotante):
             os.remove(self.producto.imagen)
         
         self.labelInformacion.setText("Producto Eliminado Exitosamente")
-        self.lineNombre.clear()
-        self.descripcion.clear()
-        self.linePrecio.clear()
-        self.lineStock.clear()
-        self.rutaImagen.clear()
+        self.limpiarCampos()
         self.archivo = None
         self.mostrarTabla()
     
@@ -278,3 +266,11 @@ class ProWindow(QMainWindow, Ui_Form, MenuFlotante):
             
             self.archivo = archivo
             self.rutaImagen.setText(ruta_destino)
+
+    def limpiarCampos(self):
+        self.lineNombre.clear()
+        self.descripcion.clear()
+        self.linePrecio.clear()
+        self.lineStock.clear()
+        self.rutaImagen.clear()
+        self.producto = Producto()
