@@ -1,7 +1,7 @@
 from .DB import DBConnection
 from ..utils import cerrarCommit, cerrarConn
-from ..model import Empleado, Usuario, empleado
-from .usuarioDAO import UsuarioDAO
+from ..model import Empleado, Usuario
+from ..controller import UsuarioDAO
 
 class EmpleadoDAO:
     def empleados(self) -> list[Empleado]:
