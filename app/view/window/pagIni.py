@@ -7,7 +7,7 @@ from PyQt5.QtCore import Qt, QAbstractTableModel, QSize, QModelIndex, QVariant
 
 from ..generated.menuInicialView_ui import Ui_POS
 from app.utils import MenuFlotante
-from app.model import Empleado, Producto, DetalleVenta, Venta, Cliente
+from app.model import Empleado, Producto, DetalleVenta, Venta, Cliente, Pago, Promocion, TipoPago
 from app.controller import ProductoController, ClienteController
 
 from datetime import datetime
@@ -138,6 +138,9 @@ class InicioWindow(QMainWindow, Ui_POS, MenuFlotante):
         self.tableView.setAlternatingRowColors(True)
         self.tableView.setSelectionBehavior(self.tableView.SelectRows)
         self.tableView.doubleClicked.connect(self.handleDobleClic)
+        
+        self.btnLimpiarVenta.clicked.connect(self.handleLimpiarBtn)
+        self.btnLimpiarPago.clicked.connect(self.handleRealizarPago)
 
         # Menú flotante
         self.setupFloatingMenu(empleado)
@@ -151,9 +154,14 @@ class InicioWindow(QMainWindow, Ui_POS, MenuFlotante):
         if self.venta is None:
             self.venta = Venta(
                 None,
-                datetime.now(),
-                self.empleado.usuario,
-                self.comboFormaPago.currentData() if self.comboFormaPago.currentData() != "" else None,
+                datetime.now().isoformat(" ", "seconds"),
+                self.empleado,
+                Cliente(
+                    self.comboClientes.currentData() if self.comboClientes.currentData() != "" else None,
+                    self.comboClientes.currentText() if self.comboClientes.currentText() != "" else None
+                ),
+                Promocion(),
+                Pago(tipo_pago=TipoPago()),
                 0
             )
 
@@ -179,6 +187,10 @@ class InicioWindow(QMainWindow, Ui_POS, MenuFlotante):
     def mostrarTabla(self):
         """Actualizar tabla con self.detalleVentas"""
         try:
+            self.venta.total = sum(x.subtotal for x in self.detalleVentas)
+            self.labelSubtotal.setText(f"Subtotal: ${str(self.venta.total)}")
+            # ToDo: Meter aqui lo de los descuentos
+            self.labelTotalMostrado.setText(f"TOTAL: ${str(self.venta.total)}")
             self._table_model.setDetalleVentas(self.detalleVentas)
             # asegurar instalación de los widgets en la columna 'cantidad'
             self.handleCantidadBtns()
@@ -255,6 +267,20 @@ class InicioWindow(QMainWindow, Ui_POS, MenuFlotante):
         detalle = self.detalleVentas[index.row()]
         self.detalleVentas.remove(detalle)
         self.mostrarTabla()
+    
+    def handleLimpiarBtn(self):
+        self.detalleVentas = []
+        self.venta = Venta()
+        self.mostrarTabla()
+    
+    def handleRealizarPago(self):
+        # print(self.venta)
+        print(self.venta.fecha)
+        print(self.venta.empleado.id_empleado)
+        print(self.venta.cliente.id_cliente)
+        print(self.venta.promocion.id_promocion)
+        print(self.venta.pago.tipo_pago.id_tipo_pago)
+        print(self.venta.total)
 
     def rellenarComboClientes(self):
         self.comboClientes.clear()
