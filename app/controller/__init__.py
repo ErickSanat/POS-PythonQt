@@ -5,3 +5,4 @@ from .usuarioController import UsuarioController
 from .categoriaController import CategoriaController
 from .proveedorController import ProveedorController
 from .clienteController import ClienteController
+from .detalleVentaController import DetalleVentaController

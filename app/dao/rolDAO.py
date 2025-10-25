@@ -1,5 +1,5 @@
 from .DB import DBConnection
-from ..utils import cerrarCommit, cerrarConn
+from ..utils import cerrarConn
 from ..model import Rol
 
 class RolDAO:

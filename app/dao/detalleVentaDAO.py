@@ -1,7 +1,8 @@
 from .DB import DBConnection
 from ..model import DetalleVenta, Venta
 from ..utils import cerrarConn, cerrarCommit
-from ..dao import VentaDAO, ProductoDAO
+from .ventaDAO import VentaDAO
+from .productoDAO import ProductoDAO
 
 class DetalleVentaDAO:
     def detalleVentas(self) -> list[DetalleVenta]:
