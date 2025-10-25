@@ -106,10 +106,10 @@
           <x>10</x>
           <y>90</y>
           <width>271</width>
-          <height>301</height>
+          <height>306</height>
          </rect>
         </property>
-        <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0,0,0,0">
+        <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0,0,0,0,0">
          <property name="spacing">
           <number>10</number>
          </property>
@@ -178,59 +178,12 @@
             <string notr="true">color: rgb(0, 0, 0);</string>
            </property>
            <property name="text">
-            <string>Fecha de termino:</string>
+            <string>Porcentaje:</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QDateEdit" name="dateEditFechaTermino">
-           <property name="styleSheet">
-            <string notr="true">QDateEdit {
-    padding: 10px;
-    border: 2px solid #867BAA;
-    border-radius: 20px;
-    font-size: 14px;
-    color: rgb(134, 123, 170);
-	background: #CFC3F5;
-}
-
-QDateEdit::down-arrow {
-    width: 16px;
-    height: 16px;
-}
-
-QDateEdit::drop-down {
-    border: none;
-    background-color: #867BAA;
-    border-radius: 0 15px 15px 0;
-    width: 25px;
-}
-
-QDateEdit:focus {
-    border-color: #6a5a9a;
-    background-color: #f8f7fc;
-}</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="labelDescuento">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">color: rgb(0, 0, 0);</string>
-           </property>
-           <property name="text">
-            <string>Descuento:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineDescuento">
+          <widget class="QLineEdit" name="linePorcentaje">
            <property name="minimumSize">
             <size>
              <width>40</width>
@@ -250,7 +203,48 @@ QDateEdit:focus {
             <string/>
            </property>
            <property name="placeholderText">
-            <string>Descuento de promoción</string>
+            <string>Porcentaje de promoción...</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="labelDescuento">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string>Descripción:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineDescripcion">
+           <property name="minimumSize">
+            <size>
+             <width>40</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLineEdit {
+    padding: 10px;
+    border: 2px solid #867BAA;
+    border-radius: 20px;
+    font-size: 14px;
+	color: rgb(134, 123, 170);
+}</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="placeholderText">
+            <string>Descripción de promoción...</string>
            </property>
           </widget>
          </item>
@@ -335,6 +329,22 @@ QPushButton:hover {
             </widget>
            </item>
           </layout>
+         </item>
+         <item>
+          <widget class="QLabel" name="labelInformacion">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
          </item>
         </layout>
        </widget>
@@ -501,11 +511,11 @@ QPushButton:hover {
          <attribute name="horizontalHeaderCascadingSectionResizes">
           <bool>false</bool>
          </attribute>
-         <attribute name="horizontalHeaderMinimumSectionSize">
-          <number>100</number>
-         </attribute>
          <attribute name="horizontalHeaderDefaultSectionSize">
           <number>220</number>
+         </attribute>
+         <attribute name="horizontalHeaderMinimumSectionSize">
+          <number>100</number>
          </attribute>
          <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
           <bool>false</bool>
@@ -516,10 +526,10 @@ QPushButton:hover {
          <attribute name="verticalHeaderCascadingSectionResizes">
           <bool>true</bool>
          </attribute>
-         <attribute name="verticalHeaderMinimumSectionSize">
+         <attribute name="verticalHeaderDefaultSectionSize">
           <number>30</number>
          </attribute>
-         <attribute name="verticalHeaderDefaultSectionSize">
+         <attribute name="verticalHeaderMinimumSectionSize">
           <number>30</number>
          </attribute>
          <attribute name="verticalHeaderShowSortIndicator" stdset="0">
