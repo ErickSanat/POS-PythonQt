@@ -1,5 +1,5 @@
 from .DB import DBConnection
-from ..model import Receta, receta
+from ..model import Receta
 from .productoDAO import ProductoDAO
 from ..utils import cerrarCommit, cerrarConn
 
@@ -20,8 +20,7 @@ class RecetaDAO:
                 )
                 for receta in resultado
             )
-        cur.close()
-        conn.close()
+        cerrarConn(cur, conn)
         if recetas is not None:
             return recetas
         else:
@@ -32,8 +31,7 @@ class RecetaDAO:
         cur = conn.cursor()
         cur.execute(f"SELECT * FROM receta WHERE id_receta = {id_receta}")
         resultado = cur.fetchone()
-        cur.close()
-        conn.close()
+        cerrarConn(cur, conn)
         if resultado is not None:
             return Receta(
                 resultado[0],
@@ -47,10 +45,9 @@ class RecetaDAO:
     def recetaExistente(self, receta: Receta) -> Receta | bool:
         conn = DBConnection.connection()
         cur = conn.cursor()
-        cur.execute(f"SELECT * FROM receta WHERE id_receta = {receta.id_receta}")
+        cur.execute(f"SELECT * FROM receta WHERE id_producto = {receta.producto.id_producto}")
         resultado = cur.fetchone()
-        cur.close()
-        conn.close()
+        cerrarConn(cur, conn)
         if resultado is not None:
             return Receta(
                 resultado[0],
@@ -69,12 +66,12 @@ class RecetaDAO:
                 + "id_producto,"
                 + "descripcion,"
                 + "instrucciones"
-                + " VALUES ("
+                + ") VALUES ("
                     + f"{receta.producto.id_producto},"
                     + f"'{receta.descripcion}',"
                     + f"'{receta.instrucciones}')"
             )
-        conn.commit()
+        cerrarCommit(cur, conn)
 
     def updateReceta(self, receta: Receta):
         conn = DBConnection.connection()
@@ -82,6 +79,7 @@ class RecetaDAO:
         cur.execute(
             "UPDATE receta "
             + "SET "
+                + f"id_producto={receta.producto.id_producto}, "
                 + f"descripcion='{receta.descripcion}', "
                 + f"instrucciones='{receta.instrucciones}'"
             +"WHERE "
@@ -110,6 +108,8 @@ class RecetaDAO:
         cur.execute(
             "SELECT * "
             + "FROM receta "
+            + "JOIN producto "
+            + "ON receta.id_producto = producto.id_producto "
             + "WHERE "
                 + f"CAST({columna} AS TEXT) LIKE '%{aBuscar}%'")
         resultado = cur.fetchall()

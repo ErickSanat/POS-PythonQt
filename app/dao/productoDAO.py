@@ -153,3 +153,26 @@ class ProductoDAO:
             )
         else:
             return False
+
+    def porNombre(self, nombre: str) -> Producto:
+        conn = DBConnection.connection()
+        cur = conn.cursor()
+        cur.execute(
+            "SELECT * FROM producto "
+            +"WHERE "
+                + f"nombre = '{nombre}'"
+        )
+        resultado = cur.fetchone()
+        cerrarConn(cur, conn)
+        if resultado is not None:
+            return Producto(
+                resultado[0],
+                resultado[1],
+                resultado[2],
+                resultado[3],
+                resultado[4],
+                resultado[5],
+                CategoriaDAO().categoria(resultado[6])
+            )
+        else:
+            raise TypeError("No existe el producto")
