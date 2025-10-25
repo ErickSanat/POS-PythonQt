@@ -401,7 +401,7 @@ color: rgb(134, 123, 170);</string>
                 </property>
                </widget>
               </item>
-              <item row="5" column="0">
+              <item row="6" column="0">
                <widget class="QLabel" name="labelTotalMostrado">
                 <property name="styleSheet">
                  <string notr="true">color: #c0392b; font-size: 18px; font-weight: bold;</string>
@@ -411,7 +411,7 @@ color: rgb(134, 123, 170);</string>
                 </property>
                </widget>
               </item>
-              <item row="4" column="0">
+              <item row="5" column="0">
                <layout class="QHBoxLayout" name="vhorizontalLayoutButtons">
                 <property name="spacing">
                  <number>10</number>
@@ -459,31 +459,65 @@ QPushButton:hover {
                </layout>
               </item>
               <item row="3" column="0">
-               <widget class="QComboBox" name="comboFormaPago">
-                <property name="styleSheet">
-                 <string notr="true">QComboBox {
+               <layout class="QHBoxLayout" name="horizontalLayout_2">
+                <item>
+                 <widget class="QComboBox" name="comboFormaPago">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QComboBox {
     padding: 10px;
     border: 3px solid #867BAA;
     border-radius: 20px;
 }
 </string>
-                </property>
-                <item>
-                 <property name="text">
-                  <string>Efectivo</string>
-                 </property>
+                  </property>
+                  <item>
+                   <property name="text">
+                    <string>Efectivo</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Tarjeta</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Transferencia</string>
+                   </property>
+                  </item>
+                 </widget>
                 </item>
                 <item>
-                 <property name="text">
-                  <string>Tarjeta</string>
-                 </property>
+                 <widget class="QComboBox" name="comboClientes">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>150</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QComboBox {
+    padding: 10px;
+    border: 3px solid #867BAA;
+    border-radius: 20px;
+}
+</string>
+                  </property>
+                 </widget>
                 </item>
-                <item>
-                 <property name="text">
-                  <string>Transferencia</string>
-                 </property>
-                </item>
-               </widget>
+               </layout>
               </item>
              </layout>
             </widget>
