@@ -34,3 +34,5 @@ class ProductoController:
             return self.productoDAO.buscarProductos(columna, aBuscar)
         except Exception as e:
             raise e
+    def porNombre(self, nombre: str) -> Producto:
+        return self.productoDAO.porNombre(nombre)

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'app/view/ui/promocionView.ui'
+# Form implementation generated from reading ui file '.\app\view\ui\promocionView.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.11
 #
@@ -55,7 +55,7 @@ class Ui_Form(object):
         self.tituloPromocion.setAlignment(QtCore.Qt.AlignCenter)
         self.tituloPromocion.setObjectName("tituloPromocion")
         self.verticalLayoutWidget_2 = QtWidgets.QWidget(self.frame)
-        self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(10, 90, 271, 301))
+        self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(10, 90, 271, 306))
         self.verticalLayoutWidget_2.setObjectName("verticalLayoutWidget_2")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_2)
         self.verticalLayout.setContentsMargins(10, 10, 10, 10)
@@ -91,34 +91,18 @@ class Ui_Form(object):
         self.labelFecha.setStyleSheet("color: rgb(0, 0, 0);")
         self.labelFecha.setObjectName("labelFecha")
         self.verticalLayout.addWidget(self.labelFecha)
-        self.dateEditFechaTermino = QtWidgets.QDateEdit(self.verticalLayoutWidget_2)
-        self.dateEditFechaTermino.setStyleSheet("QDateEdit {\n"
+        self.linePorcentaje = QtWidgets.QLineEdit(self.verticalLayoutWidget_2)
+        self.linePorcentaje.setMinimumSize(QtCore.QSize(40, 0))
+        self.linePorcentaje.setStyleSheet("QLineEdit {\n"
 "    padding: 10px;\n"
 "    border: 2px solid #867BAA;\n"
 "    border-radius: 20px;\n"
 "    font-size: 14px;\n"
 "    color: rgb(134, 123, 170);\n"
-"    background: #CFC3F5;\n"
-"}\n"
-"\n"
-"QDateEdit::down-arrow {\n"
-"    width: 16px;\n"
-"    height: 16px;\n"
-"}\n"
-"\n"
-"QDateEdit::drop-down {\n"
-"    border: none;\n"
-"    background-color: #867BAA;\n"
-"    border-radius: 0 15px 15px 0;\n"
-"    width: 25px;\n"
-"}\n"
-"\n"
-"QDateEdit:focus {\n"
-"    border-color: #6a5a9a;\n"
-"    background-color: #f8f7fc;\n"
 "}")
-        self.dateEditFechaTermino.setObjectName("dateEditFechaTermino")
-        self.verticalLayout.addWidget(self.dateEditFechaTermino)
+        self.linePorcentaje.setText("")
+        self.linePorcentaje.setObjectName("linePorcentaje")
+        self.verticalLayout.addWidget(self.linePorcentaje)
         self.labelDescuento = QtWidgets.QLabel(self.verticalLayoutWidget_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -128,18 +112,18 @@ class Ui_Form(object):
         self.labelDescuento.setStyleSheet("color: rgb(0, 0, 0);")
         self.labelDescuento.setObjectName("labelDescuento")
         self.verticalLayout.addWidget(self.labelDescuento)
-        self.lineDescuento = QtWidgets.QLineEdit(self.verticalLayoutWidget_2)
-        self.lineDescuento.setMinimumSize(QtCore.QSize(40, 0))
-        self.lineDescuento.setStyleSheet("QLineEdit {\n"
+        self.lineDescripcion = QtWidgets.QLineEdit(self.verticalLayoutWidget_2)
+        self.lineDescripcion.setMinimumSize(QtCore.QSize(40, 0))
+        self.lineDescripcion.setStyleSheet("QLineEdit {\n"
 "    padding: 10px;\n"
 "    border: 2px solid #867BAA;\n"
 "    border-radius: 20px;\n"
 "    font-size: 14px;\n"
 "    color: rgb(134, 123, 170);\n"
 "}")
-        self.lineDescuento.setText("")
-        self.lineDescuento.setObjectName("lineDescuento")
-        self.verticalLayout.addWidget(self.lineDescuento)
+        self.lineDescripcion.setText("")
+        self.lineDescripcion.setObjectName("lineDescripcion")
+        self.verticalLayout.addWidget(self.lineDescripcion)
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_3.setSizeConstraint(QtWidgets.QLayout.SetDefaultConstraint)
         self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
@@ -188,6 +172,16 @@ class Ui_Form(object):
         self.btnEliminar.setObjectName("btnEliminar")
         self.horizontalLayout_3.addWidget(self.btnEliminar)
         self.verticalLayout.addLayout(self.horizontalLayout_3)
+        self.labelInformacion = QtWidgets.QLabel(self.verticalLayoutWidget_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.labelInformacion.sizePolicy().hasHeightForWidth())
+        self.labelInformacion.setSizePolicy(sizePolicy)
+        self.labelInformacion.setStyleSheet("color: rgb(0, 0, 0);")
+        self.labelInformacion.setText("")
+        self.labelInformacion.setObjectName("labelInformacion")
+        self.verticalLayout.addWidget(self.labelInformacion)
         self.horizontalLayout_2.addWidget(self.frame)
         self.verticalLayoutRight_2 = QtWidgets.QVBoxLayout()
         self.verticalLayoutRight_2.setContentsMargins(10, 10, 10, 10)
@@ -301,7 +295,7 @@ class Ui_Form(object):
         self.label_2 = QtWidgets.QLabel(self.barraSuperior)
         self.label_2.setGeometry(QtCore.QRect(20, 10, 51, 41))
         self.label_2.setText("")
-        self.label_2.setPixmap(QtGui.QPixmap("app/view/ui/Iconos/logoPasteleriaMini.xcf"))
+        self.label_2.setPixmap(QtGui.QPixmap(".\\app\\view\\ui\\Iconos/logoPasteleriaMini.xcf"))
         self.label_2.setScaledContents(True)
         self.label_2.setObjectName("label_2")
         self.logo = QtWidgets.QLabel(self.barraSuperior)
@@ -314,7 +308,7 @@ class Ui_Form(object):
         self.logo.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.logo.setText("")
         self.logo.setTextFormat(QtCore.Qt.AutoText)
-        self.logo.setPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/logo.png"))
+        self.logo.setPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/logo.png"))
         self.logo.setScaledContents(True)
         self.logo.setAlignment(QtCore.Qt.AlignCenter)
         self.logo.setWordWrap(False)
@@ -336,7 +330,7 @@ class Ui_Form(object):
 "}")
         self.btnCerrarSesion.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/cerrarSesion.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/cerrarSesion.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnCerrarSesion.setIcon(icon)
         self.btnCerrarSesion.setIconSize(QtCore.QSize(28, 28))
         self.btnCerrarSesion.setObjectName("btnCerrarSesion")
@@ -356,7 +350,7 @@ class Ui_Form(object):
 "}")
         self.btnMenuInicio.setText("")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/inicio.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/inicio.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnMenuInicio.setIcon(icon1)
         self.btnMenuInicio.setIconSize(QtCore.QSize(28, 28))
         self.btnMenuInicio.setObjectName("btnMenuInicio")
@@ -424,7 +418,7 @@ class Ui_Form(object):
 "}")
         self.btnEmpleados.setText("")
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/empleados.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon2.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/empleados.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnEmpleados.setIcon(icon2)
         self.btnEmpleados.setIconSize(QtCore.QSize(84, 84))
         self.btnEmpleados.setObjectName("btnEmpleados")
@@ -444,7 +438,7 @@ class Ui_Form(object):
 "}")
         self.btnRecetas.setText("")
         icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/recetas.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon3.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/recetas.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnRecetas.setIcon(icon3)
         self.btnRecetas.setIconSize(QtCore.QSize(84, 84))
         self.btnRecetas.setObjectName("btnRecetas")
@@ -464,7 +458,7 @@ class Ui_Form(object):
 "}")
         self.btnProductos.setText("")
         icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/productos.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon4.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/productos.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnProductos.setIcon(icon4)
         self.btnProductos.setIconSize(QtCore.QSize(84, 84))
         self.btnProductos.setObjectName("btnProductos")
@@ -484,7 +478,7 @@ class Ui_Form(object):
 "}")
         self.btnCategorias.setText("")
         icon5 = QtGui.QIcon()
-        icon5.addPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/categorias.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon5.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/categorias.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnCategorias.setIcon(icon5)
         self.btnCategorias.setIconSize(QtCore.QSize(84, 84))
         self.btnCategorias.setObjectName("btnCategorias")
@@ -504,7 +498,7 @@ class Ui_Form(object):
 "}")
         self.btnPromociones.setText("")
         icon6 = QtGui.QIcon()
-        icon6.addPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/promociones.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon6.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/promociones.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnPromociones.setIcon(icon6)
         self.btnPromociones.setIconSize(QtCore.QSize(84, 84))
         self.btnPromociones.setObjectName("btnPromociones")
@@ -524,7 +518,7 @@ class Ui_Form(object):
 "}")
         self.btnProveedores.setText("")
         icon7 = QtGui.QIcon()
-        icon7.addPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/provedoores.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon7.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/provedoores.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnProveedores.setIcon(icon7)
         self.btnProveedores.setIconSize(QtCore.QSize(84, 84))
         self.btnProveedores.setObjectName("btnProveedores")
@@ -544,7 +538,7 @@ class Ui_Form(object):
 "}")
         self.btnClientes.setText("")
         icon8 = QtGui.QIcon()
-        icon8.addPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/clientes.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon8.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/clientes.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnClientes.setIcon(icon8)
         self.btnClientes.setIconSize(QtCore.QSize(84, 84))
         self.btnClientes.setObjectName("btnClientes")
@@ -564,7 +558,7 @@ class Ui_Form(object):
 "}")
         self.btnVentas.setText("")
         icon9 = QtGui.QIcon()
-        icon9.addPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/ventas.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon9.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/ventas.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnVentas.setIcon(icon9)
         self.btnVentas.setIconSize(QtCore.QSize(84, 84))
         self.btnVentas.setObjectName("btnVentas")
@@ -584,7 +578,7 @@ class Ui_Form(object):
 "}")
         self.btnUsuario.setText("")
         icon10 = QtGui.QIcon()
-        icon10.addPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/usuarios.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon10.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/usuarios.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnUsuario.setIcon(icon10)
         self.btnUsuario.setIconSize(QtCore.QSize(84, 84))
         self.btnUsuario.setObjectName("btnUsuario")
@@ -599,9 +593,10 @@ class Ui_Form(object):
         self.tituloPromocion.setText(_translate("Form", "Promoción:"))
         self.labelNombre.setText(_translate("Form", "Nombre:"))
         self.lineNombre.setPlaceholderText(_translate("Form", "Nombre de la promoción..."))
-        self.labelFecha.setText(_translate("Form", "Fecha de termino:"))
-        self.labelDescuento.setText(_translate("Form", "Descuento:"))
-        self.lineDescuento.setPlaceholderText(_translate("Form", "Descuento de promoción"))
+        self.labelFecha.setText(_translate("Form", "Porcentaje:"))
+        self.linePorcentaje.setPlaceholderText(_translate("Form", "Porcentaje de promoción..."))
+        self.labelDescuento.setText(_translate("Form", "Descripción:"))
+        self.lineDescripcion.setPlaceholderText(_translate("Form", "Descripción de promoción..."))
         self.btnAgregar.setText(_translate("Form", "Agregar"))
         self.btnEditar.setText(_translate("Form", "Editar"))
         self.btnEliminar.setText(_translate("Form", "Elliminar"))

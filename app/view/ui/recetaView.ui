@@ -105,11 +105,11 @@
          <rect>
           <x>10</x>
           <y>60</y>
-          <width>271</width>
+          <width>281</width>
           <height>584</height>
          </rect>
         </property>
-        <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0,0,0">
+        <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0,0,0,0,0">
          <property name="spacing">
           <number>10</number>
          </property>
@@ -125,6 +125,46 @@
          <property name="bottomMargin">
           <number>10</number>
          </property>
+         <item>
+          <widget class="QLabel" name="label_7">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string>Producto:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comboProductos">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>150</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QComboBox {
+    padding: 10px;
+    border: 3px solid #867BAA;
+    border-radius: 20px;
+}
+</string>
+           </property>
+          </widget>
+         </item>
          <item>
           <widget class="QLabel" name="label_5">
            <property name="sizePolicy">

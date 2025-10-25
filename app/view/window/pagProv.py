@@ -196,6 +196,7 @@ class ProvWindow(QMainWindow, Ui_Form, MenuFlotante):
         self.lineNombreContacto.clear()
         self.lineTelefono.clear()
         self.txtDireccion.clear()
+        self.proveedor = Proveedor()
 
     def rellenarCombobox(self):
         self.comboActivo.clear()

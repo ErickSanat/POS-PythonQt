@@ -186,7 +186,7 @@ class Ui_POS(object):
         self.labelTotalMostrado = QtWidgets.QLabel(self.gridLayoutWidget_2)
         self.labelTotalMostrado.setStyleSheet("color: #c0392b; font-size: 18px; font-weight: bold;")
         self.labelTotalMostrado.setObjectName("labelTotalMostrado")
-        self.gridLayout.addWidget(self.labelTotalMostrado, 5, 0, 1, 1)
+        self.gridLayout.addWidget(self.labelTotalMostrado, 6, 0, 1, 1)
         self.vhorizontalLayoutButtons = QtWidgets.QHBoxLayout()
         self.vhorizontalLayoutButtons.setSpacing(10)
         self.vhorizontalLayoutButtons.setObjectName("vhorizontalLayoutButtons")
@@ -218,8 +218,15 @@ class Ui_POS(object):
 "}")
         self.btnLimpiarPago.setObjectName("btnLimpiarPago")
         self.vhorizontalLayoutButtons.addWidget(self.btnLimpiarPago)
-        self.gridLayout.addLayout(self.vhorizontalLayoutButtons, 4, 0, 1, 1)
+        self.gridLayout.addLayout(self.vhorizontalLayoutButtons, 5, 0, 1, 1)
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.comboFormaPago = QtWidgets.QComboBox(self.gridLayoutWidget_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.comboFormaPago.sizePolicy().hasHeightForWidth())
+        self.comboFormaPago.setSizePolicy(sizePolicy)
         self.comboFormaPago.setStyleSheet("QComboBox {\n"
 "    padding: 10px;\n"
 "    border: 3px solid #867BAA;\n"
@@ -230,7 +237,23 @@ class Ui_POS(object):
         self.comboFormaPago.addItem("")
         self.comboFormaPago.addItem("")
         self.comboFormaPago.addItem("")
-        self.gridLayout.addWidget(self.comboFormaPago, 3, 0, 1, 1)
+        self.horizontalLayout_2.addWidget(self.comboFormaPago)
+        self.comboClientes = QtWidgets.QComboBox(self.gridLayoutWidget_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.comboClientes.sizePolicy().hasHeightForWidth())
+        self.comboClientes.setSizePolicy(sizePolicy)
+        self.comboClientes.setMinimumSize(QtCore.QSize(150, 0))
+        self.comboClientes.setStyleSheet("QComboBox {\n"
+"    padding: 10px;\n"
+"    border: 3px solid #867BAA;\n"
+"    border-radius: 20px;\n"
+"}\n"
+"")
+        self.comboClientes.setObjectName("comboClientes")
+        self.horizontalLayout_2.addWidget(self.comboClientes)
+        self.gridLayout.addLayout(self.horizontalLayout_2, 3, 0, 1, 1)
         self.verticalLayoutRight.addWidget(self.totalsFrame)
         self.verticalLayoutRight.setStretch(2, 4)
         self.horizontalLayout.addWidget(self.frameRigth)
