@@ -77,6 +77,19 @@ CREATE TABLE promocion (
     descripcion TEXT
 );
 
+-- TABLA TIPOS DE PAGO
+CREATE TABLE tipo_pago (
+    id_tipo_pago SERIAL PRIMARY KEY,
+    nombre VARCHAR(50) UNIQUE NOT NULL CHECK (nombre IN ('efectivo','transferencia','tarjeta'))
+);
+
+-- TABLA PAGOS
+CREATE TABLE pago (
+    id_pago SERIAL PRIMARY KEY,
+    id_tipo_pago INT REFERENCES tipo_pago(id_tipo_pago) ON DELETE SET NULL,
+    cantidad NUMERIC(10,2) NOT NULL CHECK (cantidad >= 0)
+);
+
 -- TABLA VENTAS
 CREATE TABLE venta (
     id_venta SERIAL PRIMARY KEY,
@@ -95,19 +108,6 @@ CREATE TABLE detalle_venta (
     id_producto INT REFERENCES producto(id_producto) ON DELETE SET NULL,
     cantidad INT NOT NULL CHECK (cantidad > 0),
     subtotal NUMERIC(10,2) NOT NULL CHECK (subtotal >= 0)
-);
-
--- TABLA TIPOS DE PAGO
-CREATE TABLE tipo_pago (
-    id_tipo_pago SERIAL PRIMARY KEY,
-    nombre VARCHAR(50) UNIQUE NOT NULL CHECK (nombre IN ('efectivo','transferencia','tarjeta'))
-);
-
--- TABLA PAGOS
-CREATE TABLE pago (
-    id_pago SERIAL PRIMARY KEY,
-    id_tipo_pago INT REFERENCES tipo_pago(id_tipo_pago) ON DELETE SET NULL,
-    cantidad NUMERIC(10,2) NOT NULL CHECK (cantidad >= 0)
 );
 
 -- TABLA CAJAS
