@@ -1,5 +1,5 @@
 from .DB import DBConnection
-from ..model import Producto, Categoria
+from ..model import Producto
 from ..utils import cerrarCommit, cerrarConn
 from .categoriaDAO import CategoriaDAO
 

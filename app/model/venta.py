@@ -28,7 +28,7 @@ class Venta:
         return dumps(
             {
                 "id_venta": self.id_venta,
-                "fecha": self.fecha.isoformat(),
+                "fecha": self.fecha,
                 "empleado": loads(repr(self.empleado)),
                 "cliente": loads(repr(self.cliente)),
                 "promocion": loads(repr(self.promocion)),

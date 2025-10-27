@@ -123,4 +123,4 @@ CREATE TABLE caja (
 );
 
 INSERT INTO rol (nombre) VALUES ('admin'), ('empleado');
-INSERT INTO tipo_pago (nombre) VALUES ('efectivo'), ('tarjeta'), ('transferencia');
+INSERT INTO tipo_pago (nombre) VALUES ('Efectivo'), ('Tarjeta'), ('Transferencia');

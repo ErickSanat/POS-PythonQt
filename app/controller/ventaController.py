@@ -17,6 +17,12 @@ class VentaController:
         except Exception as e:
             raise e
 
+    def addVenta(self, venta: Venta):
+        self.ventaDAO.addVenta(venta)
+
+    def ultimoVenta(self) -> Venta:
+        return self.ventaDAO.ultimaVenta()
+
     def buscar(self, columna: str, aBuscar: str) -> list[Venta]:
         try:
             return self.ventaDAO.buscarVentas(columna, aBuscar)

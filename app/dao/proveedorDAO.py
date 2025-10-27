@@ -1,7 +1,6 @@
 from .DB import DBConnection
 from ..utils import cerrarCommit, cerrarConn
-from ..model import Proveedor, proveedor
-from .empleadoDAO import EmpleadoDAO
+from ..model import Proveedor
 
 class ProveedorDAO:
     def proveedores(self) -> list[Proveedor]:
@@ -113,35 +112,6 @@ class ProveedorDAO:
                 + f"id_proveedor={id_proveedor}"
             )
         cerrarCommit(cur, conn)
-
-    def buscarProveedores(self, columna: str, aBuscar: str) -> list[Proveedor]:
-        if not aBuscar:
-            raise TypeError("falta texto")
-        proveedores: list[Proveedor] = []
-        conn = DBConnection.connection()
-        cur = conn.cursor()
-        cur.execute(
-            "SELECT * "
-            + "FROM proveedor "
-            +"WHERE "
-                + f"{columna} LIKE '%{aBuscar}%'")
-        resultado = cur.fetchall()
-        proveedores.extend(
-            Proveedor(
-                proveedor[0],
-                proveedor[1],
-                proveedor[2],
-                proveedor[3],
-                proveedor[4],
-                proveedor[5],
-            )
-            for proveedor in resultado
-        )
-        cerrarConn(cur, conn)
-        if proveedores is not None:
-            return proveedores
-        else:
-            raise TypeError("No existen proveedores")
 
     def buscarProveedores(self, columna: str, aBuscar: str) -> list[Proveedor]:
         if not aBuscar:

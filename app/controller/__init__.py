@@ -5,7 +5,9 @@ from .usuarioController import UsuarioController
 from .categoriaController import CategoriaController
 from .proveedorController import ProveedorController
 from .clienteController import ClienteController
+from .detalleVentaController import DetalleVentaController
 from .recetaController import RecetaController
 from .promocionController import PromocionController
 from .ventaController import VentaController
 from .pagoController import PagoController
+from .tipoPagoController import TipoPagoController

@@ -146,7 +146,7 @@ class ProWindow(QMainWindow, Ui_Form, MenuFlotante):
         self.btnAgregar.clicked.connect(self.handleAgregarBtn)
         self.btnEditar.clicked.connect(self.handleEditarBtn)
         self.btnEliminar.clicked.connect(self.handleBorrarBtn)
-        self.btnBuscar.clicked.connect(self.handelBuscarBtn)
+        self.btnBuscar.clicked.connect(self.handleBuscarBtn)
         self.btnImagen.clicked.connect(self.handleImagenBtn)
     
     def handleAgregarBtn(self):
@@ -211,7 +211,7 @@ class ProWindow(QMainWindow, Ui_Form, MenuFlotante):
         self.archivo = None
         self.mostrarTabla()
     
-    def handelBuscarBtn(self):
+    def handleBuscarBtn(self):
         columna = self.comboCategorias.currentData()
         aBuscar = self.lineDato.text().strip()
         try:

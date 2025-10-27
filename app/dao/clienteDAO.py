@@ -1,5 +1,5 @@
 from .DB import DBConnection
-from ..model import Cliente, cliente
+from ..model import Cliente
 from ..utils import cerrarConn, cerrarCommit
 
 

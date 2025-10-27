@@ -1,6 +1,6 @@
 from .DB import DBConnection
 from ..utils import cerrarCommit, cerrarConn
-from ..model import Empleado, Usuario, empleado
+from ..model import Empleado, Usuario
 from .usuarioDAO import UsuarioDAO
 
 class EmpleadoDAO:

@@ -1,5 +1,5 @@
 from .DB import DBConnection
-from ..utils import cerrarConn
+from ..utils import cerrarConn, cerrarCommit
 from ..model import Venta, Empleado, Cliente, Promocion, Pago
 from .empleadoDAO import EmpleadoDAO
 from .clienteDAO import ClienteDAO
@@ -50,6 +50,45 @@ class VentaDAO:
         else:
             raise TypeError("No existe la venta")
 
+    def addVenta(self, venta: Venta):
+        conn = DBConnection.connection()
+        cur = conn.cursor()
+        cur.execute(
+            "INSERT INTO venta ("
+                + "fecha,"
+                + "id_empleado,"
+                + "id_cliente,"
+                + "id_promocion,"
+                + "id_pago,"
+                + "total"
+            +") VALUES ("
+                + f"'{venta.fecha}',"
+                + f"'{venta.empleado.id_empleado}',"
+                + f"'{venta.cliente.id_cliente}',"
+                + f"'{venta.promocion.id_promocion}',"
+                + f"'{venta.pago.id_pago}',"
+                + f"{venta.total})"
+            )
+        cerrarCommit(cur, conn)
+
+    def ultimaVenta(self) -> Venta:
+        conn = DBConnection.connection()
+        cur = conn.cursor()
+        cur.execute("SELECT * FROM venta ORDER BY id_venta DESC LIMIT 1")
+        resultado = cur.fetchone()
+        cerrarConn(cur, conn)
+        if resultado is not None:
+            return Venta(
+                resultado[0],
+                resultado[1],
+                EmpleadoDAO().empleado(resultado[2]),
+                ClienteDAO().cliente(resultado[3]),
+                PromocionDAO().promocion(resultado[4]),
+                PagoDAO().pago(resultado[5]),
+                resultado[6]
+            )
+        else:
+            raise TypeError("No existe el pago")
     def ventaExistente(self, venta: Venta) -> Venta | bool:
         conn = DBConnection.connection()
         cur = conn.cursor()
