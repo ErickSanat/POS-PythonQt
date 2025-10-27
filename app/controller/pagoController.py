@@ -16,3 +16,9 @@ class PagoController:
             return self.pagoDAO.pago(id_pago)
         except Exception as e:
             raise e
+
+    def addPago(self, pago: Pago):
+        self.pagoDAO.addPago(pago)
+
+    def ultimoPago(self) -> Pago:
+        return self.pagoDAO.ultimoPago()

@@ -8,7 +8,7 @@ from PyQt5.QtCore import Qt, QAbstractTableModel, QSize, QModelIndex, QVariant
 from ..generated.menuInicialView_ui import Ui_POS
 from app.utils import MenuFlotante
 from app.model import Empleado, Producto, DetalleVenta, Venta, Cliente, Pago, Promocion, TipoPago
-from app.controller import ProductoController, ClienteController
+from app.controller import ProductoController, ClienteController, PromocionController, TipoPagoController, PagoController, VentaController, DetalleVentaController
 
 from datetime import datetime
 
@@ -85,6 +85,11 @@ class InicioWindow(QMainWindow, Ui_POS, MenuFlotante):
         super().__init__()
         self.productoController = ProductoController()
         self.clienteController = ClienteController()
+        self.promocionController = PromocionController()
+        self.tipoPagoController = TipoPagoController()
+        self.pagoController = PagoController()
+        self.ventaController = VentaController()
+        self.detalleVentaController = DetalleVentaController()
         self.detalleVentas: list[DetalleVenta] = []
         self.venta = None
         self.empleado = empleado
@@ -139,6 +144,7 @@ class InicioWindow(QMainWindow, Ui_POS, MenuFlotante):
         self.tableView.setSelectionBehavior(self.tableView.SelectRows)
         self.tableView.doubleClicked.connect(self.handleDobleClic)
         
+        self.chkBoxDescuento.stateChanged.connect(self.handlePromocionChk)
         self.btnLimpiarVenta.clicked.connect(self.handleLimpiarBtn)
         self.btnLimpiarPago.clicked.connect(self.handleRealizarPago)
 
@@ -146,6 +152,8 @@ class InicioWindow(QMainWindow, Ui_POS, MenuFlotante):
         self.setupFloatingMenu(empleado)
 
         self.rellenarComboClientes()
+        self.rellenarComboDescuentos()
+        self.rellenarComboFormaPago()
         print("Ventana cargada correctamente")
         self.setWindowIcon(QIcon())
 
@@ -187,15 +195,22 @@ class InicioWindow(QMainWindow, Ui_POS, MenuFlotante):
     def mostrarTabla(self):
         """Actualizar tabla con self.detalleVentas"""
         try:
-            self.venta.total = sum(x.subtotal for x in self.detalleVentas)
-            self.labelSubtotal.setText(f"Subtotal: ${str(self.venta.total)}")
-            # ToDo: Meter aqui lo de los descuentos
-            self.labelTotalMostrado.setText(f"TOTAL: ${str(self.venta.total)}")
+            if self.venta:
+                self.venta.total = float(sum(x.subtotal for x in self.detalleVentas))
+                self.labelSubtotal.setText(f"Subtotal: ${self.venta.total:.2f}")
+                descuento = 0
+                if self.venta.promocion.id_promocion:
+                    descuento = self.venta.total * (self.venta.promocion.porcentaje / 100)
+                
+                self.labelDescuentoMostrado.setText(f"Descuento: ${descuento:.2f}")
+                self.labelTotalMostrado.setText(f"TOTAL: ${self.venta.total - descuento:.2f}")
+                self.venta.total -= descuento
             self._table_model.setDetalleVentas(self.detalleVentas)
             # asegurar instalación de los widgets en la columna 'cantidad'
             self.handleCantidadBtns()
         except Exception as e:
-            print(f"Error al cargar detalleVenta: {e}")
+            # print(f"Error al cargar detalleVenta: {e}")
+            raise e
 
     def handleCantidadBtns(self):
         """Instala en cada fila el widget [-] [valor] [+] en la columna 'cantidad'."""
@@ -263,6 +278,15 @@ class InicioWindow(QMainWindow, Ui_POS, MenuFlotante):
         except Exception as e:
             print(f"Error en handleAgregarBtn: {e}")
 
+    def handlePromocionChk(self):
+        if not self.venta:
+            return
+
+        self.venta.promocion = self.promocionController.promocion(
+                    self.comboDescuentos.currentData()
+                ) if self.chkBoxDescuento.isChecked() else Promocion()
+        self.mostrarTabla()
+
     def handleDobleClic(self, index: QModelIndex):
         detalle = self.detalleVentas[index.row()]
         self.detalleVentas.remove(detalle)
@@ -270,22 +294,53 @@ class InicioWindow(QMainWindow, Ui_POS, MenuFlotante):
     
     def handleLimpiarBtn(self):
         self.detalleVentas = []
-        self.venta = Venta()
+        self.venta = None
+        self.chkBoxDescuento.setChecked(False)
+        self.limpiarLabels()
         self.mostrarTabla()
     
     def handleRealizarPago(self):
+        if not self.venta:
+            return
+        
+        if not self.detalleVentas:
+            return
         # print(self.venta)
-        print(self.venta.fecha)
-        print(self.venta.empleado.id_empleado)
-        print(self.venta.cliente.id_cliente)
-        print(self.venta.promocion.id_promocion)
-        print(self.venta.pago.tipo_pago.id_tipo_pago)
-        print(self.venta.total)
+        pago = Pago(
+            None,
+            TipoPago(self.comboFormaPago.currentData()),
+            self.venta.total
+        )
+        self.pagoController.addPago(pago)
+        self.venta.pago = self.pagoController.ultimoPago()
+        
+        self.ventaController.addVenta(self.venta)
+        
+        for detalle in self.detalleVentas:
+            detalle.venta = self.venta
+            self.detalleVentaController.addDetalleVenta(detalle)
+        
+        self.handleLimpiarBtn()
 
     def rellenarComboClientes(self):
         self.comboClientes.clear()
         for cliente in self.clienteController.clientes():
             self.comboClientes.addItem(cliente.nombre, cliente.id_cliente)
+
+    def rellenarComboDescuentos(self):
+        self.comboDescuentos.clear()
+        for descuento in self.promocionController.promociones():
+            self.comboDescuentos.addItem(descuento.nombre, descuento.id_promocion)
+    
+    def rellenarComboFormaPago(self):
+        self.comboFormaPago.clear()
+        for forma in self.tipoPagoController.tiposPago():
+            self.comboFormaPago.addItem(forma.nombre, forma.id_tipo_pago)
+
+    def limpiarLabels(self):
+        self.labelSubtotal.setText(f"Subtotal: ${0:.2f}")
+        self.labelDescuentoMostrado.setText(f"Descuento: ${0:.2f}")
+        self.labelTotalMostrado.setText(f"TOTAL: ${0:.2f}")
 
 class ProductoWidget(QWidget):
     """Widget-botón para producto: sigue siendo clickable y su contenido queda pegado abajo."""
