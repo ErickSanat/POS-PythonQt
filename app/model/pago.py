@@ -10,7 +10,7 @@ class Pago:
         self.id_pago = id_pago
         self.tipo_pago = tipo_pago
         self.cantidad = cantidad
-    
+
     def __repr__(self):
         from json import dumps, loads
         return dumps(

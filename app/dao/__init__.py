@@ -14,3 +14,4 @@ from .tipoPagoDAO import TipoPagoDAO
 from .usuarioDAO import UsuarioDAO
 from .ventaDAO import VentaDAO
 from .proveedorDAO import ProveedorDAO
+from .promocionDAO import PromocionDAO

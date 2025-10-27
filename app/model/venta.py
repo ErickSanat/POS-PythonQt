@@ -1,8 +1,9 @@
-from .empleado import Empleado
 from .cliente import Cliente
-from .pago import Pago
+from .empleado import Empleado
 from .promocion import Promocion
+from .pago import Pago
 from datetime import datetime
+
 class Venta:
     def __init__(
         self,
@@ -12,11 +13,11 @@ class Venta:
         cliente: Cliente=None,
         promocion: Promocion=None,
         pago: Pago=None,
-        total: float=None,
+        total: float=None
     ):
         self.id_venta  = id_venta 
         self.fecha = fecha
-        self.empleado  = empleado 
+        self.empleado = empleado
         self.cliente = cliente
         self.promocion = promocion
         self.pago = pago
@@ -32,6 +33,6 @@ class Venta:
                 "cliente": loads(repr(self.cliente)),
                 "promocion": loads(repr(self.promocion)),
                 "pago": loads(repr(self.pago)),
-                "total": float(self.total),
+                "total": float(self.total)
             }, indent=4
         )
