@@ -52,8 +52,32 @@ class Ui_Form(object):
         self.tituloVenta.setAlignment(QtCore.Qt.AlignCenter)
         self.tituloVenta.setObjectName("tituloVenta")
         self.horizontalLayout.addWidget(self.tituloVenta)
+        self.dateEdit = QtWidgets.QDateEdit(self.horizontalLayoutWidget_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.dateEdit.sizePolicy().hasHeightForWidth())
+        self.dateEdit.setSizePolicy(sizePolicy)
+        self.dateEdit.setStyleSheet("QDateEdit {\n"
+"    padding: 10px;\n"
+"    border: 2px solid #867BAA;\n"
+"    border-radius: 20px;\n"
+"    font-size: 14px;\n"
+"    color: rgb(134, 123, 170);\n"
+"    background-color: white;\n"
+"}\n"
+"\n"
+"QDateEdit::drop-down {\n"
+"    border-left: 1px solid #867BAA;\n"
+"    background-color: #F0EEF5;\n"
+"    border-top-right-radius: 18px;\n"
+"    border-bottom-right-radius: 18px;\n"
+"    width: 25px;\n"
+"}")
+        self.dateEdit.setObjectName("dateEdit")
+        self.horizontalLayout.addWidget(self.dateEdit)
         self.comboCategorias = QtWidgets.QComboBox(self.horizontalLayoutWidget_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.comboCategorias.sizePolicy().hasHeightForWidth())
@@ -68,6 +92,11 @@ class Ui_Form(object):
         self.comboCategorias.setObjectName("comboCategorias")
         self.horizontalLayout.addWidget(self.comboCategorias)
         self.lineDato = QtWidgets.QLineEdit(self.horizontalLayoutWidget_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.lineDato.sizePolicy().hasHeightForWidth())
+        self.lineDato.setSizePolicy(sizePolicy)
         self.lineDato.setMinimumSize(QtCore.QSize(40, 0))
         self.lineDato.setStyleSheet("QLineEdit {\n"
 "    padding: 10px;\n"
@@ -79,6 +108,11 @@ class Ui_Form(object):
         self.lineDato.setObjectName("lineDato")
         self.horizontalLayout.addWidget(self.lineDato)
         self.btnBuscar = QtWidgets.QPushButton(self.horizontalLayoutWidget_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.btnBuscar.sizePolicy().hasHeightForWidth())
+        self.btnBuscar.setSizePolicy(sizePolicy)
         self.btnBuscar.setStyleSheet("QPushButton {\n"
 "    background-color: #867BAA;\n"
 "    color: black;\n"
@@ -105,7 +139,7 @@ class Ui_Form(object):
         self.tableView.setObjectName("tableView")
         self.tableView.horizontalHeader().setVisible(True)
         self.tableView.horizontalHeader().setCascadingSectionResizes(False)
-        self.tableView.horizontalHeader().setDefaultSectionSize(220)
+        self.tableView.horizontalHeader().setDefaultSectionSize(165)
         self.tableView.horizontalHeader().setMinimumSectionSize(100)
         self.tableView.horizontalHeader().setSortIndicatorShown(False)
         self.tableView.horizontalHeader().setStretchLastSection(False)
@@ -454,6 +488,7 @@ class Ui_Form(object):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
         self.tituloVenta.setText(_translate("Form", "Venta:"))
+        self.dateEdit.setDisplayFormat(_translate("Form", "dd/MM/yyyy"))
         self.lineDato.setPlaceholderText(_translate("Form", "Dato..."))
         self.btnBuscar.setText(_translate("Form", "Buscar"))
         self.btnGenerarExcel.setText(_translate("Form", "Descargar excel"))

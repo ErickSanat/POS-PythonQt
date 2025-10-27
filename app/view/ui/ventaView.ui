@@ -112,9 +112,40 @@
           </widget>
          </item>
          <item>
+          <widget class="QDateEdit" name="dateEdit">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QDateEdit {
+    padding: 10px;
+    border: 2px solid #867BAA;
+    border-radius: 20px;
+    font-size: 14px;
+    color: rgb(134, 123, 170);
+    background-color: white;
+}
+
+QDateEdit::drop-down {
+    border-left: 1px solid #867BAA;
+    background-color: #F0EEF5;
+    border-top-right-radius: 18px;
+    border-bottom-right-radius: 18px;
+    width: 25px;
+}</string>
+           </property>
+           <property name="displayFormat">
+            <string>dd/MM/yyyy</string>
+           </property>
+          </widget>
+         </item>
+         <item>
           <widget class="QComboBox" name="comboCategorias">
            <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
@@ -137,6 +168,12 @@
          </item>
          <item>
           <widget class="QLineEdit" name="lineDato">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="minimumSize">
             <size>
              <width>40</width>
@@ -159,6 +196,12 @@
          </item>
          <item>
           <widget class="QPushButton" name="btnBuscar">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="styleSheet">
             <string notr="true">QPushButton {
     background-color: #867BAA;
@@ -215,7 +258,7 @@ QPushButton:hover {
           <number>100</number>
          </attribute>
          <attribute name="horizontalHeaderDefaultSectionSize">
-          <number>220</number>
+          <number>165</number>
          </attribute>
          <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
           <bool>false</bool>
