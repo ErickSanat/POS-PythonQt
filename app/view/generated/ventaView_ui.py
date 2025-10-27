@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'app/view/ui/ventaView.ui'
+# Form implementation generated from reading ui file '.\app\view\ui\ventaView.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.11
 #
@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(1201, 691)
+        Form.resize(1199, 691)
         self.widget = QtWidgets.QWidget(Form)
         self.widget.setGeometry(QtCore.QRect(0, 0, 1201, 691))
         self.widget.setStyleSheet("background-color: #CFC3F5;")
@@ -52,30 +52,8 @@ class Ui_Form(object):
         self.tituloVenta.setAlignment(QtCore.Qt.AlignCenter)
         self.tituloVenta.setObjectName("tituloVenta")
         self.horizontalLayout.addWidget(self.tituloVenta)
-        self.dateEdit = QtWidgets.QDateEdit(self.horizontalLayoutWidget_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.dateEdit.sizePolicy().hasHeightForWidth())
-        self.dateEdit.setSizePolicy(sizePolicy)
-        self.dateEdit.setStyleSheet("QDateEdit {\n"
-"    padding: 10px;\n"
-"    border: 2px solid #867BAA;\n"
-"    border-radius: 20px;\n"
-"    font-size: 14px;\n"
-"    color: rgb(134, 123, 170);\n"
-"    background-color: white;\n"
-"}\n"
-"\n"
-"QDateEdit::drop-down {\n"
-"    border-left: 1px solid #867BAA;\n"
-"    background-color: #F0EEF5;\n"
-"    border-top-right-radius: 18px;\n"
-"    border-bottom-right-radius: 18px;\n"
-"    width: 25px;\n"
-"}")
-        self.dateEdit.setObjectName("dateEdit")
-        self.horizontalLayout.addWidget(self.dateEdit)
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem)
         self.comboCategorias = QtWidgets.QComboBox(self.horizontalLayoutWidget_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -149,12 +127,21 @@ class Ui_Form(object):
         self.tableView.verticalHeader().setSortIndicatorShown(False)
         self.tableView.verticalHeader().setStretchLastSection(False)
         self.verticalLayoutRight_2.addWidget(self.tableView)
+        self.labelInformacion = QtWidgets.QLabel(self.horizontalLayoutWidget_2)
+        self.labelInformacion.setText("")
+        self.labelInformacion.setObjectName("labelInformacion")
+        self.verticalLayoutRight_2.addWidget(self.labelInformacion)
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_3.setSizeConstraint(QtWidgets.QLayout.SetDefaultConstraint)
         self.horizontalLayout_3.setContentsMargins(1024, 0, 0, 0)
         self.horizontalLayout_3.setSpacing(0)
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         self.btnGenerarExcel = QtWidgets.QPushButton(self.horizontalLayoutWidget_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.btnGenerarExcel.sizePolicy().hasHeightForWidth())
+        self.btnGenerarExcel.setSizePolicy(sizePolicy)
         self.btnGenerarExcel.setMaximumSize(QtCore.QSize(150, 16777215))
         self.btnGenerarExcel.setStyleSheet("QPushButton {\n"
 "    background-color: #867BAA;\n"
@@ -192,7 +179,7 @@ class Ui_Form(object):
         self.label_2 = QtWidgets.QLabel(self.barraSuperior)
         self.label_2.setGeometry(QtCore.QRect(20, 10, 51, 41))
         self.label_2.setText("")
-        self.label_2.setPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/logoPasteleriaMini.xcf"))
+        self.label_2.setPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/logoPasteleriaMini.xcf"))
         self.label_2.setScaledContents(True)
         self.label_2.setObjectName("label_2")
         self.logo = QtWidgets.QLabel(self.barraSuperior)
@@ -205,7 +192,7 @@ class Ui_Form(object):
         self.logo.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.logo.setText("")
         self.logo.setTextFormat(QtCore.Qt.AutoText)
-        self.logo.setPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/logo.png"))
+        self.logo.setPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/logo.png"))
         self.logo.setScaledContents(True)
         self.logo.setAlignment(QtCore.Qt.AlignCenter)
         self.logo.setWordWrap(False)
@@ -227,7 +214,7 @@ class Ui_Form(object):
 "}")
         self.btnCerrarSesion.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/cerrarSesion.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/cerrarSesion.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnCerrarSesion.setIcon(icon)
         self.btnCerrarSesion.setIconSize(QtCore.QSize(28, 28))
         self.btnCerrarSesion.setObjectName("btnCerrarSesion")
@@ -267,7 +254,7 @@ class Ui_Form(object):
 "}")
         self.btnMenuInicio.setText("")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/inicio.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/inicio.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnMenuInicio.setIcon(icon1)
         self.btnMenuInicio.setIconSize(QtCore.QSize(28, 28))
         self.btnMenuInicio.setObjectName("btnMenuInicio")
@@ -315,7 +302,7 @@ class Ui_Form(object):
 "}")
         self.btnEmpleados.setText("")
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/empleados.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon2.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/empleados.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnEmpleados.setIcon(icon2)
         self.btnEmpleados.setIconSize(QtCore.QSize(84, 84))
         self.btnEmpleados.setObjectName("btnEmpleados")
@@ -335,7 +322,7 @@ class Ui_Form(object):
 "}")
         self.btnRecetas.setText("")
         icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/recetas.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon3.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/recetas.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnRecetas.setIcon(icon3)
         self.btnRecetas.setIconSize(QtCore.QSize(84, 84))
         self.btnRecetas.setObjectName("btnRecetas")
@@ -355,7 +342,7 @@ class Ui_Form(object):
 "}")
         self.btnProductos.setText("")
         icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/productos.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon4.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/productos.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnProductos.setIcon(icon4)
         self.btnProductos.setIconSize(QtCore.QSize(84, 84))
         self.btnProductos.setObjectName("btnProductos")
@@ -375,7 +362,7 @@ class Ui_Form(object):
 "}")
         self.btnCategorias.setText("")
         icon5 = QtGui.QIcon()
-        icon5.addPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/categorias.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon5.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/categorias.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnCategorias.setIcon(icon5)
         self.btnCategorias.setIconSize(QtCore.QSize(84, 84))
         self.btnCategorias.setObjectName("btnCategorias")
@@ -395,7 +382,7 @@ class Ui_Form(object):
 "}")
         self.btnPromociones.setText("")
         icon6 = QtGui.QIcon()
-        icon6.addPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/promociones.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon6.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/promociones.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnPromociones.setIcon(icon6)
         self.btnPromociones.setIconSize(QtCore.QSize(84, 84))
         self.btnPromociones.setObjectName("btnPromociones")
@@ -415,7 +402,7 @@ class Ui_Form(object):
 "}")
         self.btnProveedores.setText("")
         icon7 = QtGui.QIcon()
-        icon7.addPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/provedoores.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon7.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/provedoores.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnProveedores.setIcon(icon7)
         self.btnProveedores.setIconSize(QtCore.QSize(84, 84))
         self.btnProveedores.setObjectName("btnProveedores")
@@ -435,7 +422,7 @@ class Ui_Form(object):
 "}")
         self.btnClientes.setText("")
         icon8 = QtGui.QIcon()
-        icon8.addPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/clientes.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon8.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/clientes.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnClientes.setIcon(icon8)
         self.btnClientes.setIconSize(QtCore.QSize(84, 84))
         self.btnClientes.setObjectName("btnClientes")
@@ -455,7 +442,7 @@ class Ui_Form(object):
 "}")
         self.btnVentas.setText("")
         icon9 = QtGui.QIcon()
-        icon9.addPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/ventas.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon9.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/ventas.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnVentas.setIcon(icon9)
         self.btnVentas.setIconSize(QtCore.QSize(84, 84))
         self.btnVentas.setObjectName("btnVentas")
@@ -475,7 +462,7 @@ class Ui_Form(object):
 "}")
         self.btnUsuario.setText("")
         icon10 = QtGui.QIcon()
-        icon10.addPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/usuarios.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon10.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/usuarios.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnUsuario.setIcon(icon10)
         self.btnUsuario.setIconSize(QtCore.QSize(84, 84))
         self.btnUsuario.setObjectName("btnUsuario")
@@ -488,7 +475,6 @@ class Ui_Form(object):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
         self.tituloVenta.setText(_translate("Form", "Venta:"))
-        self.dateEdit.setDisplayFormat(_translate("Form", "dd/MM/yyyy"))
         self.lineDato.setPlaceholderText(_translate("Form", "Dato..."))
         self.btnBuscar.setText(_translate("Form", "Buscar"))
         self.btnGenerarExcel.setText(_translate("Form", "Descargar excel"))

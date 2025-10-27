@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1201</width>
+    <width>1199</width>
     <height>691</height>
    </rect>
   </property>
@@ -51,7 +51,7 @@
       <number>3</number>
      </property>
      <item>
-      <layout class="QVBoxLayout" name="verticalLayoutRight_2" stretch="0,0,0">
+      <layout class="QVBoxLayout" name="verticalLayoutRight_2" stretch="0,0,0,0">
        <property name="spacing">
         <number>10</number>
        </property>
@@ -112,35 +112,17 @@
           </widget>
          </item>
          <item>
-          <widget class="QDateEdit" name="dateEdit">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
            </property>
-           <property name="styleSheet">
-            <string notr="true">QDateEdit {
-    padding: 10px;
-    border: 2px solid #867BAA;
-    border-radius: 20px;
-    font-size: 14px;
-    color: rgb(134, 123, 170);
-    background-color: white;
-}
-
-QDateEdit::drop-down {
-    border-left: 1px solid #867BAA;
-    background-color: #F0EEF5;
-    border-top-right-radius: 18px;
-    border-bottom-right-radius: 18px;
-    width: 25px;
-}</string>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
            </property>
-           <property name="displayFormat">
-            <string>dd/MM/yyyy</string>
-           </property>
-          </widget>
+          </spacer>
          </item>
          <item>
           <widget class="QComboBox" name="comboCategorias">
@@ -254,11 +236,11 @@ QPushButton:hover {
          <attribute name="horizontalHeaderCascadingSectionResizes">
           <bool>false</bool>
          </attribute>
-         <attribute name="horizontalHeaderMinimumSectionSize">
-          <number>100</number>
-         </attribute>
          <attribute name="horizontalHeaderDefaultSectionSize">
           <number>165</number>
+         </attribute>
+         <attribute name="horizontalHeaderMinimumSectionSize">
+          <number>100</number>
          </attribute>
          <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
           <bool>false</bool>
@@ -269,10 +251,10 @@ QPushButton:hover {
          <attribute name="verticalHeaderCascadingSectionResizes">
           <bool>true</bool>
          </attribute>
-         <attribute name="verticalHeaderMinimumSectionSize">
+         <attribute name="verticalHeaderDefaultSectionSize">
           <number>30</number>
          </attribute>
-         <attribute name="verticalHeaderDefaultSectionSize">
+         <attribute name="verticalHeaderMinimumSectionSize">
           <number>30</number>
          </attribute>
          <attribute name="verticalHeaderShowSortIndicator" stdset="0">
@@ -284,7 +266,14 @@ QPushButton:hover {
         </widget>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <widget class="QLabel" name="labelInformacion">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="0">
          <property name="spacing">
           <number>0</number>
          </property>
@@ -305,6 +294,12 @@ QPushButton:hover {
          </property>
          <item>
           <widget class="QPushButton" name="btnGenerarExcel">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="maximumSize">
             <size>
              <width>150</width>

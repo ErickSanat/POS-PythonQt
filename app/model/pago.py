@@ -8,7 +8,7 @@ class Pago:
         cantidad: float=None
     ):
         self.id_pago = id_pago
-        self.tipo_pago = TipoPago
+        self.tipo_pago = tipo_pago
         self.cantidad = cantidad
 
     def __repr__(self):

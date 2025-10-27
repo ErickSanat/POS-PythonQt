@@ -82,13 +82,13 @@ class VentaDAO:
         cur.execute(
             "SELECT * FROM venta "
             "JOIN empleado "
-            "ON venta.id_empleado = empleado.id_empleado"
+            "ON venta.id_empleado = empleado.id_empleado "
             "JOIN cliente "
-            "ON venta.id_cliente = cliente.id_cliente"
+            "ON venta.id_cliente = cliente.id_cliente "
             "JOIN promocion "
-            "ON venta.id_promocion = promocion.id_promocion"
+            "ON venta.id_promocion = promocion.id_promocion "
             "JOIN pago "
-            "ON venta.id_pago = pago.id_pago"
+            "ON venta.id_pago = pago.id_pago "
             +"WHERE "
                 + f"CAST({columna} AS TEXT) LIKE '%{aBuscar}%'")
         resultado = cur.fetchall()
@@ -123,7 +123,7 @@ class VentaDAO:
             return Venta(
                 resultado[0],
                 resultado[1],
-                empleado,
+                EmpleadoDAO().empleado(resultado[2]),
                 ClienteDAO().cliente(resultado[3]),
                 PromocionDAO().promocion(resultado[4]),
                 PagoDAO().pago(resultado[5]),
@@ -146,7 +146,7 @@ class VentaDAO:
                 resultado[0],
                 resultado[1],
                 EmpleadoDAO().empleado(resultado[2]),
-                cliente,
+                ClienteDAO().cliente(resultado[3]),
                 PromocionDAO().promocion(resultado[4]),
                 PagoDAO().pago(resultado[5])
             )
@@ -168,7 +168,7 @@ class VentaDAO:
                 resultado[1],
                 EmpleadoDAO().empleado(resultado[2]),
                 ClienteDAO().cliente(resultado[3]),
-                promocion,
+                PromocionDAO().promocion(resultado[4]),
                 PagoDAO().pago(resultado[5])
             )
         else:
@@ -190,7 +190,7 @@ class VentaDAO:
                 EmpleadoDAO().empleado(resultado[2]),
                 ClienteDAO().cliente(resultado[3]),
                 PromocionDAO().promocion(resultado[4]),
-                pago
+                PagoDAO().pago(resultado[5])
             )
         else:
             raise TypeError("No existen ventas")
