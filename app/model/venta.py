@@ -1,19 +1,26 @@
-from .usuario import Usuario
 from .cliente import Cliente
+from .empleado import Empleado
+from .promocion import Promocion
+from .pago import Pago
 from datetime import datetime
+
 class Venta:
     def __init__(
         self,
         id_venta: int=None,
         fecha: datetime=None,
-        usuario: Usuario=None,
+        empleado: Empleado=None,
         cliente: Cliente=None,
-        total: float=None,
+        promocion: Promocion=None,
+        pago: Pago=None,
+        total: float=None
     ):
         self.id_venta  = id_venta 
         self.fecha = fecha
-        self.usuario  = usuario 
+        self.empleado = empleado
         self.cliente = cliente
+        self.promocion = promocion
+        self.pago = pago
         self.total = total
     
     def __repr__(self):
@@ -22,8 +29,10 @@ class Venta:
             {
                 "id_venta": self.id_venta,
                 "fecha": self.fecha.isoformat(),
-                "usuario": loads(repr(self.usuario)),
+                "empleado": loads(repr(self.empleado)),
                 "cliente": loads(repr(self.cliente)),
-                "total": float(self.total),
+                "promocion": loads(repr(self.promocion)),
+                "pago": loads(repr(self.pago)),
+                "total": float(self.total)
             }, indent=4
         )

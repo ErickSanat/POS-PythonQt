@@ -7,3 +7,5 @@ from .proveedorController import ProveedorController
 from .clienteController import ClienteController
 from .recetaController import RecetaController
 from .promocionController import PromocionController
+from .ventaController import VentaController
+from .pagoController import PagoController

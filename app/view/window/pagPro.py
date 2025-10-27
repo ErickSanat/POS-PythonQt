@@ -260,9 +260,9 @@ class ProWindow(QMainWindow, Ui_Form, MenuFlotante):
             carpeta_destino = "app/assets/productos"
             os.makedirs(carpeta_destino, exist_ok=True)
             nombre_archivo = os.path.basename(archivo)
-            ruta_destino = os.path.join(carpeta_destino, f"{self.lineNombre.text().strip().replace(" ", "_")}_{nombre_archivo}")
+            #ruta_destino = os.path.join(carpeta_destino, f"{self.lineNombre.text().strip().replace(" ", "_")}_{nombre_archivo}")
             # Así funciona en linux no se poke
-            #ruta_destino = os.path.join(carpeta_destino, f"{self.lineNombre.text().strip().replace(' ', '_')}_{nombre_archivo}")
+            ruta_destino = os.path.join(carpeta_destino, f"{self.lineNombre.text().strip().replace(' ', '_')}_{nombre_archivo}")
             
             self.archivo = archivo
             self.rutaImagen.setText(ruta_destino)

@@ -1,7 +1,8 @@
 from .DB import DBConnection
 from ..model import Pago
-from .ventaDAO import VentaDAO
 from .tipoPagoDAO import TipoPagoDAO
+from ..utils import cerrarConn
+
 
 class PagoDAO:
     def pagos(self) -> list[Pago]:
@@ -13,32 +14,25 @@ class PagoDAO:
         pagos.extend(
             Pago(
                 pago[0],
-                VentaDAO().venta(pago[1]),
-                TipoPagoDAO().tipoPago(pago[2]),
-                pago[3]
-                )
-                for pago in resultado
+                TipoPagoDAO().tipoPago(pago[1]),
+                pago[2]
             )
-        cur.close()
-        conn.close()
-        if pagos is not None:
-            return pagos
-        else:
-            raise TypeError("No existen pagos")
-    
+            for pago in resultado
+        )
+        cerrarConn(cur, conn)
+
+
     def pago(self, id_pago: int) -> Pago:
         conn = DBConnection.connection()
         cur = conn.cursor()
         cur.execute(f"SELECT * FROM pago WHERE id_pago = {id_pago}")
         resultado = cur.fetchone()
-        cur.close()
-        conn.close()
+        cerrarConn(cur, conn)
         if resultado is not None:
             return Pago(
                 resultado[0],
-                VentaDAO().venta(resultado[1]),
-                TipoPagoDAO().tipoPago(resultado[2]),
-                resultado[3]
+                TipoPagoDAO().tipoPago(resultado[1]),
+                resultado[2]
             )
         else:
             raise TypeError("No existe el pago")
