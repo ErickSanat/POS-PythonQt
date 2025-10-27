@@ -315,6 +315,7 @@ class InicioWindow(QMainWindow, Ui_POS, MenuFlotante):
         self.venta.pago = self.pagoController.ultimoPago()
         
         self.ventaController.addVenta(self.venta)
+        self.venta = self.ventaController.ultimoVenta()
         
         for detalle in self.detalleVentas:
             detalle.venta = self.venta
