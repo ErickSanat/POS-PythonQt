@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'app/view/ui/menuInicialView.ui'
+# Form implementation generated from reading ui file '.\app\view\ui\menuInicialView.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.11
 #
@@ -17,7 +17,7 @@ class Ui_POS(object):
         POS.setEnabled(True)
         POS.resize(1211, 681)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("app/view/ui/../../../../../../.designer/backup/logoPasteleria.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../../../../../.designer/backup/logoPasteleria.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         POS.setWindowIcon(icon)
         self.widget_2 = QtWidgets.QWidget(POS)
         self.widget_2.setGeometry(QtCore.QRect(-20, 0, 1231, 691))
@@ -179,46 +179,14 @@ class Ui_POS(object):
         self.chkBoxDescuento.setObjectName("chkBoxDescuento")
         self.horizontalLayout_discount.addWidget(self.chkBoxDescuento)
         self.gridLayout.addLayout(self.horizontalLayout_discount, 1, 0, 1, 1)
+        self.labelTotalMostrado = QtWidgets.QLabel(self.gridLayoutWidget_2)
+        self.labelTotalMostrado.setStyleSheet("color: #c0392b; font-size: 18px; font-weight: bold;")
+        self.labelTotalMostrado.setObjectName("labelTotalMostrado")
+        self.gridLayout.addWidget(self.labelTotalMostrado, 7, 0, 1, 1)
         self.labelDescuentoMostrado = QtWidgets.QLabel(self.gridLayoutWidget_2)
         self.labelDescuentoMostrado.setStyleSheet("color: #e74c3c; font-size: 14px;")
         self.labelDescuentoMostrado.setObjectName("labelDescuentoMostrado")
         self.gridLayout.addWidget(self.labelDescuentoMostrado, 2, 0, 1, 1)
-        self.labelTotalMostrado = QtWidgets.QLabel(self.gridLayoutWidget_2)
-        self.labelTotalMostrado.setStyleSheet("color: #c0392b; font-size: 18px; font-weight: bold;")
-        self.labelTotalMostrado.setObjectName("labelTotalMostrado")
-        self.gridLayout.addWidget(self.labelTotalMostrado, 6, 0, 1, 1)
-        self.vhorizontalLayoutButtons = QtWidgets.QHBoxLayout()
-        self.vhorizontalLayoutButtons.setSpacing(10)
-        self.vhorizontalLayoutButtons.setObjectName("vhorizontalLayoutButtons")
-        self.btnLimpiarVenta = QtWidgets.QPushButton(self.gridLayoutWidget_2)
-        self.btnLimpiarVenta.setStyleSheet("QPushButton {\n"
-"    background-color: #e74c3c;\n"
-"    color: white;\n"
-"    padding: 10px;\n"
-"    border: none;\n"
-"    border-radius: 5px;\n"
-"    font-weight: bold;\n"
-"}\n"
-"QPushButton:hover {\n"
-"    background-color: #c0392b;\n"
-"}")
-        self.btnLimpiarVenta.setObjectName("btnLimpiarVenta")
-        self.vhorizontalLayoutButtons.addWidget(self.btnLimpiarVenta)
-        self.btnLimpiarPago = QtWidgets.QPushButton(self.gridLayoutWidget_2)
-        self.btnLimpiarPago.setStyleSheet("QPushButton {\n"
-"    background-color: #27ae60;\n"
-"    color: white;\n"
-"    padding: 10px;\n"
-"    border: none;\n"
-"    border-radius: 5px;\n"
-"    font-weight: bold;\n"
-"}\n"
-"QPushButton:hover {\n"
-"    background-color: #229954;\n"
-"}")
-        self.btnLimpiarPago.setObjectName("btnLimpiarPago")
-        self.vhorizontalLayoutButtons.addWidget(self.btnLimpiarPago)
-        self.gridLayout.addLayout(self.vhorizontalLayoutButtons, 5, 0, 1, 1)
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.comboFormaPago = QtWidgets.QComboBox(self.gridLayoutWidget_2)
@@ -254,6 +222,48 @@ class Ui_POS(object):
         self.comboClientes.setObjectName("comboClientes")
         self.horizontalLayout_2.addWidget(self.comboClientes)
         self.gridLayout.addLayout(self.horizontalLayout_2, 3, 0, 1, 1)
+        self.vhorizontalLayoutButtons = QtWidgets.QHBoxLayout()
+        self.vhorizontalLayoutButtons.setSpacing(10)
+        self.vhorizontalLayoutButtons.setObjectName("vhorizontalLayoutButtons")
+        self.btnLimpiarVenta = QtWidgets.QPushButton(self.gridLayoutWidget_2)
+        self.btnLimpiarVenta.setStyleSheet("QPushButton {\n"
+"    background-color: #e74c3c;\n"
+"    color: white;\n"
+"    padding: 10px;\n"
+"    border: none;\n"
+"    border-radius: 5px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: #c0392b;\n"
+"}")
+        self.btnLimpiarVenta.setObjectName("btnLimpiarVenta")
+        self.vhorizontalLayoutButtons.addWidget(self.btnLimpiarVenta)
+        self.btnLimpiarPago = QtWidgets.QPushButton(self.gridLayoutWidget_2)
+        self.btnLimpiarPago.setStyleSheet("QPushButton {\n"
+"    background-color: #27ae60;\n"
+"    color: white;\n"
+"    padding: 10px;\n"
+"    border: none;\n"
+"    border-radius: 5px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: #229954;\n"
+"}")
+        self.btnLimpiarPago.setObjectName("btnLimpiarPago")
+        self.vhorizontalLayoutButtons.addWidget(self.btnLimpiarPago)
+        self.gridLayout.addLayout(self.vhorizontalLayoutButtons, 5, 0, 1, 1)
+        self.chkBoxTicket = QtWidgets.QCheckBox(self.gridLayoutWidget_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.chkBoxTicket.sizePolicy().hasHeightForWidth())
+        self.chkBoxTicket.setSizePolicy(sizePolicy)
+        self.chkBoxTicket.setStyleSheet("gridline-color: rgb(0, 0, 0);")
+        self.chkBoxTicket.setChecked(False)
+        self.chkBoxTicket.setObjectName("chkBoxTicket")
+        self.gridLayout.addWidget(self.chkBoxTicket, 6, 0, 1, 1)
         self.verticalLayoutRight.addWidget(self.totalsFrame)
         self.verticalLayoutRight.setStretch(2, 4)
         self.horizontalLayout.addWidget(self.frameRigth)
@@ -287,7 +297,7 @@ class Ui_POS(object):
         self.logo.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.logo.setText("")
         self.logo.setTextFormat(QtCore.Qt.AutoText)
-        self.logo.setPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/logo.png"))
+        self.logo.setPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/logo.png"))
         self.logo.setScaledContents(True)
         self.logo.setAlignment(QtCore.Qt.AlignCenter)
         self.logo.setWordWrap(False)
@@ -309,7 +319,7 @@ class Ui_POS(object):
 "}")
         self.btnCerrarSesion.setText("")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/cerrarSesion.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/cerrarSesion.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnCerrarSesion.setIcon(icon1)
         self.btnCerrarSesion.setIconSize(QtCore.QSize(28, 28))
         self.btnCerrarSesion.setObjectName("btnCerrarSesion")
@@ -349,10 +359,19 @@ class Ui_POS(object):
 "}")
         self.btnMenuInicio.setText("")
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/inicio.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon2.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/inicio.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnMenuInicio.setIcon(icon2)
         self.btnMenuInicio.setIconSize(QtCore.QSize(28, 28))
         self.btnMenuInicio.setObjectName("btnMenuInicio")
+        self.labelEmpleado = QtWidgets.QLabel(self.barraSuperior)
+        self.labelEmpleado.setGeometry(QtCore.QRect(490, 0, 186, 59))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.labelEmpleado.setFont(font)
+        self.labelEmpleado.setStyleSheet("color: #00000;\n"
+"font-size: 14px;\n"
+"color: rgb(134, 123, 170);")
+        self.labelEmpleado.setObjectName("labelEmpleado")
         self.barraSuperior.raise_()
         self.horizontalLayoutWidget.raise_()
         self.frameFlotante = QtWidgets.QFrame(self.widget_2)
@@ -399,7 +418,7 @@ class Ui_POS(object):
 "}")
         self.btnEmpleados.setText("")
         icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/empleados.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon3.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/empleados.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnEmpleados.setIcon(icon3)
         self.btnEmpleados.setIconSize(QtCore.QSize(84, 84))
         self.btnEmpleados.setObjectName("btnEmpleados")
@@ -419,7 +438,7 @@ class Ui_POS(object):
 "}")
         self.btnRecetas.setText("")
         icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/recetas.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon4.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/recetas.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnRecetas.setIcon(icon4)
         self.btnRecetas.setIconSize(QtCore.QSize(84, 84))
         self.btnRecetas.setObjectName("btnRecetas")
@@ -439,7 +458,7 @@ class Ui_POS(object):
 "}")
         self.btnProductos.setText("")
         icon5 = QtGui.QIcon()
-        icon5.addPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/productos.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon5.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/productos.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnProductos.setIcon(icon5)
         self.btnProductos.setIconSize(QtCore.QSize(84, 84))
         self.btnProductos.setObjectName("btnProductos")
@@ -459,7 +478,7 @@ class Ui_POS(object):
 "}")
         self.btnCategorias.setText("")
         icon6 = QtGui.QIcon()
-        icon6.addPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/categorias.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon6.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/categorias.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnCategorias.setIcon(icon6)
         self.btnCategorias.setIconSize(QtCore.QSize(84, 84))
         self.btnCategorias.setObjectName("btnCategorias")
@@ -479,7 +498,7 @@ class Ui_POS(object):
 "}")
         self.btnPromociones.setText("")
         icon7 = QtGui.QIcon()
-        icon7.addPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/promociones.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon7.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/promociones.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnPromociones.setIcon(icon7)
         self.btnPromociones.setIconSize(QtCore.QSize(84, 84))
         self.btnPromociones.setObjectName("btnPromociones")
@@ -499,7 +518,7 @@ class Ui_POS(object):
 "}")
         self.btnProveedores.setText("")
         icon8 = QtGui.QIcon()
-        icon8.addPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/provedoores.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon8.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/provedoores.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnProveedores.setIcon(icon8)
         self.btnProveedores.setIconSize(QtCore.QSize(84, 84))
         self.btnProveedores.setObjectName("btnProveedores")
@@ -519,7 +538,7 @@ class Ui_POS(object):
 "}")
         self.btnClientes.setText("")
         icon9 = QtGui.QIcon()
-        icon9.addPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/clientes.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon9.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/clientes.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnClientes.setIcon(icon9)
         self.btnClientes.setIconSize(QtCore.QSize(84, 84))
         self.btnClientes.setObjectName("btnClientes")
@@ -539,7 +558,7 @@ class Ui_POS(object):
 "}")
         self.btnVentas.setText("")
         icon10 = QtGui.QIcon()
-        icon10.addPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/ventas.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon10.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/ventas.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnVentas.setIcon(icon10)
         self.btnVentas.setIconSize(QtCore.QSize(84, 84))
         self.btnVentas.setObjectName("btnVentas")
@@ -559,7 +578,7 @@ class Ui_POS(object):
 "}")
         self.btnUsuario.setText("")
         icon11 = QtGui.QIcon()
-        icon11.addPixmap(QtGui.QPixmap("app/view/ui/../../assets/Iconos/usuarios.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon11.addPixmap(QtGui.QPixmap(".\\app\\view\\ui\\../../assets/Iconos/usuarios.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnUsuario.setIcon(icon11)
         self.btnUsuario.setIconSize(QtCore.QSize(84, 84))
         self.btnUsuario.setObjectName("btnUsuario")
@@ -575,12 +594,14 @@ class Ui_POS(object):
         self.lineTituloResumenVenta.setText(_translate("POS", "Resumen de Venta"))
         self.labelSubtotal.setText(_translate("POS", "Subtotal: $0.00"))
         self.chkBoxDescuento.setText(_translate("POS", "Aplicar Descuento"))
-        self.labelDescuentoMostrado.setText(_translate("POS", "Descuento: $0.00"))
         self.labelTotalMostrado.setText(_translate("POS", "TOTAL: $0.00"))
-        self.btnLimpiarVenta.setText(_translate("POS", "Limpiar Venta"))
-        self.btnLimpiarPago.setText(_translate("POS", "Realizar Pago"))
+        self.labelDescuentoMostrado.setText(_translate("POS", "Descuento: $0.00"))
         self.comboFormaPago.setItemText(0, _translate("POS", "Efectivo"))
         self.comboFormaPago.setItemText(1, _translate("POS", "Tarjeta"))
         self.comboFormaPago.setItemText(2, _translate("POS", "Transferencia"))
+        self.btnLimpiarVenta.setText(_translate("POS", "Limpiar Venta"))
+        self.btnLimpiarPago.setText(_translate("POS", "Realizar Pago"))
+        self.chkBoxTicket.setText(_translate("POS", "Imprimir ticket"))
         self.tituloLabel.setText(_translate("POS", "Alquimia Pastelería"))
         self.btnMenu.setText(_translate("POS", "☰"))
+        self.labelEmpleado.setText(_translate("POS", "Empleado:"))
