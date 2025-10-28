@@ -70,6 +70,7 @@ class EmpWindow(QMainWindow, Ui_Form, MenuFlotante):
         self.usuarioController = UsuarioController()
         self.empleado = Empleado()
         self.empleados = None
+        self.labelEmpleado.setText(f"Empleado: {empleado.nombre}")
         # Llenar combobox de usuarios
         self.rellenarCombobox()
 

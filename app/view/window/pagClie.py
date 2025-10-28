@@ -68,6 +68,7 @@ class CliWindow(QMainWindow, Ui_Dialog, MenuFlotante):
         self.clienteController = ClienteController()
         self.cliente = Cliente()
         self.clientes = None
+        self.labelEmpleado.setText(f"Empleado: {empleado.nombre}")
 
         self.comboCategorias.addItem("ID", "id_cliente")
         self.comboCategorias.addItem("Nombre", "nombre")

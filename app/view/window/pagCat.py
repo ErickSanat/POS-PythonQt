@@ -62,6 +62,7 @@ class CatWindow(QMainWindow, Ui_Form, MenuFlotante):
         self.categoriaController = CategoriaController()
         self.categoria = Categoria()
         self.categorias = None
+        self.labelEmpleado.setText(f"Empleado: {empleado.nombre}")
 
         # Llenar el combo categorias
         self.comboCategorias.addItem("ID", "id_categoria")

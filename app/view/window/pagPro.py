@@ -105,6 +105,7 @@ class ProWindow(QMainWindow, Ui_Form, MenuFlotante):
         self.producto = Producto()
         self.productos = None
         self.archivo = None
+        self.labelEmpleado.setText(f"Empleado: {empleado.nombre}")
         
         self._table_model = ProductoTableModel([])
         # Asegúrate que en tu UI el widget se llame 'tableView'; si no, cambia el nombre
