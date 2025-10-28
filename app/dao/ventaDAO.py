@@ -19,7 +19,7 @@ class VentaDAO:
                 venta[1],
                 EmpleadoDAO().empleado(venta[2]),
                 ClienteDAO().cliente(venta[3]),
-                PromocionDAO().promocion(venta[4]),
+                PromocionDAO().promocion(venta[4]) if venta[4] is not None else None,
                 PagoDAO().pago(venta[5]),
                 venta[6]
                 )

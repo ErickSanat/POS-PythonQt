@@ -250,3 +250,4 @@ class VenWindow(QMainWindow, Ui_Form, MenuFlotante):
             self.labelInformacion.setText(f"Mostrando {len(ventas)} ventas")
         except Exception as e:
             self.labelInformacion.setText("Error al cargar ventas")
+            print(e)
