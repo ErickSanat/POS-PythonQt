@@ -1,4 +1,3 @@
-from .caja import Caja
 from .categoria import Categoria
 from .cliente import Cliente
 from .detallePromocion import DetallePromocion

@@ -110,17 +110,5 @@ CREATE TABLE detalle_venta (
     subtotal NUMERIC(10,2) NOT NULL CHECK (subtotal >= 0)
 );
 
--- TABLA CAJAS
-CREATE TABLE caja (
-    id_caja SERIAL PRIMARY KEY,
-    fecha_apertura TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    fecha_cierre TIMESTAMP,
-    monto_inicial NUMERIC(10,2) NOT NULL DEFAULT 0 CHECK (monto_inicial >= 0),
-    monto_final NUMERIC(10,2) CHECK (monto_final IS NULL OR monto_final >= 0),
-    estado VARCHAR(20) DEFAULT 'abierta' CHECK (estado IN ('abierta','cerrada')),
-    id_empleado INT REFERENCES empleado(id_empleado) ON DELETE SET NULL,
-    CHECK (fecha_cierre IS NULL OR fecha_cierre >= fecha_apertura)
-);
-
 INSERT INTO rol (nombre) VALUES ('admin'), ('empleado');
 INSERT INTO tipo_pago (nombre) VALUES ('Efectivo'), ('Tarjeta'), ('Transferencia');

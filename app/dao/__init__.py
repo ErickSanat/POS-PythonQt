@@ -1,5 +1,4 @@
 from .DB import DBConnection
-from .cajaDAO import CajaDAO
 from .categoriaDAO import CategoriaDAO
 from .clienteDAO import ClienteDAO
 from .detallePromocionDAO import DetallePromocionDAO
