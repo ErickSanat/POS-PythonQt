@@ -69,6 +69,7 @@ class UsuWindow(QMainWindow, Ui_Dialog, MenuFlotante):
         self.setupUi(self)
         self.usuarioController = UsuarioController()
         self.rolController = RolController()
+        self.labelEmpleado.setText(f"Empleado: {empleado.nombre}")
         for rol in self.rolController.roles():
             self.comboRol.addItem(rol.nombre, rol.id_rol)
             

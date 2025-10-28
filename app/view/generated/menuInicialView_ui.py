@@ -364,7 +364,7 @@ class Ui_POS(object):
         self.btnMenuInicio.setIconSize(QtCore.QSize(28, 28))
         self.btnMenuInicio.setObjectName("btnMenuInicio")
         self.labelEmpleado = QtWidgets.QLabel(self.barraSuperior)
-        self.labelEmpleado.setGeometry(QtCore.QRect(490, 0, 186, 59))
+        self.labelEmpleado.setGeometry(QtCore.QRect(530, 0, 186, 59))
         font = QtGui.QFont()
         font.setPointSize(11)
         self.labelEmpleado.setFont(font)

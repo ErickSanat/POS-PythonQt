@@ -410,6 +410,15 @@ class Ui_Form(object):
         self.btnCerrarSesion.setIcon(icon1)
         self.btnCerrarSesion.setIconSize(QtCore.QSize(28, 28))
         self.btnCerrarSesion.setObjectName("btnCerrarSesion")
+        self.labelEmpleado = QtWidgets.QLabel(self.barraSuperior)
+        self.labelEmpleado.setGeometry(QtCore.QRect(460, 0, 186, 59))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.labelEmpleado.setFont(font)
+        self.labelEmpleado.setStyleSheet("color: #00000;\n"
+"font-size: 14px;\n"
+"color: rgb(134, 123, 170);")
+        self.labelEmpleado.setObjectName("labelEmpleado")
         self.frameFlotante = QtWidgets.QFrame(Form)
         self.frameFlotante.setEnabled(True)
         self.frameFlotante.setGeometry(QtCore.QRect(700, 700, 0, 0))
@@ -643,3 +652,4 @@ class Ui_Form(object):
         self.btnBuscar.setText(_translate("Form", "Buscar"))
         self.tituloInicial.setText(_translate("Form", "Alquimia Pastelería"))
         self.btnMenu.setText(_translate("Form", "☰"))
+        self.labelEmpleado.setText(_translate("Form", "Empleado:"))

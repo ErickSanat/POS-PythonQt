@@ -70,6 +70,7 @@ class ProvWindow(QMainWindow, Ui_Form, MenuFlotante):
         self.proveedorController = ProveedorController()
         self.proveedor = Proveedor()
         self.proveedores = None
+        self.labelEmpleado.setText(f"Empleado: {empleado.nombre}")
 
         # Llenar el combo de proveedores
         self.rellenarCombobox()

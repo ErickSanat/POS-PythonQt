@@ -103,6 +103,7 @@ class VenWindow(QMainWindow, Ui_Form, MenuFlotante):
         self.pagoController = PagoController()
         self.venta = Venta()
         self.ventas = None
+        self.labelEmpleado.setText(f"Empleado: {empleado.nombre}")
 
         # Llenar combobox de de categorias de busqueda
         self.comboCategorias.addItem("ID", "id_venta")

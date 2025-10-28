@@ -60,6 +60,7 @@ class PromWindow(QMainWindow, Ui_Form, MenuFlotante):
         self.promocionController = PromocionController()
         self.promocion = Promocion()
         self.promociones = None
+        self.labelEmpleado.setText(f"Empleado: {empleado.nombre}")
 
         self.comboCategorias.addItem("ID", "id_promocion")
         self.comboCategorias.addItem("Nombre", "nombre")

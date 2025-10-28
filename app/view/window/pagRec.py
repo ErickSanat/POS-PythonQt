@@ -65,6 +65,7 @@ class RecWindow(QMainWindow, Ui_Form, MenuFlotante):
         self.producto = Producto()
         self.receta = Receta()
         self.recetas = None
+        self.labelEmpleado.setText(f"Empleado: {empleado.nombre}")
         for producto in self.productoController.productos():
             self.comboProductos.addItem(producto.nombre, producto.id_producto)
 

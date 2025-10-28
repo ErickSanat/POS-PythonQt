@@ -99,6 +99,7 @@ class InicioWindow(QMainWindow, Ui_POS, MenuFlotante):
         except Exception as e:
             print(f"Advertencia al cargar la UI: {e}")
             self.setupUi(self)
+        self.labelEmpleado.setText(f"Empleado: {empleado.nombre}")
 
         # Configurar scroll area (si existe en UI)
         if hasattr(self, 'scrollArea'):
