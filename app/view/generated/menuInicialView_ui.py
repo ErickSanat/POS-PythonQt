@@ -76,6 +76,20 @@ class Ui_POS(object):
 "")
         self.comboCategorias.setObjectName("comboCategorias")
         self.horizontalLayout_search.addWidget(self.comboCategorias)
+        self.btnBuscar = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        self.btnBuscar.setStyleSheet("QPushButton {\n"
+"    background-color: #867BAA;\n"
+"    color: black;\n"
+"    padding: 10px;\n"
+"    border: none;\n"
+"    border-radius: 5px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: #BDB1E2;\n"
+"}")
+        self.btnBuscar.setObjectName("btnBuscar")
+        self.horizontalLayout_search.addWidget(self.btnBuscar)
         self.verticalLayout_left.addLayout(self.horizontalLayout_search)
         self.scrollArea = QtWidgets.QScrollArea(self.verticalLayoutWidget)
         self.scrollArea.setWidgetResizable(True)
@@ -591,6 +605,7 @@ class Ui_POS(object):
         _translate = QtCore.QCoreApplication.translate
         POS.setWindowTitle(_translate("POS", "AlquimiaPastelería"))
         self.lineDato.setPlaceholderText(_translate("POS", "Buscar productos..."))
+        self.btnBuscar.setText(_translate("POS", "Buscar"))
         self.lineTituloResumenVenta.setText(_translate("POS", "Resumen de Venta"))
         self.labelSubtotal.setText(_translate("POS", "Subtotal: $0.00"))
         self.chkBoxDescuento.setText(_translate("POS", "Aplicar Descuento"))

@@ -172,6 +172,26 @@ border-right: 2px solid #867BAA;</string>
               </property>
              </widget>
             </item>
+            <item>
+             <widget class="QPushButton" name="btnBuscar">
+              <property name="styleSheet">
+               <string notr="true">QPushButton {
+    background-color: #867BAA;
+    color: black;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+QPushButton:hover {
+    background-color: #BDB1E2;
+}</string>
+              </property>
+              <property name="text">
+               <string>Buscar</string>
+              </property>
+             </widget>
+            </item>
            </layout>
           </item>
           <item>
