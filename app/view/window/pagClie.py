@@ -90,6 +90,7 @@ class CliWindow(QMainWindow, Ui_Dialog, MenuFlotante):
         self.btnEditar.clicked.connect(self.handleEditarBtn)
         self.btnEliminar.clicked.connect(self.handleBorrarBtn)
         self.btnBuscar.clicked.connect(self.handleBuscarBtn)
+        self.labelEmpleado.setText(f"Empleado: {empleado.nombre}")
 
         # Configurar el menú flotante
         self.setupFloatingMenu(empleado)

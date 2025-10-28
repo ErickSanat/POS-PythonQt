@@ -142,6 +142,7 @@ class ProWindow(QMainWindow, Ui_Form, MenuFlotante):
         self.tableView.setAlternatingRowColors(True)
         self.tableView.setSelectionBehavior(self.tableView.SelectRows)
         self.tableView.doubleClicked.connect(self.handleDobleClic)
+        self.labelEmpleado.setText(f"Empleado: {empleado.nombre}")
         
         self.btnAgregar.clicked.connect(self.handleAgregarBtn)
         self.btnEditar.clicked.connect(self.handleEditarBtn)
