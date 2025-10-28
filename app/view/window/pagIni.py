@@ -6,7 +6,7 @@ from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import Qt, QAbstractTableModel, QSize, QModelIndex, QVariant
 
 from ..generated.menuInicialView_ui import Ui_POS
-from app.utils import MenuFlotante
+from app.utils import MenuFlotante, generarTicket
 from app.model import Empleado, Producto, DetalleVenta, Venta, Cliente, Pago, Promocion, TipoPago
 from app.controller import ProductoController, ClienteController, PromocionController, TipoPagoController, PagoController, VentaController, DetalleVentaController
 
@@ -127,6 +127,7 @@ class InicioWindow(QMainWindow, Ui_POS, MenuFlotante):
         self.tableView.doubleClicked.connect(self.handleDobleClic)
         
         self.chkBoxDescuento.stateChanged.connect(self.handlePromocionChk)
+        # self.chkBoxTicket.stateChanged.connect(self.handlePromocionChk)
         self.btnLimpiarVenta.clicked.connect(self.handleLimpiarBtn)
         self.btnLimpiarPago.clicked.connect(self.handleRealizarPago)
 
@@ -306,8 +307,10 @@ class InicioWindow(QMainWindow, Ui_POS, MenuFlotante):
             )
             detalle.venta = self.venta
             self.detalleVentaController.addDetalleVenta(detalle)
-        
+
         self.cargarProductos()
+        if self.chkBoxTicket.isChecked():
+            generarTicket(f"ticket_{self.venta.id_venta}.pdf", self.detalleVentas)
         self.handleLimpiarBtn()
 
     def rellenarComboClientes(self):

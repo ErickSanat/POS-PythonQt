@@ -762,6 +762,29 @@ QPushButton:hover {
       </size>
      </property>
     </widget>
+    <widget class="QLabel" name="labelEmpleado">
+     <property name="geometry">
+      <rect>
+       <x>470</x>
+       <y>0</y>
+       <width>186</width>
+       <height>59</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #00000;
+font-size: 14px;
+color: rgb(134, 123, 170);</string>
+     </property>
+     <property name="text">
+      <string>Empleado:</string>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QFrame" name="frameFlotante">

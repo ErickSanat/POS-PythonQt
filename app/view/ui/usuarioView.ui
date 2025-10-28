@@ -516,11 +516,11 @@ QPushButton:hover {
          <attribute name="horizontalHeaderCascadingSectionResizes">
           <bool>false</bool>
          </attribute>
-         <attribute name="horizontalHeaderMinimumSectionSize">
-          <number>100</number>
-         </attribute>
          <attribute name="horizontalHeaderDefaultSectionSize">
           <number>220</number>
+         </attribute>
+         <attribute name="horizontalHeaderMinimumSectionSize">
+          <number>100</number>
          </attribute>
          <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
           <bool>false</bool>
@@ -531,10 +531,10 @@ QPushButton:hover {
          <attribute name="verticalHeaderCascadingSectionResizes">
           <bool>true</bool>
          </attribute>
-         <attribute name="verticalHeaderMinimumSectionSize">
+         <attribute name="verticalHeaderDefaultSectionSize">
           <number>30</number>
          </attribute>
-         <attribute name="verticalHeaderDefaultSectionSize">
+         <attribute name="verticalHeaderMinimumSectionSize">
           <number>30</number>
          </attribute>
          <attribute name="verticalHeaderShowSortIndicator" stdset="0">
@@ -746,6 +746,29 @@ QPushButton:hover {
        <width>28</width>
        <height>28</height>
       </size>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelEmpleado">
+     <property name="geometry">
+      <rect>
+       <x>470</x>
+       <y>0</y>
+       <width>186</width>
+       <height>59</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #00000;
+font-size: 14px;
+color: rgb(134, 123, 170);</string>
+     </property>
+     <property name="text">
+      <string>Empleado:</string>
      </property>
     </widget>
    </widget>

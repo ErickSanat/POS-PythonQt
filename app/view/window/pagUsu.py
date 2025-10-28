@@ -113,7 +113,8 @@ class UsuWindow(QMainWindow, Ui_Dialog, MenuFlotante):
         self.mostrarTabla()
 
     def handleEditarBtn(self):
-        if self.empleado.id_empleado is None:
+        if self.usuario.id_usuario is None:
+            print("No hay empleado seleccionado")
             return
         usuarioModificado = Usuario(
             self.usuario.id_usuario,
@@ -127,7 +128,7 @@ class UsuWindow(QMainWindow, Ui_Dialog, MenuFlotante):
         self.mostrarTabla()
     
     def handleBorrarBtn(self):
-        if self.empleado.id_empleado is None:
+        if self.usuario.id_usuario is None:
             return
         self.usuarioController.deleteUsuario(self.usuario.id_usuario)
         self.labelInformacion.setText("Usuario Eliminado Exitosamente")
@@ -165,6 +166,7 @@ class UsuWindow(QMainWindow, Ui_Dialog, MenuFlotante):
             datos[2],
             self.rolController.porNombre(datos[3])
         )
+        print(self.usuario)
         self.lineNombreEmpleado.setText(self.usuario.usuario)
         self.lineContrasena.setText(self.usuario.contrasena)
         self.comboRol.setCurrentText(self.usuario.rol.nombre)
