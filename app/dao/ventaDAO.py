@@ -53,22 +53,6 @@ class VentaDAO:
     def addVenta(self, venta: Venta):
         conn = DBConnection.connection()
         cur = conn.cursor()
-        print(
-            "INSERT INTO venta ("
-            + "fecha,"
-            + "id_empleado,"
-            + "id_cliente,"
-            + ("id_promocion," if venta.promocion.id_promocion is not None else "")
-            + "id_pago,"
-            + "total"
-            + ") VALUES ("
-            + f"'{venta.fecha}',"
-            + f"'{venta.empleado.id_empleado}',"
-            + f"'{venta.cliente.id_cliente}',"
-            + (f"'{venta.promocion.id_promocion}'," if venta.promocion.id_promocion is not None else "")
-            + f"'{venta.pago.id_pago}',"
-            + f"{venta.total})"
-        )
         cur.execute(
             "INSERT INTO venta ("
                 + "fecha,"
