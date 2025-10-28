@@ -35,7 +35,7 @@ class PromocionDAO:
         if resultado is not None:
             return Promocion(resultado[0], resultado[1], resultado[2])
         else:
-            raise TypeError("No existe la promocion")
+            return None
 
     def promocionExistente(self, promocion: Promocion) -> Promocion | bool:
         conn = DBConnection.connection()

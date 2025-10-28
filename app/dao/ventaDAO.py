@@ -53,19 +53,35 @@ class VentaDAO:
     def addVenta(self, venta: Venta):
         conn = DBConnection.connection()
         cur = conn.cursor()
+        print(
+            "INSERT INTO venta ("
+            + "fecha,"
+            + "id_empleado,"
+            + "id_cliente,"
+            + ("id_promocion," if venta.promocion.id_promocion is not None else "")
+            + "id_pago,"
+            + "total"
+            + ") VALUES ("
+            + f"'{venta.fecha}',"
+            + f"'{venta.empleado.id_empleado}',"
+            + f"'{venta.cliente.id_cliente}',"
+            + (f"'{venta.promocion.id_promocion}'," if venta.promocion.id_promocion is not None else "")
+            + f"'{venta.pago.id_pago}',"
+            + f"{venta.total})"
+        )
         cur.execute(
             "INSERT INTO venta ("
                 + "fecha,"
                 + "id_empleado,"
                 + "id_cliente,"
-                + "id_promocion,"
+                + ("id_promocion," if venta.promocion.id_promocion is not None else "")
                 + "id_pago,"
                 + "total"
             +") VALUES ("
                 + f"'{venta.fecha}',"
                 + f"'{venta.empleado.id_empleado}',"
                 + f"'{venta.cliente.id_cliente}',"
-                + f"'{venta.promocion.id_promocion}',"
+                + (f"'{venta.promocion.id_promocion}'," if venta.promocion.id_promocion is not None else "")
                 + f"'{venta.pago.id_pago}',"
                 + f"{venta.total})"
             )
@@ -83,7 +99,7 @@ class VentaDAO:
                 resultado[1],
                 EmpleadoDAO().empleado(resultado[2]),
                 ClienteDAO().cliente(resultado[3]),
-                PromocionDAO().promocion(resultado[4]),
+                PromocionDAO().promocion(resultado[4]) if resultado[4] is not None else None,
                 PagoDAO().pago(resultado[5]),
                 resultado[6]
             )
