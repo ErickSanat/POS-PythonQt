@@ -5,7 +5,6 @@ import hashlib
 class UsuarioController:
     def __init__(self):
         self.usuarioDAO = UsuarioDAO()
-        self.jacheo = hashlib.md5()
     
     def usuarios(self) -> list[Usuario]:
         try:
@@ -49,8 +48,9 @@ class UsuarioController:
                 return False
     
     def jacheado(self, contrasena: str) -> str:
-        self.jacheo.update(contrasena.encode('utf-8'))
-        return self.jacheo.hexdigest()
+        jacheo = hashlib.md5()
+        jacheo.update(contrasena.encode('utf-8'))
+        return jacheo.hexdigest()
 
     def porNombre(self, nombre: str) -> Usuario:
         return self.usuarioDAO.porNombre(nombre)
