@@ -105,7 +105,6 @@ class ProWindow(QMainWindow, Ui_Form, MenuFlotante):
         self.producto = Producto()
         self.productos = None
         self.archivo = None
-        self.labelEmpleado.setText(f"Empleado: {empleado.nombre}")
         
         self._table_model = ProductoTableModel([])
         # Asegúrate que en tu UI el widget se llame 'tableView'; si no, cambia el nombre
@@ -143,6 +142,7 @@ class ProWindow(QMainWindow, Ui_Form, MenuFlotante):
         self.tableView.setAlternatingRowColors(True)
         self.tableView.setSelectionBehavior(self.tableView.SelectRows)
         self.tableView.doubleClicked.connect(self.handleDobleClic)
+        self.labelEmpleado.setText(f"Empleado: {empleado.nombre}")
         
         self.btnAgregar.clicked.connect(self.handleAgregarBtn)
         self.btnEditar.clicked.connect(self.handleEditarBtn)
