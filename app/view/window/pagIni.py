@@ -115,25 +115,7 @@ class InicioWindow(QMainWindow, Ui_POS, MenuFlotante):
         else:
             self.scrollAreaWidgetContents.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
 
-        # Llenar grid con productos
-        columnas = 5
-        productos: list[Producto] = []
-        try:
-            productos = self.productoController.productos()
-        except Exception:
-            productos = []
-
-        for indice, producto in enumerate(productos):
-            fila = indice // columnas
-            columna = indice % columnas
-            widget_producto = ProductoWidget(producto, self.agregarAlCarrito)
-            self.gridLayoutProductos.addWidget(widget_producto, fila, columna)
-
-        # Spacer final para empujar contenido hacia arriba cuando hay pocas filas
-        filas_totales = (len(productos) + columnas - 1) // columnas
-        spacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
-        self.gridLayoutProductos.addItem(spacer, filas_totales, 0, 1, columnas)
-
+        self.cargarProductos()
         # Configurar modelo y TableView
         self._table_model = DetalleVentaTableModel()
         self.tableView.setModel(self._table_model)
@@ -318,9 +300,14 @@ class InicioWindow(QMainWindow, Ui_POS, MenuFlotante):
         self.venta = self.ventaController.ultimoVenta()
         
         for detalle in self.detalleVentas:
+            detalle.producto.stock -= detalle.cantidad
+            self.productoController.updateProducto(
+                detalle.producto
+            )
             detalle.venta = self.venta
             self.detalleVentaController.addDetalleVenta(detalle)
         
+        self.cargarProductos()
         self.handleLimpiarBtn()
 
     def rellenarComboClientes(self):
@@ -342,6 +329,25 @@ class InicioWindow(QMainWindow, Ui_POS, MenuFlotante):
         self.labelSubtotal.setText(f"Subtotal: ${0:.2f}")
         self.labelDescuentoMostrado.setText(f"Descuento: ${0:.2f}")
         self.labelTotalMostrado.setText(f"TOTAL: ${0:.2f}")
+
+    def cargarProductos(self):
+        columnas = 5
+        productos: list[Producto] = []
+        try:
+            productos = self.productoController.productos()
+        except Exception:
+            productos = []
+
+        for indice, producto in enumerate(productos):
+            fila = indice // columnas
+            columna = indice % columnas
+            widget_producto = ProductoWidget(producto, self.agregarAlCarrito)
+            self.gridLayoutProductos.addWidget(widget_producto, fila, columna)
+
+        # Spacer final para empujar contenido hacia arriba cuando hay pocas filas
+        filas_totales = (len(productos) + columnas - 1) // columnas
+        spacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.gridLayoutProductos.addItem(spacer, filas_totales, 0, 1, columnas)
 
 class ProductoWidget(QWidget):
     """Widget-botón para producto: sigue siendo clickable y su contenido queda pegado abajo."""
