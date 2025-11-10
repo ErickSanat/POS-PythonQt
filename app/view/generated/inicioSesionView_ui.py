@@ -15,6 +15,13 @@ class Ui_InicioSesion(object):
     def setupUi(self, InicioSesion):
         InicioSesion.setObjectName("InicioSesion")
         InicioSesion.resize(400, 301)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(InicioSesion.sizePolicy().hasHeightForWidth())
+        InicioSesion.setSizePolicy(sizePolicy)
+        InicioSesion.setMinimumSize(QtCore.QSize(400, 301))
+        InicioSesion.setMaximumSize(QtCore.QSize(400, 301))
         InicioSesion.setAutoFillBackground(False)
         self.frame = QtWidgets.QFrame(InicioSesion)
         self.frame.setGeometry(QtCore.QRect(0, 0, 401, 301))
@@ -84,7 +91,7 @@ class Ui_InicioSesion(object):
 
     def retranslateUi(self, InicioSesion):
         _translate = QtCore.QCoreApplication.translate
-        InicioSesion.setWindowTitle(_translate("InicioSesion", "Dialog"))
+        InicioSesion.setWindowTitle(_translate("InicioSesion", "Log in"))
         self.labelUsuario.setText(_translate("InicioSesion", "Usuario"))
         self.lineNombre.setPlaceholderText(_translate("InicioSesion", "Ingrese su usuario"))
         self.label_2.setText(_translate("InicioSesion", "Contraseña"))
