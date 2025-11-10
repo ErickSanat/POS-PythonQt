@@ -92,6 +92,7 @@ class InicioWindow(QMainWindow, Ui_POS, MenuFlotante):
         self.detalleVentaController = DetalleVentaController()
         self.detalleVentas: list[DetalleVenta] = []
         self.venta = None
+        self.productos: list[Producto] = []
         self.empleado = empleado
 
         try:
@@ -116,6 +117,9 @@ class InicioWindow(QMainWindow, Ui_POS, MenuFlotante):
         else:
             self.scrollAreaWidgetContents.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
 
+        self.comboCategorias.addItem("Nombre", "producto.nombre")
+        self.comboCategorias.addItem("Categoria", "categoria.nombre")
+        
         self.cargarProductos()
         # Configurar modelo y TableView
         self._table_model = DetalleVentaTableModel()
@@ -131,6 +135,7 @@ class InicioWindow(QMainWindow, Ui_POS, MenuFlotante):
         # self.chkBoxTicket.stateChanged.connect(self.handlePromocionChk)
         self.btnLimpiarVenta.clicked.connect(self.handleLimpiarBtn)
         self.btnLimpiarPago.clicked.connect(self.handleRealizarPago)
+        self.btnBuscar.clicked.connect(self.handleBuscarBtn)
 
         # Menú flotante
         self.setupFloatingMenu(empleado)
@@ -334,11 +339,18 @@ class InicioWindow(QMainWindow, Ui_POS, MenuFlotante):
         self.labelDescuentoMostrado.setText(f"Descuento: ${0:.2f}")
         self.labelTotalMostrado.setText(f"TOTAL: ${0:.2f}")
 
+    def clear_layout(self, layout):
+        while layout.count():
+            item = layout.takeAt(0)
+            widget = item.widget()
+            if widget is not None:
+                widget.deleteLater()
     def cargarProductos(self):
+        self.clear_layout(self.gridLayoutProductos)
         columnas = 5
         productos: list[Producto] = []
         try:
-            productos = self.productoController.productos()
+            productos = self.productos or self.productoController.productos()
         except Exception:
             productos = []
 
@@ -353,6 +365,16 @@ class InicioWindow(QMainWindow, Ui_POS, MenuFlotante):
         spacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
         self.gridLayoutProductos.addItem(spacer, filas_totales, 0, 1, columnas)
 
+    def handleBuscarBtn(self):
+        columna = self.comboCategorias.currentData()
+        aBuscar = self.lineDato.text().strip()
+        try:
+            self.productos = self.productoController.buscar(columna, aBuscar)
+        except Exception as e:
+            self.productos = None
+        self.lineDato.clear()
+        self.cargarProductos()
+        
 class ProductoWidget(QWidget):
     """Widget-botón para producto: sigue siendo clickable y su contenido queda pegado abajo."""
     def __init__(self, producto: Producto, agregarAlCarrito):
