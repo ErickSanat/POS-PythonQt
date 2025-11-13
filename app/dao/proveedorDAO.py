@@ -4,6 +4,7 @@ from ..model import Proveedor
 
 class ProveedorDAO:
     def proveedores(self) -> list[Proveedor]:
+        """Fetch all suppliers"""
         proveedores: list[Proveedor] = []
         conn = DBConnection.connection()
         cur = conn.cursor()
@@ -21,15 +22,17 @@ class ProveedorDAO:
             for proveedor in resultado
         )
         cerrarConn(cur, conn)
-        if proveedores is not None:
+        if proveedores:
             return proveedores
         else:
             raise TypeError("No existen proveedores")
 
     def proveedor(self, id_proveedor: int) -> Proveedor:
+        """Fetch a single supplier by ID using parameterized query"""
         conn = DBConnection.connection()
         cur = conn.cursor()
-        cur.execute(f"SELECT * FROM proveedor WHERE id_proveedor = {id_proveedor}")
+        # Use parameterized query to prevent SQL injection
+        cur.execute("SELECT * FROM proveedor WHERE id_proveedor = %s", (id_proveedor,))
         resultado = cur.fetchone()
         cerrarConn(cur, conn)
         if resultado is not None:
@@ -45,13 +48,11 @@ class ProveedorDAO:
             raise TypeError("No existe el proveedor")
 
     def proveedorExistente(self, proveedor: Proveedor) -> Proveedor | bool:
+        """Check if supplier exists by ID using parameterized query"""
         conn = DBConnection.connection()
         cur = conn.cursor()
-        cur.execute(
-            "SELECT * FROM proveedor "
-            +"WHERE "
-                + f"id_proveedor = {proveedor.id_proveedor}"
-        )
+        # Use parameterized query to prevent SQL injection
+        cur.execute("SELECT * FROM proveedor WHERE id_proveedor = %s", (proveedor.id_proveedor,))
         resultado = cur.fetchone()
         cerrarConn(cur, conn)
         if resultado is not None:
@@ -67,63 +68,55 @@ class ProveedorDAO:
             return False
 
     def addProveedor(self, proveedor: Proveedor):
+        """Add a new supplier using parameterized query"""
         conn = DBConnection.connection()
         cur = conn.cursor()
+        # Use parameterized query to prevent SQL injection
         cur.execute(
-            "INSERT INTO proveedor ("
-                + "nombre,"
-                + "nombre_contacto,"
-                + "telefono,"
-                + "direccion,"
-                + "activo"
-            +") VALUES ("
-                + f" '{proveedor.nombre}', "
-                + f"'{proveedor.nombre_contacto}',"
-                + f" '{proveedor.telefono}',"
-                + f"'{proveedor.direccion}',"
-                + f"'{proveedor.activo}')"
-            )
+            "INSERT INTO proveedor (nombre, nombre_contacto, telefono, direccion, activo) "
+            "VALUES (%s, %s, %s, %s, %s)",
+            (proveedor.nombre, proveedor.nombre_contacto, proveedor.telefono,
+             proveedor.direccion, proveedor.activo)
+        )
         cerrarCommit(cur, conn)
 
     def updateProveedor(self, proveedor: Proveedor):
+        """Update a supplier using parameterized query"""
         conn = DBConnection.connection()
         cur = conn.cursor()
+        # Use parameterized query to prevent SQL injection
         cur.execute(
-            "UPDATE proveedor "
-            + "SET "
-                + f"nombre='{proveedor.nombre}', "
-                + f"nombre_contacto='{proveedor.nombre_contacto}', "
-                + f"telefono='{proveedor.telefono}', "
-                + f"direccion='{proveedor.direccion}', "
-                + f"activo={proveedor.activo} "
-            +"WHERE "
-                + f"id_proveedor={proveedor.id_proveedor}"
-            )
+            "UPDATE proveedor SET nombre=%s, nombre_contacto=%s, telefono=%s, "
+            "direccion=%s, activo=%s WHERE id_proveedor=%s",
+            (proveedor.nombre, proveedor.nombre_contacto, proveedor.telefono,
+             proveedor.direccion, proveedor.activo, proveedor.id_proveedor)
+        )
         cerrarCommit(cur, conn)
 
     def deleteProveedor(self, id_proveedor: int):
+        """Delete a supplier using parameterized query"""
         conn = DBConnection.connection()
         cur = conn.cursor()
-        cur.execute(
-            "DELETE "
-            + "FROM "
-                + "proveedor "
-            +"WHERE "
-                + f"id_proveedor={id_proveedor}"
-            )
+        # Use parameterized query to prevent SQL injection
+        cur.execute("DELETE FROM proveedor WHERE id_proveedor=%s", (id_proveedor,))
         cerrarCommit(cur, conn)
 
     def buscarProveedores(self, columna: str, aBuscar: str) -> list[Proveedor]:
+        """Search suppliers using parameterized query"""
         if not aBuscar:
             raise TypeError("falta texto")
         proveedores: list[Proveedor] = []
         conn = DBConnection.connection()
         cur = conn.cursor()
+        # Use parameterized query with column validation to prevent SQL injection
+        allowed_columns = ['nombre', 'nombre_contacto', 'telefono', 'direccion', 'id_proveedor']
+        if columna not in allowed_columns:
+            columna = 'nombre'  # default to safe column
+        
         cur.execute(
-            "SELECT * "
-            + "FROM proveedor "
-            + "WHERE "
-                + f"CAST({columna} AS TEXT) LIKE '%{aBuscar}%'")
+            f"SELECT * FROM proveedor WHERE CAST({columna} AS TEXT) LIKE %s",
+            (f'%{aBuscar}%',)
+        )
         resultado = cur.fetchall()
         proveedores.extend(
             Proveedor(
@@ -137,7 +130,7 @@ class ProveedorDAO:
             for proveedor in resultado
         )
         cerrarConn(cur, conn)
-        if proveedores is not None:
+        if proveedores:
             return proveedores
         else:
             raise TypeError("No existe el proveedor")
